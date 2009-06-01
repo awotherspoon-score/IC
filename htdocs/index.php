@@ -2,6 +2,7 @@
 
 <html>
 <head>
+<link rel='stylesheet' type='text/css' href='css/shared.css' />
 <link rel='stylesheet' type='text/css' href='css/home.css' />
 <script type='text/javascript' src='js/jquery.js'></script>
 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
