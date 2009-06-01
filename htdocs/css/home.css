@@ -2,28 +2,6 @@
 body#homepage {
 	
 }
-
-body#homepage div#header-top {
-	background-image:url(../img/header-top.jpg);
-	background-repeat:no-repeat;
-	width:500px;
-	height:71px;
-}
-
-body#homepage h1{
-	/*Throw this out so we're good with SEO, 
-	but can use an image instead*/ 
-	position:absolute;
-	display:inline;
-	text-indent:-10000px;
-}
-
-
-
-body#homepage img#header-image {
-	float:left;
-}
-
 body#homepage ul#pcs-nav {
 	list-style-type:none;
 	margin:0;

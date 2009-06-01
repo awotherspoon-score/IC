@@ -39,8 +39,30 @@ p#margin-spacer {
 
 /**End General Rules**/
 
+/**Header Rules**/
 
-/**End Footer Rules**/
+body div#header-top {
+	background-image:url(../img/header-top.jpg);
+	background-repeat:no-repeat;
+	width:500px;
+	height:71px;
+}
+
+body h1{
+	/*Throw this out so we're good with SEO, 
+	but can use an image instead*/ 
+	position:absolute;
+	display:inline;
+	text-indent:-10000px;
+}
+/** End Header Rules **/
+
+
+
+body img#header-image {
+	float:left;
+}
+
 
 /**As Yet Uncategorized Rules**/
 div#search-box {
@@ -102,13 +124,13 @@ div#footer div.footer-column ul {
         list-style-type:none;
         text-transform:uppercase;
         font-size:10px;
-        color:#009acb;
+        color:#7cd919;
 }
 div#footer div.footer-column ul li {
         margin-top:2px;
 }
 div#footer div.footer-column ul a {
-        color:#009acb;
+        color:#7cd919;
 }
 
 
