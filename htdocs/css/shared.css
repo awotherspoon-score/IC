@@ -37,6 +37,10 @@ p#margin-spacer {
 	color:white;
 }
 
+body div#main {
+	width:940px;
+	
+}
 /**End General Rules**/
 
 /**Header Rules**/
@@ -124,13 +128,11 @@ div#footer div.footer-column ul {
         list-style-type:none;
         text-transform:uppercase;
         font-size:10px;
-        color:#7cd919;
 }
 div#footer div.footer-column ul li {
         margin-top:2px;
 }
 div#footer div.footer-column ul a {
-        color:#7cd919;
 }
 
 
