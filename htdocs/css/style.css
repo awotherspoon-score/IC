@@ -1,0 +1,422 @@
+/***Immanuel College Front-End CSS File***/
+
+/**
+* Colors
+* Prospective Green: 	        #7cd919
+* Current Blue: 		#00a8e1
+* Staff Turquoise: 		#33cbcc
+* Immanuel Blue:		#012778
+* Text Grey:			#666
+* Default Font:			Tahoma, Verdana, Helvetica, Arial, sans-serif
+* Title Font:			Senuca Black
+* Testimonial Font:		Senuca Regular
+*/
+
+/**General Rules**/
+div#wrapper {
+	width:940px;
+	margin:0 auto;
+	font-family:Tahoma, Verdana, Helvetica, Arial, sans-serif;
+	font-size:0.8em;
+	color:#666;
+	position:relative;
+}
+
+a img {
+	text-decoration:none;
+	border:0;
+}
+
+div.cleardiv {
+	clear:both;
+	margin:0;
+	padding:0;
+}
+
+p#margin-spacer {
+	color:white;
+}
+
+/**End General Rules**/
+
+/**Homepage Specific Rules**/
+body#homepage {
+	
+}
+
+body#homepage div#header-top {
+	background-image:url(../img/header-top.jpg);
+	background-repeat:no-repeat;
+	width:500px;
+	height:71px;
+}
+
+body#homepage h1{
+	/*Throw this out so we're good with SEO, 
+	but can use an image instead*/ 
+	position:absolute;
+	display:inline;
+	text-indent:-10000px;
+}
+
+
+
+body#homepage img#header-image {
+	float:left;
+}
+
+body#homepage ul#pcs-nav {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	float:right;
+}
+
+body#homepage ul#pcs-nav li.has-margin {
+	padding-bottom:12px;
+}
+
+/*Main Content Layout CSS*/
+
+body#homepage div#main {
+	width:940px;
+	/*margin-top:30px;*/
+	
+}
+
+body#homepage div#main div.column {
+	width:222px; /*Should be 235 */
+	/*border:1px solid #666;*/
+	margin:0;
+	padding:0;
+}
+
+body#homepage div#main div#col-123 {
+	float:left;
+	width:700px;
+}
+
+body#homepage div#main div#col-4 {
+	float:right;
+}
+
+body#homepage div#main div#col-12 {
+	float:left;
+	width:462px;
+}
+
+body#homepage div#main div#col-3 {
+	float:right;
+}
+
+body#homepage div#main div#col-1 {
+	float:left;
+}
+
+body#homepage div#main div#col-2 {
+	float:right;
+}
+/*End Main Content Layout*/
+
+/*Showcase Box Layout*/
+body#homepage div#showcase {
+	text-align:center;
+	background-color:#012778;
+	padding-bottom:7px;
+}
+
+body#homepage div#showcase h4 {
+	color:#00a8e1;
+	margin:0;
+	padding:10px 0;
+	
+}
+
+body#homepage div#showcase img {
+	margin:0;
+	padding:0;
+}
+
+body#homepage div#showcase div#showcase-box h5 {
+	color:white;
+	font-size:1.3em;
+	margin:0;
+	padding:0;	
+}
+
+body#homepage div#showcase div#showcase-box {
+	background-color:#00a8e1;
+	width:210px;
+	margin:7px auto 0 auto;
+	padding-bottom:10px;
+}
+
+body#homepage div#showcase div#showcase-box p {
+	margin:0;
+	padding:0;
+	color:#012778;
+	font-weight:bold;
+} 
+/*End Showcase Box Layout*/
+
+
+
+/*Download Prospectus Button*/
+div#download-prospectus-button {
+	background-color:#33cbcc;
+	background-image:url(../img/buttons/prospectus.jpg);
+	background-repeat:no-repeat;
+	background-position:left;
+	width:222px;
+	height:89px;
+	margin-top:10px;
+}
+
+div#download-prospectus-button a {
+	color:white;
+	width:110px;
+	float:right;
+	padding-top:17px;
+	text-decoration:none;
+	font-size:1.2em;
+	font-weight:bold;
+}
+
+div#download-prospectus-button a:hover {
+	text-decoration:underline;
+}
+
+/*End Download Prospectus Button*/
+/*Column 2-4*/
+body#homepage a h2 {
+	color:#012778;
+}
+
+body#homepage .cufoned-headers {
+	font-size:1.6em;
+	text-decoration:none;
+}
+
+div#news-column h3, div#events-column h3 {
+	background-color:#012778;
+	padding:8px 10px 6px 35px;
+	font-size:1.2em;
+	margin:0;
+	background-repeat:no-repeat;
+	background-position:12px 9px;
+	
+}
+
+div#news-column h3 {
+	background-image:url(../img/icons/news-rss-icon.jpg);
+	
+}
+
+div#events-column h3 {
+	background-image:url(../img/icons/events-rss-icon.jpg);
+}
+
+div#news-column {
+	color:#33cbcc;
+}
+
+div#news-column p, div#events-column p {
+	padding:17px 12px 17px 12px;
+	margin:0;
+	font-weight:bold;
+}
+
+div#news-column p {
+border-bottom:1px solid #b2e1f3;
+}
+
+div#events-column p {
+border-bottom:1px solid #b0e1f2;
+}
+
+div#events-column {
+	color:#00a8e1;
+}
+
+div.column div.rss-box {
+	background-color:#d9f1fb;
+	font-size:0.7em;
+	color:#666;
+	font-weight:lighter;
+	font-family:Arial;
+}
+
+div.column div.rss-box a {
+	color:#666;
+}
+
+div.column div.rss-box img {
+	float:left;
+	margin-top:7px;
+	margin-left:8px;
+	margin-right:10px;
+}
+
+div#events-column div.rss-box p, div#news-column div.rss-box p {
+	border:0;
+	line-height:1.6em;
+	padding-top:11px;
+	padding-bottom:11px;
+}
+
+a.morelink {
+	color:#666;
+	font-weight:normal;
+}
+
+/*End Column 2-4*/
+
+/**End Homepage Specific Rules**/
+
+/**Footer Rules**/
+
+/* Footer Layout Rules */
+
+div#footer div.footer-column {
+	width:209px;
+        margin:10px 0 24px 0;
+        padding:0 0 0 13px;
+        border-left:1px solid #8fc9dd;
+}
+
+div#footer div.footer-column h4 {
+        margin:0;
+        padding:0;
+        font-size:12px;
+        color:#012778;
+}
+
+div#footer div.footer-column ul {
+        margin:9px 0 0 0;
+        padding:0;
+        list-style-type:none;
+        text-transform:uppercase;
+        font-size:10px;
+        color:#009acb;
+}
+div#footer div.footer-column ul li {
+        margin-top:2px;
+}
+div#footer div.footer-column ul a {
+        color:#009acb;
+}
+
+
+div#footer-col-123 {
+	float:left;
+	width:700px;
+}
+
+div#footer-col-4 {
+	float:right;
+}
+
+
+div#footer div#footer-col-4 ul li {
+       text-transform:none; 
+}
+div#footer div#footer-col-4 ul li a {
+       color:#012778;
+       font-size:12px;
+       font-weight:bold;
+        
+}
+
+div#footer-col-12 {
+	float:left;
+	width:462px;
+}
+
+div#footer-col-3 {
+	float:right;
+}
+
+div#footer-col-1 {
+	float:left;
+}
+
+div#footer-col-2 {
+	float:right;
+}
+
+div#actual-footer {
+        border-top:1px solid #ccc;
+        clear:both;
+        width:945px;
+        margin-right:15px;
+        font-size:0.9em;
+        margin-bottom:1em;
+}
+
+div#actual-footer img {
+        margin:0;
+        padding:0;
+        display:inline;
+}
+        
+div#actual-footer a {
+        color:#666;
+        text-decoration:none;
+}
+
+
+div#actual-footer a:hover {
+        text-decoration:underline;
+}
+div#actual-footer div#footer-nav {
+        width:500px;
+        float:left;
+        padding-top:7px;
+}
+
+div#actual-footer div#footer-copyright {
+        width:460;
+        float:right;
+}
+
+
+/* End Footer Layout Rules */
+
+/**End Footer Rules**/
+
+/**As Yet Uncategorized Rules**/
+div#search-box {
+	position:absolute;
+	top:35px;
+	right:240px;
+	color:#00a8e1;
+}
+
+div#search-box input#search-key, div#quick-links select {
+	color:#00a8e1;
+	border:1px solid #00a8e1;
+	padding:3px;
+	font-size:0.9em;
+}
+
+div#search-box input#search-button {
+	background-image:url(../img/buttons/search-bg.jpg);
+	background-repeat:no-repeat;
+	background-color:white;
+	border:0;
+	width:25px;
+	height:22px;
+}
+
+div#quick-links select {
+	width:222px;
+	position:absolute;
+	top:35px;
+	left:718px; /*940-222 (wrapper width (940) minus the button images/quick link selector width(222))*/
+	padding:2px;
+}
+
+div#footer {
+	border-top:#7ec2d9 1px solid;
+}
+/**End As Yet Uncategorized Rules**/
