@@ -3,6 +3,7 @@
 <html>
 <head>
 <link rel='stylesheet' type='text/css' href='css/shared.css' />
+<link rel='stylesheet' type='text/css' href='css/pcs-default.css' />
 <link rel='stylesheet' type='text/css' href='css/prospective.css' />
 <script type='text/javascript' src='js/jquery.js'></script>
 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
@@ -21,6 +22,7 @@
 		</div>
 		
 		<img id='header-image' alt='We nourish our pupils with an engaging focus on Jewish Tradition' src='img/header-prospective.jpg' />
+                <img alt='Testimonial' src='img/testimonial-prospective.jpg' class='testimonial-image' id='prospective-testimonial-image' />
                 <!--
 		<ul id='pcs-nav'>
 				<li class='has-margin'><a href='#'><img src='img/buttons/home-prospective.jpg' /></a></li>
