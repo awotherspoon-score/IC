@@ -107,6 +107,7 @@
         <?php include('inc/actual-footer.php'); ?>
         
 	</div><!-- /wrapper -->
+<?php include('inc/analytics.php'); ?>
 </body>
 
 </html>
