@@ -20,18 +20,26 @@ div#top-nav {
 div#top-nav ul {
         list-style-type:none;
         display:block;
-        border-bottom:1px solid #00a8e1;
+        border-bottom:1px solid #80c2da;
         padding-top:10px;
         padding-bottom:10px;
         width:700px; 
         position:relative;
         top:10px;
+
+        background-image:url(../img/nav-line.gif);
+        background-repeat:no-repeat;
+        background-position:bottom right;
 }
 
 div#top-nav ul li {
         display:inline;
-        padding:10px 10px 10px 10px;
+        padding:10px 10px 10px 20px;
+        background-image:url(../img/nav-line.gif);
+        background-repeat:no-repeat;
+        background-position:bottom left;
 }
+        
 
 div#top-nav ul li a {
         color:#00a8e1;
@@ -39,7 +47,6 @@ div#top-nav ul li a {
 
 div#top-nav ul li.page-nav-link {
         font-size:18px;
-        margin:10px 10px 10px 10px;
 }
 div#top-nav ul li.nav-link {
         text-transform:uppercase;
