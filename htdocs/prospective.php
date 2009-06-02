@@ -5,12 +5,13 @@
 <link rel='stylesheet' type='text/css' href='css/shared.css' />
 <link rel='stylesheet' type='text/css' href='css/pcs-default.css' />
 <link rel='stylesheet' type='text/css' href='css/prospective.css' />
-<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
 <script type="text/javascript">
 		Cufon.replace('h2');
 		Cufon.replace('h3');
+		Cufon.replace('#top-nav');
 </script>
 
 </head>
@@ -43,7 +44,17 @@
 				<option>Quick Links</option>
 			</select>
 		</div>
-
+                <div id='top-nav'>
+                        <ul>
+                                <li class='page-nav-link'>The School</li>
+                                <li class='page-nav-link'>Joining Us</li>
+                                <li class='page-nav-link'>Way of Life</li>
+                                <li class='nav-link'>News</li>
+                                <li class='nav-link'>Events</li>
+                                <li class='nav-link'>Gallery</li>
+                                <li class='nav-link'>Contact Us</li>
+                        </ul>
+                </div><!-- /top-nav -->
 	</div> <!-- /header -->
 	
 	<div id='main'>
