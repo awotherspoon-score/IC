@@ -5,16 +5,44 @@
 }
 
 /*NavBar CSS*/
-
-div#top-nav {
+div#top-nav * {
+        margin:0;
+        padding:0
 }
 
+div#top-nav {
+        color:#00a8e1;
+        margin:0;
+        padding:0
+}
+
+
 div#top-nav ul {
+        list-style-type:none;
+        display:block;
+        border-bottom:1px solid #00a8e1;
+        padding-top:10px;
+        padding-bottom:10px;
+        width:700px; 
+        position:relative;
+        top:10px;
 }
 
 div#top-nav ul li {
+        display:inline;
+        padding:10px 10px 10px 10px;
 }
 
 div#top-nav ul li a {
+        color:#00a8e1;
+}
+
+div#top-nav ul li.page-nav-link {
+        font-size:18px;
+        margin:10px 10px 10px 10px;
+}
+div#top-nav ul li.nav-link {
+        text-transform:uppercase;
+        font-size:10px;
 }
 /*End NavBar CSS*/
