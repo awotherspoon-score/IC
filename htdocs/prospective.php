@@ -12,7 +12,8 @@
 <script type="text/javascript">
 		Cufon.replace('h2', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('h3', { fontFamily: 'Sanuk-Black'});
-		Cufon.replace('#top-nav', { fontFamily: 'Sanuk-Black'});
+		Cufon.replace('#top-nav li', { fontFamily: 'Sanuk-Black'});
+
 </script>
 
 </head>
