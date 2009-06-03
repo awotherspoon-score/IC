@@ -14,8 +14,20 @@
 		Cufon.replace('h3', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
-                Cufon.replace('li ul li', { fontFamily: 'Sanuk-Regular' });
-
+                Cufon.replace('li ul li', { fontFamily: 'Sanuk-Regular'});
+                
+                $(document).ready(function() {
+                  //drop down menus
+                  $("ul#top-nav-list > li").hover(
+                          function() {
+                                  $(this).find("ul").css("display", "block");
+                          },
+                          function() {
+                                  $("ul", this).css("display", "none");
+                          }
+                  );
+                });  
+                
 </script>
 
 </head>

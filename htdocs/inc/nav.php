@@ -30,7 +30,7 @@
                                 </li>
                                 <li class='nav-link'><a href='#'>Events</a>
                                 </li>
-                                <li class='nav-link'><a href='#'/>Gallery</a></li>
-                                <li class='nav-link'><a href='#'/>Contact Us</a></li>
+                                <li class='nav-link'><a href='#'>Gallery</a></li>
+                                <li class='nav-link'><a href='#'>Contact Us</a></li>
                         </ul>
                 </div><!-- /top-nav -->
