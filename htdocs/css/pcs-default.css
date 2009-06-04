@@ -115,3 +115,32 @@ div#top-nav ul li:hover ul:hover {
 }
 
 /*End NavBar CSS*/
+
+/*Section Select (3 boxes) CSS*/
+div#section-select * {
+        margin:0;
+        padding:0;
+}
+div#section-select {
+        margin-top:7px;
+        float:right;
+        width:222px;
+}
+
+div#section-select ul {
+        list-style-type:none;
+}
+div#section-select ul li{
+        display:inline;
+        margin-right:0px;
+}
+div#section-select ul li img{
+        display:inline;
+        margin:5px 0px 5px 0px;
+        padding:4px 4px 4px 4px;
+}
+div#section-select ul li.selected img {
+        border:2px solid #012778;
+        margin:3px 2px 3px 0px;
+}
+/*End Section Select CSS*/

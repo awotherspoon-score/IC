@@ -54,11 +54,27 @@
 			</select>
 		</div>
                 <?php include('inc/nav.php'); ?>
+                <div id='section-select'>
+                        <ul>
+                                <li class='selected'><a href='#'><img src='img/buttons/prospective-button.gif' /></a></li>
+                                <li class=''><a href='#'><img src='img/buttons/current-button.gif' /></a></li>
+                                <li><a href='#'><img src='img/buttons/staff-button.gif' /></a></li>
+                        </ul>
+                </div>
 	</div> <!-- /header -->
 	
 	<div id='main'>
 		<p id='margin-spacer'>margin-spacer</p>
-                <h1>Hello Sanuk Black</h1>
+                <div id='content'>
+                        <div id='breadcrumb'>
+                        </div>
+                        <h1>Welcome Prospective Pupils and Parents</h1>
+
+
+                </div>
+                <div id='sidebar'>
+
+                </div>
 		
 	</div><!-- /main -->
 	<div class='cleardiv'></div>
