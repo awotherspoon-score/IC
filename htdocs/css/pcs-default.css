@@ -67,6 +67,20 @@ div#top-nav li#joining-us-link ul {
 div#top-nav li#way-of-life-link ul {
         width:130px;
 }
+div#top-nav li#news-link ul {
+        width:62px;
+}
+div#top-nav li#events-link ul {
+        width:72px;
+}
+div#top-nav li#gallery-link ul {
+        width:78px;
+}
+div#top-nav li#contact-us-link ul {
+        width:119px;
+}
+
+
 
 div#top-nav ul li ul {
         display:none;
