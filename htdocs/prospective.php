@@ -6,6 +6,8 @@
 <link rel='stylesheet' type='text/css' href='css/pcs-default.css' />
 <link rel='stylesheet' type='text/css' href='css/prospective.css' />
 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
+<script type='text/javascript' src='js/jquery.dimensions.js'></script>
+<script type='text/javascript' src='js/jquery.tooltip.min.js'></script>
 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
@@ -15,8 +17,10 @@
 		Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                 Cufon.replace('li ul li', { fontFamily: 'Sanuk-Regular'});
+                Cufon.replace("#tooltip *", { fontFamily: 'Sanuk-Black'});
                 
                 $(document).ready(function() {
+                  var refreshed = false;
                   //drop down menus
                   $("ul#top-nav-list > li").hover(
                           function() {
@@ -26,6 +30,18 @@
                                   $("ul", this).css("display", "none");
                           }
                   );
+
+                  //tooltips
+                  $("div#section-select ul li a img").tooltip({
+                        track: true,
+                        showURL: false,
+                        delay: 0
+                  });
+
+                  $("div#section-select ul li a img").hover( function() {
+                          Cufon.refresh();
+                  });
+                  
                 });  
                 
 </script>
@@ -56,9 +72,21 @@
                 <?php include('inc/nav.php'); ?>
                 <div id='section-select'>
                         <ul>
-                                <li class='selected'><a href='#'><img src='img/buttons/prospective-button.gif' /></a></li>
-                                <li class=''><a href='#'><img src='img/buttons/current-button.gif' /></a></li>
-                                <li><a href='#'><img src='img/buttons/staff-button.gif' /></a></li>
+                                <li id='prospective-link' class='selected'>
+                                        <a href='#'>
+                                                <img title='Prospective Students' src='img/buttons/prospective-button.gif' />
+                                        </a>
+                                </li>
+                                <li id='current-link' class=''>
+                                        <a href='#'>
+                                                <img title='Current Students' src='img/buttons/current-button.gif' />
+                                        </a>
+                                </li>
+                                <li id='staff-link'>
+                                        <a href='#'>
+                                                 <img title='Staff' src='img/buttons/staff-button.gif' />
+                                        </a>
+                                </li>
                         </ul>
                 </div>
 	</div> <!-- /header -->

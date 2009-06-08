@@ -143,4 +143,26 @@ div#section-select ul li.selected img {
         border:2px solid #012778;
         margin:3px 2px 3px 0px;
 }
+
+div#section-select a {
+        text-decoration:none;
+}
 /*End Section Select CSS*/
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	padding: 5px;
+        
+}
+#tooltip h3, #tooltip div { margin: 0;
+}
+
+li#prospective-link #tooltip div {
+        color:#7cd919;
+}
+li#current-link #tooltip {
+        color:#00a8e1;
+}
+li#staff-link #tooltip {
+        color:#33cbcc;
+}
