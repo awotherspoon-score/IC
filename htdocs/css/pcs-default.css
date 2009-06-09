@@ -96,8 +96,13 @@ div#top-nav ul li ul {
         top:37px;
         left:0;
         border-top:7px solid #002878;
+        position:absolute;
 
 }
+div#top-nav ul li ul span {
+       z-index:500; 
+}
+
 div#top-nav ul li ul li {
         text-align:center;
         width:70%;

@@ -3,6 +3,13 @@
 body#homepage {
 	
 }
+body h1{
+	/*Throw this out so we're good with SEO, 
+	but can use an image instead*/ 
+	position:absolute;
+	display:inline;
+	text-indent:-10000px;
+}
 body#homepage ul#pcs-nav {
 	list-style-type:none;
 	margin:0;

@@ -41,19 +41,34 @@ body div#main {
         width:100%;	
 }
 
-body div#main div#content {
-        width:691px; 
+/**End General Rules**/
+
+/**Content Rules**/
+body div#main div#content, 
+body div#main div#sidebar {
         padding-top:35px;
         padding-bottom:39px;
+}
+body div#main div#content {
+        width:691px; 
         float:right;
 }
 body div#main div#sidebar {
         width:222px; 
-        padding-top:35px;
-        padding-bottom:39px;
         float:left;
 }
-/**End General Rules**/
+
+body div#main div#content h1 {
+        margin:0;
+        padding:0;
+        font-size:1.6em;
+        z-index:0;
+        position:relative;
+}
+body div#main div#content h1 * {
+        z-index:0;
+}
+/**End Content Rules**/
 
 /**Header Rules**/
 
@@ -64,13 +79,6 @@ body div#header-top {
 	height:71px;
 }
 
-body h1{
-	/*Throw this out so we're good with SEO, 
-	but can use an image instead*/ 
-	position:absolute;
-	display:inline;
-	text-indent:-10000px;
-}
 /** End Header Rules **/
 
 

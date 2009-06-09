@@ -12,6 +12,7 @@
 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
 <script type="text/javascript">
+		Cufon.replace('h1', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('h2', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('h3', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
@@ -49,7 +50,6 @@
 </head>
 <body id='homepage'>
 	<div id='wrapper'>
-	<h1>Immanuel College</h1>
 	<div id='header'>
 		<div id='header-top'>	
 		</div>
@@ -97,7 +97,6 @@
                         <div id='breadcrumb'>
                         </div>
                         <h1>Welcome Prospective Pupils and Parents</h1>
-                        <p>Hello World</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu sapien nisi, eu mollis nisl. Suspendisse id diam mauris, et rutrum tortor. Sed semper, turpis id tempus dictum, ipsum arcu facilisis odio, id vestibulum quam libero ac erat. Duis pharetra, sem vel sagittis sollicitudin, velit eros cursus diam, non convallis odio elit vel sem. Sed dictum est quis nibh mollis sit amet hendrerit ante fermentum. </p>
 
 <p>Vestibulum aliquet purus lorem, sit amet volutpat ante. Nulla interdum massa nec lacus ornare gravida. Praesent vitae tortor ut ligula adipiscing condimentum. Ut dapibus lobortis scelerisque. Suspendisse id felis lacus. Maecenas gravida, quam sed faucibus convallis, felis arcu faucibus lorem, a interdum magna eros eu metus. Cras vitae tellus metus. In pretium pellentesque tortor vel pharetra. Morbi sit amet leo volutpat dui iaculis mattis. Phasellus nec ipsum nisl. Maecenas nec sapien sapien, quis commodo arcu. Donec odio mi, venenatis quis gravida ut, ultrices sed magna. Pellentesque vestibulum orci eget urna dapibus non pellentesque lacus mollis.</p>
