@@ -43,10 +43,14 @@ body div#main {
 
 body div#main div#content {
         width:691px; 
+        padding-top:35px;
+        padding-bottom:39px;
         float:right;
 }
 body div#main div#sidebar {
         width:222px; 
+        padding-top:35px;
+        padding-bottom:39px;
         float:left;
 }
 /**End General Rules**/
