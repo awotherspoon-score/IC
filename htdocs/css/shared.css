@@ -39,6 +39,8 @@ p#margin-spacer {
 
 body div#main {
         width:100%;	
+        position:relative;
+        z-index:-1;
 }
 
 /**End General Rules**/
