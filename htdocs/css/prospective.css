@@ -19,4 +19,16 @@ div#footer div.footer-column ul a {
         color:#7cd919
 }
 
+div#main div#content h1 {
+        color:#7cd919;
+}
 
+div#main div#content p#first-paragraph {
+        color:#385694;
+        font-weight:bold;
+}
+
+div#main div#content a {
+        color:#a8dd35;
+        font-weight:bold;
+}

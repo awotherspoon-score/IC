@@ -39,38 +39,10 @@ p#margin-spacer {
 
 body div#main {
         width:100%;	
-        position:relative;
-        z-index:-1;
 }
 
 /**End General Rules**/
 
-/**Content Rules**/
-body div#main div#content, 
-body div#main div#sidebar {
-        padding-top:35px;
-        padding-bottom:39px;
-}
-body div#main div#content {
-        width:691px; 
-        float:right;
-}
-body div#main div#sidebar {
-        width:222px; 
-        float:left;
-}
-
-body div#main div#content h1 {
-        margin:0;
-        padding:0;
-        font-size:1.6em;
-        z-index:0;
-        position:relative;
-}
-body div#main div#content h1 * {
-        z-index:0;
-}
-/**End Content Rules**/
 
 /**Header Rules**/
 
