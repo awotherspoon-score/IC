@@ -25,10 +25,22 @@ div#main div#content h1 {
 
 div#main div#content p#first-paragraph {
         color:#385694;
-        font-weight:bold;
 }
 
 div#main div#content a {
         color:#a8dd35;
         font-weight:bold;
+}
+
+body div#main div#sidebar img#post-image {
+        border:3px solid #7cd919;
+}
+body div#main div#sidebar div#sidebar-links-title {
+        background-color:#7cd919;
+}
+body div#main div#sidebar ul#sidebar-links-list a {
+        color:#012877;
+}
+body div#main div#content h2 {
+        color:#97e249;
 }
