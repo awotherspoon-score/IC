@@ -38,8 +38,16 @@ p#margin-spacer {
 }
 
 body div#main {
-	width:940px;
-	
+        width:100%;	
+}
+
+body div#main div#content {
+        width:691px; 
+        float:right;
+}
+body div#main div#sidebar {
+        width:222px; 
+        float:left;
 }
 /**End General Rules**/
 
