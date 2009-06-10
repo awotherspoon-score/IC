@@ -196,6 +196,7 @@ body div#main div#content div#breadcrumb {
         position:relative;
         padding-top:8px;
         margin-bottom:30px;
+        z-index:-1;
 }
 
 
@@ -242,6 +243,7 @@ body div#main div#sidebar img#post-image {
         border:3px solid #00a8e1;
         margin:0;
         padding:0;
+        width:216px;
 }
 body div#main div#sidebar div#sidebar-links-title {
         position:relative;

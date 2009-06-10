@@ -13,14 +13,14 @@
 */
 
 div#footer div.footer-column ul {
-        color:#7cd919;
+        color:#00a8e1;
 }
 div#footer div.footer-column ul a {
-        color:#7cd919;
+        color:#00a8e1;
 }
 
 div#main div#content h1 {
-        color:#7cd919;
+        color:#00a8e1;
 }
 
 div#main div#content p#first-paragraph {
@@ -28,19 +28,19 @@ div#main div#content p#first-paragraph {
 }
 
 div#main div#content a {
-        color:#a8dd35;
+        color:#00a8e1;
         font-weight:bold;
 }
 
 body div#main div#sidebar img#post-image {
-        border:3px solid #7cd919;
+        border:3px solid #00a8e1;
 }
 body div#main div#sidebar div#sidebar-links-title {
-        background-color:#7cd919;
+        background-color:#00a8e1;
 }
 body div#main div#sidebar ul#sidebar-links-list a {
-        color:#012877;
+        color:#00a8e1;
 }
 body div#main div#content h2 {
-        color:#97e249;
+        color:#00a8e1;
 }
