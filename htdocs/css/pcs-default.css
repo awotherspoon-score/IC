@@ -4,6 +4,9 @@
         float:right;
 }
 
+body {
+}
+
 body img#header-image {
         padding-bottom:000px;
 }
@@ -175,9 +178,9 @@ li#staff-link #tooltip {
 
 
 /**Content Rules**/
-body div#main div#content, 
+body div#main div#content,
 body div#main div#sidebar {
-        padding-top:35px;
+        padding-top:25px;
         padding-bottom:39px;
 }
 body div#main div#content {
@@ -190,6 +193,8 @@ body div#main div#sidebar {
 }
 
 body div#main div#content div#breadcrumb {
+        position:relative;
+        padding-top:8px;
         margin-bottom:30px;
 }
 
@@ -201,7 +206,6 @@ body div#main div#content div#breadcrumb a {
 body div#main div#content div#breadcrumb a.thispage {
         text-decoration:none;
         color:#00a9e2;
-}
 }
 div#main div#content p#first-paragraph {
         color:#37b9ea;
@@ -244,11 +248,13 @@ body div#main div#sidebar div#sidebar-links-title {
         width:222px;
         color:white;
         background-color:#002877;
-        margin:16px 0 16px 0;
+        margin:0 0 16px 0;
         padding:0;
+        z-index:-1;
 }
 body div#main div#sidebar div#sidebar-links-title p {
         padding:10px;
+        margin:0;
 }
 body div#main div#sidebar ul#sidebar-links-list {
         list-style-type:none;

@@ -1,0 +1,46 @@
+/*** 'Staff' Colour Scheme ***/
+
+/**
+* Colors
+* Current Blue: 		#00a8e1
+* Prospective Green: 	        #7cd919
+* Staff Turquoise: 		#33cbcc
+* Immanuel Blue:		#012778
+* Text Grey:			#666
+* Default Font:			Tahoma, Verdana, Helvetica, Arial, sans-serif
+* Title Font:			Senuca Black
+* Testimonial Font:		Senuca Regular
+*/
+
+div#footer div.footer-column ul {
+        color:#33cbcc;
+}
+div#footer div.footer-column ul a {
+        color:#33cbcc;
+}
+
+div#main div#content h1 {
+        color:#33cbcc;
+}
+
+div#main div#content p#first-paragraph {
+        color:#385694;
+}
+
+div#main div#content a {
+        color:#33cbcc;
+        font-weight:bold;
+}
+
+body div#main div#sidebar img#post-image {
+        border:3px solid #33cbcc;
+}
+body div#main div#sidebar div#sidebar-links-title {
+        background-color:#33cbcc;
+}
+body div#main div#sidebar ul#sidebar-links-list a {
+        color:#012877;
+}
+body div#main div#content h2 {
+        color:#33cbcc;
+}

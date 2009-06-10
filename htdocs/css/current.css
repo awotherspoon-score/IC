@@ -1,0 +1,46 @@
+/*** 'Prospective' Colour Scheme ***/
+
+/**
+* Colors
+* Prospective Green: 	        #7cd919
+* Current Blue: 		#00a8e1
+* Staff Turquoise: 		#33cbcc
+* Immanuel Blue:		#012778
+* Text Grey:			#666
+* Default Font:			Tahoma, Verdana, Helvetica, Arial, sans-serif
+* Title Font:			Senuca Black
+* Testimonial Font:		Senuca Regular
+*/
+
+div#footer div.footer-column ul {
+        color:#7cd919;
+}
+div#footer div.footer-column ul a {
+        color:#7cd919;
+}
+
+div#main div#content h1 {
+        color:#7cd919;
+}
+
+div#main div#content p#first-paragraph {
+        color:#385694;
+}
+
+div#main div#content a {
+        color:#a8dd35;
+        font-weight:bold;
+}
+
+body div#main div#sidebar img#post-image {
+        border:3px solid #7cd919;
+}
+body div#main div#sidebar div#sidebar-links-title {
+        background-color:#7cd919;
+}
+body div#main div#sidebar ul#sidebar-links-list a {
+        color:#012877;
+}
+body div#main div#content h2 {
+        color:#97e249;
+}
