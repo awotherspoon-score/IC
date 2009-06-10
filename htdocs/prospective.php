@@ -97,6 +97,7 @@
                 <div class='cleardiv'></div>
                 <div id='content'>
                         <div id='breadcrumb'>
+                        <a href='#'>Home</a> | <a class='thispage' href='#'>Prospective Pupils</a>
                         </div>
                         <h1>Welcome Prospective Pupils and Parents</h1>
                         <p id='first-paragraph'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu sapien nisi, eu mollis nisl. Suspendisse id diam mauris, et rutrum tortor. Sed semper, turpis id tempus dictum, ipsum arcu facilisis odio, id vestibulum quam libero ac erat. Duis pharetra, sem vel sagittis sollicitudin, velit eros cursus diam, non convallis odio elit vel sem. Sed dictum est quis nibh mollis sit amet hendrerit ante fermentum. </p>

@@ -188,6 +188,21 @@ body div#main div#sidebar {
         width:222px; 
         float:left;
 }
+
+body div#main div#content div#breadcrumb {
+        margin-bottom:30px;
+}
+
+
+body div#main div#content div#breadcrumb a {
+        color:#666;
+        font-weight:normal;
+}
+body div#main div#content div#breadcrumb a.thispage {
+        text-decoration:none;
+        color:#00a9e2;
+}
+}
 div#main div#content p#first-paragraph {
         color:#37b9ea;
         font-weight:bold;
