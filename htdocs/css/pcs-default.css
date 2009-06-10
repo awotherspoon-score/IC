@@ -264,3 +264,22 @@ body div#main div#sidebar ul#sidebar-links-list a {
         text-decoration:none;
 }
 /**End Content Rules**/
+div#footer div.footer-column ul {
+        color:#0198cd;
+}
+div#footer div.footer-column ul a {
+        color:#0198cd;
+}
+div#main div#content h1 {
+        color:#002877;
+}
+div#main div#content p#first-paragraph {
+        color:#38b8e5;
+        font-weight:bold;
+        font-size:1.1em;
+}
+
+div#main div#content a {
+        color:#002877;
+        font-weight:bold;
+}

@@ -4,7 +4,6 @@
 <head>
 <link rel='stylesheet' type='text/css' href='css/shared.css' />
 <link rel='stylesheet' type='text/css' href='css/pcs-default.css' />
-<link rel='stylesheet' type='text/css' href='css/prospective.css' />
 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
 <script type='text/javascript' src='js/jquery.dimensions.js'></script>
 <script type='text/javascript' src='js/jquery.tooltip.min.js'></script>
