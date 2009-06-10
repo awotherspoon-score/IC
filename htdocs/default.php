@@ -34,10 +34,25 @@
                   );
 
                   //tooltips
-                  $("div#section-select ul li a img").tooltip({
+                  $("div#section-select ul li#prospective-link a img").tooltip({
                         track: true,
                         showURL: false,
-                        delay: 0
+                        delay: 0,
+                        extraClass: "prospective-tooltip"
+                  });
+
+                  $("div#section-select ul li#current-link a img").tooltip({
+                        track: true,
+                        showURL: false,
+                        delay: 0,
+                        extraClass: "current-tooltip"
+                  });
+
+                  $("div#section-select ul li#staff-link a img").tooltip({
+                        track: true,
+                        showURL: false,
+                        delay: 0,
+                        extraClass: "staff-tooltip"
                   });
 
                   $("div#section-select ul li a img").hover( function() {

@@ -164,15 +164,17 @@ div#section-select a {
         
 }
 #tooltip h3, #tooltip div { margin: 0;
+        font-size:0.6em;
+        text-transform:uppercase;
 }
 
-li#prospective-link #tooltip div {
+#tooltip.prospective-tooltip div, #tooltip.prospective-tooltip h3  {
         color:#7cd919;
 }
-li#current-link #tooltip {
+#tooltip.current-tooltip div, #tooltip.current-tooltip h3 {
         color:#00a8e1;
 }
-li#staff-link #tooltip {
+#tooltip.staff-tooltip div, #tooltip.staff-tooltip h3 {
         color:#33cbcc;
 }
 
