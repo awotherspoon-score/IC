@@ -35,10 +35,10 @@ div#main div#content a {
 body div#main div#sidebar img#post-image {
         border:3px solid #00a8e1;
 }
-body div#main div#sidebar div#sidebar-links-title {
+body div#main div#sidebar div.sidebar-links-title {
         background-color:#00a8e1;
 }
-body div#main div#sidebar ul#sidebar-links-list a {
+body div#main div#sidebar ul#.idebar-links-list a {
         color:#00a8e1;
 }
 body div#main div#content h2 {

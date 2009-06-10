@@ -17,7 +17,7 @@
 		Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                 Cufon.replace('li ul li', { fontFamily: 'Sanuk-Regular'});
                 Cufon.replace("#tooltip *", { fontFamily: 'Sanuk-Black'});
-                Cufon.replace("body div#main div#sidebar div#sidebar-links-title p", { fontFamily: 'Sanuk-Black'});
+                Cufon.replace("body div#main div#sidebar div.sidebar-links-title p", { fontFamily: 'Sanuk-Black'});
                 
                 $(document).ready(function() {
                   var refreshed = false;
@@ -89,18 +89,18 @@
                 <?php include('inc/nav.php'); ?>
                 <div id='section-select'>
                         <ul>
-                                <li id='prospective-link' class='selected'>
-                                        <a href='#'>
+                                <li id='prospective-link'>
+                                        <a href='prospective.php'>
                                                 <img title='Prospective Students' src='img/buttons/prospective-button.gif' />
                                         </a>
                                 </li>
-                                <li id='current-link' class=''>
-                                        <a href='#'>
+                                <li id='current-link' class='selected'>
+                                        <a href='current.php'>
                                                 <img title='Current Students' src='img/buttons/current-button.gif' />
                                         </a>
                                 </li>
                                 <li id='staff-link'>
-                                        <a href='#'>
+                                        <a href='staff.php'>
                                                  <img title='Staff' src='img/buttons/staff-button.gif' />
                                         </a>
                                 </li>
@@ -125,10 +125,10 @@
 
                 </div>
                 <div id='sidebar'>
-                <div id='sidebar-links-title'>
+                <div class='sidebar-links-title'>
                   <p>Suggested Links</p>
                 </div>
-                <ul id='sidebar-links-list'>
+                <ul class='sidebar-links-list'>
                         <li><a href='#'>Open Day</a></li>
                         <li><a href='#'>Entrance Requirements</a></li>
                         <li><a href='#'>Admissions</a></li>

@@ -4,7 +4,6 @@
 <head>
 <link rel='stylesheet' type='text/css' href='css/shared.css' />
 <link rel='stylesheet' type='text/css' href='css/pcs-default.css' />
-<link rel='stylesheet' type='text/css' href='css/staff.css' />
 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
 <script type='text/javascript' src='js/jquery.dimensions.js'></script>
 <script type='text/javascript' src='js/jquery.tooltip.min.js'></script>
@@ -89,18 +88,18 @@
                 <?php include('inc/nav.php'); ?>
                 <div id='section-select'>
                         <ul>
-                                <li id='prospective-link'>
-                                        <a href='prospective.php'>
+                                <li id='prospective-link' class='selected'>
+                                        <a href='#'>
                                                 <img title='Prospective Students' src='img/buttons/prospective-button.gif' />
                                         </a>
                                 </li>
-                                <li id='current-link'>
-                                        <a href='current.php'>
+                                <li id='current-link' class=''>
+                                        <a href='#'>
                                                 <img title='Current Students' src='img/buttons/current-button.gif' />
                                         </a>
                                 </li>
-                                <li id='staff-link' class='selected'>
-                                        <a href='staff.php'>
+                                <li id='staff-link'>
+                                        <a href='#'>
                                                  <img title='Staff' src='img/buttons/staff-button.gif' />
                                         </a>
                                 </li>
@@ -112,30 +111,70 @@
                 <div class='cleardiv'></div>
                 <div id='content'>
                         <div id='breadcrumb'>
-                        <a href='#'>Home</a> | <a class='thispage' href='#'>Prospective Pupils</a>
+                        <a href='#'>Home</a> | <a class='thispage' href='#'>Gallery</a>
                         </div>
-                        <h1>Welcome Prospective Pupils and Parents</h1>
+                        <h1>Gallery</h1>
                         <p id='first-paragraph'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu sapien nisi, eu mollis nisl. Suspendisse id diam mauris, et rutrum tortor. Sed semper, turpis id tempus dictum, ipsum arcu facilisis odio, id vestibulum quam libero ac erat. Duis pharetra, sem vel sagittis sollicitudin, velit eros cursus diam, non convallis odio elit vel sem. Sed dictum est quis nibh mollis sit amet hendrerit ante fermentum. </p>
 
-                        <p>Vestibulum aliquet purus lorem, sit amet volutpat ante. Nulla interdum massa nec lacus ornare gravida. Praesent vitae tortor ut ligula adipiscing <a href='#'>condimentum</a>. Ut dapibus lobortis scelerisque. Suspendisse id felis lacus. Maecenas gravida, quam sed faucibus convallis, felis arcu faucibus lorem, a interdum magna eros eu metus. Cras vitae tellus metus. In pretium pellentesque tortor vel pharetra. Morbi sit amet leo volutpat dui iaculis mattis. Phasellus nec ipsum nisl. Maecenas nec <a href='#'>sapien sapien</a>, quis commodo arcu. Donec odio mi, venenatis quis gravida ut, ultrices sed magna. Pellentesque vestibulum orci eget urna dapibus non pellentesque lacus mollis.</p>
-                        <h2>A H2 Heading</h2>
-                        <p>Nulla facilisi. Vivamus ut hendrerit libero. Donec dictum libero non nibh dictum vestibulum. Etiam ut mauris ipsum, sit amet consequat erat. Integer nisi metus, lobortis vel luctus a, tincidunt vel lectus. Sed justo turpis, consectetur ac tincidunt et, consectetur eget eros. </p>
-                        <h3>A h3 heading</h3>
-                        <p>Nunc bibendum aliquam ipsum eu feugiat. Etiam mattis faucibus orci eu varius. Nunc auctor scelerisque mi, porttitor rhoncus dui iaculis non. In hac habitasse platea dictumst. Praesent massa velit, mattis id condimentum nec, pellentesque et nulla. Donec egestas mattis varius. Suspendisse consectetur elit eu velit facilisis aliquam. In pretium nunc vitae urna posuere elementum. Duis ut turpis id tortor imperdiet pharetra. Maecenas eget libero nulla, vitae sagittis purus.</p>
+                        <table id='gallery-grid'>
+                                <tr>
+                                        <td>
+                                                <img src='img/post-image.jpg' />
+                                                <p class='gallery-caption'>consectetur adipiscing elit. Sed eu sapien nisi, eu </p>
+                                                <p class='gallery-date'>15/08/2009</p>
+                                        </td>
+                                        <td>
+                                                <img src='img/post-image.jpg' />
+                                                <p class='gallery-caption'>consectetur adipiscing elit. Sed eu sapien nisi, eu </p>
+                                                <p class='gallery-date'>15/08/2009</p>
+                                        </td>
+                                        <td>
+                                                <img src='img/post-image.jpg' />
+                                                <p class='gallery-caption'>consectetur adipiscing elit. Sed eu sapien nisi, eu </p>
+                                                <p class='gallery-date'>15/08/2009</p>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td>
+                                                <img src='img/post-image.jpg' />
+                                                <p class='gallery-caption'>consectetur adipiscing elit. Sed eu sapien nisi, eu </p>
+                                                <p class='gallery-date'>15/08/2009</p>
+                                        </td>
+                                        <td>
+                                                <img src='img/post-image.jpg' />
+                                                <p class='gallery-caption'>consectetur adipiscing elit. Sed eu sapien nisi, eu </p>
+                                                <p class='gallery-date'>15/08/2009</p>
+                                        </td>
+                                        <td>
+                                                <img src='img/post-image.jpg' />
+                                                <p class='gallery-caption'>consectetur adipiscing elit. Sed eu sapien nisi, eu </p>
+                                                <p class='gallery-date'>15/08/2009</p>
+                                        </td>
+                                </tr>
+                        </table>
 
                 </div>
                 <div id='sidebar'>
                 <div class='sidebar-links-title'>
-                  <p>Suggested Links</p>
+                  <p>Gallery Archive</p>
                 </div>
                 <ul class='sidebar-links-list'>
-                        <li><a href='#'>Open Day</a></li>
-                        <li><a href='#'>Entrance Requirements</a></li>
-                        <li><a href='#'>Admissions</a></li>
-                        <li><a href='#'>Fees</a></li>
-                        <li><a href='#'>Nurturing our Pupils</a></li>
-                        <li><a href='#'>Jewish Life and Learning</a></li>
+                        <li><a href='#'>June</a></li>
+                        <li><a href='#'>May</a></li>
+                        <li><a href='#'>April</a></li>
+                        <li><a href='#'>2009</a></li>
+                        <li><a href='#'>2008</a></li>
+                        <li><a href='#'>2007</a></li>
                 </ul>
+                <div class='sidebar-links-title'>
+                  <p>June</p>
+                </div>
+                <ul class='sidebar-links-list'>
+                        <li><a href='#'>Sports Day</a></li>
+                        <li><a href='#'>Visiting Knebworth</a></li>
+                        <li><a href='#'>Comic Relief Day</a></li>
+                        <li><a href='#'>Religious Festival</a></li>
+                        <li><a href='#'>Year 3 Dance</a></li>
                 <img src='img/post-image.jpg' id='post-image' />
 
 

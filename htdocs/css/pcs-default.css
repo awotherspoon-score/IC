@@ -4,6 +4,11 @@
         float:right;
 }
 
+table * {
+        margin:0;
+        padding:0;
+}
+
 body {
 }
 
@@ -247,7 +252,7 @@ body div#main div#sidebar img#post-image {
         padding:0;
         width:216px;
 }
-body div#main div#sidebar div#sidebar-links-title {
+body div#main div#sidebar div.sidebar-links-title {
         position:relative;
         width:222px;
         color:white;
@@ -256,19 +261,19 @@ body div#main div#sidebar div#sidebar-links-title {
         padding:0;
         z-index:-1;
 }
-body div#main div#sidebar div#sidebar-links-title p {
+body div#main div#sidebar div.sidebar-links-title p {
         padding:10px;
         margin:0;
 }
-body div#main div#sidebar ul#sidebar-links-list {
+body div#main div#sidebar ul.sidebar-links-list {
         list-style-type:none;
         margin:0;
         padding:0 0 0 9px;
 }
-body div#main div#sidebar ul#sidebar-links-list li{
+body div#main div#sidebar ul.sidebar-links-list li{
         padding-bottom:8px;
 }
-body div#main div#sidebar ul#sidebar-links-list a {
+body div#main div#sidebar ul.sidebar-links-list a {
         color:#01a7e1;
         font-weight:bold;
         text-decoration:none;
@@ -293,3 +298,32 @@ div#main div#content a {
         color:#002877;
         font-weight:bold;
 }
+
+/** Gallery Rules **/
+table#gallery-grid tr {
+}
+
+table#gallery-grid tr td {
+        padding-right:13px;
+        padding-bottom:30px;
+}
+
+table#gallery-grid tr td img {
+        border:3px solid #00a8e1;
+        width:216px;
+}
+table#gallery-grid tr td p.gallery-caption {
+        color:#002877;
+        font-weight:bold;
+        width:200px;
+        margin:5px auto 0 auto;
+}
+
+table#gallery-grid tr td p.gallery-date {
+        color:#666;
+        width:200px;
+        margin:2px auto 0 auto;
+        
+}
+
+/** End Gallery Rules **/

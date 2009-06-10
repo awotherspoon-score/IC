@@ -16,7 +16,7 @@
 		Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                 Cufon.replace('li ul li', { fontFamily: 'Sanuk-Regular'});
                 Cufon.replace("#tooltip *", { fontFamily: 'Sanuk-Black'});
-                Cufon.replace("body div#main div#sidebar div#sidebar-links-title p", { fontFamily: 'Sanuk-Black'});
+                Cufon.replace("body div#main div#sidebar div.sidebar-links-title p", { fontFamily: 'Sanuk-Black'});
                 
                 $(document).ready(function() {
                   var refreshed = false;
@@ -124,10 +124,10 @@
 
                 </div>
                 <div id='sidebar'>
-                <div id='sidebar-links-title'>
+                <div class='sidebar-links-title'>
                   <p>Suggested Links</p>
                 </div>
-                <ul id='sidebar-links-list'>
+                <ul class='sidebar-links-list'>
                         <li><a href='#'>Open Day</a></li>
                         <li><a href='#'>Entrance Requirements</a></li>
                         <li><a href='#'>Admissions</a></li>

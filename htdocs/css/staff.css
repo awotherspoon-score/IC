@@ -32,10 +32,10 @@ div#main div#content a {
         font-weight:bold;
 }
 
-body div#main div#sidebar img#post-image {
+body div#main div#sidebar img.post-image {
         border:3px solid #33cbcc;
 }
-body div#main div#sidebar div#sidebar-links-title {
+body div#main div#sidebar div.sidebar-links-title {
         background-color:#33cbcc;
 }
 body div#main div#sidebar ul#sidebar-links-list a {
