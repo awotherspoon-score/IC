@@ -1,8 +1,9 @@
 <?php
+$docroot = $_SERVER['DOCUMENT_ROOT'];
 function __autoload($class) {
         if (strpos($class, 'Command') !== false) {
-                  include 'php/command/' . strtolower($class) . '.php';
+                  include $docroot . '/php/command/' . strtolower($class) . '.php';
                   return;
         }
-	include 'php/' . strtolower($class) . '.php';
+	include $docroot . '/php/' . strtolower($class) . '.php';
 }

@@ -1,0 +1,207 @@
+/***Common CSS For All Front-End Pages***/
+
+/**
+* Colors
+* Prospective Green: 	        #7cd919
+* Current Blue: 		#00a8e1
+* Staff Turquoise: 		#33cbcc
+* Immanuel Blue:		#012778
+* Text Grey:			#666
+* Default Font:			Tahoma, Verdana, Helvetica, Arial, sans-serif
+* Title Font:			Senuca Black
+* Testimonial Font:		Senuca Regular
+*/
+
+/**General Rules**/
+div#wrapper {
+	width:940px;
+	margin:0 auto;
+	font-family:Tahoma, Verdana, Helvetica, Arial, sans-serif;
+	font-size:0.8em;
+	color:#666;
+	position:relative;
+}
+
+a img {
+	text-decoration:none;
+	border:0;
+}
+
+div.cleardiv {
+	clear:both;
+	margin:0;
+	padding:0;
+}
+
+p#margin-spacer {
+	color:white;
+}
+
+body div#main {
+        width:100%;	
+}
+
+/**End General Rules**/
+
+
+/**Header Rules**/
+
+body div#header-top {
+	background-image:url(../img/header-top.jpg);
+	background-repeat:no-repeat;
+	width:500px;
+	height:71px;
+}
+
+/** End Header Rules **/
+
+
+
+body img#header-image {
+	float:left;
+}
+
+
+/**As Yet Uncategorized Rules**/
+div#search-box {
+	position:absolute;
+	top:35px;
+	right:240px;
+	color:#00a8e1;
+}
+
+div#search-box input#search-key, div#quick-links select {
+	color:#00a8e1;
+	border:1px solid #00a8e1;
+	padding:3px;
+	font-size:0.9em;
+}
+
+div#search-box input#search-button {
+	background-image:url(../img/buttons/search-bg.jpg);
+	background-repeat:no-repeat;
+	background-color:white;
+	border:0;
+	width:25px;
+	height:22px;
+}
+
+div#quick-links select {
+	width:222px;
+	position:absolute;
+	top:35px;
+	left:718px; /*940-222 (wrapper width (940) minus the button images/quick link selector width(222))*/
+	padding:2px;
+}
+
+div#footer {
+	border-top:#7ec2d9 1px solid;
+}
+/**End As Yet Uncategorized Rules**/
+/**Footer Rules**/
+
+/* Footer Layout Rules */
+
+div#footer div.footer-column {
+	width:209px;
+        margin:10px 0 24px 0;
+        padding:0 0 0 13px;
+        border-left:1px solid #8fc9dd;
+}
+
+div#footer div.footer-column h4 {
+        margin:0;
+        padding:0;
+        font-size:12px;
+        color:#012778;
+}
+
+div#footer div.footer-column ul {
+        margin:9px 0 0 0;
+        padding:0;
+        list-style-type:none;
+        text-transform:uppercase;
+        font-size:10px;
+}
+div#footer div.footer-column ul li {
+        margin-top:2px;
+}
+div#footer div.footer-column ul a {
+}
+
+
+div#footer-col-123 {
+	float:left;
+	width:700px;
+}
+
+div#footer-col-4 {
+	float:right;
+}
+
+
+div#footer div#footer-col-4 ul li {
+       text-transform:none; 
+}
+div#footer div#footer-col-4 ul li a {
+       color:#012778;
+       font-size:12px;
+       font-weight:bold;
+        
+}
+
+div#footer-col-12 {
+	float:left;
+	width:462px;
+}
+
+div#footer-col-3 {
+	float:right;
+}
+
+div#footer-col-1 {
+	float:left;
+}
+
+div#footer-col-2 {
+	float:right;
+}
+
+div#actual-footer {
+        border-top:1px solid #ccc;
+        clear:both;
+        width:945px;
+        margin-right:15px;
+        font-size:0.9em;
+        margin-bottom:1em;
+}
+
+div#actual-footer img {
+        margin:0;
+        padding:0;
+        display:inline;
+}
+        
+div#actual-footer a {
+        color:#666;
+        text-decoration:none;
+}
+
+
+div#actual-footer a:hover {
+        text-decoration:underline;
+}
+div#actual-footer div#footer-nav {
+        width:500px;
+        float:left;
+        padding-top:7px;
+}
+
+div#actual-footer div#footer-copyright {
+        width:460;
+        float:right;
+}
+
+
+/* End Footer Layout Rules */
+/** End Footer Rules **/
