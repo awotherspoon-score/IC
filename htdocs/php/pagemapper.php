@@ -46,6 +46,10 @@
 		public function selectQuery( $id ) {
 			return "SELECT * FROM pages WHERE id=$id LIMIT 1";
 		}
+
+                public function selectBySlugQuery( $slug ) {
+                        return "SELECT * FROM pages WHERE slug=$slug LIMIT 1";
+                }
 		
 		public function selectAllQuery() {
 			return "SELECT * FROM pages";

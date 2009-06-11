@@ -13,6 +13,10 @@
 			if ($old != null) {return $old;}
 			return $this->createObject( $this->queryToArray($this->selectQuery($id)) );
 		}
+
+                function findBySlug( $slug ) {
+                        return $this->createObject( $this->queryToArray($this->selectBySlugQuery($slug)));
+                }
 		
 		function findAll() {
 			return $this->createCollection( $this->queryToArray($this->selectAllQuery()));
@@ -58,6 +62,7 @@
 		protected abstract function doCreateObject( array $array );
 		protected abstract function doInsert( Content $object );
 		protected abstract function selectQuery( $id );
+                protected abstract function selectBySlugQuery($slug);
 		protected abstract function selectAllQuery();
 		protected abstract function targetClass();
 	}

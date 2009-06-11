@@ -44,4 +44,10 @@
 			}
 			return self::instance()->get('contentwatcher');
 		}
+
+                static function getPageMapper() {
+                        if (self::instance()->get('pagemapper') == null) {
+                                self::instance()->set('pagemapper', new PageMapper());
+                        }
+                }
 	}
