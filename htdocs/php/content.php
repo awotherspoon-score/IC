@@ -1,5 +1,8 @@
 <?php
 	abstract class Content {
+                
+                const STATUS_PENDING = 0;
+                const STATUS_LIVE = 1;
 		private $id;
 		private $slug;
 		private $title;
