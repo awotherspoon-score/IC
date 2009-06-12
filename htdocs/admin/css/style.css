@@ -12,3 +12,121 @@
 * Testimonial Font:		Senuca Regular
 */
 
+div#wrapper {
+        width: 860px;
+        margin:0 auto 0 auto;
+        position:relative;
+}
+
+div#wrapper * {
+        margin:0;
+        padding:0;
+}
+
+/*NavBar CSS*/
+
+div#top-nav {
+        margin:0;
+        padding:0
+        position:relative;
+        z-index:1000;
+}
+
+
+div#top-nav ul#top-nav-list {
+        list-style-type:none;
+        display:block;
+        border-bottom:1px solid #80c2da;
+        width:705px; 
+        position:absolute;
+        left:0;
+        background-image:url(../img/nav-line.gif);
+        background-repeat:no-repeat;
+        background-position:bottom right;
+}
+
+div#top-nav ul#top-nav-list li.page-nav-link, div#top-nav ul#top-nav-list li.nav-link {
+        float:left;
+        background-image:url(../img/nav-line.gif);
+        background-repeat:no-repeat;
+        background-position:bottom left;
+        position:relative;
+}
+        
+
+div#top-nav ul li a {
+        color:#00a8e1;
+        text-decoration:none;
+}
+
+div#top-nav ul li.page-nav-link {
+        font-size:18px;
+        padding:10px 15px 11px 15px;
+}
+div#top-nav ul li.nav-link {
+        text-transform:uppercase;
+        font-size:10px;
+        padding:15px 15px 16px 15px;
+}
+
+div#top-nav li#the-school-link ul {
+        width:126px;
+}
+div#top-nav li#joining-us-link ul {
+        width:120px;
+}
+div#top-nav li#way-of-life-link ul {
+        width:130px;
+}
+div#top-nav li#news-link ul {
+        width:62px;
+}
+div#top-nav li#events-link ul {
+        width:72px;
+}
+div#top-nav li#gallery-link ul {
+        width:78px;
+}
+div#top-nav li#contact-us-link ul {
+        width:119px;
+}
+
+
+
+div#top-nav ul li ul {
+        display:none;
+        position:absolute;
+        list-style-type:none;
+        background-color:white;
+        text-transform:uppercase;
+        text-align:center;
+        width:100%;
+        margin:0;
+        padding:0;
+        font-size:10px;
+        top:37px;
+        left:0;
+        border-top:7px solid #002878;
+        position:absolute;
+
+}
+div#top-nav ul li ul span {
+}
+
+div#top-nav ul li ul li {
+        text-align:center;
+        width:70%;
+        margin:0 auto;
+        padding:9px 5px 8px 5px;
+        border-bottom:1px solid #80c2da;
+}
+div#top-nav ul li:hover {
+        
+}
+div#top-nav ul li:hover ul,  
+div#top-nav ul li:hover ul:hover { 
+        
+        display:block
+}
+
+/*

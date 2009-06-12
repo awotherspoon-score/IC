@@ -11,27 +11,34 @@
                 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
                 <script type="text/javascript">
-                              Cufon.replace('h1', { fontFamily: 'Sanuk-Black'});
+                        Cufon.replace('h1', { fontFamily: 'Sanuk-Black'});
+                        Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
+                        Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
+                        
                 </script>
         </head>
         <body>
-                <div id='header'>
-                        <div id='header-col-1'>
-                                <div id='header-image'>
-                                        <img src=
-                                </div>
-                                <?php include('inc/nav.php'); ?>
-                        </div>
+                <div id='wrapper'>
 
-                        <div id='header-col-2'>
-                        </div>
-                </div>
-                <div id='main'>
-                        <div id='col-1'>
-                        </div>
-                        <div id='col-2'>
-                        </div>
-                </div>
+                    <div id='header'>
+                            <div id='header-col-1'>
+                                    <div id='header-image'>
+                                            <img src='img/header.jpg' />
+                                    </div>
+                                    <?php include('inc/nav.php'); ?>
+                            </div><!-- /#header-col-1 -->
 
+                            <div id='header-col-2'>
+                            </div><!-- /#header-col-2 -->
+                    </div><!-- /#header -->
+
+                    <div id='main'>
+                            <div id='col-1'>
+                            </div>
+                            <div id='col-2'>
+                            </div>
+                    </div><!-- /#main -->
+
+                </div><!-- /#wrapper -->
         </body>
 </html>
