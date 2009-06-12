@@ -1,3 +1,7 @@
+<?php
+        include('../init.php');
+        $page = new Page();
+?>
 <html>
         <head>
                 <title>Immanuel College Admin Panel</title>
@@ -13,8 +17,10 @@
         <body>
                 <div id='header'>
                         <div id='header-col-1'>
-                                <div id='nav'>
+                                <div id='header-image'>
+                                        <img src=
                                 </div>
+                                <?php include('inc/nav.php'); ?>
                         </div>
 
                         <div id='header-col-2'>
