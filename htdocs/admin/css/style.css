@@ -13,8 +13,9 @@
 */
 
 div#wrapper {
-        width: 860px;
-        margin:0 auto 0 auto;
+        width:860px;
+        margin-right:auto;
+        margin-left:auto;
         position:relative;
 }
 
@@ -27,7 +28,7 @@ div#wrapper * {
 
 div#top-nav {
         margin:0;
-        padding:0
+        padding:0;
         position:relative;
         z-index:1000;
 }
@@ -51,6 +52,7 @@ div#top-nav ul#top-nav-list li.page-nav-link, div#top-nav ul#top-nav-list li.nav
         background-repeat:no-repeat;
         background-position:bottom left;
         position:relative;
+        
 }
         
 
@@ -129,4 +131,3 @@ div#top-nav ul li:hover ul:hover {
         display:block
 }
 
-/*

@@ -2,11 +2,12 @@
         include('../init.php');
         $page = new Page();
 ?>
+<?php include('../inc/doctype.php'); ?>
 <html>
         <head>
                 <title>Immanuel College Admin Panel</title>
                 <link rel='stylesheet' type='text/css' href='css/style.css' />
-                <script type='text/javascript' src='jquery-1.3.2.min.js'></script>
+                <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
                 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
@@ -14,7 +15,20 @@
                         Cufon.replace('h1', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
-                        
+                       
+                        $(document).ready(function() {
+                          $("ul#top-nav-list > li").hover(
+                                  function() {
+                                          $(this).find("ul").css({
+                                                'display' : 'block',
+                                                'z-index' : '1000'
+                                          });
+                                  },
+                                  function() {
+                                          $("ul", this).css("display", "none");
+                                  }
+                          );
+                        });
                 </script>
         </head>
         <body>
@@ -40,5 +54,8 @@
                     </div><!-- /#main -->
 
                 </div><!-- /#wrapper -->
+                <script type='text/javascript'>
+                        Cufon.now();
+                </script> 
         </body>
 </html>
