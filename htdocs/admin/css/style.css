@@ -22,14 +22,56 @@ div#wrapper {
 div#wrapper * {
         margin:0;
         padding:0;
+        border:0;
+        text-decoration:none;
 }
+
+/*Header CSS*/
+
+div#header {
+        position:relative;
+}
+
+div#header-col-1 {
+        width:705px;
+}
+
+div#header-col-2
+{
+}
+div#home-show-links a
+{
+        display:block;
+        padding:15px 11px;
+        background-color:green;
+        color:white;
+        margin-bottom:10px;
+        text-decoration:none;
+        font-size:0.8em;
+}
+
+div#home-show-links a#edit-homepage-link {
+        background-color:#7cd919;
+}
+div#home-show-links a#edit-showcase-link {
+        background-color:#33cbcc;
+}
+
+div#home-show-links {
+        position:absolute;
+        top:67px;
+        right:0;
+}
+
+
+/*End Header CSS*/
+
 
 /*NavBar CSS*/
 
 div#top-nav {
         margin:0;
         padding:0;
-        position:relative;
         z-index:1000;
 }
 
@@ -130,4 +172,36 @@ div#top-nav ul li:hover ul:hover {
         
         display:block
 }
+/*Section Select (3 boxes) CSS*/
+div#section-select * {
+        margin:0;
+        padding:0;
+}
+div#section-select {
+        margin-top:7px;
+        width:222px;
+        position:absolute;
+        right:-92px;
+}
 
+div#section-select ul {
+        list-style-type:none;
+}
+div#section-select ul li{
+        display:inline;
+        margin-right:0px;
+}
+div#section-select ul li img{
+        display:inline;
+        margin:5px 0px 5px 0px;
+        padding:4px 4px 4px 4px;
+}
+div#section-select ul li.selected img {
+        border:2px solid #012778;
+        margin:3px 2px 3px 0px;
+}
+
+div#section-select a {
+        text-decoration:none;
+}
+/*End Section Select*/

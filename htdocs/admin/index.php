@@ -15,6 +15,7 @@
                         Cufon.replace('h1', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
+                        Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
                        
                         $(document).ready(function() {
                           $("ul#top-nav-list > li").hover(
@@ -43,6 +44,34 @@
                             </div><!-- /#header-col-1 -->
 
                             <div id='header-col-2'>
+
+                                <div id='home-show-links'>
+                                  <a id='edit-homepage-link' href='#'>Edit HOMEPAGE</a>
+                                  <a id='edit-showcase-link' href='#'>Edit SHOWCASE</a>
+                                </div><!-- /#home-show-links -->
+                                <div id='section-select'>
+                                        <ul>
+                                                <li id='prospective-link' class=''>
+                                                        <a href='#'>
+                                                                <img title='Prospective Students' 
+                                                                src='img/buttons/prospective-button.gif' />
+                                                        </a>
+                                                </li>
+                                                <li id='current-link' class=''>
+                                                        <a href='#'>
+                                                                <img title='Current Students' 
+                                                                src='img/buttons/current-button.gif' />
+                                                        </a>
+                                                </li>
+                                                <li id='staff-link'>
+                                                        <a href='#'>
+                                                                <img title='Staff' 
+                                                                src='img/buttons/staff-button.gif' />
+                                                        </a>
+                                                </li>
+                                        </ul>
+                                </div>
+
                             </div><!-- /#header-col-2 -->
                     </div><!-- /#header -->
 
