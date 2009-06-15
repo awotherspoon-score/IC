@@ -42,6 +42,14 @@
 			$query = "DELETE FROM pages WHERE id={$object->getId()} LIMIT 1";
 			self::$mysqli->query($query);
 		}
+
+                function findByParentId($parentid) {
+                        return $this->createCollection($this->queryToArray($this->selectByParentIdQuery($parentid)));                        
+                }
+
+                public function selectByParentIdQuery($parentid) {
+                       return "SELECT * FROM pages WHERE parentid=$parentid"; 
+                }
 		
 		public function selectQuery( $id ) {
 			return "SELECT * FROM pages WHERE id=$id LIMIT 1";
