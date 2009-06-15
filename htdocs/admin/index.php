@@ -8,6 +8,7 @@
                 <title>Immanuel College Admin Panel</title>
                 <link rel='stylesheet' type='text/css' href='css/style.css' />
                 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
+                <script type='text/javascript' src='js/functions.js'></script>
                 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
@@ -18,17 +19,7 @@
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
                        
                         $(document).ready(function() {
-                          $("ul#top-nav-list > li").hover(
-                                  function() {
-                                          $(this).find("ul").css({
-                                                'display' : 'block',
-                                                'z-index' : '1000'
-                                          });
-                                  },
-                                  function() {
-                                          $("ul", this).css("display", "none");
-                                  }
-                          );
+                                init_header();
                         });
                 </script>
         </head>
