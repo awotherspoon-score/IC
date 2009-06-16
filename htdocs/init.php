@@ -7,3 +7,5 @@ function __autoload($class) {
         }
 	include $docroot . 'php/' . strtolower($class) . '.php';
 }
+
+define('CONFIG_FILENAME', $_SERVER['DOCUMENT_ROOT'] . 'ic/config.ini');

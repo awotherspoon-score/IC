@@ -13,12 +13,13 @@
 			return $this->parentId;
 		}
 		public function setParentId($parentId) {
-			$this->parentId = $parentid;
+			$this->parentId = $parentId;
 		}
 
                 public function getChildren() {
                         if (!isset($this->children)) {
-                                $this->children = RequestRegistry::getPageMapper()->findByParentId($this->parentId);
+                                $this->children = RequestRegistry::getPageMapper()->findByParentId($this->getId());
                         }
+                        return $this->children;
                 }
 	}

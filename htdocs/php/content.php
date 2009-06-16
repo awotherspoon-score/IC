@@ -13,7 +13,7 @@
 		public function loadFromArray(array $array) {
 			$this->setId($array['id']);
 			$this->setSlug($array['slug']);
-			$this->setTitle($array['title');
+			$this->setTitle($array['title']);
 			$this->setDateCreated($array['datecreated']);
 			$this->setDateModified($array['datemodified']);
 			$this->setStatus($array['status']);

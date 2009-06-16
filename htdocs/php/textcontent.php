@@ -1,5 +1,5 @@
 <?php
-	abstract class TextContent {
+	abstract class TextContent extends Content {
 		private $text;
 		private $description;
 		private $keywords;

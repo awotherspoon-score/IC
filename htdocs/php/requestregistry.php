@@ -25,7 +25,7 @@
 		
 		static function getConfig() {
 			if (self::instance()->get('config') == null) {
-				self::instance()->set('config', new Config('../config.ini'));
+				self::instance()->set('config', new Config(CONFIG_FILENAME));
 			}
 			return self::instance()->get('config');
 		}
@@ -49,5 +49,6 @@
                         if (self::instance()->get('pagemapper') == null) {
                                 self::instance()->set('pagemapper', new PageMapper());
                         }
+                        return self::instance()->get('pagemapper');
                 }
 	}

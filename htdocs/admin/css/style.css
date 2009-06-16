@@ -12,11 +12,17 @@
 * Testimonial Font:		Senuca Regular
 */
 
+body {
+        font-family:Tahoma, Verdana, Helvetica, Arial, sans-serif;
+        font-size:0.8em;
+}
+
 div#wrapper {
         width:860px;
         margin-right:auto;
         margin-left:auto;
         position:relative;
+
 }
 
 div#wrapper * {
@@ -25,6 +31,40 @@ div#wrapper * {
         border:0;
         text-decoration:none;
 }
+
+/*Main Content CSS*/
+div#main {
+margin-top:70px;
+}
+
+div#main div##col-1 {
+       float:left; 
+}
+div#main div##col-2 {
+       float:right; 
+}
+
+div#main div#col-1 ul {
+       list-style-type:none; 
+       margin:0;
+       padding:0;
+       font-weight:bold;
+       margin-bottom:30px;
+}
+
+
+div#main div#col-1 ul li {
+       color:#012778; 
+       text-decoration:underline;
+}
+div#main div#col-1 ul li ul li {
+        color:#00a8e1;
+       text-decoration:underline;
+       margin-left:10px;
+       margin-top:10px;
+}
+
+/*End Main Content CSS*/
 
 /*Header CSS*/
 

@@ -1,5 +1,5 @@
 <?php
-	abstract class ContentCollection implements Iterator {
+	abstract class ContentCollection implements Iterator, Countable {
 		protected $mapper;
 		protected $total = 0;
 		protected $raw = array();
@@ -68,4 +68,8 @@
 		public function valid() {
 			return ( ! is_null($this->current()) );
 		}
+
+                public function count() {
+                        return count($this->raw);
+                }
 	}

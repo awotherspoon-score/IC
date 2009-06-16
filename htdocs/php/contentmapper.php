@@ -39,8 +39,12 @@
 				return $result->fetch_assoc();
 			} elseif ($result->num_rows > 1) {
 				$returnArray = array();
-				while ($returnArray[] = $result->fetch_assoc()) {/*Load Up Array*/}
-				return $returnArray();
+				while ($item = $result->fetch_assoc()) {
+                                      /*Load Up Array*/
+                                      if ($item === null) continue;
+                                      $returnArray[] = $item;     
+                                }
+				return $returnArray;
 			}
 			return null;
 		}
@@ -50,7 +54,7 @@
 		}
 		
 		private function addToMap(Content $content) {
-			RequestRegistry::getContentWatcher()->add($content)
+			RequestRegistry::getContentWatcher()->add($content);
 		}
 		
 		function insert(Content $insert) {
