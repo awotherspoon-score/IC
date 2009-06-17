@@ -47,6 +47,9 @@ div#main div#col-2 {
 
 div#main div#col-2 form {
 }
+div#main div#col-2 form input {
+        margin-bottom:20px;
+}
 
 div#main input, div#main label {
         display:block;

@@ -5,7 +5,7 @@
         //init fckeditor
         $editor = new FCKEditor('editor');
         $editor->BasePath = 'inc/fckeditor/';
-        $editor->Value = 'poopie';
+        $editor->Value = 'hello world';
         $editor->ToolbarSet = 'Basic';
         
         //get content
@@ -32,6 +32,9 @@
                        
                         $(document).ready(function() {
                                 init_header();
+                                $("#button").click(function() {
+                                        alert($("#editor").val());
+                                });
                         });
                 </script>
         </head>
@@ -66,7 +69,8 @@
                                   <input type='text' id='introduction' name='introduction' />
 
                                   <label for='content'>Content:</label>
-                                  <?php $editor->Create(); ?>
+                                  <?php $editor->Create(); ?><br />
+                                  <a id='button' href='#'>Button</a>
                                 </form>
                             </div>
                     </div><!-- /#main -->
