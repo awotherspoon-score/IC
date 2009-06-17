@@ -51,4 +51,6 @@
                         }
                         return self::instance()->get('pagemapper');
                 }
+
+                
 	}
