@@ -33,7 +33,7 @@
                         $(document).ready(function() {
                                 init_header();
                                 $("#button").click(function() {
-                                        alert($("#editor").val());
+                                        alert(getfckval("editor"));
                                 });
                         });
                 </script>

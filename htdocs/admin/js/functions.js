@@ -11,3 +11,12 @@ function init_header() {
           }
   );
 }
+
+function getfckval(id) {
+        return FCKeditorAPI.GetInstance(id).GetHTML();
+}
+
+function setfckval(id, html) {
+        FCKeditorAPI.GetInstance(id).SetHTML(html);
+        return FCKeditorAPI.GetInstance(id).GetHTML();
+}
