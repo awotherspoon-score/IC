@@ -50,6 +50,9 @@ div#main div#col-2 form {
 div#main div#col-2 form input {
         margin-bottom:20px;
 }
+div#main div#col-2 form input.text-input {
+        width:100%;
+}
 
 div#main input, div#main label {
         display:block;

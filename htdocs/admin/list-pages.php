@@ -63,10 +63,16 @@
                             <div id='col-2'>
                                 <form id='page-form'>
                                   <label for='title'>Title: </label>
-                                  <input type='text' id='title' name='title' value='' />
+                                  <input class='text-input' type='text' id='title' name='title' value='' />
 
                                   <label for='introduction'>Introduction:</label>
-                                  <input type='text' id='introduction' name='introduction' />
+                                  <input class='text-input' type='text' id='introduction' name='introduction' />
+
+                                  <label for='meta-keywords'>Keywords:</label>
+                                  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
+
+                                  <label for='meta-description'>Description:</label>
+                                  <input class='text-input' type='text' id='meta-description' name='meta-description' />
 
                                   <label for='content'>Content:</label>
                                   <?php $editor->Create(); ?><br />
