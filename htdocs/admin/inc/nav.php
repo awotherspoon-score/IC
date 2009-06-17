@@ -1,14 +1,14 @@
               <div id='top-nav'>
                         <ul id='top-nav-list'>
-                                <li id='the-school-link' class='page-nav-link'><a href='#'>The School</a>
+                                <li id='the-school-link' class='page-nav-link'><a href='list-pages.php?id=1'>The School</a>
                                         <ul>
                                         </ul>
                                 </li>
-                                <li id='joining-us-link' class='page-nav-link'><a href='#'>Joining Us</a>
+                                <li id='joining-us-link' class='page-nav-link'><a href='list-pages.php?id=2'>Joining Us</a>
                                         <ul>
                                         </ul>
                                 </li>
-                                <li id='way-of-life-link' class='page-nav-link'><a href='#'>Way of Life</a>
+                                <li id='way-of-life-link' class='page-nav-link'><a href='list-pages.php?id=3'>Way of Life</a>
                                         <ul>
                                         </ul>
                                 </li>

@@ -1,6 +1,6 @@
 <?php
         include('../init.php');
-        $page = RequestRegistry::getPageMapper()->find(1);
+        $page = RequestRegistry::getPageMapper()->find($_GET['id']);
         $level2 = $page->getChildren();
 
 
