@@ -1,5 +1,14 @@
 <?php
         include('../init.php');
+        include('inc/fckeditor/fckeditor.php');
+
+        //init fckeditor
+        $editor = new FCKEditor('editor');
+        $editor->BasePath = 'inc/fckeditor/';
+        $editor->Value = 'poopie';
+        $editor->ToolbarSet = 'Basic';
+        
+        //get content
         $page = RequestRegistry::getPageMapper()->find($_GET['id']);
         $level2 = $page->getChildren();
 
@@ -49,6 +58,16 @@
                                 </ul>
                             </div>
                             <div id='col-2'>
+                                <form id='page-form'>
+                                  <label for='title'>Title: </label>
+                                  <input type='text' id='title' name='title' value='' />
+
+                                  <label for='introduction'>Introduction:</label>
+                                  <input type='text' id='introduction' name='introduction' />
+
+                                  <label for='content'>Content:</label>
+                                  <?php $editor->Create(); ?>
+                                </form>
                             </div>
                     </div><!-- /#main -->
 

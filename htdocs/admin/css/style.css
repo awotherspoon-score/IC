@@ -28,7 +28,6 @@ div#wrapper {
 div#wrapper * {
         margin:0;
         padding:0;
-        border:0;
         text-decoration:none;
 }
 
@@ -37,13 +36,21 @@ div#main {
 margin-top:70px;
 }
 
-div#main div##col-1 {
+div#main div#col-1 {
        float:left; 
+       width:200px;
 }
-div#main div##col-2 {
+div#main div#col-2 {
        float:right; 
+       width:630px;
 }
 
+div#main div#col-2 form {
+}
+
+div#main input, div#main label {
+        display:block;
+}
 div#main div#col-1 ul {
        list-style-type:none; 
        margin:0;
