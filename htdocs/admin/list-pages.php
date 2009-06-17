@@ -1,12 +1,6 @@
 <?php
         include('../init.php');
-        include('inc/fckeditor/fckeditor.php');
 
-        //init fckeditor
-        $editor = new FCKEditor('editor');
-        $editor->BasePath = 'inc/fckeditor/';
-        $editor->Value = 'hello world';
-        $editor->ToolbarSet = 'Basic';
         
         //get content
         $page = RequestRegistry::getPageMapper()->find($_GET['id']);
@@ -20,6 +14,10 @@
                 <title>Immanuel College Admin Panel</title>
                 <link rel='stylesheet' type='text/css' href='css/style.css' />
                 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
+                <script type='text/javascript' src='js/documentation.js'></script>
+                <script type='text/javascript' src='js/jquery.MetaData.js'></script>
+                <script type='text/javascript' src='js/jquery.form.js'></script>
+                <script type='text/javascript' src='js/jquery.FCKEditor.js'></script>
                 <script type='text/javascript' src='js/functions.js'></script>
                 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
@@ -32,8 +30,12 @@
                        
                         $(document).ready(function() {
                                 init_header();
+                                $("#content").fck({
+                                        path: 'fckeditor/'
+                                });
+
                                 $("#button").click(function() {
-                                        alert($("#editor").val());
+                                        alert(setfckval("content", "butt"));
                                 });
                         });
                 </script>
@@ -69,7 +71,7 @@
                                   <input type='text' id='introduction' name='introduction' />
 
                                   <label for='content'>Content:</label>
-                                  <?php $editor->Create(); ?><br />
+                                  <textarea id='content'></textarea>
                                   <a id='button' href='#'>Button</a>
                                 </form>
                             </div>
