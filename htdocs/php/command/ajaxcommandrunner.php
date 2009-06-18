@@ -1,4 +1,5 @@
 <?php
+        include '../../init.php';
 
 
         $context = CommandRunner::run($_POST['action'], $_POST);

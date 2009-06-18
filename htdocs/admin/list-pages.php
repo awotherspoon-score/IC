@@ -38,6 +38,15 @@
                                 $("#button").click(function() {
                                         alert(getfckval("editor"));
                                 });
+
+                                $("a.page-button").click(function() {
+                                        $.post("../php/command/ajaxcommandrunner.php", {
+                                                'action' : 'get-page',
+                                                'page-id' : this.id
+                                        }, function (data, textStatus) {
+                                                alert(data['page']['title']);
+                                        }, "json");
+                                });
                         });
                 </script>
         </head>
@@ -51,11 +60,11 @@
                                 <?php foreach($level2 as $child):
                                         $level3 = $child->getChildren(); ?>
 
-                                        <li><?php echo $child->getTitle(); ?>
+                                        <li><a href='#' class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
                                                 <?php if(count($level3) > 0): ?>
                                                   <ul>
                                                           <?php foreach ( $level3 as $grandchild ): ?>
-                                                                <li><?php echo $grandchild->getTitle(); ?></li>
+                                                                <li><a href='#' class='page-button' id='<?php echo $grandchild->getId(); ?>'><?php echo $grandchild->getTitle(); ?></a></li>
                                                           <?php endforeach ?>
                                                   </ul>
                                                 <?php endif ?>

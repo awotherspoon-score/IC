@@ -66,13 +66,15 @@ div#main div#col-1 ul {
 }
 
 
-div#main div#col-1 ul li {
+div#main div#col-1 ul li a {
        color:#012778; 
        text-decoration:underline;
 }
-div#main div#col-1 ul li ul li {
+div#main div#col-1 ul li ul li a {
         color:#00a8e1;
        text-decoration:underline;
+}
+div#main div#col-1 ul li ul li {
        margin-left:10px;
        margin-top:10px;
 }
