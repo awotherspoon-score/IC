@@ -5,7 +5,7 @@
 
         //init fckeditor
         $fh = RequestRegistry::getFormHelper();
-        $editor = $fh->getEditor('editor');
+        $editor = $fh->getEditor('content');
         
          
         
@@ -35,18 +35,7 @@
                        
                         $(document).ready(function() {
                                 init_header();
-                                $("#button").click(function() {
-                                        alert(getfckval("editor"));
-                                });
-
-                                $("a.page-button").click(function() {
-                                        $.post("../php/command/ajaxcommandrunner.php", {
-                                                'action' : 'get-page',
-                                                'page-id' : this.id
-                                        }, function (data, textStatus) {
-                                                alert(data['page']['title']);
-                                        }, "json");
-                                });
+                                $("a.page-button").click(getPage);
                         });
                 </script>
         </head>
@@ -74,6 +63,7 @@
                             </div>
                             <div id='col-2'>
                                 <form id='page-form'>
+				
                                   <label for='title'>Title: </label>
                                   <input class='text-input' type='text' id='title' name='title' value='' />
 
@@ -88,8 +78,10 @@
 
                                   <label for='content'>Content:</label>
                                   <?php $editor->Create(); ?><br />
-                                  <a id='button' href='#'>Button</a>
+				  
+			          <input type='submit' value='Save' name='save-button' id='save-button' />
                                 </form>
+				<p id='modify-date'></p>
                             </div>
                     </div><!-- /#main -->
 
