@@ -14,12 +14,25 @@
 
                /**
                 * Creates and returns an FCKEditor instance
+                * 
+                * @param $name string value for name and id
+                * @param $toolbar string (optional) the toolbar to use
+                * @param $width int (optional) the editor width
+                * @param $height int (optional) the editor height
+                * @return $editor FCKEditor the generated fckeditor instance
                 */
                public function getEditor($name, $toolbar = 'Basic', $width = null, $height = null) {
                   $editor = new FCKEditor($name);
                   $editor->BasePath = 'inc/fckeditor/';
                   $editor->Value = 'hello world';
                   $editor->ToolbarSet = $toolbar;
+
+                  if ($width !== null) {
+                        $editor->Width = $width;
+                  }
+                  if ($height !== null) {
+                        $editor->Height = $height;
+                  }
                   return $editor;
                }
                
@@ -27,20 +40,43 @@
                 * Prints an FCKEditor
                 *
                 * Conveniant wrapper around getEditor()
+                * @param $name string value for name and id
+                * @param $toolbar string (optional) the toolbar to use
+                * @param $width int (optional) the editor width
+                * @param $height int (optional) the editor height
                 */
                public function printEditor($name, $toolbar = 'Basic', $width = null, $height = null) {
                     $this->getEditor($name, $toolbar, $width, $height)->Create();
                }
-
-               public timestampFromCommandContext(CommandContext $context) {
+               
+               /**
+                * Returns a Timestamp based on date input values from a CommandContext
+                *
+                * @param context CommandContext the command context to pull values from
+                * @return timestamp int the computed timestamp
+                */
+               public function timestampFromCommandContext(CommandContext $context) {
                       return $this->timestampFromInputValues($context->get['date-day'], $context->get['date-month'], $context->get['date-year']); 
                }
 
-               public timestampFromPost() {
+               /**
+                * Returns a Timestamp based on date input values from $_POST
+                *
+                * @return timestamp int the computed timestamp
+                */
+               public function timestampFromPost() {
                       return $this->timestampFromInputValues($_POST['date-day'], $_POST['date-month'], $_POST['date-year']);
                }
 
-               public timestampFromInputValues($day, $month, $year) {
+               /**
+                * Returns a timestamp based on input date values
+                *
+                * @param day int value of 'date-day'
+                * @param month int value of 'date-month'
+                * @param year int value of 'date-year'
+                * @return timestamp int the computed timestamp
+                */
+               public function timestampFromInputValues($day, $month, $year) {
                       return mktime(0, 0, 0, $month, $day, $year);
                }
 
@@ -51,7 +87,6 @@
                 *
                 * @param initial int (optional) timestamp of initial date
                 * @param input string concatenated input elements string
-                * TODO: Complete this method
                 */
                 public function getDateInput($initial = null) {
                         //set default to today if unset
