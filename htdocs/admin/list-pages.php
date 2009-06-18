@@ -3,10 +3,7 @@
         include('inc/fckeditor/fckeditor.php');
 
         //init fckeditor
-        $editor = new FCKEditor('editor');
-        $editor->BasePath = 'inc/fckeditor/';
-        $editor->Value = 'hello world';
-        $editor->ToolbarSet = 'Basic';
+         
         
         //get page from $_GET
         $command = CommandFactory::getCommand('get-page');
