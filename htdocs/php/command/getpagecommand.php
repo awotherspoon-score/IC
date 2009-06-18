@@ -10,17 +10,21 @@
                 function execute(CommandContext $context) {
                         $pageMapper = RequestRegistry::getPageMapper();
 
+                        $page = null;
+
                         if ($context->get('page-id') != null) {
-                                $page = $pageMapper->find($context->get('page-id');        
-                                $context->set('page', $page);
-                                return;
+                                $page = $pageMapper->find($context->get('page-id'));        
                         }
 
                         if ($context->get('page-slug') != null) {
                                 $page = $pageMapper->findBySlug($context->get('page-slug'));
-                                $context->set('page', $page);
-                                return;
                         }
-                        
+
+                        if ($page === null) {
+                                die("need either 'page-slug' or 'page-id' in the command context please!");
+                        }
+
+                        $context->addParam('page', $page);
+                        return;
                 }
         }

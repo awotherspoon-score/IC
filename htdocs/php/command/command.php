@@ -4,7 +4,7 @@
          *
          * Defines one basic function common to all classes
          */
-        abstract class Command() {
+        abstract class Command {
                 /**
                  * Executes the command
                  *

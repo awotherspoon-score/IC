@@ -13,7 +13,7 @@
                  * @param $action - string, the action used to determine the command to return
                  */
                 static function getCommand($action = 'default') {
-                       if ( preg_match( '/\W/', $action) ) {
+                       if ( preg_match( '/\ /', $action) ) {
                                 throw new Exception('illegal characters in action');
                        }
 

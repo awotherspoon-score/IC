@@ -8,8 +8,13 @@
         $editor->Value = 'hello world';
         $editor->ToolbarSet = 'Basic';
         
-        //get content
-        $page = RequestRegistry::getPageMapper()->find($_GET['id']);
+        //get page from $_GET
+        $command = CommandFactory::getCommand('get-page');
+        $context = new CommandContext();
+        $context->addParam('page-id', $_GET['id']);
+        $command->execute($context);
+
+        $page = $context->get('page');
         $level2 = $page->getChildren();
 
 
