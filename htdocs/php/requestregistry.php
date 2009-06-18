@@ -52,5 +52,12 @@
                         return self::instance()->get('pagemapper');
                 }
 
+                static function getFormHelper() {
+                        if (self::instange()->get('formhelper') == null) {
+                                self::instange()->set('formhelper', new FormHelper());
+                        }
+                        return self::instange()->get('formhelper');
+                }
+
                 
 	}
