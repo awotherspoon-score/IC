@@ -8,6 +8,13 @@
 			parent::loadFromArray($array);
 			$this->setParentId($array['parentid']);
 		}
+
+                public function toArray() {
+                        return array_merge(parent::toArray(), array(
+                                'parentId' => $this->parentId,
+                                'children' => $this->getChildren()->toArray()
+                        ));
+                }
 		//GETTERS + SETTERS
 		public function getParentId() {
 			return $this->parentId;

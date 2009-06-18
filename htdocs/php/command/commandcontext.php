@@ -23,4 +23,9 @@
                 function getError() {
                         return $this->error;
                 }
+                
+                //we're probably going to need this for ajax
+                function getParamArray() {
+                        return $this->params;
+                }
         }

@@ -14,6 +14,16 @@
 			$this->setCurrent($array['current']);
 			$this->setStaff($array['staff']);
 		}
+
+                public function toArray() {
+                        return array_merge(parent::toArray(), array(
+                                'albumId' = $this->albumId;
+                                'filename' => $this->filename,
+                                'prospective' => $this->prospective,
+                                'current' => $this->current,
+                                'staff' => $this->staff 
+                        ));
+                }
 		
 		//GETTERS + SETTERS
 		public function getAlbumId() {

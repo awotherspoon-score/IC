@@ -7,6 +7,10 @@
 		private $result;
 		private $pointer;
 		private $objects = array();
+
+                public function toArray() {
+                        return $this->raw;
+                }
 		
 		function __construct(array $raw = null, ContentMapper $mapper = null) {
 			if ( ! is_null( $raw ) && ! is_null( $mapper ) ) {

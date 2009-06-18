@@ -10,6 +10,14 @@
 			$this->setDescription($array['description']);
 			$this->setKeywords($array['keywords']);
 		}
+
+                public function toArray() {
+                        return array_merge(parent::toArray(), array(
+                                'text' => $this->text,
+                                'description' => $this->description,
+                                'keywords' => $this->keywords
+                        ));
+                }
 		
 		//GETTERS + SETTERS
 		public function getText() {

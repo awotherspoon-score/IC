@@ -8,6 +8,13 @@
 			$this->setDateDisplayed($array['datedisplayed']);
 			$this->setType($array['type']);
 		}
+
+                public function toArray() {
+                        return array_merge(parent::toArray(), array(
+                                'dateDisplayed' => $this->dateDisplayed,
+                                'type' => $this->type
+                        ));
+                }
 		
 		//GETTERS + SETTERS
 		public function getDateDisplayed() {

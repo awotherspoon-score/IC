@@ -9,3 +9,5 @@ function __autoload($class) {
 }
 
 define('CONFIG_FILENAME', $_SERVER['DOCUMENT_ROOT'] . 'ic/config.ini');
+
+

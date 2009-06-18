@@ -53,10 +53,10 @@
                 }
 
                 static function getFormHelper() {
-                        if (self::instange()->get('formhelper') == null) {
-                                self::instange()->set('formhelper', new FormHelper());
+                        if (self::instance()->get('formhelper') == null) {
+                                self::instance()->set('formhelper', new FormHelper());
                         }
-                        return self::instange()->get('formhelper');
+                        return self::instance()->get('formhelper');
                 }
 
                 

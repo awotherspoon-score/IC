@@ -12,6 +12,16 @@
 			$this->setEventId($array['eventid']);
 			$this->setFeaturedImageId($array['featuredimageid']);
 		}
+
+                public function toArray() {
+                        $array = parent::toArray();
+                        return array_merge($array, array(
+                                'dateDisplayed' => $this->dateDisplayed,
+                                'newsId' => $this->newsId,
+                                'eventId' => $this->eventId,
+                                'featuredImageId' => $this->featuredImageId
+                        ));
+                }
 		
 		//GETTERS + SETTERS
 		public function getDateDisplayed() {

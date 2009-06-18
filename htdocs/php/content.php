@@ -18,6 +18,17 @@
 			$this->setDateModified($array['datemodified']);
 			$this->setStatus($array['status']);
 		}
+
+                public function toArray() {
+                        return array(
+                             'id' => $this->id,
+                             'slug' => $this->slug,
+                             'title' => $this->title,
+                             'dateCreated' => $this->dateCreated,
+                             'dateModified' => $this->dateModified,
+                             'status' => $this->status
+                        );
+                }
 		
 		//GETTERS + SETTERS
 		public function getId() {

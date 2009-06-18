@@ -2,14 +2,15 @@
         include('../init.php');
         include('inc/fckeditor/fckeditor.php');
 
+
         //init fckeditor
+        $fh = RequestRegistry::getFormHelper();
+        $editor = $fh->getEditor('editor');
+        
          
         
         //get page from $_GET
-        $command = CommandFactory::getCommand('get-page');
-        $context = new CommandContext();
-        $context->addParam('page-id', $_GET['id']);
-        $command->execute($context);
+        $context = CommandRunner::run('get-page', array('page-id' => $_GET['id']));
 
         $page = $context->get('page');
         $level2 = $page->getChildren();
