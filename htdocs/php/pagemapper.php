@@ -35,7 +35,7 @@
 					."keywords='{$object->getKeywords()}', "
 					."parentid='{$object->getParentId()}' "
 					."WHERE id={$object->getId()} LIMIT 1";
-			self::$dba->query($query);
+			self::$mysqli->query($query);
 		}
 		
 		function delete(Content $object) {

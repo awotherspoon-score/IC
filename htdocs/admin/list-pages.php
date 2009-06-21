@@ -38,7 +38,23 @@
                                 init_header();
                                 $("a.page-button").click(getPage);
 				$("#save-button").click(function() {
-					alert(page.id);
+								
+					$.post("../php/command/ajaxcommandrunner.php",
+						{
+							object: 'yes',
+							class: 'page',
+							id: page.id,
+							title: $("#title").val(),
+							keywords: $("#meta-keywords").val(),
+							description: $("#meta-description").val(),
+							text: getfckval("content"),
+							action: 'update-page'
+						},
+						function(data, textstatus) {
+							alert(data);
+						},
+						"text"
+					);
 					return false;
 				});
                         });
