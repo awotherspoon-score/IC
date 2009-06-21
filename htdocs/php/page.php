@@ -6,7 +6,7 @@
 		
 		public function loadFromArray($array) {
 			parent::loadFromArray($array);
-			$this->setParentId($array['parentid']);
+			if (array_key_exists('parentid', $array)) { $this->setParentId($array['parentid']); }
 		}
 
                 public function toArray() {

@@ -5,8 +5,8 @@
 		
 		public function loadFromArray($array) {
 			parent::loadFromArray($array);
-			$this->setDateDisplayed($array['datedisplayed']);
-			$this->setType($array['type']);
+			if (array_key_exists('datedisplayed', $array)) { $this->setDateDisplayed($array['datedisplayed']); }
+			if (array_key_exists('type', $array)) { $this->setType($array['type']); }
 		}
 
                 public function toArray() {

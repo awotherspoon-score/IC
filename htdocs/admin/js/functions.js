@@ -34,6 +34,7 @@ function updateInputs(page) {
  * should be called in context of a.page-button
  */
 function getPage() {
+	page.id = this.id;
 	$.post("../php/command/ajaxcommandrunner.php", {
 		'action' : 'get-page',
 		'page-id' : this.id

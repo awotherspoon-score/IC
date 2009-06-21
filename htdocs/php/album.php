@@ -7,10 +7,10 @@
 		
 		public function loadFromArray(array $array) {
 			parent::loadFromArray($array);
-			$this->setDateDisplayed($array['date']);
-			$this->setNewsId($array['newsid']);
-			$this->setEventId($array['eventid']);
-			$this->setFeaturedImageId($array['featuredimageid']);
+			if (array_key_exists('date', $array)) { $this->setDateDisplayed($array['date']); }
+			if (array_key_exists('newsid', $array)) { $this->setNewsId($array['newsid']); }
+			if (array_key_exists('eventid', $array)) { $this->setEventId($array['eventid']); }
+			if (array_key_exists('featuredimageid', $array)) { $this->setFeaturedImageId($array['featuredimageid']); }
 		}
 
                 public function toArray() {

@@ -6,9 +6,9 @@
 		
 		public function loadFromArray($array) {
 			parent::loadFromArray($array);
-			$this->setText($array['text']);
-			$this->setDescription($array['description']);
-			$this->setKeywords($array['keywords']);
+			if (array_key_exists('text', $array)) { $this->setText($array['text']); }
+			if (array_key_exists('description', $array)) { $this->setDescription($array['description']); }
+			if (array_key_exists('keywords', $array)) { $this->setKeywords($array['keywords']); }
 		}
 
                 public function toArray() {

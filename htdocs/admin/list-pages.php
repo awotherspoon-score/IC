@@ -32,10 +32,15 @@
                         Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
-                       
+			var page = new Object();
+
                         $(document).ready(function() {
                                 init_header();
                                 $("a.page-button").click(getPage);
+				$("#save-button").click(function() {
+					alert(page.id);
+					return false;
+				});
                         });
                 </script>
         </head>

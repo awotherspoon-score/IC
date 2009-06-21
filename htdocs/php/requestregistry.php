@@ -45,6 +45,15 @@
 			return self::instance()->get('contentwatcher');
 		}
 
+		//TODO: Write the rest of this method!!!
+		static function getMapper($type) {
+			switch ($type) {
+				case 'page' :
+					return self::getPageMapper();
+					break;
+			}
+		}
+
                 static function getPageMapper() {
                         if (self::instance()->get('pagemapper') == null) {
                                 self::instance()->set('pagemapper', new PageMapper());

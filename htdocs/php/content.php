@@ -11,12 +11,12 @@
 		private $status;
 		
 		public function loadFromArray(array $array) {
-			$this->setId($array['id']);
-			$this->setSlug($array['slug']);
-			$this->setTitle($array['title']);
-			$this->setDateCreated($array['datecreated']);
-			$this->setDateModified($array['datemodified']);
-			$this->setStatus($array['status']);
+			if (array_key_exists('id', $array)) { $this->setId($array['id']); }
+			if (array_key_exists('slug', $array)) { $this->setSlug($array['slug']); }
+			if (array_key_exists('title', $array)) { $this->setTitle($array['title']); }
+			if (array_key_exists('datecreated', $array)) { $this->setDateCreated($array['datecreated']); }
+			if (array_key_exists('datemodified', $array)) { $this->setDateModified($array['datemodified']); }
+			if (array_key_exists('status', $array)) { $this->setStatus($array['status']); }
 		}
 
                 public function toArray() {

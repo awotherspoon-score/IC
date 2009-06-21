@@ -8,11 +8,11 @@
 		
 		public function loadFromArray(array $array) {
 			parent::loadFromArray($array);
-			$this->setAlbumId($array['albumid']);
-			$this->setFileName($array['filename']);
-			$this->setProspective($array['prospective']);
-			$this->setCurrent($array['current']);
-			$this->setStaff($array['staff']);
+			if (array_key_exists('albumid', $array)) { $this->setAlbumId($array['albumid']); }
+			if (array_key_exists('filename', $array)) { $this->setFileName($array['filename']); }
+			if (array_key_exists('prospective', $array)) { $this->setProspective($array['prospective']); }
+			if (array_key_exists('current', $array)) { $this->setCurrent($array['current']); }
+			if (array_key_exists('staff', $array)) { $this->setStaff($array['staff']); }
 		}
 
                 public function toArray() {
