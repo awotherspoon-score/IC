@@ -26,6 +26,7 @@ function refreshPage(page) {
 	$("#meta-keywords").val(page['keywords']);
 	$("#meta-description").val(page['description']);
 	setfckval("content", page['text']);	
+	setfckval("introduction", page['introduction']);
 	var selector = "#" + page.id;
 	$(selector).text(page['title']);
 	
@@ -65,10 +66,12 @@ function updatePage() {
 			keywords: $("#meta-keywords").val(),
 			description: $("#meta-description").val(),
 			text: getfckval("content"),
-			action: 'update-page'
+			action: 'update-page',
+			introduction: getfckval("introduction") 
 		},
 		function(data, textstatus) {
 			refreshPage(data['page']);
+			
 			//var selector = "#" + page.id;	
 			//$(selector).text(data['title']);	
 		},

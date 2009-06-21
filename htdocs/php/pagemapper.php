@@ -15,9 +15,9 @@
 		protected function doInsert(Content $object) {
 			$now = time();
 			$query = "INSERT INTO pages "
-					."(slug, title, datecreated, datemodified, status, text, description, keywords, parentid) "
+					."(slug, title, introduction, datecreated, datemodified, status, text, description, keywords, parentid) "
 					."VALUES "
-					."('{$object->getSlug()}', '{$object->getTitle()}', '$now', '$now', '{$object->getStatus()}', '{$object->getText()}', '{$object->getDescription()}', '{$object->getKeywords()}', '{$object->getParentId()}')";
+					."('{$object->getSlug()}', '{$object->getTitle()}', '{$object->getIntroduction()}', '$now', '$now', '{$object->getStatus()}', '{$object->getText()}', '{$object->getDescription()}', '{$object->getKeywords()}', '{$object->getParentId()}')";
 			self::$mysqli->query($query);
 			$object->setId(self::$mysqli->insert_id);	 
 		}
@@ -29,6 +29,7 @@
 			$query = "UPDATE pages SET "
 					."slug='{$object->getSlug()}', "
 					."title='{$object->getTitle()}', "
+					."introduction='{$object->getIntroduction()}', "
 					."datecreated='{$object->getDateCreated()}', "
 					."datemodified='$now', "
 					."status='{$object->getStatus()}', "

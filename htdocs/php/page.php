@@ -16,11 +16,6 @@
                         ));
                 }
 
-		public function getContent() {
-		}
-
-		public function getIntroduction() {
-		}
 		//GETTERS + SETTERS
 		public function getParentId() {
 			return $this->parentId;

@@ -15,9 +15,9 @@
 		protected function doInsert(Content $object) {
 			$now = time();
 			$query = "INSERT INTO newsevents "
-					."(slug, title, datecreated, datemodified, text, description, keywords, datedisplayed, type) "
+					."(slug, title, introduction, datecreated, datemodified, text, description, keywords, datedisplayed, type) "
 					."VALUES "
-					."('{$object->getSlug()}','{$object->getTitle()}','$now','$now','{$object->getText()}','{$object->getDescription()}','{$object->getKeywords()}','{$object->getDateDisplayed()}','{$object->getType()}')";
+					."('{$object->getSlug()}','{$object->getTitle()}', '{$object->getIntroduction()}', '$now','$now','{$object->getText()}','{$object->getDescription()}','{$object->getKeywords()}','{$object->getDateDisplayed()}','{$object->getType()}')";
 			self::$mysqli->query($query);
 			$object->setId(self::$mysqli->insert_id);
 		}
@@ -28,6 +28,7 @@
 					."slug='{$object->getSlug()}', "
 					."title='{$object->getTitle()}', "
 					."datecreated='{$object->getDateCreated()}', "
+					."introduction='{$object->getIntroduction()}, "
 					."datemodified='$now', "
 					."text='{$object->getText()}', "
 					."description='{$object->getDescription()}', "
