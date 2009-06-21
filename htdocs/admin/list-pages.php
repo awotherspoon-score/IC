@@ -51,9 +51,11 @@
 							action: 'update-page'
 						},
 						function(data, textstatus) {
-							alert(data);
+							refreshPage(data['page']);
+							//var selector = "#" + page.id;	
+							//$(selector).text(data['title']);	
 						},
-						"text"
+						"json"
 					);
 					return false;
 				});
@@ -100,9 +102,9 @@
                                   <label for='content'>Content:</label>
                                   <?php $editor->Create(); ?><br />
 				  
+				  <p id='modify-date'></p>
 			          <input type='submit' value='Save' name='save-button' id='save-button' />
                                 </form>
-				<p id='modify-date'></p>
                             </div>
                     </div><!-- /#main -->
 

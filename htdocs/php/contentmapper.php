@@ -23,6 +23,7 @@
 		}
 		
 		function createObject( $array ) {
+			if ($array === null) { return null; }
 			$old = $this->getFromMap($array['id']);
 			if ($old != null) { return $old; }
 			$object = $this->doCreateObject( $array );

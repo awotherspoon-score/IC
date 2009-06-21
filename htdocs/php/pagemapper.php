@@ -24,6 +24,8 @@
 		
 		function update(Content $object) {
 			$now = time();
+			$object->setDateModified($now);
+			$this->updateSlug($object);
 			$query = "UPDATE pages SET "
 					."slug='{$object->getSlug()}', "
 					."title='{$object->getTitle()}', "
@@ -43,6 +45,27 @@
 			self::$mysqli->query($query);
 		}
 
+		function updateSlug($page) {
+			$oldSlug = $page->getSlug();
+			$newSlug = $this->generateSlug($page->getTitle());
+			if ($oldSlug == $newSlug) { return; }
+
+			$suffix = '';
+			while ($this->findBySlug($newSlug . $suffix) !== null) {
+				if ($suffix == '') { $suffix = 1; }
+				$suffix++;
+			}
+			$page->setSlug($newSlug . $suffix);
+		}
+
+		function generateSlug($string) {
+			$slug = strtolower( $string ); // lower-case the string
+			$slug = preg_replace( '/[^a-z0-9- ]/', '', $slug ); // remove all non-alphanumeric characters except for spaces and hyphens
+			$slug = str_replace(' - ', ' ', $slug); //remove all 'real' hyphens with spaces
+			$slug = str_replace( ' ', '-', $slug ); // substitute the spaces with hyphens
+			return $slug;
+		}
+
                 function findByParentId($parentid) {
                         return $this->createCollection($this->queryToArray($this->selectByParentIdQuery($parentid)));                        
                 }
@@ -56,7 +79,7 @@
 		}
 
                 public function selectBySlugQuery( $slug ) {
-                        return "SELECT * FROM pages WHERE slug=$slug LIMIT 1";
+                        return "SELECT * FROM pages WHERE slug='$slug' LIMIT 1";
                 }
 		
 		public function selectAllQuery() {

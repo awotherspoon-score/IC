@@ -9,7 +9,6 @@
 		$object = $mapper->find($_POST['id']);
 		$object->loadFromArray($_POST);
 		$_POST[$class] = $object; 
-		print_r($_POST);
 	}
 	
 	$context = CommandRunner::run($_POST['action'], $_POST);
