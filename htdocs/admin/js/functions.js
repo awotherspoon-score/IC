@@ -54,3 +54,35 @@ function getPage() {
 		'page-id' : this.id
 	}, function (data, textStatus) { refreshPage(data['page']); }, "json");
 }
+
+function updatePage() {
+	$.post("../php/command/ajaxcommandrunner.php",
+		{
+			object: 'yes',
+			class: 'page',
+			id: page.id,
+			title: $("#title").val(),
+			keywords: $("#meta-keywords").val(),
+			description: $("#meta-description").val(),
+			text: getfckval("content"),
+			action: 'update-page'
+		},
+		function(data, textstatus) {
+			refreshPage(data['page']);
+			//var selector = "#" + page.id;	
+			//$(selector).text(data['title']);	
+		},
+		"json"
+	);
+	return false;
+}
+
+function swapPlusMinus() {
+	var plusPath = "img/icons/plus.gif";
+	var minusPath = "img/icons/minus.gif";
+	if (this['src'].indexOf(plusPath) == -1) {
+		this['src'] = plusPath;
+	} else {
+		this['src'] = minusPath;
+	}
+}

@@ -6,6 +6,7 @@
         //init fckeditor
         $fh = RequestRegistry::getFormHelper();
         $editor = $fh->getEditor('content');
+	$introEditor = $fh->getEditor('introduction');
         
          
         
@@ -34,31 +35,28 @@
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
 			var page = new Object();
 
+
                         $(document).ready(function() {
                                 init_header();
+				$("#meta-inputs").hide();
                                 $("a.page-button").click(getPage);
-				$("#save-button").click(function() {
-								
-					$.post("../php/command/ajaxcommandrunner.php",
-						{
-							object: 'yes',
-							class: 'page',
-							id: page.id,
-							title: $("#title").val(),
-							keywords: $("#meta-keywords").val(),
-							description: $("#meta-description").val(),
-							text: getfckval("content"),
-							action: 'update-page'
-						},
-						function(data, textstatus) {
-							refreshPage(data['page']);
-							//var selector = "#" + page.id;	
-							//$(selector).text(data['title']);	
-						},
-						"json"
-					);
+				$("#save-button").click(updatePage);
+
+
+				$("#meta-toggle-button").click(function() {
+
+					$("#meta-inputs").toggle('fast');
+					$("#meta-toggle-button img").each(swapPlusMinus);
+
 					return false;
 				});
+
+				$("a.pages-toggle-button").click(function() {
+					$(this).parent().children().filter('ul').toggle('fast');
+					$(this).children().filter('img').each(swapPlusMinus);
+				});
+
+
                         });
                 </script>
         </head>
@@ -74,6 +72,7 @@
 
                                         <li><a href='#' class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
                                                 <?php if(count($level3) > 0): ?>
+						 <a href='#' class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
                                                   <ul>
                                                           <?php foreach ( $level3 as $grandchild ): ?>
                                                                 <li><a href='#' class='page-button' id='<?php echo $grandchild->getId(); ?>'><?php echo $grandchild->getTitle(); ?></a></li>
@@ -90,14 +89,19 @@
                                   <label for='title'>Title: </label>
                                   <input class='text-input' type='text' id='title' name='title' value='' />
 
+				  <a href='#' id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
+
+				  <div id='meta-inputs'>
+					  <label for='meta-keywords'>Keywords:</label>
+					  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
+
+					  <label for='meta-description'>Description:</label>
+					  <input class='text-input' type='text' id='meta-description' name='meta-description' />
+				 </div><!-- /#meta-inputs -->
+
                                   <label for='introduction'>Introduction:</label>
-                                  <input class='text-input' type='text' id='introduction' name='introduction' />
-
-                                  <label for='meta-keywords'>Keywords:</label>
-                                  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
-
-                                  <label for='meta-description'>Description:</label>
-                                  <input class='text-input' type='text' id='meta-description' name='meta-description' />
+				  <?php $introEditor->Create(); ?>
+                                  <!-- <input class='text-input' type='text' id='introduction' name='introduction' /> -->
 
                                   <label for='content'>Content:</label>
                                   <?php $editor->Create(); ?><br />
