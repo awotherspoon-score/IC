@@ -63,6 +63,10 @@ div#main div#col-2 form input {
         margin-bottom:20px;
 }
 
+div#main div#col-2 form label, a#meta-toggle-button {
+	font-weight:bold;
+}
+
 div#main #meta-toggle-button {
 	display:block;
 	margin-bottom:10px;
