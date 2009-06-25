@@ -68,7 +68,7 @@
 		}
 
                 function findByParentId($parentid) {
-                        return $this->createCollection($this->queryToArray($this->selectByParentIdQuery($parentid)));                        
+                        return $this->createCollection($this->queryToArray($this->selectByParentIdQuery($parentid), true));                        
                 }
 
                 public function selectByParentIdQuery($parentid) {

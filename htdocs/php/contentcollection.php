@@ -1,4 +1,9 @@
 <?php
+        /**
+         * An iteratable, countable collection superclass
+         *
+         * Subclasses will be used to group and iterate over domain objects
+         */
 	abstract class ContentCollection implements Iterator, Countable {
 		protected $mapper;
 		protected $total = 0;

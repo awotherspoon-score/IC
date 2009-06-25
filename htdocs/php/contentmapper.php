@@ -33,10 +33,25 @@
 		function createCollection( $array ) {
 			return ContentHelperFactory::getCollection($this->targetClass(), $array, $this);
 		}
-		
-		function queryToArray($query) {
+	
+                /**
+                 * Runs a query and returns an array
+                 *
+                 * Returns an associative array when fetching single records
+                 * Multidemensional array if fetching more than one record
+                 *
+                 * @param $query String The query to be executed
+                 * @param $forceArray boolean (optional) if set to true, returns a 
+                 * multi-dimensional array even if there's only one record to fetch, defaults to false
+                 */
+		function queryToArray($query, $forceArray = false) {
 			$result = self::$mysqli->query( $query );
 			if ($result->num_rows == 1) {
+                                if ($forceArray) {
+                                        $returnArray = array();
+                                        $returnArray[] = $result->fetch_assoc();
+                                        return $returnArray;
+                                }
 				return $result->fetch_assoc();
 			} elseif ($result->num_rows > 1) {
 				$returnArray = array();
