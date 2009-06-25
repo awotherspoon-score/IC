@@ -6,9 +6,7 @@
         //init fckeditor
         $fh = RequestRegistry::getFormHelper();
         $editor = $fh->getEditor('content');
-	$introEditor = $fh->getEditor('introduction');
-        
-         
+	$introEditor = $fh->getEditor('introduction', 'Basic', '100');
         
         //get page from $_GET
         $context = CommandRunner::run('get-page', array('page-id' => $_GET['id']));
@@ -38,8 +36,10 @@
 
                         $(document).ready(function() {
                                 init_header();
+                                var id = <?php echo $page->getId() ?>;
+                                fetchPage(id);
 				$("#meta-inputs").hide();
-                                $("a.page-button").click(getPage);
+                                $("a.page-button").click(getPageButton);
 				$("#save-button").click(updatePage);
 
 

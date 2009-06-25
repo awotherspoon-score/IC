@@ -48,11 +48,15 @@ function refreshPage(page) {
  *
  * should be called in context of a.page-button
  */
-function getPage() {
+function getPageButton() {
 	page.id = this.id;
+        fetchPage(page.id);
+}
+
+function fetchPage(id) {
 	$.post("../php/command/ajaxcommandrunner.php", {
 		'action' : 'get-page',
-		'page-id' : this.id
+		'page-id' : id
 	}, function (data, textStatus) { refreshPage(data['page']); }, "json");
 }
 
