@@ -36,25 +36,15 @@
 
                         $(document).ready(function() {
                                 init_header();
-                                var id = <?php echo $page->getId() ?>;
-                                fetchPage(id);
+                                page.id = <?php echo $page->getId() ?>;
+                                fetchPage(page.id);
 				$("#meta-inputs").hide();
                                 $("a.page-button").click(getPageButton);
 				$("#save-button").click(updatePage);
 
 
-				$("#meta-toggle-button").click(function() {
-
-					$("#meta-inputs").toggle('fast');
-					$("#meta-toggle-button img").each(swapPlusMinus);
-
-					return false;
-				});
-
-				$("a.pages-toggle-button").click(function() {
-					$(this).parent().children().filter('ul').toggle('fast');
-					$(this).children().filter('img').each(swapPlusMinus);
-				});
+				$("#meta-toggle-button").click(metaToggle); 
+				$("a.pages-toggle-button").click(grandchildrenToggle); 
 
 
                         });

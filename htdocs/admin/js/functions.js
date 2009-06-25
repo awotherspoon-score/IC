@@ -93,3 +93,16 @@ function swapPlusMinus() {
 		this['src'] = minusPath;
 	}
 }
+
+
+function metaToggle() {
+        $("#meta-inputs").toggle('fast');
+        $("#meta-toggle-button img").each(swapPlusMinus);
+
+        return false;
+}
+
+function grandchildrenToggle() {
+        $(this).parent().children().filter('ul').toggle('fast');
+        $(this).children().filter('img').each(swapPlusMinus);
+}
