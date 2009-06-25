@@ -103,6 +103,6 @@ function metaToggle() {
 }
 
 function grandchildrenToggle() {
-        $(this).parent().children().filter('ul').toggle('fast');
+        $(this).parent().children().filter('table').toggle('fast');
         $(this).children().filter('img').each(swapPlusMinus);
 }

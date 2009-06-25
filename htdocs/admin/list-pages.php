@@ -1,5 +1,4 @@
 <?php
-        echo '';
         include('../init.php');
         include('inc/fckeditor/fckeditor.php');
 
@@ -64,11 +63,31 @@
                                         <li><a href='#' class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
                                                 <?php if(count($level3) > 0): ?>
 						 <a href='#' class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
-                                                  <ul>
+                                                 <table>
                                                           <?php foreach ( $level3 as $grandchild ): ?>
-                                                                <li><a href='#' class='page-button' id='<?php echo $grandchild->getId(); ?>'><?php echo $grandchild->getTitle(); ?></a></li>
+
+                                                                <tr>
+
+                                                                  <td class = 'title-cell'>
+                                                                    <a href='#' class='page-button' id='<?php echo $grandchild->getId(); ?>'>
+                                                                    <?php echo $grandchild->getTitle(); ?>
+                                                                    </a>
+                                                                  </td>
+
+                                                                  <td>
+                                                                  </td>
+
+                                                                  <td>
+                                                                  </td>
+
+                                                                  <td>
+                                                                  </td>
+                                                                </tr>
                                                           <?php endforeach ?>
-                                                  </ul>
+                                                          <tr>
+                                                                <td>Add New</td></td>
+                                                          </tr>
+                                                </table>
                                                 <?php endif ?>
                                         </li>
                                 <?php endforeach ?>
