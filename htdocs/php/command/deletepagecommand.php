@@ -6,8 +6,8 @@
          */
         class DeletePageCommand extends Command {
                 function execute(CommandContext $context) {
-                        $pageMapper = RequestRegisty::getPageMapper();
-                        $pageMapper->delete($context->get('page');
+                        $pageMapper = RequestRegistry::getPageMapper();
+                        $pageMapper->delete($context->get('page'));
                         return;
                 }
         }

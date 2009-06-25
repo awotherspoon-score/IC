@@ -46,6 +46,8 @@
 				$("#meta-toggle-button").click(metaToggle); 
 				$("a.pages-toggle-button").click(grandchildrenToggle); 
 
+                                $("a.delete-button").click(grandchildDeleteButton);
+
 
                         });
                 </script>
@@ -58,13 +60,20 @@
                             <div id='col-1'>
                                 <ul>
                                 <?php foreach($level2 as $child):
-                                        $level3 = $child->getChildren(); ?>
+                                        $grandchildren = $child->getChildren(); ?>
 
                                         <li><a href='#' class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
-                                                <?php if(count($level3) > 0): ?>
 						 <a href='#' class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
                                                  <table>
-                                                          <?php foreach ( $level3 as $grandchild ): ?>
+                                                          <?php if (count($grandchildren) > 0): ?>
+                                                          <tr class='table-headers'>
+                                                                <td></td>
+                                                                <td>Delete</td>
+                                                                <td>Status</td>
+                                                          </tr>
+                                                          <?php endif ?>
+
+                                                          <?php foreach ( $grandchildren as $grandchild ): ?>
 
                                                                 <tr>
 
@@ -74,10 +83,23 @@
                                                                     </a>
                                                                   </td>
 
-                                                                  <td>
+                                                                  <td class='delete-button-cell'>
+                                                                        <a id='<?= $grandchild->getId() ?>' class='delete-button' href='#'>
+                                                                          <img src='img/buttons/delete-button.gif' class='delete-button' />
+                                                                        </a>
                                                                   </td>
 
-                                                                  <td>
+                                                                  <td class='status'>
+
+                                                                                <?php if ($page->getStatus() == Page::STATUS_LIVE): ?>
+
+                                                                                  <span class='live'>&nbsp;live</span>
+
+                                                                                <?php else: ?>
+
+                                                                                  <span class='pending'>&nbsp;pending</span>
+
+                                                                                <?php endif ?>
                                                                   </td>
 
                                                                   <td>
@@ -85,12 +107,23 @@
                                                                 </tr>
                                                           <?php endforeach ?>
                                                           <tr>
-                                                                <td>Add New</td></td>
+                                                                <td>
+                                                                        <a href='#' class='add-grandchild-button' id='<?= $child->getId() ?>'>
+                                                                        <img src='img/buttons/add-child-button.gif' />
+                                                                        </a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
                                                           </tr>
                                                 </table>
-                                                <?php endif ?>
                                         </li>
                                 <?php endforeach ?>
+                                        <li>
+                                              <a href='#' class='add-child-button' id='<?= $page->getId() ?>'>
+                                              <img src='img/buttons/add-child-button.gif' />
+                                              </a>
+                                                
+                                        </li>
                                 </ul>
                             </div>
                             <div id='col-2'>

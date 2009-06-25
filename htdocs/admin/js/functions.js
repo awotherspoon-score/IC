@@ -106,3 +106,22 @@ function grandchildrenToggle() {
         $(this).parent().children().filter('table').toggle('fast');
         $(this).children().filter('img').each(swapPlusMinus);
 }
+
+function grandchildDeleteButton() {
+        var deletionConfirmed = confirm("Are you sure you want to delete this page?\nBe careful, this can't be undone!");
+        if (deletionConfirmed) {
+          $.post("../php/command/ajaxcommandrunner.php",
+                  {
+                          object: 'yes',
+                          class: 'page',
+                          id: this.id,
+                          action: 'delete-page',
+                  },
+                  function(data, textstatus) {
+                        alert(data);
+                        $(this).parent().parent().hide();
+                  }, "text"
+          );
+        }
+        return false;
+}
