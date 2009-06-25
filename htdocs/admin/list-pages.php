@@ -1,4 +1,5 @@
 <?php
+        echo '';
         include('../init.php');
         include('inc/fckeditor/fckeditor.php');
 
