@@ -41,14 +41,11 @@
 				$("#meta-inputs").hide();
                                 $("a.page-button").click(getPageButton);
 				$("#save-button").click(updatePage);
-
-
 				$("#meta-toggle-button").click(metaToggle); 
 				$("a.pages-toggle-button").click(grandchildrenToggle); 
-
                                 $("a.delete-button").click(grandchildDeleteButton);
-
-
+                                $("a.add-grandchild-button").click(function () {
+                                });
                         });
                 </script>
         </head>
