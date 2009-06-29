@@ -97,8 +97,10 @@ function grandchildrenToggle() {
         $(this).parent().children().filter('table').toggle();
         $(this).children().filter('img').each(swapPlusMinus);
 }
+
 function grandchildDeleteButton() {
         var deletionConfirmed = confirm("Are you sure you want to delete this page?\nBe careful, this can't be undone!");
+        
         if (deletionConfirmed) {
           $.post("../php/command/ajaxcommandrunner.php",
                   {
@@ -118,4 +120,18 @@ function grandchildDeleteButton() {
 
 function grandchildAddButton() {
         
+        var parentid = $(this).parent().parent().parent().parent().parent().children().filter("a").attr("id");
+        
+        /*
+        $.post("../php/command/ajaxcommandrunner.php",
+                {
+                        obj: 'yes',
+                        type: 'page',
+                        action: 'create-page',
+                        parentid: parentid
+                }
+        );
+        */
+
+        $(this).parent().prepend("<h1>" + parentid + "</h1>");
 }

@@ -11,7 +11,7 @@
         $fh = RequestRegistry::getFormHelper();
         $editor = $fh->getEditor('content', 'Basic', null, null, $page->getText());
 	$introEditor = $fh->getEditor('introduction', 'Basic', '100', null, $page->getIntroduction());
-        
+
 
 ?>
 <?php include('../inc/doctype.php'); ?>
@@ -41,8 +41,7 @@
 				$("#meta-toggle-button").click(metaToggle); 
 				$("a.pages-toggle-button").click(grandchildrenToggle); 
                                 $("a.delete-button").click(grandchildDeleteButton);
-                                $("a.add-grandchild-button").click(function () {
-                                });
+                                $("a.add-grandchild-button").click(grandchildAddButton);
                         });
                 </script>
         </head>
@@ -103,7 +102,7 @@
                                                           <tr>
                                                                 <td>
                                                                         <a href='#' class='add-grandchild-button' id='<?= $child->getId() ?>'>
-                                                                        <img src='img/buttons/add-child-button.gif' />
+                                                                          <img src='img/buttons/add-child-button.gif' />
                                                                         </a>
                                                                 </td>
                                                                 <td></td>
