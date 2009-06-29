@@ -2,9 +2,9 @@
         include '../../init.php';
 	
 	//convert json objects to php objects, currently only supports one object
-	if (array_key_exists('object', $_POST)) {
+	if (array_key_exists('obj', $_POST)) {
 
-		$class = $_POST['class'];
+		$class = $_POST['type'];
 		$mapper = RequestRegistry::getMapper($class);
 		$object = $mapper->find($_POST['id']);
 		$object->loadFromArray($_POST);

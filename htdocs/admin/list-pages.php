@@ -13,8 +13,6 @@
 
         $page = $context->get('page');
         $level2 = $page->getChildren();
-
-
 ?>
 <?php include('../inc/doctype.php'); ?>
 <html>
@@ -32,7 +30,6 @@
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
 			var page = new Object();
-
 
                         $(document).ready(function() {
                                 init_header();

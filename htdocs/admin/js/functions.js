@@ -1,10 +1,7 @@
 function init_header() {
   $("ul#top-nav-list > li").hover(
           function() {
-                  $(this).find("ul").css({
-                        'display' : 'block',
-                        'z-index' : '1000'
-                  });
+                  $(this).find("ul").css({'display' : 'block','z-index' : '1000'});
           },
           function() {
                   $("ul", this).css("display", "none");
@@ -20,7 +17,6 @@ function setfckval(id, html) {
         FCKeditorAPI.GetInstance(id).SetHTML(html);
         return FCKeditorAPI.GetInstance(id).GetHTML();
 }
-
 function refreshPage(page) {
 	$("#title").val(page['title']);		
 	$("#meta-keywords").val(page['keywords']);
@@ -42,7 +38,6 @@ function refreshPage(page) {
 	modifyDate.text(dateText);
 	
 }
-
 /**
  * Gets a page from the site and updates the inputs on list-pages
  *
@@ -52,7 +47,6 @@ function getPageButton() {
 	page.id = this.id;
         fetchPage(page.id);
 }
-
 function fetchPage(id) {
 	$.post("../php/command/ajaxcommandrunner.php", {
 		'action' : 'get-page',
@@ -63,8 +57,8 @@ function fetchPage(id) {
 function updatePage() {
 	$.post("../php/command/ajaxcommandrunner.php",
 		{
-			object: 'yes',
-			class: 'page',
+			obj: 'yes',
+			type: 'page',
 			id: page.id,
 			title: $("#title").val(),
 			keywords: $("#meta-keywords").val(),
@@ -78,9 +72,7 @@ function updatePage() {
 			
 			//var selector = "#" + page.id;	
 			//$(selector).text(data['title']);	
-		},
-		"json"
-	);
+		}, "json");
 	return false;
 }
 
@@ -98,7 +90,6 @@ function swapPlusMinus() {
 function metaToggle() {
         $("#meta-inputs").toggle('fast');
         $("#meta-toggle-button img").each(swapPlusMinus);
-
         return false;
 }
 
@@ -106,22 +97,21 @@ function grandchildrenToggle() {
         $(this).parent().children().filter('table').toggle('fast');
         $(this).children().filter('img').each(swapPlusMinus);
 }
-
 function grandchildDeleteButton() {
         var deletionConfirmed = confirm("Are you sure you want to delete this page?\nBe careful, this can't be undone!");
         if (deletionConfirmed) {
           $.post("../php/command/ajaxcommandrunner.php",
                   {
-                          object: 'yes',
-                          class: 'page',
+                          obj: 'yes',
+                          type: 'page',
                           id: this.id,
-                          action: 'delete-page',
+                          action: 'delete-page'
                   },
                   function(data, textstatus) {
                         alert(data);
                         $(this).parent().parent().hide();
-                  }, "text"
-          );
+                  }, "text");
+          
         }
         return false;
 }
