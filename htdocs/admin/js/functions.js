@@ -133,5 +133,29 @@ function grandchildAddButton() {
         );
         */
 
-        $(this).parent().prepend("<h1>" + parentid + "</h1>");
+        $(this).parent().prepend(newGrandChildMenuItem());
+}
+
+function newGrandChildMenuItem() {
+        var menuItem =   "<tr>"
+
+                         +"<td class='title-cell'>"
+                         +"<a href='#' class='page-button' id='5'>New Page</a>"
+                         +"</td>"
+
+                         +"<td class='delete-button-cell'>"
+                         +"<a id='5' class='delete-button' href='#'>"
+                         +"<img src='img/buttons/delete-button.gif' class='delete-button' />"
+                         +"</a>"
+                         +"</td>"
+
+                         +"<td class='status'>"
+                         +"<span class='pending'>&nbsp;pending</span>"
+                         +"</td>"
+
+                         +"<td>"
+                         +"</td>"
+
+                         +"</tr>";
+        return menuItem;
 }
