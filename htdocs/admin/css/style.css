@@ -85,6 +85,17 @@ div#main div#col-2 {
        width:530px;
 }
 
+div#main div#col-2 ul {
+       width:300px;
+}
+
+div#main div#col-2 ul li {
+       width:300px;
+}
+div#main div#col-2 ul table {
+       width:300px;
+}
+
 div#main div#col-2 form {
 }
 div#main div#col-2 form input {
