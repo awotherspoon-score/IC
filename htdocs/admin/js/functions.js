@@ -94,7 +94,7 @@ function metaToggle() {
 }
 
 function grandchildrenToggle() {
-        $(this).parent().children().filter('table').toggle('fast');
+        $(this).parent().children().filter('table').toggle();
         $(this).children().filter('img').each(swapPlusMinus);
 }
 function grandchildDeleteButton() {

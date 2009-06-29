@@ -21,10 +21,10 @@
                 * @param $height int (optional) the editor height
                 * @return $editor FCKEditor the generated fckeditor instance
                 */
-               public function getEditor($name, $toolbar = 'Basic', $height = null, $width = null) {
+               public function getEditor($name, $toolbar = 'Basic', $height = null, $width = null, $value = '') {
                   $editor = new FCKEditor($name);
                   $editor->BasePath = 'inc/fckeditor/';
-                  $editor->Value = 'hello world';
+                  $editor->Value = ($value == '') ? 'no value' : $value;
                   $editor->ToolbarSet = $toolbar;
 
                   if ($width !== null) {
