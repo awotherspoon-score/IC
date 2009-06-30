@@ -122,7 +122,6 @@ function grandchildAddButton() {
         
         var parentid = $(this).parent().parent().parent().parent().parent().children().filter("a").attr("id");
         
-        /*
         $.post("../php/command/ajaxcommandrunner.php",
                 {
                         obj: 'yes',
@@ -131,12 +130,12 @@ function grandchildAddButton() {
                         parentid: parentid
                 }
         );
-        */
 
-        $(this).parent().prepend(newGrandChildMenuItem());
+        $(this).parent().parent().parent().children(":last").before(newGrandChildMenuItem(page));
+        $("a.page-button").click(getPageButton);
 }
 
-function newGrandChildMenuItem() {
+function newGrandChildMenuItem(page) {
         var menuItem =   "<tr>"
 
                          +"<td class='title-cell'>"
