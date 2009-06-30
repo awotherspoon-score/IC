@@ -13,12 +13,19 @@ function init_header() {
 }
 
 function getfckval(id) {
-        return FCKeditorAPI.GetInstance(id).GetHTML();
+       if ( typeof(FCKeditorAPI) !== undefined ) { 
+          return FCKeditorAPI.GetInstance(id).GetHTML();
+        }
+        return "";
 }
 
 function setfckval(id, html) {
-        FCKeditorAPI.GetInstance(id).SetHTML(html);
-        return FCKeditorAPI.GetInstance(id).GetHTML();
+        if ( typeof(FCKeditorAPI) !== undefined ) { 
+          FCKeditorAPI.GetInstance(id).SetHTML(html);
+          return FCKeditorAPI.GetInstance(id).GetHTML();
+        }
+
+        return "";
 }
 function refreshPage(page) {
 	$("#title").val(page['title']);		
@@ -103,6 +110,7 @@ function grandchildrenToggle() {
 
 function grandchildDeleteButton() {
         var deletionConfirmed = confirm("Are you sure you want to delete this page?\nBe careful, this can't be undone!");
+        var that = $(this);
         
         if (deletionConfirmed) {
           $.post("../php/command/ajaxcommandrunner.php",
@@ -113,17 +121,21 @@ function grandchildDeleteButton() {
                           action: 'delete-page'
                   },
                   function(data, textstatus) {
-                        alert(data);
-                        $(this).parent().parent().hide();
+                        that.parent().parent().hide();
                   }, "text");
           
         }
         return false;
 }
 
+/**
+ * Action on 'add child' button click 
+ * under section header
+ */
 function grandchildAddButton() {
         
         var parentid = $(this).parent().parent().parent().parent().parent().children().filter("a").attr("id");
+        thisButton = $(this);
         
         $.post("../php/command/ajaxcommandrunner.php",
                 {
@@ -139,24 +151,25 @@ function grandchildAddButton() {
 
                 },
                 function(data, textStatus) {
-                       $("body").append(data);
+                      thisButton.parent().parent().parent().children(":last").before(newGrandChildMenuItem(data['page']));
+                      $("a.page-button").click(getPageButton);
+                      $("a.delete-button").click(grandchildDeleteButton);
                 },
-                "text"
+                "json"
         );
 
-        //$(this).parent().parent().parent().children(":last").before(newGrandChildMenuItem(page));
-        $("a.page-button").click(getPageButton);
+        
 }
 
 function newGrandChildMenuItem(page) {
         var menuItem =   "<tr>"
 
                          +"<td class='title-cell'>"
-                         +"<a href='#' class='page-button' id='" + page['id'] + "'>New Page</a>"
+                         +"<a href='#' class='page-button' id='" + page['id'] + "'>" + page['title'] + "</a>"
                          +"</td>"
 
                          +"<td class='delete-button-cell'>"
-                         +"<a id='5' class='delete-button' href='#'>"
+                         +"<a id='" + page['id']  + "' class='delete-button' href='#'>"
                          +"<img src='img/buttons/delete-button.gif' class='delete-button' />"
                          +"</a>"
                          +"</td>"
