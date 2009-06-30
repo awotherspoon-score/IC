@@ -6,11 +6,14 @@
 
 		$class = $_POST['type'];
 
+                //to get around the javascript 'status' reserved word
+                $_POST['status'] = $_POST['stat'];
+
                 if (isset($_POST['id'])) {
                   $mapper = RequestRegistry::getMapper($class);
                   $object = $mapper->find($_POST['id']);
                 } else {
-                  $object = new $class;
+                  $object = new $class();
                 }
 
                 $object->loadFromArray($_POST);

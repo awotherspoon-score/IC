@@ -1,19 +1,45 @@
 <?php
+        /**
+         * Page Data Mapper Object
+         *
+         * Responsible for creation, retrieval, update and destruction
+         * of rows in page table
+         *
+         * @author Najaf Ali <nali@scorecomms.com>
+         * @copyright (c) 2009, Score Communications
+         */
 	class PageMapper extends ContentMapper {
+                
 		function __construct() {
 			parent::__construct();
 		}
-	
+
+                /**
+                 * Template method implementation
+                 *
+                 * Creates a Page object using values in parameter $array
+                 * Called by parent::createObject()
+                 *
+                 * @param $array assoc contains page values in format 'column' => 'value'
+                 * @return $object Page the created instance of Page
+                 */
 		protected function doCreateObject(array $array) {
 			$object = new Page();
 			$object->loadFromArray($array);
 			return $object;
 		}
-		
-		
-		
+	
+                /**
+                 * Template Method Implementation
+                 *
+                 * Inserts a new row into table 'pages'
+                 * Called by parent::insert()
+                 *
+                 * @param $object Content the page object to insert
+                 */
 		protected function doInsert(Content $object) {
 			$now = time();
+                        $this->updateSlug($object); 
 			$query = "INSERT INTO pages "
 					."(slug, title, introduction, datecreated, datemodified, status, text, description, keywords, parentid) "
 					."VALUES "
@@ -22,6 +48,11 @@
 			$object->setId(self::$mysqli->insert_id);	 
 		}
 		
+                /**
+                 * Updates a row in the 'pages' table
+                 *
+                 * @param $object Content the page object to update
+                 */
 		function update(Content $object) {
 			$now = time();
 			$object->setDateModified($now);
@@ -40,12 +71,27 @@
 					."WHERE id={$object->getId()} LIMIT 1";
 			self::$mysqli->query($query);
 		}
-		
+	
+                /**
+                 * Deletes a row in the 'pages' table
+                 *
+                 * @param $object the page object to delete
+                 */
 		function delete(Content $object) {
 			$query = "DELETE FROM pages WHERE id={$object->getId()} LIMIT 1";
 			self::$mysqli->query($query);
 		}
 
+                
+                /**
+                 * Double checks a pages slug after a potential title change
+                 *
+                 * If the title hasn't changed then return. Else generate a new slug
+                 * This requires requires n runs to the database, where n is the number of duplicate slugs
+                 * TODO: Optimize this so we need at most one trip to the database
+                 *
+                 * @param $page Page the page object who's slug we need to update
+                 */
 		function updateSlug($page) {
 			$oldSlug = $page->getSlug();
 			$newSlug = $this->generateSlug($page->getTitle());
@@ -59,6 +105,14 @@
 			$page->setSlug($newSlug . $suffix);
 		}
 
+                /**
+                 * Generate a slug based on a given input string
+                 *
+                 * Generates a url friendly slug for a given string
+                 *
+                 * @param $string string the title string to convert into a slug
+                 * @return $slug string a url friendly slug based on $string
+                 */
 		function generateSlug($string) {
 			$slug = strtolower( $string ); // lower-case the string
 			$slug = preg_replace( '/[^a-z0-9- ]/', '', $slug ); // remove all non-alphanumeric characters except for spaces and hyphens

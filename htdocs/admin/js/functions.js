@@ -1,3 +1,6 @@
+var STATUS_PENDING = 0;
+var STATUS_LIVE = 1;
+
 function init_header() {
   $("ul#top-nav-list > li").hover(
           function() {
@@ -127,11 +130,21 @@ function grandchildAddButton() {
                         obj: 'yes',
                         type: 'page',
                         action: 'create-page',
-                        parentid: parentid
-                }
+                        parentid: parentid,
+                        text: 'new page',
+                        introduction: 'new page introduction',
+                        keywords: 'new page keywords',
+                        stat: STATUS_PENDING,
+                        title: 'New Page'
+
+                },
+                function(data, textStatus) {
+                       $("body").append(data);
+                },
+                "text"
         );
 
-        $(this).parent().parent().parent().children(":last").before(newGrandChildMenuItem(page));
+        //$(this).parent().parent().parent().children(":last").before(newGrandChildMenuItem(page));
         $("a.page-button").click(getPageButton);
 }
 
@@ -139,7 +152,7 @@ function newGrandChildMenuItem(page) {
         var menuItem =   "<tr>"
 
                          +"<td class='title-cell'>"
-                         +"<a href='#' class='page-button' id='5'>New Page</a>"
+                         +"<a href='#' class='page-button' id='" + page['id'] + "'>New Page</a>"
                          +"</td>"
 
                          +"<td class='delete-button-cell'>"
