@@ -33,7 +33,7 @@ function refreshPage(page) {
 	$("#meta-description").val(page['description']);
 	setfckval("content", page['text']);	
 	setfckval("introduction", page['introduction']);
-	var selector = "#" + page.id;
+	var selector = "a#" + page.id + ".page-button";
 	$(selector).text(page['title']);
 	
 	//show modified date	
