@@ -7,7 +7,7 @@
 		$class = $_POST['type'];
 
                 //to get around the javascript 'status' reserved word
-                $_POST['status'] = $_POST['stat'];
+                $_POST['status'] = isset($_POST['stat']) ? $_POST['stat'] : Content::STATUS_PENDING;
 
                 if (isset($_POST['id'])) {
                   $mapper = RequestRegistry::getMapper($class);
