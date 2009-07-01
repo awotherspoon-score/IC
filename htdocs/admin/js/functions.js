@@ -217,3 +217,28 @@ function newGrandChildMenuItem(page) {
                          +"</tr>";
         return menuItem;
 }
+
+function childAddButton() {
+        var that = $(this);
+        var parentid = that.attr('id');
+
+
+        $.post("../php/command/ajaxcommandrunner.php",
+                {
+                        obj: 'yes',
+                        type: 'page',
+                        action: 'create-page',
+                        parentid: parentid,
+                        text: 'new page',
+                        introduction: 'new page introduction',
+                        keywords: 'new page keywords',
+                        stat: STATUS_PENDING,
+                        title: 'New Page'
+
+                },
+                function(data, textStatus) {
+                },
+                "json"
+        );
+        
+}

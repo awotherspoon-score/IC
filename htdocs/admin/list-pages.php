@@ -42,6 +42,7 @@
 				$("a.pages-toggle-button").click(grandchildrenToggle); 
                                 $("a.delete-button").click(grandchildDeleteButton);
                                 $("a.add-grandchild-button").click(grandchildAddButton);
+                                $("a.add-child-button").click(childAddButton);
                         });
                 </script>
         </head>
