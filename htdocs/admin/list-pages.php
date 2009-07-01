@@ -44,20 +44,41 @@
                                 $("a.add-grandchild-button").click(grandchildAddButton);
                                 $("a.add-child-button").click(childAddButton);
                         });
+
                 </script>
+
         </head>
+
         <body>
                 <div id='wrapper'>
 
                         <?php include('inc/header.php'); ?>
                     <div id='main'>
                             <div id='col-1'>
+                                <span class='table-headers'><span class='delete'>Delete</span>&nbsp;<span class='status'>Status</span></span>
                                 <ul>
                                 <?php foreach($level2 as $child):
                                         $grandchildren = $child->getChildren(); ?>
 
                                         <li><a href='#' class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
 						 <a href='#' class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
+
+                                                 <span class='child-buttons'>
+                                                  <a id='<?= $child->getId() ?>' class='delete-button' href='#'>
+                                                    <img src='img/buttons/delete-button.gif' class='delete-button' />
+                                                  </a>
+                                                  <span class='status'>
+                                                  <?php if ($child->getStatus() == Page::STATUS_LIVE): ?>
+
+                                                    <span class='live'>&nbsp;live</span>
+
+                                                  <?php else: ?>
+
+                                                    <span class='pending'>&nbsp;pending</span>
+
+                                                  <?php endif ?>
+                                                  </span>
+                                                  </span>
                                                  <table>
                                                           <?php if (count($grandchildren) > 0): ?>
                                                           <tr class='table-headers'>
@@ -85,7 +106,7 @@
 
                                                                   <td class='status'>
 
-                                                                                <?php if ($page->getStatus() == Page::STATUS_LIVE): ?>
+                                                                                <?php if ($grandchild->getStatus() == Page::STATUS_LIVE): ?>
 
                                                                                   <span class='live'>&nbsp;live</span>
 
