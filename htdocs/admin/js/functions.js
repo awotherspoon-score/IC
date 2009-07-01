@@ -136,6 +136,8 @@ function grandchildAddButton() {
         
         var parentid = $(this).parent().parent().parent().parent().parent().children().filter("a").attr("id");
         thisButton = $(this);
+        grandchildRows = thisButton.parent().parent().parent().children();
+        lastGrandchildRow = thisButton.parent().parent().parent().children(":last");
         
         $.post("../php/command/ajaxcommandrunner.php",
                 {
@@ -151,7 +153,14 @@ function grandchildAddButton() {
 
                 },
                 function(data, textStatus) {
-                      thisButton.parent().parent().parent().children(":last").before(newGrandChildMenuItem(data['page']));
+                      //if this is the first grandchild page under this child, add the header row
+                      if (grandchildRows.size() == 1) {
+                        lastGrandchildRow.before(headerRow());
+                      }
+                       
+                      //add the new page listing to the columns
+                      lastGrandchildRow.before(newGrandChildMenuItem(data['page']));
+                      //now delete/retrieve functionality to the relevant buttons
                       $("a.page-button").click(getPageButton);
                       $("a.delete-button").click(grandchildDeleteButton);
                 },
@@ -159,6 +168,16 @@ function grandchildAddButton() {
         );
 
         
+}
+
+function headerRow() {
+        var header = ""
+          + "<tr class='table-headers'>"
+                + "<td></td>"
+                + "<td>Delete</td>"
+                + "<td>Status</td>"
+          + "</tr>";
+        return header;
 }
 
 function newGrandChildMenuItem(page) {
