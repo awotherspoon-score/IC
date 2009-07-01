@@ -69,24 +69,14 @@ span.status {
 }
 
 span.child-buttons {
-        float:right;
-        position:relative;
-        right:-12px;
-
-        top:0;
-        margin:0;
-        padding:0;
+	float:right;
 }
 
 span.child-buttons span.status {
-        position:relative;
-        right:-10px;
 }
 
 
 span.child-buttons a.delete-button {
-        position:relative;
-
 }
 
 td.delete-button-cell {

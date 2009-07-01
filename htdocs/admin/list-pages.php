@@ -55,7 +55,10 @@
                         <?php include('inc/header.php'); ?>
                     <div id='main'>
                             <div id='col-1'>
-                                <span class='table-headers'><span class='delete'>Delete</span>&nbsp;<span class='status'>Status</span></span>
+                                <span class='table-headers'>
+					<span class='delete-header'>Delete</span>&nbsp;
+					<span class='status-header'>Status</span>
+				</span>
                                 <ul>
                                 <?php foreach($level2 as $child):
                                         $grandchildren = $child->getChildren(); ?>
@@ -164,7 +167,11 @@
                                   <label for='content'>Content:</label>
                                   <?php $editor->Create(); ?><br />
 				  
-				  <p id='modify-date'></p>
+				  <p id='modify-date'>Last Modified On 
+				  <?php echo date(' D M j Y ', $page->getDateModified()); ?>
+			          at
+				  <?php echo date(' H:i ', $page->getDateModified()); ?>
+				  </p>
 			          <input type='submit' value='Save' name='save-button' id='save-button' />
                                 </form>
                             </div>
