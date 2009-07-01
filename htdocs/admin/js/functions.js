@@ -111,6 +111,8 @@ function grandchildrenToggle() {
 function grandchildDeleteButton() {
         var deletionConfirmed = confirm("Are you sure you want to delete this page?\nBe careful, this can't be undone!");
         var that = $(this);
+        var child = that.parent().parent().parent();
+        var grandchildRows =  child.children();
         
         if (deletionConfirmed) {
           $.post("../php/command/ajaxcommandrunner.php",
@@ -121,7 +123,19 @@ function grandchildDeleteButton() {
                           action: 'delete-page'
                   },
                   function(data, textstatus) {
+                        
+                        //remove the 'delete/status' headers
+                        if (grandchildRows.size() == 3) {
+                                //why 3? one row for 'addchild' button, one for the existing delete/status headers
+                                //and one more because grandchildRows hasn't been reloaded yet (think about it!)
+                                grandchildRows.filter(".table-headers").hide();
+                                grandchildRows.filter(".table-headers").remove();
+                        }
+
                         that.parent().parent().hide();
+                        that.parent().parent().remove();
+                        
+
                   }, "text");
           
         }
@@ -135,9 +149,9 @@ function grandchildDeleteButton() {
 function grandchildAddButton() {
         
         var parentid = $(this).parent().parent().parent().parent().parent().children().filter("a").attr("id");
-        thisButton = $(this);
-        grandchildRows = thisButton.parent().parent().parent().children();
-        lastGrandchildRow = thisButton.parent().parent().parent().children(":last");
+        var thisButton = $(this);
+        var grandchildRows = thisButton.parent().parent().parent().children();
+        var lastGrandchildRow = thisButton.parent().parent().parent().children(":last");
         
         $.post("../php/command/ajaxcommandrunner.php",
                 {
