@@ -68,8 +68,7 @@
 
                                                  <span class='child-buttons'>
                                                   <a id='<?= $child->getId() ?>' class='delete-button'>
-                                                    <img src='img/buttons/delete-button.gif' class='delete-button' />
-                                                  </a>
+                                                    <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
                                                   <span class='status'>
                                                   <?php if ($child->getStatus() == Page::STATUS_LIVE): ?>
 
@@ -104,8 +103,7 @@
 
                                                                   <td class='delete-button-cell'>
                                                                         <a id='<?= $grandchild->getId() ?>' class='delete-button'>
-                                                                          <img src='img/buttons/delete-button.gif' class='delete-button' />
-                                                                        </a>
+                                                                          <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
                                                                   </td>
 
                                                                   <td class='status'>
@@ -128,8 +126,7 @@
                                                           <tr>
                                                                 <td>
                                                                         <a class='add-grandchild-button' id='<?= $child->getId() ?>'>
-                                                                          <img src='img/buttons/add-child-button.gif' />
-                                                                        </a>
+                                                                          <img src='img/buttons/add-child-button.gif' /></a>
                                                                 </td>
                                                                 <td></td>
                                                                 <td></td>

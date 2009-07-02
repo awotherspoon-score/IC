@@ -69,10 +69,11 @@ span.status {
 }
 
 span.child-buttons {
-	float:right;
+        float:right;
 }
 
 span.child-buttons span.status {
+        
 }
 
 
