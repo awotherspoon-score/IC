@@ -177,6 +177,9 @@ function grandchildAddButton() {
                       //now delete/retrieve functionality to the relevant buttons
                       $("a.page-button").click(getPageButton);
                       $("a.delete-button").click(grandchildDeleteButton);
+                      //open up out new page for editing
+                      page.id = data['page']['id'];     //for the save button
+                      fetchPage(page.id);               //get the data into the form
                 },
                 "json"
         );
