@@ -198,11 +198,11 @@ function newGrandChildMenuItem(page) {
         var menuItem =   "<tr>"
 
                          +"<td class='title-cell'>"
-                         +"<a href='#' class='page-button' id='" + page['id'] + "'>" + page['title'] + "</a>"
+                         +"<a class='page-button' id='" + page['id'] + "'>" + page['title'] + "</a>"
                          +"</td>"
 
                          +"<td class='delete-button-cell'>"
-                         +"<a id='" + page['id']  + "' class='delete-button' href='#'>"
+                         +"<a id='" + page['id']  + "' class='delete-button'>"
                          +"<img src='img/buttons/delete-button.gif' class='delete-button' />"
                          +"</a>"
                          +"</td>"

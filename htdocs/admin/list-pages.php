@@ -63,11 +63,11 @@
                                 <?php foreach($level2 as $child):
                                         $grandchildren = $child->getChildren(); ?>
 
-                                        <li><a href='#' class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
+                                        <li><a class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
 						 <a href='#' class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
 
                                                  <span class='child-buttons'>
-                                                  <a id='<?= $child->getId() ?>' class='delete-button' href='#'>
+                                                  <a id='<?= $child->getId() ?>' class='delete-button'>
                                                     <img src='img/buttons/delete-button.gif' class='delete-button' />
                                                   </a>
                                                   <span class='status'>
@@ -96,13 +96,13 @@
                                                                 <tr>
 
                                                                   <td class = 'title-cell'>
-                                                                    <a href='#' class='page-button' id='<?php echo $grandchild->getId(); ?>'>
+                                                                    <a class='page-button' id='<?php echo $grandchild->getId(); ?>'>
                                                                     <?php echo $grandchild->getTitle(); ?>
                                                                     </a>
                                                                   </td>
 
                                                                   <td class='delete-button-cell'>
-                                                                        <a id='<?= $grandchild->getId() ?>' class='delete-button' href='#'>
+                                                                        <a id='<?= $grandchild->getId() ?>' class='delete-button'>
                                                                           <img src='img/buttons/delete-button.gif' class='delete-button' />
                                                                         </a>
                                                                   </td>
@@ -126,7 +126,7 @@
                                                           <?php endforeach ?>
                                                           <tr>
                                                                 <td>
-                                                                        <a href='#' class='add-grandchild-button' id='<?= $child->getId() ?>'>
+                                                                        <a class='add-grandchild-button' id='<?= $child->getId() ?>'>
                                                                           <img src='img/buttons/add-child-button.gif' />
                                                                         </a>
                                                                 </td>
@@ -137,7 +137,7 @@
                                         </li>
                                 <?php endforeach ?>
                                         <li>
-                                              <a href='#' class='add-child-button' id='<?= $page->getId() ?>'>
+                                              <a class='add-child-button' id='<?= $page->getId() ?>'>
                                               <img src='img/buttons/add-child-button.gif' />
                                               </a>
                                                 
@@ -150,7 +150,7 @@
                                   <label for='title'>Title: </label>
                                   <input class='text-input' type='text' id='title' name='title' value='' />
 
-				  <a href='#' id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
+				  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
 
 				  <div id='meta-inputs'>
 					  <label for='meta-keywords'>Keywords:</label>
