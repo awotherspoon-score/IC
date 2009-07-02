@@ -28,14 +28,20 @@ function setfckval(id, html) {
         return "";
 }
 function refreshPage(page) {
+	//pull values into the form
 	$("#title").val(page['title']);		
 	$("#status-input").val(page['status']);
 	$("#meta-keywords").val(page['keywords']);
 	$("#meta-description").val(page['description']);
 	setfckval("content", page['text']);	
 	setfckval("introduction", page['introduction']);
+
+	//show the new values in the left column
+	//title
 	var selector = "a#" + page.id + ".page-button";
 	$(selector).text(page['title']);
+	//status
+	
 	
 	
 	//show modified date	
