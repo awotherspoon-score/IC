@@ -30,6 +30,7 @@
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
 			var page = new Object();
+			page.id = <?= $page->getId() ?>;
 
                         $(document).ready(function() {
                                 init_header();
@@ -43,6 +44,10 @@
                                 $("a.delete-button").click(grandchildDeleteButton);
                                 $("a.add-grandchild-button").click(grandchildAddButton);
                                 $("a.add-child-button").click(childAddButton);
+
+				$("#status-input").attr('disabled', 'disabled');	
+				$("#title").attr('disabled', 'disabled');	
+
                         });
 
                 </script>
@@ -147,6 +152,13 @@
 				
                                   <label for='title'>Title: </label>
                                   <input class='text-input' type='text' id='title' name='title' value='' />
+
+				  <label for='status'>Status: </label>
+				  <select name='status' id='status-input'>
+				  	<option value='<?= Content::STATUS_PENDING ?>'<?= ($page->getStatus() == Content::STATUS_PENDING) ? ' selected' : '' ?>>Pending</option>
+				  	<option value='<?= Content::STATUS_LIVE ?>'<?= ($page->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
+				  </select>
+				
 
 				  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
 

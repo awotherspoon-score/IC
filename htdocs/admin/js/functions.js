@@ -29,12 +29,14 @@ function setfckval(id, html) {
 }
 function refreshPage(page) {
 	$("#title").val(page['title']);		
+	$("#status-input").val(page['status']);
 	$("#meta-keywords").val(page['keywords']);
 	$("#meta-description").val(page['description']);
 	setfckval("content", page['text']);	
 	setfckval("introduction", page['introduction']);
 	var selector = "a#" + page.id + ".page-button";
 	$(selector).text(page['title']);
+	
 	
 	//show modified date	
 	var modifiedDate = new Date();
@@ -56,6 +58,8 @@ function refreshPage(page) {
 function getPageButton() {
 	page.id = this.id;
         fetchPage(page.id);
+	$("#status-input").removeAttr('disabled');	
+	$("#title").removeAttr('disabled');	
 }
 function fetchPage(id) {
 	$.post("../php/command/ajaxcommandrunner.php", {
@@ -75,7 +79,8 @@ function updatePage() {
 			description: $("#meta-description").val(),
 			text: getfckval("content"),
 			action: 'update-page',
-			introduction: getfckval("introduction") 
+			introduction: getfckval("introduction"),
+			stat: $("#status-input").val()
 		},
 		function(data, textstatus) {
 			refreshPage(data['page']);
