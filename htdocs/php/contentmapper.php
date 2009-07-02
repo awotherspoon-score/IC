@@ -43,9 +43,11 @@
                  * @param $query String The query to be executed
                  * @param $forceArray boolean (optional) if set to true, returns a 
                  * multi-dimensional array even if there's only one record to fetch, defaults to false
+                 * @return mixed assoc
                  */
 		function queryToArray($query, $forceArray = false) {
 			$result = self::$mysqli->query( $query );
+
 			if ($result->num_rows == 1) {
                                 if ($forceArray) {
                                         $returnArray = array();
@@ -53,6 +55,7 @@
                                         return $returnArray;
                                 }
 				return $result->fetch_assoc();
+
 			} elseif ($result->num_rows > 1) {
 				$returnArray = array();
 				while ($item = $result->fetch_assoc()) {
