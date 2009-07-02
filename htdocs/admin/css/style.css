@@ -354,3 +354,15 @@ div#section-select a {
         text-decoration:none;
 }
 /*End Section Select*/
+
+/*UI Polish*/
+.page-button, 
+.delete-button, 
+.pages-toggle-button, 
+.add-grandchild-button, 
+.add-child-button,
+#meta-toggle-button,
+#save-button {
+        cursor:pointer;
+}
+/*End UI Polish*/

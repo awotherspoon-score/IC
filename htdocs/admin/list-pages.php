@@ -64,7 +64,7 @@
                                         $grandchildren = $child->getChildren(); ?>
 
                                         <li><a class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
-						 <a href='#' class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
+						 <a class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
 
                                                  <span class='child-buttons'>
                                                   <a id='<?= $child->getId() ?>' class='delete-button'>
