@@ -109,7 +109,11 @@ function grandchildrenToggle() {
 }
 
 function grandchildDeleteButton() {
-        var deletionConfirmed = confirm("Are you sure you want to delete this page?\nBe careful, this can't be undone!");
+        var confirmMessage = "Are you sure you want to delete this page?\nBe careful, this can't be undone!";
+        if ($(this).parent().attr('class') == 'child-buttons') {
+                confirmMessage += "\n\nThis will also delete all child pages.";
+        }
+        var deletionConfirmed = confirm(confirmMessage);
         var that = $(this);
         var child = that.parent().parent().parent();
         var grandchildRows =  child.children();
@@ -125,12 +129,12 @@ function grandchildDeleteButton() {
                   function(data, textstatus) {
                         
                         //remove the 'delete/status' headers
-                        if (grandchildRows.size() == 3) {
+                        /*if (grandchildRows.size() == 3) {
                                 //why 3? one row for 'addchild' button, one for the existing delete/status headers
                                 //and one more because grandchildRows hasn't been reloaded yet (think about it!)
                                 grandchildRows.filter(".table-headers").hide();
                                 grandchildRows.filter(".table-headers").remove();
-                        }
+                        }*/
 
                         that.parent().parent().hide();
                         that.parent().parent().remove();
