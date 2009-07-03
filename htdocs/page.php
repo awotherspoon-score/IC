@@ -1,19 +1,24 @@
 <?php include('init.php'); ?>
 
-
+<?php
+	$slug = $_GET['slug'];
+	$page = RequestRegistry::getPageMapper()->findBySlug($slug);
+	$children = $page->getChildren();
+	define( 'URL', RequestRegistry::getConfig()->getSiteUrl());
+?>
 
 <?php include('inc/doctype.php'); ?>
 <html>
 <head>
-<link rel='stylesheet' type='text/css' href='css/shared.css' />
-<link rel='stylesheet' type='text/css' href='css/pcs-default.css' />
-<link rel='stylesheet' type='text/css' href='css/current.css' />
-<script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
-<script type='text/javascript' src='js/jquery.dimensions.js'></script>
-<script type='text/javascript' src='js/jquery.tooltip.min.js'></script>
-<script type='text/javascript' src='js/font/cufon-yui.js'></script>
-<script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
-<script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
+<link rel='stylesheet' type='text/css' href='<?= URL ?>css/shared.css' />
+<link rel='stylesheet' type='text/css' href='<?= URL ?>css/pcs-default.css' />
+<link rel='stylesheet' type='text/css' href='<?= URL ?>css/current.css' />
+<script type='text/javascript' src='<?= URL ?>js/jquery-1.3.2.min.js'></script>
+<script type='text/javascript' src='<?= URL ?>js/jquery.dimensions.js'></script>
+<script type='text/javascript' src='<?= URL ?>js/jquery.tooltip.min.js'></script>
+<script type='text/javascript' src='<?= URL ?>js/font/cufon-yui.js'></script>
+<script type='text/javascript' src='<?= URL ?>js/font/Sanuk-Black_500.font.js'></script>
+<script type='text/javascript' src='<?= URL ?>js/font/Sanuk-Regular_500.font.js'></script>
 <script type="text/javascript">
 		Cufon.replace('h1', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
@@ -74,8 +79,8 @@
 		<div id='header-top'>	
 		</div>
 		
-		<img id='header-image' alt='We nourish our pupils with an engaging focus on Jewish Tradition' src='img/header-prospective.jpg' />
-                <img alt='Testimonial' src='img/testimonial-prospective.jpg' class='testimonial-image' id='prospective-testimonial-image' />
+		<img id='header-image' alt='We nourish our pupils with an engaging focus on Jewish Tradition' src='<?= URL ?>img/header-prospective.jpg' />
+                <img alt='Testimonial' src='<?= URL ?>img/testimonial-prospective.jpg' class='testimonial-image' id='prospective-testimonial-image' />
 		
 		<div id='search-box'>
 			<form action='search.php' method='get'>
@@ -94,17 +99,17 @@
                         <ul>
                                 <li id='prospective-link'>
                                         <a href='prospective.php'>
-                                                <img title='Prospective Students' src='img/buttons/prospective-button.gif' />
+                                                <img title='Prospective Students' src='<?= URL ?>img/buttons/prospective-button.gif' />
                                         </a>
                                 </li>
                                 <li id='current-link' class='selected'>
                                         <a href='current.php'>
-                                                <img title='Current Students' src='img/buttons/current-button.gif' />
+                                                <img title='Current Students' src='<?= URL ?>img/buttons/current-button.gif' />
                                         </a>
                                 </li>
                                 <li id='staff-link'>
                                         <a href='staff.php'>
-                                                 <img title='Staff' src='img/buttons/staff-button.gif' />
+                                                 <img title='Staff' src='<?= URL ?>img/buttons/staff-button.gif' />
                                         </a>
                                 </li>
                         </ul>
@@ -117,14 +122,9 @@
                         <div id='breadcrumb'>
                         <a href='#'>Home</a> | <a class='thispage' href='#'>Prospective Pupils</a>
                         </div>
-                        <h1>Welcome Prospective Pupils and Parents</h1>
-                        <p id='first-paragraph'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu sapien nisi, eu mollis nisl. Suspendisse id diam mauris, et rutrum tortor. Sed semper, turpis id tempus dictum, ipsum arcu facilisis odio, id vestibulum quam libero ac erat. Duis pharetra, sem vel sagittis sollicitudin, velit eros cursus diam, non convallis odio elit vel sem. Sed dictum est quis nibh mollis sit amet hendrerit ante fermentum. </p>
-
-                        <p>Vestibulum aliquet purus lorem, sit amet volutpat ante. Nulla interdum massa nec lacus ornare gravida. Praesent vitae tortor ut ligula adipiscing <a href='#'>condimentum</a>. Ut dapibus lobortis scelerisque. Suspendisse id felis lacus. Maecenas gravida, quam sed faucibus convallis, felis arcu faucibus lorem, a interdum magna eros eu metus. Cras vitae tellus metus. In pretium pellentesque tortor vel pharetra. Morbi sit amet leo volutpat dui iaculis mattis. Phasellus nec ipsum nisl. Maecenas nec <a href='#'>sapien sapien</a>, quis commodo arcu. Donec odio mi, venenatis quis gravida ut, ultrices sed magna. Pellentesque vestibulum orci eget urna dapibus non pellentesque lacus mollis.</p>
-                        <h2>A H2 Heading</h2>
-                        <p>Nulla facilisi. Vivamus ut hendrerit libero. Donec dictum libero non nibh dictum vestibulum. Etiam ut mauris ipsum, sit amet consequat erat. Integer nisi metus, lobortis vel luctus a, tincidunt vel lectus. Sed justo turpis, consectetur ac tincidunt et, consectetur eget eros. </p>
-                        <h3>A h3 heading</h3>
-                        <p>Nunc bibendum aliquam ipsum eu feugiat. Etiam mattis faucibus orci eu varius. Nunc auctor scelerisque mi, porttitor rhoncus dui iaculis non. In hac habitasse platea dictumst. Praesent massa velit, mattis id condimentum nec, pellentesque et nulla. Donec egestas mattis varius. Suspendisse consectetur elit eu velit facilisis aliquam. In pretium nunc vitae urna posuere elementum. Duis ut turpis id tortor imperdiet pharetra. Maecenas eget libero nulla, vitae sagittis purus.</p>
+                        <h1><?= $page->getTitle() ?></h1>
+                        <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
+			<?= $page->getText() ?>
 
                 </div>
                 <div id='sidebar'>
@@ -132,14 +132,11 @@
                   <p>Suggested Links</p>
                 </div>
                 <ul class='sidebar-links-list'>
-                        <li><a href='#'>Open Day</a></li>
-                        <li><a href='#'>Entrance Requirements</a></li>
-                        <li><a href='#'>Admissions</a></li>
-                        <li><a href='#'>Fees</a></li>
-                        <li><a href='#'>Nurturing our Pupils</a></li>
-                        <li><a href='#'>Jewish Life and Learning</a></li>
+			<?php foreach ( $children as $child): ?>	
+				<li><a href='#'><?= $child->getTitle() ?></a></li>
+			<?php endforeach ?>
                 </ul>
-                <img src='img/post-image.jpg' id='post-image' />
+                <img src='<?= URL ?>img/post-image.jpg' id='post-image' />
 
 
                 </div>

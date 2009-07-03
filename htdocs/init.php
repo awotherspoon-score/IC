@@ -1,6 +1,6 @@
 <?php
 function __autoload($class) {
-        $docroot = $_SERVER['DOCUMENT_ROOT'] . '/ic/htdocs/';
+        $docroot = $_SERVER['DOCUMENT_ROOT'] . '/';
         if (strpos($class, 'Command') !== false) {
                   include $docroot . 'php/command/' . strtolower($class) . '.php';
                   return;
@@ -8,6 +8,6 @@ function __autoload($class) {
 	include $docroot . 'php/' . strtolower($class) . '.php';
 }
 
-define('CONFIG_FILENAME', $_SERVER['DOCUMENT_ROOT'] . '/ic/config.ini');
+define('CONFIG_FILENAME', $_SERVER['DOCUMENT_ROOT'] . '/../config.ini');
 
 
