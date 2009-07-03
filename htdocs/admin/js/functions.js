@@ -27,6 +27,17 @@ function setfckval(id, html) {
 
         return "";
 }
+
+function enableEditor(id) {
+	var oEditor = FCKeditorAPI.GetInstance(id);
+	oEditor.EditorDocument.body.disabled=false;
+}
+
+function disableEditor(id) {
+	var oEditor = FCKeditorAPI.GetInstance(id);
+	oEditor.EditorDocument.body.disabled=true;
+}
+
 function refreshPage(page) {
 	//pull values into the form
 	$("#title").val(page['title']);		
@@ -90,8 +101,9 @@ function fetchPage(id) {
 		'page-id' : id
 	}, function (data, textStatus) { 
 		refreshPage(data['page']); 
-		$("#status-input").removeAttr('disabled');	
-		$("#title").removeAttr('disabled');	
+		//$("#status-input").removeAttr('disabled');	
+		//$("#title").removeAttr('disabled');	
+		enableForm();
 
 	}, "json");
 }
@@ -162,10 +174,27 @@ function grandchildDeleteButton() {
                   function(data, textstatus) {
                         that.parent().parent().hide();
                         that.parent().parent().remove();
+			disableForm();
                   }, "json");
           
         }
         return false;
+}
+
+function disableForm() {
+	$(".text-input").attr('disabled', 'disabled');
+	$("select#status-input").attr('disabled', 'disabled');
+	disableEditor('introduction');
+	disableEditor('content');
+	$("#save-button").attr('disabled', 'disabled');
+}
+
+function enableForm() {
+	$(".text-input").removeAttr('disabled');
+	$("select#status-input").removeAttr('disabled');
+	enableEditor('introduction');
+	enableEditor('content');
+	$("#save-button").removeAttr('disabled');
 }
 
 /**
@@ -233,7 +262,7 @@ function newGrandChildMenuItem(page) {
                          +"</td>"
 
                          +"<td class='status'>"
-                         +"<span class='pending'>&nbsp;pending</span>"
+                         +"<span class='pending'>pending</span>"
                          +"</td>"
 
                          +"<td>"
@@ -262,8 +291,39 @@ function childAddButton() {
 
                 },
                 function(data, textStatus) {
+			that.before(childMenuItem(data['page']));
+			$("a.page-button").click(getPageButton);
+			$("a.delete-button").click(grandchildDeleteButton);
+			$("a.add-grandchild-button").click(grandchildAddButton);
+			$("a.pages-toggle-button").click(grandchildrenToggle); 
+			page.id = data['page']['id']
+			fetchPage(page.id);
                 },
                 "json"
         );
         
+}
+
+function childMenuItem(page) {
+	var childMenuItem = "<li><a class='page-button' id='" + page['id'] + "'>"+ page['title'] + "</a>\n"
+		 + "<a class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>\n"
+		 + "<span class='child-buttons'>\n"
+		 + "<a id='" + page['id'] + "' class='delete-button'>\n"
+		 + "<img src='img/buttons/delete-button.gif' class='delete-button' /></a>\n"
+		 + "<span class='status' id='" + page['id'] + "'>\n"
+		 + "<span class='pending'>pending</span>\n"
+		 + "</span>\n"
+		 + "</span>\n"
+		 + "<table>\n"
+		 +	 "<tr>\n"
+		 + 		"<td>\n"
+		 +      	"<a class='add-grandchild-button' id='" + page['id'] + "'>\n"
+		 +			  "<img src='img/buttons/add-child-button.gif' /></a>\n"
+	         +		"</td>\n"
+	         +		"<td></td>\n"
+	         +		"<td></td>\n"
+	         +        "</tr>\n"
+		 + "</table>\n"
+	         + "</li>\n"
+	return childMenuItem;
 }

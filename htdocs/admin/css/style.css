@@ -58,26 +58,22 @@ span.table-headers {
        left:235px;
 }
 
-span.delete {
-        position:relative;
-        right:5px;
-}
 
-span.status {
-        position:relative;
-        left:2px;
-}
 
 span.child-buttons {
         float:right;
+	position:absolute;
+	left:237px;
 }
 
 span.child-buttons span.status {
-        
+       position:relative; 
+	left:5px;
 }
 
 
 span.child-buttons a.delete-button {
+	position:relative;
 }
 
 td.delete-button-cell {
@@ -85,10 +81,23 @@ td.delete-button-cell {
 }
 
 td.status, span.child-buttons span.status {
+	position:relative;
        font-weight:normal;
        text-transform:uppercase;
        font-size:0.8em;
        padding-left:40px;
+}
+
+
+
+td.status span {
+	position:relative;
+	left:20px;
+}
+
+td.delete-button-cell a {
+	position:relative;
+	left:13px;
 }
 
 .status .pending {

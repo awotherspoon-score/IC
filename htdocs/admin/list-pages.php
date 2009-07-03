@@ -77,11 +77,11 @@
                                                   <span class='status' id='<?= $child->getId() ?>'>
                                                   <?php if ($child->getStatus() == Page::STATUS_LIVE): ?>
 
-                                                    <span class='live'>&nbsp;live</span>
+                                                    <span class='live'>live</span>
 
                                                   <?php else: ?>
 
-                                                    <span class='pending'>&nbsp;pending</span>
+                                                    <span class='pending'>pending</span>
 
                                                   <?php endif ?>
                                                   </span>
@@ -175,7 +175,7 @@
 			          <input type='submit' value='Save' name='save-button' id='save-button' />
                                 </form>
                             </div>
-                    </div><!-- /#main -->
+                    </div><!-- /#min -->
 
                 </div><!-- /#wrapper -->
                 <script type='text/javascript'>
