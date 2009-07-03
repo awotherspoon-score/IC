@@ -121,6 +121,26 @@
 			return $slug;
 		}
 
+		/**
+		 * Find 3 Top Level Pages
+		 * 
+		 * The School, Joining Us and Way Of Life
+		 *
+		 * @return PageCollection collection containing top level pages
+		 */
+		function findTopPages() {
+			return $this->createCollection($this->queryToArray($this->selectTopPagesQuery()));
+		}
+
+		/**
+		 * SQL For finding top 3 level pages
+		 *
+		 * @return string the sql query that will find 3 top level pages
+		 */
+		function selectTopPagesQuery() {
+			return "SELECT * FROM pages WHERE id='1' OR id='2' OR id='3' LIMIT 3";
+		}
+
                 function findByParentId($parentid) {
                         return $this->createCollection($this->queryToArray($this->selectByParentIdQuery($parentid), true));                        
                 }

@@ -1,29 +1,37 @@
+<?php
+	$page_mapper = RequestRegistry::getPageMapper();
+
+	$the_school = $page_mapper->find(1);
+	$the_school_children = $the_school->getChildren();
+
+	$joining_us = $page_mapper->find(2);
+	$joining_us_children = $joining_us->getChildren();
+
+	$way_of_life = $page_mapper->find(3);
+	$way_of_life_children = $way_of_life->getChildren();
+?>
+
               <div id='top-nav'>
                         <ul id='top-nav-list'>
                                 <li id='the-school-link' class='page-nav-link'><a href='#'>The School</a>
                                         <ul>
-                                                <li><a href='#'>About The School</a></li>
-                                                <li><a href='#'>Our Ethos</a></li>
-                                                <li><a href='#'>The Immanuel Curriculum</a></li>
-                                                <li><a href='#'>The Sixth Form</a></li>
-                                                <li><a href='#'>Alumni</a></li>
+						<?php foreach ( $the_school_children as $child): ?>
+                                                <li><a href='#'><?= $child->getTitle() ?></a></li>
+						<?php endforeach ?>
                                         </ul>
                                 </li>
                                 <li id='joining-us-link' class='page-nav-link'><a href='#'>Joining Us</a>
                                         <ul>
-                                                <li><a href='#'>Open Day</a></li>
-                                                <li><a href='#'>Entrance Requirements</a></li>
-                                                <li><a href='#'>Admissions</a></li>
-                                                <li><a href='#'>Fees</a></li>
-                                                <li><a href='#'>Application Forms</a></li>
-                                                <li><a href='#'>Staff</a></li>
+						<?php foreach ( $joining_us_children as $child): ?>
+                                                <li><a href='#'><?= $child->getTitle() ?></a></li>
+						<?php endforeach ?>
                                         </ul>
                                 </li>
                                 <li id='way-of-life-link' class='page-nav-link'><a href='#'>Way of Life</a>
                                         <ul>
-                                                <li><a href='#'>Nurturing Our Pupils</a></li>
-                                                <li><a href='#'>Jewish Life and Learning</a></li>
-                                                <li><a href='#'>Extra Curricular Activities</a></li>
+						<?php foreach ( $way_of_life_children as $child): ?>
+                                                <li><a href='#'><?= $child->getTitle() ?></a></li>
+						<?php endforeach ?>
                                         </ul>
                                 </li>
                                 <li id='news-link' class='nav-link'><a href='#'>News</a>
