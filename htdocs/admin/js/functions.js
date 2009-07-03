@@ -150,20 +150,9 @@ function grandchildDeleteButton() {
                           action: 'delete-page'
                   },
                   function(data, textstatus) {
-                        
-                        //remove the 'delete/status' headers
-                        /*if (grandchildRows.size() == 3) {
-                                //why 3? one row for 'addchild' button, one for the existing delete/status headers
-                                //and one more because grandchildRows hasn't been reloaded yet (think about it!)
-                                grandchildRows.filter(".table-headers").hide();
-                                grandchildRows.filter(".table-headers").remove();
-                        }*/
-
                         that.parent().parent().hide();
                         that.parent().parent().remove();
-                        
-
-                  }, "text");
+                  }, "json");
           
         }
         return false;
@@ -194,11 +183,6 @@ function grandchildAddButton() {
 
                 },
                 function(data, textStatus) {
-                      //if this is the first grandchild page under this child, add the header row
-                      if (grandchildRows.size() == 1) {
-                        lastGrandchildRow.before(headerRow());
-                      }
-                       
                       //add the new page listing to the columns
                       lastGrandchildRow.before(newGrandChildMenuItem(data['page']));
                       //now delete/retrieve functionality to the relevant buttons

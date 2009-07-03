@@ -87,19 +87,9 @@
                                                   </span>
                                                   </span>
                                                  <table>
-                                                          <?php if (count($grandchildren) > 0): ?>
-                                                          <tr class='table-headers'>
-                                                                <td></td>
-                                                                <td>Delete</td>
-                                                                <td>Status</td>
-                                                          </tr>
-                                                          <?php endif ?>
 
                                                           <?php foreach ( $grandchildren as $grandchild ): ?>
-
-
                                                                 <tr>
-
                                                                   <td class = 'title-cell'>
                                                                     <a class='page-button' id='<?php echo $grandchild->getId(); ?>'>
                                                                     <?php echo $grandchild->getTitle(); ?>
