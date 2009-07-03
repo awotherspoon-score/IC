@@ -15,6 +15,8 @@
 		}
 
                 function findBySlug( $slug ) {
+			$old = $this->getFromMap($slug);
+			if ($old != null) {return $old;}
                         return $this->createObject( $this->queryToArray($this->selectBySlugQuery($slug)));
                 }
 		
