@@ -52,6 +52,16 @@ function refreshPage(page) {
 	}
 		
 	
+	var selector = "span#" + page['id'] + ".status span";
+	status_span = $(selector);	
+	status_span.removeClass('live pending');
+	if (page['status'] == STATUS_PENDING) {
+		status_span.text('pending');
+		status_span.addClass('pending');
+	} else {
+		status_span.text('live');
+		status_span.addClass('live');
+	}
 	
 	//show modified date	
 	var modifiedDate = new Date();
