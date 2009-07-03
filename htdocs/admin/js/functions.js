@@ -38,9 +38,10 @@ function refreshPage(page) {
 
 	//show the new values in the left column
 	//title
-	var selector = "a#" + page.id + ".page-button";
-	$(selector).text(page['title']);
+	$("a#" + page.id + ".page-button").text(page['title']);
 	//status
+	
+			
 	
 	
 	
@@ -64,14 +65,17 @@ function refreshPage(page) {
 function getPageButton() {
 	page.id = this.id;
         fetchPage(page.id);
-	$("#status-input").removeAttr('disabled');	
-	$("#title").removeAttr('disabled');	
 }
 function fetchPage(id) {
 	$.post("../php/command/ajaxcommandrunner.php", {
 		'action' : 'get-page',
 		'page-id' : id
-	}, function (data, textStatus) { refreshPage(data['page']); }, "json");
+	}, function (data, textStatus) { 
+		refreshPage(data['page']); 
+		$("#status-input").removeAttr('disabled');	
+		$("#title").removeAttr('disabled');	
+
+	}, "json");
 }
 
 function updatePage() {
@@ -195,6 +199,7 @@ function grandchildAddButton() {
                       //open up out new page for editing
                       page.id = data['page']['id'];     //for the save button
                       fetchPage(page.id);               //get the data into the form
+		      
                 },
                 "json"
         );
