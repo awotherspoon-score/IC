@@ -74,7 +74,7 @@
                                                  <span class='child-buttons'>
                                                   <a id='<?= $child->getId() ?>' class='delete-button'>
                                                     <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
-                                                  <span class='status'>
+                                                  <span class='status' id='<?= $child->getId() ?>'>
                                                   <?php if ($child->getStatus() == Page::STATUS_LIVE): ?>
 
                                                     <span class='live'>&nbsp;live</span>
@@ -111,15 +111,15 @@
                                                                           <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
                                                                   </td>
 
-                                                                  <td class='status'>
+                                                                  <td id='<?= $grandchild->getId() ?>' class='status'>
 
                                                                                 <?php if ($grandchild->getStatus() == Page::STATUS_LIVE): ?>
 
-                                                                                  <span class='live'>&nbsp;live</span>
+                                                                                  <span class='live'>live</span>
 
                                                                                 <?php else: ?>
 
-                                                                                  <span class='pending'>&nbsp;pending</span>
+                                                                                  <span class='pending'>pending</span>
 
                                                                                 <?php endif ?>
                                                                   </td>
