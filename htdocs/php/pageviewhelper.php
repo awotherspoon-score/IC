@@ -24,19 +24,21 @@
 		}
 
 		public function sidebar() {
-			$children = $this->content->getChildren();
-			$sidebar = 	"<div id='sidebar'>\n"
-				 	."<div class='sidebar-links-title'>\n"
-					."<p>{$this->content->getTitle()}</p>\n"
-				        ."</div>\n"	
-					."<ul class='sidebar-links-list'>\n";
+			$children = $this->content->getLiveChildren();
+			$sidebar = 	"<div id='sidebar'>\n";
+			if ( count( $children ) > 0 ) {
+				$sidebar	.="<div class='sidebar-links-title'>\n"
+						."<p>{$this->content->getTitle()}</p>\n"
+						."</div>\n"	
+						."<ul class='sidebar-links-list'>\n";
 
-			foreach ($children as $child) {
-				$sidebar .= "<li><a href='{$this->url($child)}'>{$child->getTitle()}</a></li>";
+				foreach ($children as $child) {
+					$sidebar .= "<li><a href='{$this->url($child)}'>{$child->getTitle()}</a></li>";
+				}
+
+				$sidebar	.="</ul>\n";
 			}
-
-			$sidebar	.="</ul>\n"
-					."<img src='/img/post-image.jpg' id='post-image' />\n"
+			$sidebar 	.="<img src='/img/post-image.jpg' id='post-image' />\n"
 				  	."</div>\n";
 			return $sidebar;
 		}

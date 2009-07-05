@@ -8,6 +8,11 @@
                 private $children;
 
 		/**
+		 * $liveChildren PageCollection Collection of Live Child Pages
+		 */
+		 private $liveChildren;
+
+		/**
 		 * $parent Page Object Representing Parent of this Page
 		 */
 	 	private $parent;
@@ -40,11 +45,23 @@
 		//END GETTERS + SETTERS
 
                 public function getChildren() {
-                        if ( ! isset ( $this->children ) ) {
+                        if ( ! isset( $this->children ) ) {
                                 $this->children = RequestRegistry::getPageMapper()->findByParentId($this->getId());
                         }
                         return $this->children;
                 }
+
+		public function getLiveChildren() {
+			if ( ! isset( $this->liveChildren ) ) {
+				$this->liveChildren = RequestRegistry::getPageMapper()->findLiveByParentId($this->getId());
+			}
+			return $this->liveChildren;
+		
+		}
+
+		public function hasLiveChildren() {
+			return ( $this->getLiveChildren() != null );
+		}
 		
 		/**
 		 * Returns parent page object

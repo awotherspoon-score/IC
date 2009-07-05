@@ -141,6 +141,20 @@
 			return "SELECT * FROM pages WHERE id='1' OR id='2' OR id='3' LIMIT 3";
 		}
 
+		function findLiveByParentId($parentid) {
+                        return $this->createCollection($this->queryToArray($this->selectLiveByParentIdQuery($parentid), true)); 
+		}
+
+		/**
+		 * SQL For Finding Live By ParentId
+		 *
+		 * @return string the sql query that will return all live pages with a given parent id
+		 */
+		function selectLiveByParentIdQuery($parentid) {
+			$live = Content::STATUS_LIVE;
+			return "SELECT * FROM pages WHERE status='{$live}' AND parentid={$parentid}";
+		}
+
                 function findByParentId($parentid) {
                         return $this->createCollection($this->queryToArray($this->selectByParentIdQuery($parentid), true));                        
                 }

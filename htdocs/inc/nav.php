@@ -2,13 +2,13 @@
 	$page_mapper = RequestRegistry::getPageMapper();
 
 	$the_school = $page_mapper->find(1);
-	$the_school_children = $the_school->getChildren();
+	$the_school_children = $the_school->getLiveChildren();
 
 	$joining_us = $page_mapper->find(2);
-	$joining_us_children = $joining_us->getChildren();
+	$joining_us_children = $joining_us->getLiveChildren();
 
 	$way_of_life = $page_mapper->find(3);
-	$way_of_life_children = $way_of_life->getChildren();
+	$way_of_life_children = $way_of_life->getLiveChildren();
 	$urlHelper = RequestRegistry::getUrlHelper();
 ?>
 
