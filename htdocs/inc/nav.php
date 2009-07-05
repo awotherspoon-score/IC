@@ -9,28 +9,29 @@
 
 	$way_of_life = $page_mapper->find(3);
 	$way_of_life_children = $way_of_life->getChildren();
+	$urlHelper = RequestRegistry::getUrlHelper();
 ?>
 
               <div id='top-nav'>
                         <ul id='top-nav-list'>
-                                <li id='the-school-link' class='page-nav-link'><a href='#'>The School</a>
+                                <li id='the-school-link' class='page-nav-link'><a href='<?= $urlHelper->url($the_school) ?>'>The School</a>
                                         <ul>
 						<?php foreach ( $the_school_children as $child): ?>
-                                                <li><a href='#'><?= $child->getTitle() ?></a></li>
+                                                <li><a href='<?= $urlHelper->url($child); ?>'><?= $child->getTitle() ?></a></li>
 						<?php endforeach ?>
                                         </ul>
                                 </li>
-                                <li id='joining-us-link' class='page-nav-link'><a href='#'>Joining Us</a>
+                                <li id='joining-us-link' class='page-nav-link'><a href='<?= $urlHelper->url($joining_us) ?>'>Joining Us</a>
                                         <ul>
 						<?php foreach ( $joining_us_children as $child): ?>
-                                                <li><a href='#'><?= $child->getTitle() ?></a></li>
+                                                <li><a href='<?= $urlHelper->url($child) ?>'><?= $child->getTitle() ?></a></li>
 						<?php endforeach ?>
                                         </ul>
                                 </li>
-                                <li id='way-of-life-link' class='page-nav-link'><a href='#'>Way of Life</a>
+                                <li id='way-of-life-link' class='page-nav-link'><a href='<?= $urlHelper->url($way_of_life) ?>'>Way of Life</a>
                                         <ul>
 						<?php foreach ( $way_of_life_children as $child): ?>
-                                                <li><a href='#'><?= $child->getTitle() ?></a></li>
+                                                <li><a href='<?= $urlHelper->url($child) ?>'><?= $child->getTitle() ?></a></li>
 						<?php endforeach ?>
                                         </ul>
                                 </li>
