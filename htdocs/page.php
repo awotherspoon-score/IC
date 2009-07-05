@@ -1,10 +1,10 @@
 <?php include('init.php'); ?>
 
 <?php
-	$slug = $_GET['slug'];
+	$slug = mysql_escape_string($_GET['slug']);
 	$page = RequestRegistry::getPageMapper()->findBySlug($slug);
+	$view = RequestRegistry::getViewHelper($page);
 	$children = $page->getChildren();
-	define( 'URL', RequestRegistry::getConfig()->getSiteUrl());
 ?>
 
 <?php include('inc/doctype.php'); ?>
@@ -119,9 +119,7 @@
 	<div id='main'>
                 <div class='cleardiv'></div>
                 <div id='content'>
-                        <div id='breadcrumb'>
-                        <a href='#'>Home</a> | <a class='thispage' href='#'>Prospective Pupils</a>
-                        </div>
+			<?= $view->breadcrumbs(); ?>
                         <h1><?= $page->getTitle() ?></h1>
                         <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
 			<?= $page->getText() ?>

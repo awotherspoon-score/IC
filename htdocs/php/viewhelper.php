@@ -3,14 +3,14 @@
 		/**
 		 * The content that this helper will help display
 		 */
-		private $content;
+		protected $content;
 
 		/**
 		 * Constructor
 		 *
 		 * @param $object Content sets helpers content object to passed in content object
 		 */
-		function __construct(Content $object) {
+		public function __construct(Content $object) {
 			$this->content = $object;
 		}
 
@@ -30,5 +30,5 @@
 		/**
 	 	 * Generate breadcrumb for our content object
 	   	 */	 
-		abstract function breadcrumbs(Content $object);
+		abstract function breadcrumbs();
 	}

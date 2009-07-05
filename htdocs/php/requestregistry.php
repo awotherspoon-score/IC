@@ -54,6 +54,11 @@
 			}
 		}
 
+		static function getViewHelper(Content $content) {
+			return ViewHelperFactory::createViewHelper($content);
+		}
+
+
                 static function getPageMapper() {
                         if (self::instance()->get('pagemapper') == null) {
                                 self::instance()->set('pagemapper', new PageMapper());
