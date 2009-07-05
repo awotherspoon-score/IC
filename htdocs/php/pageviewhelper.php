@@ -27,4 +27,22 @@
 
 			return $breadcrumb;
 		}
+
+		public function sidebar() {
+			$children = $this->content->getChildren();
+			$sidebar = 	"<div id='sidebar'>\n"
+				 	."<div class='sidebar-links-title'>\n"
+					."<p>{$this->content->getTitle()}</p>\n"
+				        ."</div>\n"	
+					."<ul class='sidebar-links-list'>\n";
+
+			foreach ($children as $child) {
+				$sidebar .= "<li><a href='{$this->url($child->getSlug())}'>{$child->getTitle()}</a></li>";
+			}
+
+			$sidebar	.="</ul>\n"
+					."<img src='/img/post-image.jpg' id='post-image' />\n"
+				  	."</div>\n";
+			return $sidebar;
+		}
 	}

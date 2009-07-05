@@ -125,7 +125,8 @@
 			<?= $page->getText() ?>
 
                 </div>
-                <div id='sidebar'>
+
+                <!-- <div id='sidebar'>
                 <div class='sidebar-links-title'>
                   <p>Suggested Links</p>
                 </div>
@@ -135,9 +136,9 @@
 			<?php endforeach ?>
                 </ul>
                 <img src='/img/post-image.jpg' id='post-image' />
-
-
                 </div>
+		-->
+		<?= $view->sidebar(); ?>
 		
 	</div><!-- /main -->
 	<div class='cleardiv'></div>

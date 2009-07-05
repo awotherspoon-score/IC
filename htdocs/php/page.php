@@ -10,7 +10,12 @@
 		/**
 		 * $parent Page Object Representing Parent of this Page
 		 */
-		 private $parent;
+	 	private $parent;
+
+		/**
+		 * $ancestry Array contains ancestry of this page, e.g. element 0 is top level parent, 1 is parent, 0 is self
+		 */
+		private $ancestry;
 		
 		
 		public function loadFromArray($array) {
@@ -69,18 +74,29 @@
 			return false;
 		}
 
+		public function level() {
+			if ( $this->isTopLevelPage() ) {
+				return 1;
+			}
+			return count( $this->getAncestry() );
+		}
+
 		/**
 		 *  Returns an array with the first element as top level ancestor, parent and then self
 		 */
 		public function getAncestry() {
-			$ancestry = array();
-			$ancestry[] = $this;
-			$parent = $this->getParent();
+			if ( ! isset( $this->ancestry ) ) {
+				$ancestry = array();
+				$ancestry[] = $this;
+				$parent = $this->getParent();
 
-			while ( $parent !== null ) {
-				$ancestry[] = $parent;
-				$parent = $parent->getParent();
+				while ( $parent !== null ) {
+					$ancestry[] = $parent;
+					$parent = $parent->getParent();
+				}
+				$this->ancestry = array_reverse($ancestry);
 			}
-			return array_reverse($ancestry);
+			return $this->ancestry;
 		}
+
 	}
