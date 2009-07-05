@@ -123,21 +123,8 @@
                         <h1><?= $page->getTitle() ?></h1>
                         <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
 			<?= $page->getText() ?>
-
                 </div>
 
-                <!-- <div id='sidebar'>
-                <div class='sidebar-links-title'>
-                  <p>Suggested Links</p>
-                </div>
-                <ul class='sidebar-links-list'>
-			<?php foreach ( $children as $child): ?>	
-				<li><a href='#'><?= $child->getTitle() ?></a></li>
-			<?php endforeach ?>
-                </ul>
-                <img src='/img/post-image.jpg' id='post-image' />
-                </div>
-		-->
 		<?= $view->sidebar(); ?>
 		
 	</div><!-- /main -->
