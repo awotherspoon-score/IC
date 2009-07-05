@@ -58,6 +58,13 @@
 			return ViewHelperFactory::createViewHelper($content);
 		}
 
+		static function getUrlHelper() {
+			if (self::instance()->get('urlhelper') == null) {
+				self::instance()->set('urlhelper', new UrlHelper());
+			}
+			return self::instance()->get('urlhelper');
+		}
+
 
                 static function getPageMapper() {
                         if (self::instance()->get('pagemapper') == null) {

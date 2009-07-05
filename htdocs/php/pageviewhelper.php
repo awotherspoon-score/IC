@@ -1,11 +1,6 @@
 <?php
 	class PageViewHelper extends ViewHelper {
 
-		public function url($slug = '') {
-			$slug = ($slug == '') ? $this->content->getSlug() : $slug;
-			return "/pages/{$slug}/";
-		}
-
 		public function breadcrumbs() {
 			$page = $this->content;
 			$ancestry = $page->getAncestry();
@@ -15,7 +10,7 @@
 
 			foreach ($ancestry as $ancestor) {
 				if ( $ancestor === $this->content ) {
-					$breadcrumb .= "<a class='thispage' href='{$this->url($ancestor->getSlug())}'>"
+					$breadcrumb .= "<a class='thispage' href='{$this->url($ancestor)}'>"
 					              ."{$ancestor->getTitle()}"
 						      ."</a>\n";
 				} else {
@@ -37,7 +32,7 @@
 					."<ul class='sidebar-links-list'>\n";
 
 			foreach ($children as $child) {
-				$sidebar .= "<li><a href='{$this->url($child->getSlug())}'>{$child->getTitle()}</a></li>";
+				$sidebar .= "<li><a href='{$this->url($child)}'>{$child->getTitle()}</a></li>";
 			}
 
 			$sidebar	.="</ul>\n"
