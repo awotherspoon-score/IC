@@ -1,39 +1,51 @@
+<?php
+	$pageMapper = RequestRegistry::getPageMapper();
+	$urlHelper = RequestRegistry::getUrlHelper();
+	$theSchool = $pageMapper->find(1);
+	$joiningUs = $pageMapper->find(2);
+	$wayOfLife = $pageMapper->find(3);
+	$theSchoolChildren = $theSchool->getLiveChildren();
+	$joiningUsChildren = $joiningUs->getLiveChildren();
+	$wayOfLifeChildren = $wayOfLife->getLiveChildren();
+	
+?>
 	<div id='footer'>
 		<div id='footer-col-123'>
 		
 			<div id='footer-col-12'>
 			
 				<div class='footer-column' id='footer-col-1'>
-                                        <h4>The School</h4>
+                                        <h4><?= $theSchool->getTitle() ?></h4>
                                         <ul>
-                                                <li><a href='#'>About The School</a></li>
-                                                <li><a href='#'>Our Ethos</a></li>
-                                                <li><a href='#'>The Immanuel College</a></li>
-                                                <li><a href='#'>The Sixth Form</a></li>
-                                                <li><a href='#'>Alumni</a></li>
+						<?php foreach( $theSchoolChildren as $child ): ?>
+							<li>
+							<a href='<?= $urlHelper->url($child) ?>'><?= $child->getTitle() ?></a>
+							</li>
+						<?php endforeach ?>
                                         </ul>
 				</div><!-- /footer-col-1 -->
 				
 				<div class='footer-column' id='footer-col-2'>
-                                        <h4>Joining Us</h4>
+                                        <h4><?= $joiningUs->getTitle() ?></h4>
                                         <ul>
-                                                <li><a href='#'>Open Day</a></li>
-                                                <li><a href='#'>Entrance Requirements</a></li>
-                                                <li><a href='#'>Admissions</a></li>
-                                                <li><a href='#'>Fees</a></li>
-                                                <li><a href='#'>Application Forms</a></li>
-                                                <li><a href='#'>Staff</a></li>
+						<?php foreach( $joiningUsChildren as $child ): ?>
+							<li>
+							<a href='<?= $urlHelper->url($child) ?>'><?= $child->getTitle() ?></a>
+							</li>
+						<?php endforeach ?>
                                         </ul>
 				</div><!-- /footer-col2 -->
 				
 			</div><!-- /footer-col-12 -->
 			
 			<div class='footer-column' id='footer-col-3'>
-                                <h4>Way of Life</h4>
+                                <h4><?= $wayOfLife->getTitle() ?></h4>
                                 <ul>
-                                        <li><a href='#'>Nurturing Our Pupils</a></li>
-                                        <li><a href='#'>Jewish Life And Learning</a></li>
-                                        <li><a href='#'>Extra Curricular Activities</a></li>
+					<?php foreach( $wayOfLifeChildren as $child ): ?>
+						<li>
+						<a href='<?= $urlHelper->url($child) ?>'><?= $child->getTitle() ?></a>
+						</li>
+					<?php endforeach ?>
                                 </ul>
 
 			</div><!-- /footer-col-3 -->
