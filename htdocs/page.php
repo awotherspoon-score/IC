@@ -10,15 +10,15 @@
 <?php include('inc/doctype.php'); ?>
 <html>
 <head>
-<link rel='stylesheet' type='text/css' href='<?= URL ?>css/shared.css' />
-<link rel='stylesheet' type='text/css' href='<?= URL ?>css/pcs-default.css' />
-<link rel='stylesheet' type='text/css' href='<?= URL ?>css/current.css' />
-<script type='text/javascript' src='<?= URL ?>js/jquery-1.3.2.min.js'></script>
-<script type='text/javascript' src='<?= URL ?>js/jquery.dimensions.js'></script>
-<script type='text/javascript' src='<?= URL ?>js/jquery.tooltip.min.js'></script>
-<script type='text/javascript' src='<?= URL ?>js/font/cufon-yui.js'></script>
-<script type='text/javascript' src='<?= URL ?>js/font/Sanuk-Black_500.font.js'></script>
-<script type='text/javascript' src='<?= URL ?>js/font/Sanuk-Regular_500.font.js'></script>
+<link rel='stylesheet' type='text/css' href='/css/shared.css' />
+<link rel='stylesheet' type='text/css' href='/css/pcs-default.css' />
+<link rel='stylesheet' type='text/css' href='/css/current.css' />
+<script type='text/javascript' src='/js/jquery-1.3.2.min.js'></script>
+<script type='text/javascript' src='/js/jquery.dimensions.js'></script>
+<script type='text/javascript' src='/js/jquery.tooltip.min.js'></script>
+<script type='text/javascript' src='/js/font/cufon-yui.js'></script>
+<script type='text/javascript' src='/js/font/Sanuk-Black_500.font.js'></script>
+<script type='text/javascript' src='/js/font/Sanuk-Regular_500.font.js'></script>
 <script type="text/javascript">
 		Cufon.replace('h1', { fontFamily: 'Sanuk-Black'});
 		Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
@@ -79,8 +79,8 @@
 		<div id='header-top'>	
 		</div>
 		
-		<img id='header-image' alt='We nourish our pupils with an engaging focus on Jewish Tradition' src='<?= URL ?>img/header-prospective.jpg' />
-                <img alt='Testimonial' src='<?= URL ?>img/testimonial-prospective.jpg' class='testimonial-image' id='prospective-testimonial-image' />
+		<img id='header-image' alt='We nourish our pupils with an engaging focus on Jewish Tradition' src='/img/header-prospective.jpg' />
+                <img alt='Testimonial' src='/img/testimonial-prospective.jpg' class='testimonial-image' id='prospective-testimonial-image' />
 		
 		<div id='search-box'>
 			<form action='search.php' method='get'>
@@ -99,17 +99,17 @@
                         <ul>
                                 <li id='prospective-link'>
                                         <a href='prospective.php'>
-                                                <img title='Prospective Students' src='<?= URL ?>img/buttons/prospective-button.gif' />
+                                                <img title='Prospective Students' src='/img/buttons/prospective-button.gif' />
                                         </a>
                                 </li>
                                 <li id='current-link' class='selected'>
                                         <a href='current.php'>
-                                                <img title='Current Students' src='<?= URL ?>img/buttons/current-button.gif' />
+                                                <img title='Current Students' src='/img/buttons/current-button.gif' />
                                         </a>
                                 </li>
                                 <li id='staff-link'>
                                         <a href='staff.php'>
-                                                 <img title='Staff' src='<?= URL ?>img/buttons/staff-button.gif' />
+                                                 <img title='Staff' src='/img/buttons/staff-button.gif' />
                                         </a>
                                 </li>
                         </ul>
@@ -136,7 +136,7 @@
 				<li><a href='#'><?= $child->getTitle() ?></a></li>
 			<?php endforeach ?>
                 </ul>
-                <img src='<?= URL ?>img/post-image.jpg' id='post-image' />
+                <img src='/img/post-image.jpg' id='post-image' />
 
 
                 </div>
