@@ -158,6 +158,10 @@ div#main div#col-2 form input.text-input {
         width:100%;
 }
 
+div#main div#col-2 form fieldset {
+	border:0;
+}
+
 div#main input, div#main label {
         display:block;
 }
