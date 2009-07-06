@@ -8,7 +8,8 @@
                 <title>Immanuel College Admin Panel</title>
                 <link rel='stylesheet' type='text/css' href='css/style.css' />
                 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
-                <script type='text/javascript' src='js/functions.js'></script>
+                <script type='text/javascript' src='js/generic-functions.js'></script>
+                <script type='text/javascript' src='js/gallery-functions.js'></script>
                 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
