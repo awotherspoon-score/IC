@@ -18,7 +18,7 @@
                                 <li id='events-link' class='nav-link'><a href='#'>Events</a>
                                         <ul></ul>
                                 </li>
-                                <li id='gallery-link' class='nav-link'><a href='#'>Gallery</a>
+                                <li id='gallery-link' class='nav-link'><a href='gallery.php'>Gallery</a>
                                         <ul></ul>
                                 </li>
                                 <li id='contact-us-link' class='nav-link'><a href='#'>Contact Us</a>
