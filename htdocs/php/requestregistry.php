@@ -80,6 +80,13 @@
                         return self::instance()->get('imagemapper');
                 }
 
+                static function getAlbumMapper() {
+                        if (self::instance()->get('albummapper') == null) {
+                                self::instance()->set('albummapper', new AlbumMapper());
+                        }
+                        return self::instance()->get('albummapper');
+                }
+
                 static function getFormHelper() {
                         if (self::instance()->get('formhelper') == null) {
                                 self::instance()->set('formhelper', new FormHelper());
