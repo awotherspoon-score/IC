@@ -73,6 +73,13 @@
                         return self::instance()->get('pagemapper');
                 }
 
+                static function getImageMapper() {
+                        if (self::instance()->get('imagemapper') == null) {
+                                self::instance()->set('imagemapper', new ImageMapper());
+                        }
+                        return self::instance()->get('imagemapper');
+                }
+
                 static function getFormHelper() {
                         if (self::instance()->get('formhelper') == null) {
                                 self::instance()->set('formhelper', new FormHelper());

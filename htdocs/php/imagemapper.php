@@ -37,10 +37,24 @@
 					."WHERE id={$image->getId()}";
 			self::$mysqli->query($query);
 		}
+
+
 		
 		public function delete(Content $image) {
-			$query = "DELECT FROM images WHERE id={$image->getId()}"
+			$query = "DELECT FROM images WHERE id={$image->getId()} LIMIT 1"
 			self::$mysqli->query($query);
+		}
+
+		public function findImagesInAlbum(Album $album) {
+			return $this->findByAlbumId($album->getId);
+		}
+
+		public function findByAlbumId($albumid) {
+			return $this->createCollection($this->queryToArray($this->selectByAlbumIdQuery($albumid), true));
+		}
+
+		public function selectByAlbumIdQuery($albumid) {
+			return "SELECT * FROM images WHERE albumid='$albumid'";
 		}
 		
 		public function selectQuery( $id ) {

@@ -4,6 +4,7 @@
 		private $newsId;
 		private $eventId;
 		private $featuredImageId;
+		private $images;
 		
 		public function loadFromArray(array $array) {
 			parent::loadFromArray($array);
@@ -22,6 +23,13 @@
                                 'featuredImageId' => $this->featuredImageId
                         ));
                 }
+
+		public function getImages() {
+			if ( ! isset( $this->images ) ) {
+				$this->images = RequestRegistry::getImageMapper()->findImagesInAlbum($this);
+			}
+			return $this->images;
+		}
 		
 		//GETTERS + SETTERS
 		public function getDateDisplayed() {
