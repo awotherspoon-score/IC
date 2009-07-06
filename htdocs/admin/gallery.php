@@ -31,6 +31,54 @@
                             <div id='col-1'>
                             </div>
                             <div id='col-2'>
+			    	<form id='gallery-form'>
+					<fieldset>
+					<legend>Gallery Info</legend>
+						<label for='title'>Title:</label>
+						<input name='title' id='title' type='text' class='text-input' />
+						<label for='display-date'>Display Date:</label>
+						<span>Insert Date Input Here</span>
+					</fieldset>
+
+					<fieldset>
+						<legend>News/Event Associations</legend>
+						<select name='news'>
+						</select>
+
+						<select name='events'>
+						</select>
+
+						<input type='submit' name='new-news' id='new-news' value='Create New News Story' />
+						<input type='submit' name='new-event' id='new-event' value='Create New Event' />
+						<a href='#' id='edit-associated'>Edit Associated News/Events</a>
+					</fieldset>
+
+					<fieldset>
+						<legend>Images</legend>
+						<table>
+							<thead>
+								<th></th>
+								<th>Caption</th>
+								<th>Thumbnail</th>
+								<th>Prospective</th>
+								<th>Current</th>
+								<th>Staff</th>
+								<th>FeatureImage</th>
+							</thead>
+							<tbody>
+								<tr>
+								<td><input type='checkbox'></input></td>
+								<td>Caption</td>
+								<td>Thumbnail Image</td>
+								<td><input type='checkbox'></input></td>
+								<td><input type='checkbox'></input></td>
+								<td><input type='checkbox'></input></td>
+								<td><input type='radio'></input></td>
+								</tr>
+							</tbody>
+						</table>	
+					</fieldset>
+				</form>
                             </div>
                     </div><!-- /#main -->
 
