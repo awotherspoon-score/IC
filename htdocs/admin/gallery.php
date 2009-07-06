@@ -1,6 +1,7 @@
 <?php
         include('../init.php');
 	$formHelper = RequestRegistry::getFormHelper();	
+	$albums = RequestRegistry::getAlbumMapper()->findAll();
 ?>
 <?php include('../inc/doctype.php'); ?>
 <html>
@@ -30,6 +31,11 @@
 
                     <div id='main'>
                             <div id='col-1'>
+			    	<ul>
+					<?php foreach ( $albums as $album ): ?>
+						<li><?= $album->getTitle() ?></li>
+					<?php endforeach ?>
+				</ul>
                             </div>
                             <div id='col-2'>
 			    	<form id='gallery-form'>

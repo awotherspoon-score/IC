@@ -2,7 +2,6 @@
 
 <?php include('init.php'); ?>
 
-
 <html>
 <head>
 <link rel='stylesheet' type='text/css' href='css/shared.css' />

@@ -1,6 +1,6 @@
 <?php
 	class Album extends Content {
-		private $dateDisplayed
+		private $dateDisplayed;
 		private $newsId;
 		private $eventId;
 		private $featuredImageId;
