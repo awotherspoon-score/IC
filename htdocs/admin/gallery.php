@@ -1,6 +1,6 @@
 <?php
         include('../init.php');
-        $page = new Page();
+	$formHelper = RequestRegistry::getFormHelper();	
 ?>
 <?php include('../inc/doctype.php'); ?>
 <html>
