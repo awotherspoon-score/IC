@@ -2,6 +2,11 @@
         include('../init.php');
 	$formHelper = RequestRegistry::getFormHelper();	
 	$albums = RequestRegistry::getAlbumMapper()->findAll();
+
+        $context = CommandRunner::run('get-album', array('album-id' => 1));
+	$thisAlbum = $context->get('album');
+	$images = $thisAlbum->getImages();
+
 ?>
 <?php include('../inc/doctype.php'); ?>
 <html>
@@ -19,7 +24,7 @@
                         Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
-                       
+                      
                         $(document).ready(function() {
                                 init_header();
                         });

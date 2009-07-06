@@ -41,16 +41,20 @@
 
 		
 		public function delete(Content $image) {
-			$query = "DELECT FROM images WHERE id={$image->getId()} LIMIT 1"
+			$query = "DELECT FROM images WHERE id={$image->getId()} LIMIT 1";
 			self::$mysqli->query($query);
 		}
 
 		public function findImagesInAlbum(Album $album) {
-			return $this->findByAlbumId($album->getId);
+			return $this->findByAlbumId($album->getId());
 		}
 
 		public function findByAlbumId($albumid) {
 			return $this->createCollection($this->queryToArray($this->selectByAlbumIdQuery($albumid), true));
+		}
+
+		public function selectBySlugQuery( $slug ) {
+			return "SELECT * FROM images WHERE slug='{$slug}' LIMIT 1";
 		}
 
 		public function selectByAlbumIdQuery($albumid) {

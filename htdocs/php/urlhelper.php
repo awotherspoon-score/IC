@@ -4,5 +4,9 @@
 			if ($content instanceof Page) {
 				return "/pages/{$content->getSlug()}/";
 			}
+
+			if ($content instanceof Image) {
+				return "/img/photos/{$content->getFilename()}/";
+			}
 		}
 	}

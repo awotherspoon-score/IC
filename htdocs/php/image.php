@@ -24,7 +24,7 @@
                                 'staff' => $this->staff 
                         ));
                 }
-		
+
 		//GETTERS + SETTERS
 		public function getAlbumId() {
 			return $this->albumId;
