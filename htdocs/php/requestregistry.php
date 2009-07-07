@@ -73,6 +73,13 @@
                         return self::instance()->get('pagemapper');
                 }
 
+		static function getNewsEventMapper() {
+                        if (self::instance()->get('newseventmapper') == null) {
+                                self::instance()->set('newseventmapper', new NewsEventMapper());
+                        }
+                        return self::instance()->get('newseventmapper');
+		}
+
                 static function getImageMapper() {
                         if (self::instance()->get('imagemapper') == null) {
                                 self::instance()->set('imagemapper', new ImageMapper());
