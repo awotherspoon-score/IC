@@ -88,7 +88,6 @@
                                                   </span>
                                                   </span>
                                                  <table>
-
                                                           <?php foreach ( $grandchildren as $grandchild ): ?>
                                                                 <tr>
                                                                   <td class = 'title-cell'>

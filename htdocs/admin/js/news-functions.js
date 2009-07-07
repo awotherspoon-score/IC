@@ -136,7 +136,7 @@ function metaToggle() {
         return false;
 }
 
-function grandchildrenToggle() {
+function newsToggle() {
         $(this).parent().children().filter('table').toggle();
         $(this).children().filter('img').each(swapPlusMinus);
 }
