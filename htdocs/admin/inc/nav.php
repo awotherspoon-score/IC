@@ -12,10 +12,10 @@
                                         <ul>
                                         </ul>
                                 </li>
-                                <li id='news-link' class='nav-link'><a href='#'>News</a>
+                                <li id='news-link' class='nav-link'><a href='list-news.php'>News</a>
                                         <ul></ul> <!-- force hover state -->
                                 </li>
-                                <li id='events-link' class='nav-link'><a href='#'>Events</a>
+                                <li id='events-link' class='nav-link'><a href='list-events.php'>Events</a>
                                         <ul></ul>
                                 </li>
                                 <li id='gallery-link' class='nav-link'><a href='gallery.php'>Gallery</a>
