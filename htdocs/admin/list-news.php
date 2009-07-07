@@ -3,6 +3,7 @@
         include('inc/fckeditor/fckeditor.php');
 
         //get page from $_GET
+	/*
         $context = CommandRunner::run('get-page', array('page-id' => $_GET['id']));
         $page = $context->get('page');
         $level2 = $page->getChildren();
@@ -11,6 +12,8 @@
         $fh = RequestRegistry::getFormHelper();
         $editor = $fh->getEditor('content', 'Basic', null, null, $page->getText());
 	$introEditor = $fh->getEditor('introduction', 'Basic', '100', null, $page->getIntroduction());
+	*/
+
 
 
 ?>
