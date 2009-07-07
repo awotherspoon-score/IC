@@ -1,8 +1,8 @@
--- MySQL dump 10.11
+-- MySQL dump 10.13  Distrib 5.1.30, for apple-darwin8.11.1 (i386)
 --
 -- Host: localhost    Database: immanuel
 -- ------------------------------------------------------
--- Server version	5.0.75-0ubuntu10.2
+-- Server version	5.0.41
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,10 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
+--
 
 --
 -- Table structure for table `albums`
@@ -34,7 +38,7 @@ CREATE TABLE `albums` (
   `featuredimageid` int(5) NOT NULL,
   `status` int(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -67,7 +71,7 @@ CREATE TABLE `images` (
   `current` int(1) NOT NULL,
   `staff` int(1) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -109,6 +113,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `newsevents` WRITE;
 /*!40000 ALTER TABLE `newsevents` DISABLE KEYS */;
+INSERT INTO `newsevents` VALUES (1,'news-one','News Story 1',1246971082,1246971082,'News Content','News Description','keyword 1, keyword 2',1246971082,2,1),(2,'news-two','News Story 2',1246971082,1246971082,'News Content','News Description','keyword 1, keyword 2',1246971082,2,1),(3,'news-three','News Story 3',1246971082,1246971082,'News Content','News Description','keyword 1, keyword 2',1246971082,2,1);
 /*!40000 ALTER TABLE `newsevents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +137,7 @@ CREATE TABLE `pages` (
   `parentid` int(5) unsigned NOT NULL,
   `introduction` text NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -141,7 +146,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-INSERT INTO `pages` VALUES (1,'the-school','The School',1244716036,1246615548,'<p>text about the school</p>','description text','immanuel college, school',1,0,'<p>no value</p>'),(2,'joining-us','Joining Us',1244716036,1244716036,'text about joining us','description text','immanuel college, school',0,0,''),(3,'way-of-life','Way Of Life',1244716036,1244716036,'text about way of life','description text','immanuel college, school',0,0,''),(4,'about-the-school','About The School',1244716036,1246807091,'<p>text about about the school</p>','description text','immanuel college, school',1,1,''),(5,'our-ethos','Our Ethos',1244716036,1246910918,'<p>text about our ethos</p>','description text','immanuel college, school',0,1,''),(6,'the-immanuel-curriculum','The Immanuel Curriculum',1244716036,1246871431,'<p>text about the immanuel curriculum</p>','description text','immanuel college, school',1,1,''),(7,'the-sixth-form','The Sixth Form',1244716036,1246871518,'<p>text about the sixth form</p>','description text','immanuel college, school',1,1,''),(8,'alumni','Alumni',1244716036,1246871532,'<p>text about alumni</p>','description text','immanuel college, school',1,1,''),(9,'open-day','Open Day',1244716036,1246566851,'<p>text about open day</p>','description text','immanuel college, school',1,2,''),(10,'entrance-requirements','Entrance Requirements',1244716036,1246628161,'<p>text about entrance requirements</p>','description text','immanuel college, school',1,2,''),(11,'admissions','Admissions',1244716036,1246628168,'<p>text about admissions</p>','description text','immanuel college, school',1,2,''),(12,'fees','Fees',1244716036,1246628174,'<p>text about fees</p>','description text','immanuel college, school',1,2,''),(13,'application-forms','Application Forms',1244716036,1246628180,'<p>text about application forms</p>','description text','immanuel college, school',1,2,''),(14,'staff','Staff',1244716036,1246628186,'<p>text about staff</p>','description text','immanuel college, school',1,2,''),(15,'nurturing-our-pupils','Nurturing Our Pupils',1244716036,1246628204,'<p>text about nurturing pupils</p>','description text','immanuel college, school',1,3,''),(16,'jewish-life-and-learning','Jewish Life And Learning',1244716036,1246628211,'<p>text about jewish life and learning</p>','description text','immanuel college, school',1,3,''),(17,'extra-curricular-activities','Extra Curricular Activities',1244716036,1246628220,'<p>text about extra curricular activities</p>','description text','immanuel college, school',1,3,''),(18,'ethos','Ethos',1245168145,1246628242,'<p>text about ethos</p>','description text','immanuel college, school',1,4,''),(19,'history-about-the-founder','History - About The Founder',1245168145,1246628248,'<p>text about the founder</p><p>&nbsp;</p>','description text','immanuel college, school',1,4,''),(20,'isc-inspection','ISC Inspection',1245168145,1246628255,'<p>text about isc inspection</p>','description text','immanuel college, school',1,4,''),(21,'senior-management-team','Senior Management Team',1245168145,1246628260,'<p>text about senior management team</p>','description text','immanuel college, school',1,4,'<p>intro to smt</p>'),(22,'governers','Governers',1245168145,1246628268,'<p>text about governers</p>','description text','immanuel college, school',1,4,''),(23,'psa','PSA',1245168145,1246628276,'<p>text about PSA</p>','description text','immanuel college, school',1,4,''),(24,'school-policies','School Policies',1245168145,1246628283,'<p>text about School Policies</p>','description text','immanuel college, school',1,4,'<p>School Policies Intro</p>'),(25,'gallery','Gallery',1246875704,1246875704,'Gallery Text','description text','immanuel college, school',1,0,'empty');
+INSERT INTO `pages` VALUES (1,'the-school','The School',1244716036,1246615548,'<p>text about the school</p>','description text','school, college, more keywords',1,0,'<p>no value</p>'),(2,'joining-us','Joining Us',1244716036,1244716036,'text about joining us','description text','school, admissions, etc',0,0,''),(3,'way-of-life','Way Of Life',1244716036,1244716036,'text about way of life','description text','life, school, stuff',0,0,''),(4,'about-the-school','About The School',1244716036,1246807091,'<p>text about about the school</p>','description text','the school, keyword 1, keyword 2',1,1,''),(5,'our-ethos','Our Ethos',1244716036,1246807140,'<p>text about our ethos</p>','description text','keyword 1, keyword 2, keyword 3',1,1,''),(6,'the-immanuel-curriculum','The Immanuel Curriculum',1244716036,1246871431,'<p>text about the immanuel curriculum</p>','description text','keyword 1, keyword 2, keyword 3',1,1,''),(7,'the-sixth-form','The Sixth Form',1244716036,1246871518,'<p>text about the sixth form</p>','description text','keyword 1, keyword 3, keyword 3,',1,1,''),(8,'alumni','Alumni',1244716036,1246871532,'<p>text about alumni</p>','description text','keyword 1, keyword 2, keyword 3',1,1,''),(9,'open-day','Open Day',1244716036,1246566851,'<p>text about open day</p>','description text','keyword 1, keyword 2, keyword 3',1,2,''),(10,'entrance-requirements','Entrance Requirements',1244716036,1246628161,'<p>text about entrance requirements</p>','description text','keyword 1, keyword 2 keyword 3',1,2,''),(11,'admissions','Admissions',1244716036,1246628168,'<p>text about admissions</p>','description text','keyword 2, keyword 2, keyword 3',1,2,''),(12,'fees','Fees',1244716036,1246628174,'<p>text about fees</p>','description text','keyword 1, keyword 2, keyword 3',1,2,''),(13,'application-forms','Application Forms',1244716036,1246628180,'<p>text about application forms</p>','description text','keyword 1, keyword 2, keyword 3',1,2,''),(14,'staff','Staff',1244716036,1246628186,'<p>text about staff</p>','description text','keyword 1, keyword 2, keyword 3',1,2,''),(15,'nurturing-our-pupils','Nurturing Our Pupils',1244716036,1246628204,'<p>text about nurturing pupils</p>','description text','keyword 1, keyword 2, keyword 3',1,3,''),(16,'jewish-life-and-learning','Jewish Life And Learning',1244716036,1246628211,'<p>text about jewish life and learning</p>','description text','keyword 1, keyword 2, keyword 3',1,3,''),(17,'extra-curricular-activities','Extra Curricular Activities',1244716036,1246628220,'<p>text about extra curricular activities</p>','description text','keyword 1, keyword 2, keyword 3',1,3,''),(18,'ethos','Ethos',1245168145,1246628242,'<p>text about ethos</p>','description text','keyword 1, keyword 2, keyword 3',1,4,''),(19,'history-about-the-founder','History - About The Founder',1245168145,1246960859,'<p>text about the founder</p><p>&nbsp;</p>','description text','keyword 1, keyword 2, keyword 3, keyword 4',1,4,''),(20,'isc-inspection','ISC Inspection',1245168145,1246628255,'<p>text about isc inspection</p>','description text','keyword 1, keyword 2, keyword 3',1,4,''),(21,'senior-management-team','Senior Management Team',1245168145,1246628260,'<p>text about senior management team</p>','description text','keyword 1, keyword 2, keyword 3',1,4,'<p>intro to smt</p>'),(22,'governers','Governers',1245168145,1246628268,'<p>text about governers</p>','description text','keyword 1, keyword 2, keyword 3',1,4,''),(23,'psa','PSA',1245168145,1246628276,'<p>text about PSA</p>','description text','keyword 1, keyword 2',1,4,''),(24,'school-policies','School Policies',1245168145,1246628283,'<p>text about School Policies</p>','description text','keyword 1, keyword 2',1,4,'<p>School Policies Intro</p>'),(25,'gallery','Gallery',1246875704,1246875704,'Gallery Text','description text','keyword 1, keyword 2',1,0,'empty');
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -154,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2009-07-06 22:25:01
+-- Dump completed on 2009-07-07 20:48:49
