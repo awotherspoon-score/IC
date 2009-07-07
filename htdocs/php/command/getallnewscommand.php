@@ -1,7 +1,7 @@
 <?php
 	class GetAllNewsCommand extends Command {
 		function execute( CommandContext $context ) {
-			$context->set('news', RequestRegistry::getNewsEventMapper()->findAllNews());
+			$context->addParam('news', RequestRegistry::getNewsEventMapper()->findAllNews());
 			return;
 		}
 	}

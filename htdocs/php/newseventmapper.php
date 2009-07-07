@@ -9,9 +9,7 @@
 			$object->loadFromArray($array);
 			return $object;
 		}
-		
-		
-		
+
 		protected function doInsert(Content $object) {
 			$now = time();
 			$query = "INSERT INTO newsevents "
@@ -58,9 +56,6 @@
 			return ($type == NewsEvent::TYPE_NEWS) ? 'DESC' : 'ASC';
 		}
 
-		
-
-
 		function findTypeForMonth($type, $month = null, $year = null) {
 			$month = ($month === null) ? date('n') : $month;
 			$year = ($year === null) ? date('Y') : $year;
@@ -73,25 +68,50 @@
 		}
 
 		protected function selectAllNewsQuery() {
-			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_NEWS . ' ORDER BY displaydate DESC';
+			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_NEWS . ' ORDER BY datedisplayed DESC';
 		}
 
 		protected function selectAllEventsQuery() {
-			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_EVENT . ' ORDER BY displaydate ASC';
+			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_EVENT . ' ORDER BY datedisplayed ASC';
+		}
+
+		findAllRecentNews() {
+			return $this->createCollection($this->queryToArray($this->selectAllRecentNewsQuery(), true));
+		}
+
+		findAllFutureNews() {
+			return $this->createCollection($this->queryToArray($this->selectAllFutureNewsQuery(), true));
+		}
+
+		findAllNewsForYear($year) {
+			return $this->createCollection($this->queryToArray($this->selectAllNewsForYearQuery($year), true));
+		}
+
+		protected function selectAllRecentNewsQuery() {
+			$type = NewsEvent::TYPE_NEWS;
+			$order = $this->getOrderForType($type); 
+			$start = mktime(0,0,0,date('n') - 3, 1, date('Y'));
+			$end = time();
+			return selectAllOfTypeBetweenQuery( $type, $start, $end, $order );
+		}
+
+		protected function selectAllFutureNewsQuery() {
+			$now = time();
+			return "SELECT * FROM newsevents WHERE datedisplayed > $now ORDER BY datedisplayed DESC";
 		}
 
 		protected function selectDisplayEventsQuery() {
 			$now = time();
 			return 'SELECT * FROM newsevents'
-			      .' WHERE type=' . NewsEvent::TYPE_EVENT . ' AND displaydate > ' . $now
-		       	      .' ORDER BY displaydate ASC LIMIT 3';
+			      .' WHERE type=' . NewsEvent::TYPE_EVENT . ' AND datedisplayed > ' . $now
+		       	      .' ORDER BY datedisplayed ASC LIMIT 3';
 		}
 
 		protected function selectDisplayNewsQuery() {
 			$now = time();
 			return 	"SELECT * FROM newsevents ".
-			       	"WHERE type=" . NewsEvent::TYPE_NEWS . " AND displaydate < $now ".
-				"ORDER BY displaydate DESC LIMIT 3";
+			       	"WHERE type=" . NewsEvent::TYPE_NEWS . " AND datedisplayed < $now ".
+				"ORDER BY datedisplayed DESC LIMIT 3";
 		}
 
 		protected function selectAllOfTypeForMonthQuery( $type, $month, $order, $year = null ) {
@@ -102,7 +122,14 @@
 			$start = mktime( 0, 0, 0, $month, 1, $year);
 			$end = mktime( 0, 0, 0, $month + 1, 0, $year);
 
-			return selectAllOfTypeBetweenQuery( $type, $start, $end, $order )
+			return selectAllOfTypeBetweenQuery( $type, $start, $end, $order );
+		}
+
+		protected function selectAllNewsForYearQuery($year = null) {
+			$year = ($year === null) ? date('Y') : $year;	
+			$type = NewsEvent::TYPE_NEWS;
+			$order = $this->getOrderForType($type);	
+			return $this->selectAllOfTypeForYearQuery( $type, $year, $order );
 		}
 
 		protected function selectAllOfTypeForYearQuery( $type, $year, $order ) {
@@ -112,16 +139,18 @@
 		}
 
 		protected function selectAllOfTypeBetweenQuery( $type, $start, $end, $order) {
-			return "SELECT * FROM newsevents WHERE type=$type AND displaydate BETWEEN $start AND $end ORDER BY displaydate $order";	
+			return "SELECT * FROM newsevents WHERE type=$type AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed $order";	
 		}
 		
 		protected function selectAllQuery() {
 			return "SELECT * FROM newsevents";
 		}
+
+		public function selectBySlugQuery( $slug ) {
+			return "SELECT * FROM newsevents WHERE slug='$slug'";
+		}
 		
 		protected function targetClass() {
 			return 'NewsEvent';
 		}
-		
-		
 	}

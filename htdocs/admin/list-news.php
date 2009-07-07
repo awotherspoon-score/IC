@@ -3,18 +3,18 @@
         include('inc/fckeditor/fckeditor.php');
 
         //get page from $_GET
+        $context = CommandRunner::run('get-all-news', array());
+	$news_sections = array();
+
 	/*
-        $context = CommandRunner::run('get-page', array('page-id' => $_GET['id']));
         $page = $context->get('page');
         $level2 = $page->getChildren();
+	*/
 
         //init fckeditor
         $fh = RequestRegistry::getFormHelper();
-        $editor = $fh->getEditor('content', 'Basic', null, null, $page->getText());
-	$introEditor = $fh->getEditor('introduction', 'Basic', '100', null, $page->getIntroduction());
-	*/
-
-
+        $editor = $fh->getEditor('content', 'Basic', null, null, '');
+	$introEditor = $fh->getEditor('introduction', 'Basic', '100', null, '');
 
 ?>
 <?php include('../inc/doctype.php'); ?>
@@ -34,12 +34,10 @@
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
 			var page = new Object();
-			page.id = <?= $page->getId() ?>;
 
                         $(document).ready(function() {
                                 init_header();
-                                page.id = <?php echo $page->getId() ?>;
-                                fetchPage(page.id);
+				/*
 				$("#meta-inputs").hide();
                                 $("a.page-button").click(getPageButton);
 				$("#save-button").click(updatePage);
@@ -51,6 +49,7 @@
 
 				$("#status-input").attr('disabled', 'disabled');	
 				$("#title").attr('disabled', 'disabled');	
+				*/
 
                         });
 
@@ -69,72 +68,26 @@
 					<span class='status-header'>Status</span>
 				</span>
                                 <ul>
-                                <?php foreach($level2 as $child):
-                                        $grandchildren = $child->getChildren(); ?>
+                                <?php foreach($news as $story): ?>
 
-                                        <li><a class='page-button' id='<?php echo $child->getId() ?>'><?php echo $child->getTitle(); ?></a>
+                                        <li><a class='page-button' id='<?php echo $story->getId() ?>'><?php echo $story->getTitle(); ?></a>
 						 <a class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
 
-                                                 <span class='child-buttons'>
-                                                  <a id='<?= $child->getId() ?>' class='delete-button'>
+                                                 <span class='story-buttons'>
+                                                  <a id='<?= $story->getId() ?>' class='delete-button'>
                                                     <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
-                                                  <span class='status' id='<?= $child->getId() ?>'>
-                                                  <?php if ($child->getStatus() == Page::STATUS_LIVE): ?>
-
+                                                  <span class='status' id='<?= $story->getId() ?>'>
+                                                  <?php if ( $story->getStatus() == Page::STATUS_LIVE ): ?>
                                                     <span class='live'>live</span>
-
                                                   <?php else: ?>
-
                                                     <span class='pending'>pending</span>
-
                                                   <?php endif ?>
                                                   </span>
                                                   </span>
-                                                 <table>
-
-                                                          <?php foreach ( $grandchildren as $grandchild ): ?>
-                                                                <tr>
-                                                                  <td class = 'title-cell'>
-                                                                    <a class='page-button' id='<?php echo $grandchild->getId(); ?>'>
-                                                                    <?php echo $grandchild->getTitle(); ?>
-                                                                    </a>
-                                                                  </td>
-
-                                                                  <td class='delete-button-cell'>
-                                                                        <a id='<?= $grandchild->getId() ?>' class='delete-button'>
-                                                                          <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
-                                                                  </td>
-
-                                                                  <td id='<?= $grandchild->getId() ?>' class='status'>
-
-                                                                                <?php if ($grandchild->getStatus() == Page::STATUS_LIVE): ?>
-
-                                                                                  <span class='live'>live</span>
-
-                                                                                <?php else: ?>
-
-                                                                                  <span class='pending'>pending</span>
-
-                                                                                <?php endif ?>
-                                                                  </td>
-
-                                                                  <td>
-                                                                  </td>
-                                                                </tr>
-                                                          <?php endforeach ?>
-                                                          <tr>
-                                                                <td>
-                                                                        <a class='add-grandchild-button' id='<?= $child->getId() ?>'>
-                                                                          <img src='img/buttons/add-child-button.gif' /></a>
-                                                                </td>
-                                                                <td></td>
-                                                                <td></td>
-                                                          </tr>
-                                                </table>
                                         </li>
                                 <?php endforeach ?>
                                         <li>
-                                              <a class='add-child-button' id='<?= $page->getId() ?>'>
+                                              <a class='add-child-button'>
                                               <img src='img/buttons/add-child-button.gif' />
                                               </a>
                                                 
@@ -149,8 +102,8 @@
 
 				  <label for='status'>Status: </label>
 				  <select name='status' id='status-input'>
-				  	<option value='<?= Content::STATUS_PENDING ?>'<?= ($page->getStatus() == Content::STATUS_PENDING) ? ' selected' : '' ?>>Pending</option>
-				  	<option value='<?= Content::STATUS_LIVE ?>'<?= ($page->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
+				  	<option value=''>Pending</option>
+				  	<option value=''>Live</option>
 				  </select>
 				
 
@@ -172,9 +125,9 @@
                                   <?php $editor->Create(); ?><br />
 				  
 				  <p id='modify-date'>Last Modified On 
-				  <?php echo date(' D M j Y ', $page->getDateModified()); ?>
+				  <?php //echo date(' D M j Y ', $page->getDateModified()); ?>
 			          at
-				  <?php echo date(' H:i ', $page->getDateModified()); ?>
+				  <?php //echo date(' H:i ', $page->getDateModified()); ?>
 				  </p>
 			          <input type='submit' value='Save' name='save-button' id='save-button' />
                                 </form>
