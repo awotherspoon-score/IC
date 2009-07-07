@@ -75,15 +75,15 @@
 			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_EVENT . ' ORDER BY datedisplayed ASC';
 		}
 
-		findAllRecentNews() {
+		public function findAllRecentNews() {
 			return $this->createCollection($this->queryToArray($this->selectAllRecentNewsQuery(), true));
 		}
 
-		findAllFutureNews() {
+		public function findAllFutureNews() {
 			return $this->createCollection($this->queryToArray($this->selectAllFutureNewsQuery(), true));
 		}
 
-		findAllNewsForYear($year) {
+		public function findAllNewsForYear($year) {
 			return $this->createCollection($this->queryToArray($this->selectAllNewsForYearQuery($year), true));
 		}
 
@@ -92,7 +92,7 @@
 			$order = $this->getOrderForType($type); 
 			$start = mktime(0,0,0,date('n') - 3, 1, date('Y'));
 			$end = time();
-			return selectAllOfTypeBetweenQuery( $type, $start, $end, $order );
+			return $this->selectAllOfTypeBetweenQuery( $type, $start, $end, $order );
 		}
 
 		protected function selectAllFutureNewsQuery() {
@@ -135,7 +135,7 @@
 		protected function selectAllOfTypeForYearQuery( $type, $year, $order ) {
 			$start = mktime( 0, 0, 0, 1, 1, $year );	
 			$end = mktime( 0, 0, 0, 12, 31, $year);
-			return selectAllOfTypeBetweenQuery( $type, $start, $end, $order);
+			return $this->selectAllOfTypeBetweenQuery( $type, $start, $end, $order);
 		}
 
 		protected function selectAllOfTypeBetweenQuery( $type, $start, $end, $order) {

@@ -4,7 +4,20 @@
 
         //get page from $_GET
         $context = CommandRunner::run('get-all-news', array());
-	$news_sections = array();
+	$news = array(
+		'future-news' => CommandRunner::run('get-future-news')->get('news'),
+		'recent-news' => CommandRunner::run('get-recent-news')->get('news')
+	);
+
+	$thisYear = date('Y');
+	$tenYearsAgo = $thisYear - 10;
+
+	while ($thisYear > $tenYearsAgo) {
+		$news[$thisYear] = CommandRunner::run('get-news-for-year', array('year' => $thisYear) )->get('news');
+		$thisYear--;
+	}
+
+	var_dump($news);
 
 	/*
         $page = $context->get('page');

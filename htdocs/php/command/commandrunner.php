@@ -3,7 +3,7 @@
          * Conveniance class used to run commands
          */
          class CommandRunner {
-                public static function run($action, $parameters) {
+                public static function run($action, $parameters = array()) {
                         $command = CommandFactory::getCommand($action);
                         $context = new CommandContext();
                         
