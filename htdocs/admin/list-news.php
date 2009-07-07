@@ -3,7 +3,6 @@
         include('inc/fckeditor/fckeditor.php');
 
         //get page from $_GET
-        $context = CommandRunner::run('get-all-news', array());
 	$news = array(
 		'future-news' => CommandRunner::run('get-future-news')->get('news'),
 		'recent-news' => CommandRunner::run('get-recent-news')->get('news')
@@ -16,8 +15,6 @@
 		$news[$thisYear] = CommandRunner::run('get-news-for-year', array('year' => $thisYear) )->get('news');
 		$thisYear--;
 	}
-
-	var_dump($news);
 
 	/*
         $page = $context->get('page');
@@ -81,29 +78,18 @@
 					<span class='status-header'>Status</span>
 				</span>
                                 <ul>
-                                <?php foreach($news as $story): ?>
+                                <?php foreach($news as $section => $stories): 
+					if (count($stories) == 0) { continue; } ?>
 
-                                        <li><a class='page-button' id='<?php echo $story->getId() ?>'><?php echo $story->getTitle(); ?></a>
-						 <a class='pages-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
 
-                                                 <span class='story-buttons'>
-                                                  <a id='<?= $story->getId() ?>' class='delete-button'>
-                                                    <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
-                                                  <span class='status' id='<?= $story->getId() ?>'>
-                                                  <?php if ( $story->getStatus() == Page::STATUS_LIVE ): ?>
-                                                    <span class='live'>live</span>
-                                                  <?php else: ?>
-                                                    <span class='pending'>pending</span>
-                                                  <?php endif ?>
-                                                  </span>
-                                                  </span>
+                                        <li><a class='news-section-button' ><?php echo $section ?></a>
+						 <a class='news-section-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
                                         </li>
                                 <?php endforeach ?>
                                         <li>
                                               <a class='add-child-button'>
                                               <img src='img/buttons/add-child-button.gif' />
                                               </a>
-                                                
                                         </li>
                                 </ul>
                             </div>
