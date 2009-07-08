@@ -73,10 +73,10 @@
 		$("a.news-button").click(getNewsButton);
 		$("a#add-news-story-button").click( newseventAddButton );
 		$("a.delete-button").click(newsEventDeleteButton);
-		//$("#save-button").click(updateNewsEvent);
+		$("#meta-toggle-button").click(metaToggle); 
+		$("#meta-inputs").hide();
 		/*
 		$("#meta-inputs").hide();
-		$("#meta-toggle-button").click(metaToggle); 
 		$("a.add-grandchild-button").click(grandchildAddButton);
 		$("a.add-child-button").click(childAddButton);
 
