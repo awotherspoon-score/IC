@@ -83,43 +83,6 @@
 		}
 
                 
-                /**
-                 * Double checks a pages slug after a potential title change
-                 *
-                 * If the title hasn't changed then return. Else generate a new slug
-                 * This requires requires n runs to the database, where n is the number of duplicate slugs
-                 * TODO: Optimize this so we need at most one trip to the database
-                 *
-                 * @param $page Page the page object who's slug we need to update
-                 */
-		function updateSlug($page) {
-			$oldSlug = $page->getSlug();
-			$newSlug = $this->generateSlug($page->getTitle());
-			if ($oldSlug == $newSlug) { return; }
-
-			$suffix = '';
-			while ($this->findBySlug($newSlug . $suffix) !== null) {
-				if ($suffix == '') { $suffix = 1; }
-				$suffix++;
-			}
-			$page->setSlug($newSlug . $suffix);
-		}
-
-                /**
-                 * Generate a slug based on a given input string
-                 *
-                 * Generates a url friendly slug for a given string
-                 *
-                 * @param $string string the title string to convert into a slug
-                 * @return $slug string a url friendly slug based on $string
-                 */
-		function generateSlug($string) {
-			$slug = strtolower( $string ); // lower-case the string
-			$slug = preg_replace( '/[^a-z0-9- ]/', '', $slug ); // remove all non-alphanumeric characters except for spaces and hyphens
-			$slug = str_replace(' - ', ' ', $slug); //remove all 'real' hyphens with spaces
-			$slug = str_replace( ' ', '-', $slug ); // substitute the spaces with hyphens
-			return $slug;
-		}
 
 		/**
 		 * Find 3 Top Level Pages

@@ -21,8 +21,9 @@
 			$object->setId(self::$mysqli->insert_id);
 		}
 		
-		public function update(Content $object) {
+		public function update( Content $object ) {
 			$now = time();
+			$this->updateSlug( $object );
 			$query = "UPDATE newsevents SET "
 					."slug='{$object->getSlug()}', "
 					."title='{$object->getTitle()}', "
