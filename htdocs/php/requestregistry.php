@@ -51,6 +51,9 @@
 				case 'page' :
 					return self::getPageMapper();
 					break;
+				case 'newsevent' :
+					return self::getNewsEventMapper();
+					break;
 			}
 		}
 

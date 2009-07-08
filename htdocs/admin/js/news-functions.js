@@ -45,7 +45,7 @@ function refreshNewsEvent(news) {
 	
 	//show the new values in the left column
 	//title
-	$("a#" + news.id + ".news-button").text(news['title']);
+	$("a#" + newsEvent.id + ".news-button").text(news['title']);
 	//status
 	var selector = "td#" + news['id'] + ".status span";
 	status_span = $(selector);	
@@ -89,8 +89,8 @@ function refreshNewsEvent(news) {
  * should be called in context of a.page-button
  */
 function getNewsButton() {
-	news.id = this.id;
-        fetchNewsEvent(news.id);
+	newsEvent.id = this.id;
+        fetchNewsEvent(newsEvent.id);
 }
 function fetchNewsEvent(id) {
 	$.post("../php/command/ajaxcommandrunner.php", {
@@ -105,22 +105,33 @@ function fetchNewsEvent(id) {
 	}, "json");
 }
 
-function updatePage() {
+function getTimestampFromForm() {
+	var day   = $("#date-day").val();   //1-31
+	var month = $("#date-month").val(); //1-12
+	var year  = $("#date-year").val();  //4-digit year
+	var displayDate = new Date();
+	displayDate.setFullYear($("#date-year").val());
+	displayDate.setUTCMonth($("#date-month").val() - 1);
+	displayDate.setUTCDate($("#date-day").val());
+	return (displayDate.getTime() / 1000) | 0; //bitwise OR 0 truncates to int
+}
+
+function updateNewsEvent() {
 	$.post("../php/command/ajaxcommandrunner.php",
 		{
 			obj: 'yes',
-			type: 'page',
-			id: page.id,
+			type: 'newsevent',
+			id: newsEvent.id,
 			title: $("#title").val(),
 			keywords: $("#meta-keywords").val(),
 			description: $("#meta-description").val(),
 			text: getfckval("content"),
-			action: 'update-page',
-			introduction: getfckval("introduction"),
-			stat: $("#status-input").val()
+			action: 'update-news-event',
+			stat: $("#status-input").val(),
+			datedisplayed: getTimestampFromForm()
 		},
 		function(data, textstatus) {
-			refreshPage(data['page']);
+			refreshNewsEvent(data['newsevent']);
 			
 			//var selector = "#" + page.id;	
 			//$(selector).text(data['title']);	

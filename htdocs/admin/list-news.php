@@ -8,6 +8,7 @@
 		'recent-news' => CommandRunner::run('get-recent-news')->get('news')
 	);
 
+
 	$thisYear = date('Y');
 	$tenYearsAgo = $thisYear - 10;
 
@@ -15,6 +16,7 @@
 		$news[$thisYear] = CommandRunner::run('get-news-for-year', array('year' => $thisYear) )->get('news');
 		$thisYear--;
 	}
+
 
 	/*
         $page = $context->get('page');
@@ -43,15 +45,15 @@
    Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
    Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
    Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
-   var news = new Object();
+   var newsEvent = new Object();
     $(document).ready(function() {
 		init_header();
-		news.id=0;
+		newsEvent.id=0;
 		$("a.news-section-toggle-button").click(newsToggle); 
 		$("a.news-button").click(getNewsButton);
+		$("#save-button").click(updateNewsEvent);
 		/*
 		$("#meta-inputs").hide();
-		$("#save-button").click(updatePage);
 		$("#meta-toggle-button").click(metaToggle); 
 		$("a.delete-button").click(grandchildDeleteButton);
 		$("a.add-grandchild-button").click(grandchildAddButton);
@@ -112,39 +114,34 @@
 
  </div>
  <div id='col-2'>
+
 <form id='page-form'>
  <label for='title'>Title: </label>
  <input class='text-input' type='text' id='title' name='title' value='' />
-
  <label for='date-input'>Displayed Date: </label>
  <?= $dateInput ?>
-
  <label for='status'>Status: </label>
  <select name='status' id='status-input'>
   <option value='0'>Pending</option>
   <option value='1'>Live</option>
  </select>
+ <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
 
-  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
-
-  <div id='meta-inputs'>
-	  <label for='meta-keywords'>Keywords:</label>
-	  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
-
-	  <label for='meta-description'>Description:</label>
-	  <input class='text-input' type='text' id='meta-description' name='meta-description' />
+ <div id='meta-inputs'>
+  <label for='meta-keywords'>Keywords:</label>
+  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
+  <label for='meta-description'>Description:</label>
+  <input class='text-input' type='text' id='meta-description' name='meta-description' />
  </div><!-- /#meta-inputs -->
-
-
-  <label for='content'>Content:</label>
-  <?php $editor->Create(); ?><br />
+ <label for='content'>Content:</label>
+ <?php $editor->Create(); ?><br />
   
-  <p id='modify-date'>Last Modified On 
-  <?php //echo date(' D M j Y ', $page->getDateModified()); ?>
+ <p id='modify-date'>Last Modified On 
+ <?php //echo date(' D M j Y ', $page->getDateModified()); ?>
   at
-  <?php //echo date(' H:i ', $page->getDateModified()); ?>
-  </p>
-  <input type='submit' value='Save' name='save-button' id='save-button' />
+ <?php //echo date(' H:i ', $page->getDateModified()); ?>
+ </p>
+ <input type='submit' value='Save' name='save-button' id='save-button' />
 </form>
 	    </div>
     </div><!-- /#min -->

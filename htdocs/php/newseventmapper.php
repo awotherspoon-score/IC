@@ -26,14 +26,13 @@
 					."slug='{$object->getSlug()}', "
 					."title='{$object->getTitle()}', "
 					."datecreated='{$object->getDateCreated()}', "
-					."introduction='{$object->getIntroduction()}, "
 					."datemodified='$now', "
 					."text='{$object->getText()}', "
 					."description='{$object->getDescription()}', "
 					."keywords='{$object->getKeywords()}', "
 					."datedisplayed='{$object->getDateDisplayed()}', "
-					."type='{$object->getContentType()}' "
 					."WHERE id={$object->getId()} LIMIT 1";
+			//echo $query;
 			self::$mysqli->query($query);
 		}
 		
@@ -76,6 +75,7 @@
 		}
 
 		public function findAllRecentNews() {
+			//echo $this->selectAllRecentNewsQuery();
 			return $this->createCollection($this->queryToArray($this->selectAllRecentNewsQuery(), true));
 		}
 
@@ -84,8 +84,10 @@
 		}
 
 		public function findAllNewsForYear($year) {
+			//echo $this->selectAllNewsForYearQuery($year) . "&nbsp; $year<br />";
 			return $this->createCollection($this->queryToArray($this->selectAllNewsForYearQuery($year), true));
 		}
+			
 
 		protected function selectAllRecentNewsQuery() {
 			$type = NewsEvent::TYPE_NEWS;
@@ -134,7 +136,7 @@
 
 		protected function selectAllOfTypeForYearQuery( $type, $year, $order ) {
 			$start = mktime( 0, 0, 0, 1, 1, $year );	
-			$end = mktime( 0, 0, 0, 12, 31, $year);
+			$end = mktime( 0, 0, 0, 1, 0, $year + 1);
 			return $this->selectAllOfTypeBetweenQuery( $type, $start, $end, $order);
 		}
 
