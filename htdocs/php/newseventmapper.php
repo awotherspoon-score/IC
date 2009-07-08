@@ -13,9 +13,10 @@
 		protected function doInsert(Content $object) {
 			$now = time();
 			$query = "INSERT INTO newsevents "
-					."(slug, title, introduction, datecreated, datemodified, text, description, keywords, datedisplayed, type) "
+					."(slug, title, datecreated, datemodified, text, description, keywords, datedisplayed, type) "
 					."VALUES "
-					."('{$object->getSlug()}','{$object->getTitle()}', '{$object->getIntroduction()}', '$now','$now','{$object->getText()}','{$object->getDescription()}','{$object->getKeywords()}','{$object->getDateDisplayed()}','{$object->getContentType()}')";
+					."('{$object->getSlug()}','{$object->getTitle()}', '$now','$now','{$object->getText()}','{$object->getDescription()}','{$object->getKeywords()}','{$object->getDateDisplayed()}','{$object->getContentType()}')";
+			echo $query;
 			self::$mysqli->query($query);
 			$object->setId(self::$mysqli->insert_id);
 		}
@@ -87,7 +88,15 @@
 			//echo $this->selectAllNewsForYearQuery($year) . "&nbsp; $year<br />";
 			return $this->createCollection($this->queryToArray($this->selectAllNewsForYearQuery($year), true));
 		}
-			
+
+		public function findMostRecentNews() {
+			return $this->createObject($this->queryToArray($this->selectMostRecentNewsQuery()));
+		}
+
+		protected function selectMostRecentNewsQuery() {
+			$now = time();
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " AND datedisplayed < $now ORDER BY datedisplayed DESC LIMIT 1";
+		}
 
 		protected function selectAllRecentNewsQuery() {
 			$type = NewsEvent::TYPE_NEWS;

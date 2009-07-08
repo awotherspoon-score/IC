@@ -161,7 +161,7 @@
                         foreach ( $months as $index => $month ) {
                                $shiftedIndex = $index + 1; //we need the 1-based index for our functions
                                $selected = ($initial == $shiftedIndex) ? ' selected' : ''; 
-                               $monthinput .= "<option value='{$shiftedIndex}'{$select}>{$month['name']}</select>\n";
+                               $monthinput .= "<option value='{$shiftedIndex}'{$select}>{$month['name']}</option>\n";
                         }
                                         
                         $monthinput .= "</select>";

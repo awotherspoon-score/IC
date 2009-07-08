@@ -5,6 +5,7 @@
 	if (array_key_exists('obj', $_POST)) {
 
 		$class = $_POST['type'];
+		$_POST['type'] = ( isset($_POST['newseventtype']) ) ? $_POST['newseventtype'] : $_POST['type'];
 
                 //to get around the javascript 'status' reserved word
                 $_POST['status'] = isset($_POST['stat']) ? $_POST['stat'] : Content::STATUS_PENDING;

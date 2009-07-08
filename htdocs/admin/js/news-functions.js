@@ -1,4 +1,5 @@
-
+var TYPE_NEWS = 2;
+var TYPE_EVENT = 3;
 
 function getfckval(id) {
        if ( typeof(FCKeditorAPI) !== undefined ) { 
@@ -35,6 +36,7 @@ function refreshNewsEvent(news) {
 	$("#meta-keywords").val(news['keywords']);
 	$("#meta-description").val(news['description']);
 	setfckval("content", news['text']);	
+	$("#id").val(news['id']);
 
 	//load the date in correctly
 	var displayDate = new Date();
@@ -205,6 +207,29 @@ function enableForm() {
 	enableEditor('introduction');
 	enableEditor('content');
 	$("#save-button").removeAttr('disabled');
+}
+
+function newseventAddButton() {
+	var today = new Date();
+	var time = (today.getTime() / 1000) | 0;
+        $.post("../php/command/ajaxcommandrunner.php",
+		{
+			obj: 'yes',
+			type: 'newsevent',
+			action: 'create-news-event',
+			title: 'New News Story',
+			keywords: 'keyword1, keyword2',
+			description: 'description text',
+			stat: STATUS_PENDING,
+			datedisplayed: time,
+			newseventtype: TYPE_NEWS
+		},
+		function(data) {
+		}, "json"
+	);
+}
+
+function newNewseventHtml() {
 }
 
 /**

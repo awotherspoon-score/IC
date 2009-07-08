@@ -1,6 +1,25 @@
 <?php
         include('../init.php');
         include('inc/fckeditor/fckeditor.php');
+        $fh = RequestRegistry::getFormHelper();
+	
+		
+	if (isset($_POST['save-button'])) {
+		$parameters = array('newsevent-id' => $_POST['id']);
+		$newsevent = CommandRunner::run('get-news-event', $parameters)->get('newsevent');
+		$newsevent->setContentType(NewsEvent::TYPE_NEWS);
+		$newsevent->setDateDisplayed($fh->timestampFromPost());
+		$newsevent->setTitle($_POST['title']);
+		$newsevent->setKeywords($_POST['meta-keywords']);
+		$newsevent->setDescription($_POST['meta-description']);
+		$newsevent->setText($_POST['content']);
+		CommandRunner::run('update-news-event', array('newsevent' => $newsevent));
+	}
+
+	if ( ! isset( $newsevent ) ) {
+		$newsevent = CommandRunner::run('get-most-recent-news')->get('newsevent');	
+	}
+
 
         //get page from $_GET
 	$news = array(
@@ -24,9 +43,8 @@
 	*/
 
         //init fckeditor
-        $fh = RequestRegistry::getFormHelper();
-        $editor = $fh->getEditor('content', 'Basic', null, null, '');
-	$dateInput = $fh->getGenericDateInput();
+        $editor = $fh->getEditor('content', 'Basic', null, null, $newsevent->getText());
+	$dateInput = $fh->getDateInput( $newsevent->getDateDisplayed() );
 
 ?>
 <?php include('../inc/doctype.php'); ?>
@@ -52,7 +70,8 @@
 		$("a.news-section-toggle-button").click(newsToggle); 
 		$("a.news-section-button").click(newsToggle); 
 		$("a.news-button").click(getNewsButton);
-		$("#save-button").click(updateNewsEvent);
+		$("a#add-news-story-button").click( newseventAddButton );
+		//$("#save-button").click(updateNewsEvent);
 		/*
 		$("#meta-inputs").hide();
 		$("#meta-toggle-button").click(metaToggle); 
@@ -116,23 +135,23 @@
  </div>
  <div id='col-2'>
 
-<form id='page-form'>
+ <form id='page-form' method='post' action='<?= $_SERVER['PHP_SELF'] ?>'>
  <label for='title'>Title: </label>
- <input class='text-input' type='text' id='title' name='title' value='' />
+ <input class='text-input' type='text' id='title' name='title' value='<?= $newsevent->getTitle() ?>' />
  <label for='date-input'>Displayed Date: </label>
  <?= $dateInput ?>
  <label for='status'>Status: </label>
  <select name='status' id='status-input'>
-  <option value='0'>Pending</option>
-  <option value='1'>Live</option>
+ <option value='0'<?= ($newsevent->getStatus() == Content::STATUS_PENDING) ? ' selected' : '' ?>>Pending</option>
+ <option value='1'<?= ($newsevent->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
  </select>
  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
 
  <div id='meta-inputs'>
   <label for='meta-keywords'>Keywords:</label>
-  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
+  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' value='<?= $newsevent->getKeywords() ?>' />
   <label for='meta-description'>Description:</label>
-  <input class='text-input' type='text' id='meta-description' name='meta-description' />
+  <input class='text-input' type='text' id='meta-description' name='meta-description' value='<?= $newsevent->getDescription() ?>' />
  </div><!-- /#meta-inputs -->
  <label for='content'>Content:</label>
  <?php $editor->Create(); ?><br />
@@ -142,6 +161,7 @@
   at
  <?php //echo date(' H:i ', $page->getDateModified()); ?>
  </p>
+	 <input type='hidden' id='id' name='id' value='<?= $newsevent->getId() ?>' />
  <input type='submit' value='Save' name='save-button' id='save-button' />
 </form>
 	    </div>
