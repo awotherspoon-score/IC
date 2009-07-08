@@ -212,6 +212,7 @@ function enableForm() {
 function newseventAddButton() {
 	var today = new Date();
 	var time = (today.getTime() / 1000) | 0;
+	var listItem = $(this).parent();
         $.post("../php/command/ajaxcommandrunner.php",
 		{
 			obj: 'yes',
@@ -220,16 +221,26 @@ function newseventAddButton() {
 			title: 'New News Story',
 			keywords: 'keyword1, keyword2',
 			description: 'description text',
+			text: 'news text',
 			stat: STATUS_PENDING,
 			datedisplayed: time,
 			newseventtype: TYPE_NEWS
 		},
 		function(data) {
+			listItem.after(newNewseventHtml(data['newsevent']));	
+			newsEvent.id = data['newsevent']['id'];
+			refreshNewsEvent(data['newsevent']);
 		}, "json"
 	);
 }
 
-function newNewseventHtml() {
+function newNewseventHtml(newsevent) {
+	var html = "<li><table>";
+		html += "<tr><td class='title-cell'><a class='news-button'>";
+		html += newsevent['title'];
+		html += "</a></td></tr>";
+		html += "</table></li>";
+	return html;
 }
 
 /**

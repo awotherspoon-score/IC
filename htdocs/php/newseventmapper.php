@@ -16,7 +16,7 @@
 					."(slug, title, datecreated, datemodified, text, description, keywords, datedisplayed, type) "
 					."VALUES "
 					."('{$object->getSlug()}','{$object->getTitle()}', '$now','$now','{$object->getText()}','{$object->getDescription()}','{$object->getKeywords()}','{$object->getDateDisplayed()}','{$object->getContentType()}')";
-			echo $query;
+			//echo $query;
 			self::$mysqli->query($query);
 			$object->setId(self::$mysqli->insert_id);
 		}
