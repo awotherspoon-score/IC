@@ -10,7 +10,7 @@
          include('inc/fckeditor/fckeditor.php');
 
          class FormHelper {
-               private $monthArray = array();
+               private $monthArray;
 
                /**
                 * Creates and returns an FCKEditor instance
@@ -99,12 +99,16 @@
 
                         //build the input
                         $input = $this->getDayInput($month, $day) 
-                        . $this->getMonthArray($month) 
+                        . $this->getMonthInput($month) 
                         . $this->getYearInput($year);
 
                         return $input;
 
                 } 
+
+		public function getGenericDateInput() {
+			return $this->getGenericDayInput() . $this->getGenericMonthInput() . $this->getYearInput();
+		}
 
                /**
                 * Gets an html day select element string
@@ -127,6 +131,22 @@
                         return $dayinput;
                }
 
+	       /**
+		* Gets a generic, 31 day input
+		*
+                * @return $dayinput String html select element
+		*/
+	       public function getGenericDayInput() {
+                        $dayinput = "<select name='date-day' id='date-day'>\n";
+
+			for ( $i = 1; $i <= 31; $i++ ) {
+                                $dayinput .= "<option value='{$i}'>$i</option>\n";
+			}
+
+                        $dayinput .= "</select>\n";
+                        return $dayinput;
+	       }
+
                /**
                 * Gets an html month select element string
                 * 
@@ -147,6 +167,24 @@
                         $monthinput .= "</select>";
                         return $monthinput;
                }
+
+	       /**
+		* Gets a generic, 12 month input
+		*
+                * @return $dayinput String html select element
+		*/
+	       public function getGenericMonthInput() {
+                        $months = $this->getMonthArray();
+                        $monthinput = "<select name='date-month' id='date-month'>\n";
+
+			foreach ( $months as $index => $month ) {
+			       $shiftedIndex = $index + 1;
+                               $monthinput .= "<option value='{$shiftedIndex}'>{$month['name']}</option>\n";
+			}
+
+                        $monthinput .= "</select>";
+                        return $monthinput;
+	       }
 
               /**
                 * Gets an html year select element string

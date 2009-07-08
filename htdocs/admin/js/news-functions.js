@@ -16,6 +16,7 @@ function setfckval(id, html) {
         return "";
 }
 
+/*
 function enableEditor(id) {
 	var oEditor = FCKeditorAPI.GetInstance(id);
 	oEditor.EditorDocument.body.disabled=false;
@@ -25,24 +26,31 @@ function disableEditor(id) {
 	var oEditor = FCKeditorAPI.GetInstance(id);
 	oEditor.EditorDocument.body.disabled=true;
 }
+*/
 
-function refreshPage(page) {
+function refreshNewsEvent(news) {
 	//pull values into the form
-	$("#title").val(page['title']);		
-	$("#status-input").val(page['status']);
-	$("#meta-keywords").val(page['keywords']);
-	$("#meta-description").val(page['description']);
-	setfckval("content", page['text']);	
-	setfckval("introduction", page['introduction']);
+	$("#title").val(news['title']);		
+	$("#status-input").val(news['status']);
+	$("#meta-keywords").val(news['keywords']);
+	$("#meta-description").val(news['description']);
+	setfckval("content", news['text']);	
 
+	//load the date in correctly
+	var displayDate = new Date();
+	displayDate.setTime( news['dateDisplayed'] * 1000 );
+	$("#date-day").val( displayDate.getUTCDate() );
+	$("#date-month").val( displayDate.getUTCMonth() + 1 );
+	$("#date-year").val( displayDate.getUTCFullYear() );
+	
 	//show the new values in the left column
 	//title
-	$("a#" + page.id + ".page-button").text(page['title']);
+	$("a#" + news.id + ".news-button").text(news['title']);
 	//status
-	var selector = "td#" + page['id'] + ".status span";
+	var selector = "td#" + news['id'] + ".status span";
 	status_span = $(selector);	
 	status_span.removeClass('live pending');
-	if (page['status'] == STATUS_PENDING) {
+	if (news['status'] == STATUS_PENDING) {
 		status_span.text('pending');
 		status_span.addClass('pending');
 	} else {
@@ -51,10 +59,10 @@ function refreshPage(page) {
 	}
 		
 	
-	var selector = "span#" + page['id'] + ".status span";
+	var selector = "span#" + news['id'] + ".status span";
 	status_span = $(selector);	
 	status_span.removeClass('live pending');
-	if (page['status'] == STATUS_PENDING) {
+	if (news['status'] == STATUS_PENDING) {
 		status_span.text('pending');
 		status_span.addClass('pending');
 	} else {
@@ -64,7 +72,7 @@ function refreshPage(page) {
 	
 	//show modified date	
 	var modifiedDate = new Date();
-	modifiedDate.setTime(page['dateModified'] * 1000);
+	modifiedDate.setTime(news['dateModified'] * 1000);
 	var minutes = modifiedDate.getUTCMinutes();
 	if (minutes < 10) {
 		minutes = "0" + minutes;
@@ -74,24 +82,25 @@ function refreshPage(page) {
 	modifyDate.text(dateText);
 	
 }
+
 /**
  * Gets a page from the site and updates the inputs on list-pages
  *
  * should be called in context of a.page-button
  */
-function getPageButton() {
-	page.id = this.id;
-        fetchPage(page.id);
+function getNewsButton() {
+	news.id = this.id;
+        fetchNewsEvent(news.id);
 }
-function fetchPage(id) {
+function fetchNewsEvent(id) {
 	$.post("../php/command/ajaxcommandrunner.php", {
-		'action' : 'get-page',
-		'page-id' : id
+		'action' : 'get-news-event',
+		'newsevent-id' : id
 	}, function (data, textStatus) { 
-		refreshPage(data['page']); 
+		refreshNewsEvent(data['newsevent']); 
 		//$("#status-input").removeAttr('disabled');	
 		//$("#title").removeAttr('disabled');	
-		enableForm();
+		//enableForm();
 
 	}, "json");
 }

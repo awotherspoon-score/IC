@@ -380,6 +380,7 @@ div#section-select a {
 .add-grandchild-button, 
 .add-child-button,
 #meta-toggle-button,
+.news-button,
 #save-button {
         cursor:pointer;
 }

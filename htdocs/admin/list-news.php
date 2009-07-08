@@ -24,7 +24,7 @@
         //init fckeditor
         $fh = RequestRegistry::getFormHelper();
         $editor = $fh->getEditor('content', 'Basic', null, null, '');
-	$introEditor = $fh->getEditor('introduction', 'Basic', '100', null, '');
+	$dateInput = $fh->getGenericDateInput();
 
 ?>
 <?php include('../inc/doctype.php'); ?>
@@ -43,12 +43,13 @@
    Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
    Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
    Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
-    var page = new Object();
+   var news = new Object();
     $(document).ready(function() {
 		init_header();
+		news.id=0;
 		$("a.news-section-toggle-button").click(newsToggle); 
+		$("a.news-button").click(getNewsButton);
 		/*
-		$("a.news-button").click(getPageButton);
 		$("#meta-inputs").hide();
 		$("#save-button").click(updatePage);
 		$("#meta-toggle-button").click(metaToggle); 
@@ -69,15 +70,19 @@
 <?php include('inc/header.php'); ?>
 <div id='main'>
  <div id='col-1'>
+
   <span class='table-headers'>
    <span class='delete-header'>Delete</span>&nbsp;
    <span class='status-header'>Status</span>
   </span>
+
   <ul>
+
    <?php foreach($news as $section => $stories): 
 
     if (count($stories) == 0) { continue; } ?>
     <li>
+
      <a class='news-section-button' ><?php echo ucwords(str_replace('-', ' ', $section)) ?></a>
      <a class='news-section-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
 
@@ -96,50 +101,51 @@
     </li>
 
    <?php endforeach ?>
+
      <li>
       <a class='add-child-button'>
       <img src='img/buttons/add-child-button.gif' />
       </a>
      </li>
+
   </ul>
+
  </div>
  <div id='col-2'>
-		<form id='page-form'>
-		
-		  <label for='title'>Title: </label>
-		  <input class='text-input' type='text' id='title' name='title' value='' />
+<form id='page-form'>
+ <label for='title'>Title: </label>
+ <input class='text-input' type='text' id='title' name='title' value='' />
 
-		  <label for='status'>Status: </label>
-		  <select name='status' id='status-input'>
-			<option value=''>Pending</option>
-			<option value=''>Live</option>
-		  </select>
-		
+ <label for='date-input'>Displayed Date: </label>
+ <?= $dateInput ?>
 
-		  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
+ <label for='status'>Status: </label>
+ <select name='status' id='status-input'>
+  <option value='0'>Pending</option>
+  <option value='1'>Live</option>
+ </select>
 
-		  <div id='meta-inputs'>
-			  <label for='meta-keywords'>Keywords:</label>
-			  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
+  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
 
-			  <label for='meta-description'>Description:</label>
-			  <input class='text-input' type='text' id='meta-description' name='meta-description' />
-		 </div><!-- /#meta-inputs -->
+  <div id='meta-inputs'>
+	  <label for='meta-keywords'>Keywords:</label>
+	  <input class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
 
-		  <label for='introduction'>Introduction:</label>
-		  <?php $introEditor->Create(); ?>
-		  <!-- <input class='text-input' type='text' id='introduction' name='introduction' /> -->
+	  <label for='meta-description'>Description:</label>
+	  <input class='text-input' type='text' id='meta-description' name='meta-description' />
+ </div><!-- /#meta-inputs -->
 
-		  <label for='content'>Content:</label>
-		  <?php $editor->Create(); ?><br />
-		  
-		  <p id='modify-date'>Last Modified On 
-		  <?php //echo date(' D M j Y ', $page->getDateModified()); ?>
-		  at
-		  <?php //echo date(' H:i ', $page->getDateModified()); ?>
-		  </p>
-		  <input type='submit' value='Save' name='save-button' id='save-button' />
-		</form>
+
+  <label for='content'>Content:</label>
+  <?php $editor->Create(); ?><br />
+  
+  <p id='modify-date'>Last Modified On 
+  <?php //echo date(' D M j Y ', $page->getDateModified()); ?>
+  at
+  <?php //echo date(' H:i ', $page->getDateModified()); ?>
+  </p>
+  <input type='submit' value='Save' name='save-button' id='save-button' />
+</form>
 	    </div>
     </div><!-- /#min -->
 
