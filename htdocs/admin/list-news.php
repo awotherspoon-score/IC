@@ -13,6 +13,7 @@
 		$newsevent->setKeywords($_POST['meta-keywords']);
 		$newsevent->setDescription($_POST['meta-description']);
 		$newsevent->setText($_POST['content']);
+		$newsevent->setStatus($_POST['status']);
 		CommandRunner::run('update-news-event', array('newsevent' => $newsevent));
 	}
 
@@ -116,11 +117,27 @@
      <table>
       <?php foreach ($stories as $story): ?>
        <tr>
+
         <td class='title-cell'>
 	 <a class='news-button' id='<?= $story->getId() ?>'>
 	 <?= $story->getTitle() ?>
 	 </a>
         </td>
+
+	<td class='delete-button-cell'>
+	 <a class='delete-button' id='<?= $story->getId() ?>'>
+	  <img src='img/buttons/delete-button.gif' class='delete-button' />
+         </a>
+	</td>
+
+	<td class='status' id='<?= $story->getId() ?>'>
+	 <?php if ($story->getStatus() == Content::STATUS_LIVE): ?>
+	  <span class='live'>live</span> 
+	 <?php else: ?>		
+	  <span class='pending'>pending</span>
+	 <?php endif ?>
+	</td>
+
        </tr>	
       <?php endforeach ?>
      </table>

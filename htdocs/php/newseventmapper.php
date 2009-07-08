@@ -13,9 +13,9 @@
 		protected function doInsert(Content $object) {
 			$now = time();
 			$query = "INSERT INTO newsevents "
-					."(slug, title, datecreated, datemodified, text, description, keywords, datedisplayed, type) "
+					."(status, slug, title, datecreated, datemodified, text, description, keywords, datedisplayed, type) "
 					."VALUES "
-					."('{$object->getSlug()}','{$object->getTitle()}', '$now','$now','{$object->getText()}','{$object->getDescription()}','{$object->getKeywords()}','{$object->getDateDisplayed()}','{$object->getContentType()}')";
+					."('{$object->getStatus()}', '{$object->getSlug()}','{$object->getTitle()}', '$now','$now','{$object->getText()}','{$object->getDescription()}','{$object->getKeywords()}','{$object->getDateDisplayed()}','{$object->getContentType()}')";
 			//echo $query;
 			self::$mysqli->query($query);
 			$object->setId(self::$mysqli->insert_id);
@@ -31,7 +31,8 @@
 					."text='{$object->getText()}', "
 					."description='{$object->getDescription()}', "
 					."keywords='{$object->getKeywords()}', "
-					."datedisplayed='{$object->getDateDisplayed()}' "
+					."datedisplayed='{$object->getDateDisplayed()}', "
+					."status='{$object->getStatus()}' "
 					."WHERE id={$object->getId()} LIMIT 1";
 			//echo $query;
 			self::$mysqli->query($query);

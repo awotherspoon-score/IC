@@ -42,7 +42,7 @@
 				$("#save-button").click(updatePage);
 				$("#meta-toggle-button").click(metaToggle); 
 				$("a.pages-toggle-button").click(grandchildrenToggle); 
-                                $("a.delete-button").click(grandchildDeleteButton);
+                                $(".delete-button").click(grandchildDeleteButton);
                                 $("a.add-grandchild-button").click(grandchildAddButton);
                                 $("a.add-child-button").click(childAddButton);
 
