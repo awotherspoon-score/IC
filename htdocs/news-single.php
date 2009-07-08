@@ -2,9 +2,8 @@
 
 <?php
 	$slug = mysql_escape_string($_GET['slug']);
-	$page = RequestRegistry::getPageMapper()->findBySlug($slug);
-	$view = RequestRegistry::getViewHelper($page);
-	$children = $page->getChildren();
+	$news = RequestRegistry::getNewsEventMapper()->findBySlug($slug);
+	$view = RequestRegistry::getViewHelper($news);
 ?>
 
 <?php include('inc/doctype.php'); ?>
@@ -102,12 +101,12 @@
                 <div class='cleardiv'></div>
                 <div id='content'>
 			<?= $view->breadcrumbs(); ?>
-                        <h1><?= $page->getTitle() ?></h1>
-                        <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
-			<?= $page->getText() ?>
+                        <h1><?= $news->getTitle() ?></h1>
+			<p><?= date('l, jS F Y', $news->getDateDisplayed()) ?></p>
+			<?= $news->getText() ?>
                 </div>
 
-		<?= $view->sidebar(); ?>
+		<?php //$view->sidebar(); ?>
 		
 	</div><!-- /main -->
 	<div class='cleardiv'></div>

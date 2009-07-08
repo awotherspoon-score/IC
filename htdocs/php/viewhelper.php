@@ -42,4 +42,5 @@
 	 	 * Generate breadcrumb for our content object
 	   	 */	 
 		abstract function breadcrumbs();
+		abstract function sidebar();
 	}
