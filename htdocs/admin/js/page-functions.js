@@ -1,20 +1,5 @@
 
 
-function getfckval(id) {
-       if ( typeof(FCKeditorAPI) !== undefined ) { 
-          return FCKeditorAPI.GetInstance(id).GetHTML();
-        }
-        return "";
-}
-
-function setfckval(id, html) {
-        if ( typeof(FCKeditorAPI) !== undefined ) { 
-          FCKeditorAPI.GetInstance(id).SetHTML(html);
-          return FCKeditorAPI.GetInstance(id).GetHTML();
-        }
-
-        return "";
-}
 
 function enableEditor(id) {
 	var oEditor = FCKeditorAPI.GetInstance(id);
@@ -218,6 +203,8 @@ function grandchildAddButton() {
                       //open up out new page for editing
                       page.id = data['page']['id'];     //for the save button
                       fetchPage(page.id);               //get the data into the form
+		      $("#title").focus();
+		      $("#title").select();
 		      
                 },
                 "json"
@@ -286,6 +273,8 @@ function childAddButton() {
 			$("a.pages-toggle-button").click(grandchildrenToggle); 
 			page.id = data['page']['id']
 			fetchPage(page.id);
+		        $("#title").focus();
+		        $("#title").select();
                 },
                 "json"
         );
@@ -314,4 +303,19 @@ function childMenuItem(page) {
 		 + "</table>\n"
 	         + "</li>\n"
 	return childMenuItem;
+}
+function getfckval(id) {
+       if ( typeof(FCKeditorAPI) !== undefined ) { 
+          return FCKeditorAPI.GetInstance(id).GetHTML();
+        }
+        return "";
+}
+
+function setfckval(id, html) {
+        if ( typeof(FCKeditorAPI) !== undefined ) { 
+          FCKeditorAPI.GetInstance(id).SetHTML(html);
+          return FCKeditorAPI.GetInstance(id).GetHTML();
+        }
+
+        return "";
 }
