@@ -166,6 +166,32 @@ function newsToggle() {
         //$(this).children().filter('img').each(swapPlusMinus);
 }
 
+function newsEventDeleteButton() {
+	var that = this;
+	var deleteid = this.id;
+	var confirmMessage = "Are you sure you want to delete this news story?\nBe careful, this can't be undone!";	
+	var deletionConfirmed = confirm(confirmMessage);
+	if (deletionConfirmed) {
+          $.post("../php/command/ajaxcommandrunner.php",
+		{
+			obj: 'yes',
+			type: 'newsevent',
+			id: this.id,
+			action: 'delete-news-event'
+		},
+		function(data, textstatus) {
+			$("a.delete-button").each(function() {
+				if (this.id == deleteid ) {
+					$(this).parent().parent().hide();
+					$(this).parent().parent().remove();
+				}
+			});
+			//that.parent().parent().remove();
+		}, 'json');
+	}
+	
+}
+
 function grandchildDeleteButton() {
         var confirmMessage = "Are you sure you want to delete this page?\nBe careful, this can't be undone!";
         if ($(this).parent().attr('class') == 'child-buttons') {

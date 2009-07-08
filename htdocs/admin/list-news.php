@@ -72,11 +72,11 @@
 		$("a.news-section-button").click(newsToggle); 
 		$("a.news-button").click(getNewsButton);
 		$("a#add-news-story-button").click( newseventAddButton );
+		$("a.delete-button").click(newsEventDeleteButton);
 		//$("#save-button").click(updateNewsEvent);
 		/*
 		$("#meta-inputs").hide();
 		$("#meta-toggle-button").click(metaToggle); 
-		$("a.delete-button").click(grandchildDeleteButton);
 		$("a.add-grandchild-button").click(grandchildAddButton);
 		$("a.add-child-button").click(childAddButton);
 
