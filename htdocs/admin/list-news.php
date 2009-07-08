@@ -50,6 +50,7 @@
 		init_header();
 		newsEvent.id=0;
 		$("a.news-section-toggle-button").click(newsToggle); 
+		$("a.news-section-button").click(newsToggle); 
 		$("a.news-button").click(getNewsButton);
 		$("#save-button").click(updateNewsEvent);
 		/*
@@ -79,6 +80,11 @@
   </span>
 
   <ul>
+     <li>
+      <a id='add-news-story-button'>
+	Add News Story
+      </a>
+     </li>
 
    <?php foreach($news as $section => $stories): 
 
@@ -104,11 +110,6 @@
 
    <?php endforeach ?>
 
-     <li>
-      <a class='add-child-button'>
-      <img src='img/buttons/add-child-button.gif' />
-      </a>
-     </li>
 
   </ul>
 

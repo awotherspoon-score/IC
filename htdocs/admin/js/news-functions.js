@@ -158,7 +158,9 @@ function metaToggle() {
 
 function newsToggle() {
         $(this).parent().children().filter('table').toggle();
-        $(this).children().filter('img').each(swapPlusMinus);
+	var plusMinusIcon =$(this).parent().children().filter('a.news-section-toggle-button').children().filter('img'); 
+	plusMinusIcon.each(swapPlusMinus);
+        //$(this).children().filter('img').each(swapPlusMinus);
 }
 
 function grandchildDeleteButton() {

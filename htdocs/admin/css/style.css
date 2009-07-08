@@ -373,6 +373,18 @@ div#section-select a {
 }
 /*End Section Select*/
 
+/* News CMS */
+body div#wrapper div#col-1 ul li a#add-news-story-button {
+	text-decoration:none;
+	color:#999;
+	border:solid 1px #19b1e2;
+	font-weight:normal;
+	text-transform:uppercase;
+	font-size:0.7em;
+	padding:3px;
+}
+/* End News CMS */
+
 /*UI Polish*/
 .page-button, 
 .delete-button, 
@@ -381,6 +393,9 @@ div#section-select a {
 .add-child-button,
 #meta-toggle-button,
 .news-button,
+.news-section-button,
+.news-section-toggle-button,
+#add-news-story-button,
 #save-button {
         cursor:pointer;
 }
