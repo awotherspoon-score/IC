@@ -41,6 +41,7 @@ function refreshNewsEvent(news) {
 	//load the date in correctly
 	var displayDate = new Date();
 	displayDate.setTime( news['dateDisplayed'] * 1000 );
+	displayDate.setHours(12);
 	$("#date-day").val( displayDate.getUTCDate() );
 	$("#date-month").val( displayDate.getUTCMonth() + 1 );
 	$("#date-year").val( displayDate.getUTCFullYear() );

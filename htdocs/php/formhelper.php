@@ -89,6 +89,7 @@
                 * @param input string concatenated input elements string
                 */
                 public function getDateInput($initial = null) {
+			//echo $initial;
                         //set default to today if unset
                         $initial = ($initial == null) ? time() : $initial;
 
@@ -96,6 +97,7 @@
                         $day = (int) date('j', $initial); 
                         $month = (int) date('n', $initial);
                         $year = (int) date('Y', $initial);
+
 
                         //build the input
                         $input = $this->getDayInput($month, $day) 
@@ -125,7 +127,7 @@
 
                         for ($i = 1; $i <= $month['days']; $i++) {
                                 $selected = ($i == $initial) ? ' selected' : '';
-                                $dayinput .= "<option value='{$i}'{$selected}>$i</option\n";
+                                $dayinput .= "<option value='{$i}'{$selected}>$i</option>\n";
                         }
                         $dayinput .= "</select>\n";
                         return $dayinput;
@@ -161,7 +163,7 @@
                         foreach ( $months as $index => $month ) {
                                $shiftedIndex = $index + 1; //we need the 1-based index for our functions
                                $selected = ($initial == $shiftedIndex) ? ' selected' : ''; 
-                               $monthinput .= "<option value='{$shiftedIndex}'{$select}>{$month['name']}</option>\n";
+                               $monthinput .= "<option value='{$shiftedIndex}'{$selected}>{$month['name']}</option>\n";
                         }
                                         
                         $monthinput .= "</select>";
