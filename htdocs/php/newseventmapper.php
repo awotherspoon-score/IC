@@ -30,7 +30,7 @@
 					."text='{$object->getText()}', "
 					."description='{$object->getDescription()}', "
 					."keywords='{$object->getKeywords()}', "
-					."datedisplayed='{$object->getDateDisplayed()}', "
+					."datedisplayed='{$object->getDateDisplayed()}' "
 					."WHERE id={$object->getId()} LIMIT 1";
 			//echo $query;
 			self::$mysqli->query($query);
