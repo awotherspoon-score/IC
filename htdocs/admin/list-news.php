@@ -172,12 +172,14 @@
  </div><!-- /#meta-inputs -->
  <label for='content'>Content:</label>
  <?php $editor->Create(); ?><br />
-  
+
+ <!-- 
  <p id='modify-date'>Last Modified On 
  <?php //echo date(' D M j Y ', $page->getDateModified()); ?>
   at
  <?php //echo date(' H:i ', $page->getDateModified()); ?>
  </p>
+ -->
 	 <input type='hidden' id='id' name='id' value='<?= $newsevent->getId() ?>' />
  <input type='submit' value='Save' name='save-button' id='save-button' />
 </form>

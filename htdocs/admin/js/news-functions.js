@@ -17,7 +17,6 @@ function setfckval(id, html) {
         return "";
 }
 
-/*
 function enableEditor(id) {
 	var oEditor = FCKeditorAPI.GetInstance(id);
 	oEditor.EditorDocument.body.disabled=false;
@@ -27,9 +26,9 @@ function disableEditor(id) {
 	var oEditor = FCKeditorAPI.GetInstance(id);
 	oEditor.EditorDocument.body.disabled=true;
 }
-*/
 
 function refreshNewsEvent(news) {
+	enableForm();
 	//pull values into the form
 	$("#title").val(news['title']);		
 	$("#status-input").val(news['status']);
@@ -186,7 +185,7 @@ function newsEventDeleteButton() {
 					$(this).parent().parent().remove();
 				}
 			});
-			//that.parent().parent().remove();
+			disableForm(); //after we delete, disabled the form until the user clicks on another news story
 		}, 'json');
 	}
 	
@@ -223,7 +222,11 @@ function grandchildDeleteButton() {
 function disableForm() {
 	$(".text-input").attr('disabled', 'disabled');
 	$("select#status-input").attr('disabled', 'disabled');
-	disableEditor('introduction');
+	$("#date-day").attr('disabled', 'disabled');
+	$("#date-year").attr('disabled', 'disabled');
+	$("#date-month").attr('disabled', 'disabled');
+	$("#meta-keywords").attr('disabled', 'disabled');
+	$("#meta-description").attr('disabled', 'disabled');
 	disableEditor('content');
 	$("#save-button").attr('disabled', 'disabled');
 }
@@ -231,7 +234,11 @@ function disableForm() {
 function enableForm() {
 	$(".text-input").removeAttr('disabled');
 	$("select#status-input").removeAttr('disabled');
-	enableEditor('introduction');
+	$("#date-day").removeAttr('disabled');
+	$("#date-month").removeAttr('disabled');
+	$("#date-year").removeAttr('disabled');
+	$("#meta-keywords").removeAttr('disabled');
+	$("#meta-description").removeAttr('disabled');
 	enableEditor('content');
 	$("#save-button").removeAttr('disabled');
 }
@@ -257,6 +264,8 @@ function newseventAddButton() {
 			listItem.after(newNewseventHtml(data['newsevent']));	
 			newsEvent.id = data['newsevent']['id'];
 			refreshNewsEvent(data['newsevent']);
+			$("#title").focus();
+			$("#title").select();
 		}, "json"
 	);
 }
