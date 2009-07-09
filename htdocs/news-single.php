@@ -106,7 +106,7 @@
 			<?= $news->getText() ?>
                 </div>
 
-		<?php //$view->sidebar(); ?>
+		<?= $view->sidebar(); ?>
 		
 	</div><!-- /main -->
 	<div class='cleardiv'></div>

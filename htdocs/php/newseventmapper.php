@@ -95,6 +95,19 @@
 			return $this->createObject($this->queryToArray($this->selectMostRecentNewsQuery()));
 		}
 
+		public function findAllLiveNewsForMonth($month, $year = null) {
+			return $this->createCollection($this->queryToArray($this->selectAllLiveNewsForMonthQuery($month, $year), true));
+		}
+
+		
+		protected function selectAllLiveNewsForMonthQuery($month, $year = null) {
+			//expects 1-12 in $month
+			$year = ( $year === null ) ? date('Y') : $year;
+			$start = mktime(0,0,0,$month,1,$year);
+			$end = mktime(0,0,0,$month + 1, 0, $year); //may need to check this for an off by on error
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " AND status=" . Content::STATUS_LIVE . " AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed DESC";
+		}
+
 		protected function selectMostRecentNewsQuery() {
 			$now = time();
 			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " AND datedisplayed < $now ORDER BY datedisplayed DESC LIMIT 1";
