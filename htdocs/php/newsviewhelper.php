@@ -35,16 +35,20 @@
 				$this_month_list .= "</ul>\n";	
 			}
 
-			$this_year = date('Y');
-			$last_year = $this_year - 1;
-			$two_years_ago = $last_year -1;
+			$this_year 	= date('Y');
+			$last_year 	= $this_year - 1;
+			$two_years_ago 	= $last_year -1;
+
+			$this_month 	= date('F');
+			$last_month 	= date( 'F', mktime(0,0,0,date('n') - 1, date('j'), date('Y') ) );
+			$two_months_ago = date( 'F', mktime(0,0,0,date('n') - 2, date('j'), date('Y') ) );
 
 			$archive_list = "<div class='sidebar-links-title'>\n"
-					  ."<p>{$this_year}</p>\n"
+					  ."<p>News Archive</p>\n"
 					  ."</div>\n"
 					  ."<ul class='sidebar-links-list'>\n";
-			foreach ( array($this_year, $last_year, $two_years_ago) as $year) {
-				$archive_list .= "<li><a href='#'>{$year}</a></li>\n";
+			foreach ( array($this_month, $last_month, $two_months_ago, $this_year, $last_year, $two_years_ago) as $time) {
+				$archive_list .= "<li><a href='#'>{$time}</a></li>\n";
 			}
 			$archive_list .= "</ul>\n";	
 			//$archive_list .= "</div>\n";

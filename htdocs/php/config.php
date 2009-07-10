@@ -27,7 +27,7 @@
 		 */
 		private function __call($method, $args) {
 			//defines getSectionKeyforvalue() methods
-			if (strpos($method, 'get') == 0) { //it's a get* method
+			if (strpos($method, 'get') === 0) { //it's a get* method
 				//parse the method name
 				$keyString = substr($method, 3);
 				$keyArray = $this->explodeCase($keyString);
