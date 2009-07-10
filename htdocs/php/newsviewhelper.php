@@ -20,6 +20,7 @@
 			$story = $this->content;
 
 			$this_months_news = CommandRunner::run('get-live-news-for-month', array('month' => date('n')))->get('news');
+			$this_month_list = '';
 
 			if ( count( $this_months_news ) > 0 ) {
 				$this_month_list = "<div class='sidebar-links-title'>\n"
