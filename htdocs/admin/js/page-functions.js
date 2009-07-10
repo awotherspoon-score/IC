@@ -135,7 +135,6 @@ function grandchildDeleteButton() {
         var that = $(this);
         var child = that.parent().parent().parent();
         var grandchildRows =  child.children();
-        
         if (deletionConfirmed) {
           $.post("../php/command/ajaxcommandrunner.php",
                   {

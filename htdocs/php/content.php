@@ -23,7 +23,7 @@
                         return array(
                              'id' => $this->id,
                              'slug' => $this->slug,
-                             'title' => $this->title,
+                             'title' => stripslashes( $this->title ),
                              'dateCreated' => $this->dateCreated,
                              'dateModified' => $this->dateModified,
                              'status' => $this->status

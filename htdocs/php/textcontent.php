@@ -16,9 +16,9 @@
                 public function toArray() {
                         return array_merge(parent::toArray(), array(
                                 'text' => $this->text,
-                                'description' => $this->description,
-                                'keywords' => $this->keywords,
-				'introduction' => $this->introduction
+                                'description' => stripslashes( $this->description ),
+                                'keywords' => stripslashes( $this->keywords ),
+				'introduction' => stripslashes( $this->introduction )
                         ));
                 }
 		

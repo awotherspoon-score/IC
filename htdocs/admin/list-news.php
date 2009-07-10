@@ -154,7 +154,7 @@
 
  <form id='page-form' method='post' action='<?= $_SERVER['PHP_SELF'] ?>'>
  <label for='title'>Title: </label>
- <input class='text-input' type='text' id='title' name='title' value='<?= $newsevent->getTitle() ?>' />
+ <input class='text-input' type='text' id='title' name='title' value='<?= stripslashes( htmlentities( $newsevent->getTitle(), ENT_QUOTES ) ) ?>' />
  <label for='date-input'>Displayed Date: </label>
  <?= $dateInput ?>
  <label for='status'>Status: </label>
