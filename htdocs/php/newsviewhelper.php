@@ -29,7 +29,11 @@
 						  ."<ul class='sidebar-links-list'>\n";
 
 				foreach ( $this_months_news as $news_story ) {
-					$this_month_list .= "<li><a href='#'>{$news_story->getTitle()}</a></li>\n";
+					$this_story_arrow = ( $news_story == $story ) ? '> ' : '' ;
+					$title = $this_story_arrow . $news_story->getTitle();
+					$this_month_list .= "<li>"
+							."<a href='{$this->url($news_story)}'>{$title}</a>"
+							."</li>\n";
 				}
 
 				$this_month_list .= "</ul>\n";	
@@ -50,6 +54,7 @@
 			foreach ( array($this_month, $last_month, $two_months_ago, $this_year, $last_year, $two_years_ago) as $time) {
 				$archive_list .= "<li><a href='#'>{$time}</a></li>\n";
 			}
+
 			$archive_list .= "</ul>\n";	
 			//$archive_list .= "</div>\n";
 
