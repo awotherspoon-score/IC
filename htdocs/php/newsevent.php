@@ -31,4 +31,17 @@
 		public function setContentType($type) {
 			$this->type = $type;
 		}
+
+		/**
+		 * returns the first x words of the content
+		 *
+		 * @param $length int size of the snippet, optional, defaults to 50 words
+		 * @return $intro string the intro to return
+		 */
+		public function getIntroduction( $length = 50 ) {
+			$intro = strip_tags( $this->getText() );
+			$textArray = explode( ' ', $intro);
+			$textArray = array_slice( $textArray, 0, $length, true);
+			return implode( ' ', $textArray );
+		}
 	}

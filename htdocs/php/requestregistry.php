@@ -57,7 +57,7 @@
 			}
 		}
 
-		static function getViewHelper(Content $content) {
+		static function getViewHelper( $content ) {
 			return ViewHelperFactory::createViewHelper($content);
 		}
 

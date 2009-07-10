@@ -27,6 +27,14 @@ a img {
 	border:0;
 }
 
+a.more-link {
+	text-decoration:none;
+}
+
+a.more-link:hover {
+	text-decoration:underline;
+}
+
 div.cleardiv {
 	clear:both;
 	margin:0;
