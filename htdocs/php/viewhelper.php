@@ -13,9 +13,9 @@
 		/**
 		 * Constructor
 		 *
-		 * @param $object Content sets helpers content object to passed in content object
+		 * @param $object mixed sets helpers content object to passed in content object
 		 */
-		public function __construct(Content $object) {
+		public function __construct( $object ) {
 			$this->content = $object;
 			$this->urlHelper = RequestRegistry::getUrlHelper();
 		}
@@ -26,14 +26,14 @@
 		 * @param $content Content (optional) if passed, sets the helpers content object to parameter
 		 * @return $this->content Content this classes content object
 		 */
-		public function content($content = null) {
+		public function content( $content = null ) {
 			if ($content instanceof Content && $content != null) {
 				$this->content = $content;
 			}
 			return $this->content;
 		}
 
-		public function url($content = null) {
+		public function url( $content = null ) {
 			$content = ($content == null ) ? $this->content : $content;
 			return $this->urlHelper->url($content);
 		}
