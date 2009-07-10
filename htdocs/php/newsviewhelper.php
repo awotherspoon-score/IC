@@ -51,8 +51,10 @@
 					  ."<p>News Archive</p>\n"
 					  ."</div>\n"
 					  ."<ul class='sidebar-links-list'>\n";
-			foreach ( array($this_month, $last_month, $two_months_ago, $this_year, $last_year, $two_years_ago) as $time) {
-				$archive_list .= "<li><a href='#'>{$time}</a></li>\n";
+			foreach ( array($this_month, $last_month, $two_months_ago, $this_year, $last_year, $two_years_ago) as $time ) {
+				$lower_time = strtolower( $time );
+				$content = array( 'type' => 'news-archive', 'period' => $lower_time );
+				$archive_list .= "<li><a href='{$this->url( $content )}'>{$time}</a></li>\n";
 			}
 
 			$archive_list .= "</ul>\n";	
