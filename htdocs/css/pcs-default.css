@@ -203,7 +203,7 @@ body div#main div#content div#breadcrumb {
         position:relative;
         padding-top:8px;
         margin-bottom:30px;
-        z-index:-1;
+        /*z-index:-1;*/
 }
 
 

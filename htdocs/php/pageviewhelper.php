@@ -6,7 +6,7 @@
 			$ancestry = $page->getAncestry();
 
 			$breadcrumb =  "<div id='breadcrumb'>\n";
-			$breadcrumb .= "<a href='/'>Home</a> | ";
+			$breadcrumb .= "<a href='#'>Home</a> | ";
 
 			foreach ($ancestry as $ancestor) {
 				if ( $ancestor === $this->content ) {
