@@ -99,6 +99,28 @@
 			return $this->createCollection($this->queryToArray($this->selectAllLiveNewsForMonthQuery($month, $year), true));
 		}
 
+		/**
+		 * News Stories For News Index Page
+		 *
+		 * Returns NewsEventCollection containing news for news index page
+		 *
+		 * @return $news NewsEventCollection the collection of stories for the index
+		 */
+		public function findNewsForIndex() {
+			return $this->createCollection( $this->queryToArray( $this->selectNewsForIndexQuery(), true ) );
+		}
+
+		/**
+		 * Returns SQL for News Index Main Content
+		 *
+		 * Query returns most recent three live news stories, not including future stories
+		 *
+		 * @return $query string the SQL query returning the news index news pages
+		 */
+		public function selectNewsForIndexQuery() {
+			$now = time();
+			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_NEWS . ' AND status=' . Content::STATUS_LIVE . " AND datedisplayed < {$now} ORDER BY datedisplayed DESC LIMIT 3";
+		}
 		
 		protected function selectAllLiveNewsForMonthQuery($month, $year = null) {
 			//expects 1-12 in $month
