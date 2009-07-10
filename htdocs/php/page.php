@@ -46,14 +46,14 @@
 
                 public function getChildren() {
                         if ( ! isset( $this->children ) ) {
-                                $this->children = RequestRegistry::getPageMapper()->findByParentId($this->getId());
+                                $this->children = RequestRegistry::getPageMapper()->findByParentId( $this->getId() );
                         }
                         return $this->children;
                 }
 
 		public function getLiveChildren() {
 			if ( ! isset( $this->liveChildren ) ) {
-				$this->liveChildren = RequestRegistry::getPageMapper()->findLiveByParentId($this->getId());
+				$this->liveChildren = RequestRegistry::getPageMapper()->findLiveByParentId( $this->getId() );
 			}
 			return $this->liveChildren;
 		
