@@ -1,9 +1,12 @@
 <?php
         include('../init.php');
+
+	//setup some helpers
         include('inc/fckeditor/fckeditor.php');
         $fh = RequestRegistry::getFormHelper();
 	
 		
+	//if we're saving an event, send it to the database and set it as the event to show in the form
 	if (isset($_POST['save-button'])) {
 		$parameters = array('newsevent-id' => $_POST['id']);
 		$newsevent = CommandRunner::run('get-news-event', $parameters)->get('newsevent');
@@ -17,17 +20,23 @@
 		CommandRunner::run('update-news-event', array('newsevent' => $newsevent));
 	}
 
+	//get the most recent news story to display if we didn't get anything on saving (above)
 	if ( ! isset( $newsevent ) ) {
 		$newsevent = CommandRunner::run('get-most-recent-news')->get('newsevent');	
 	}
 
 
-        //get page from $_GET
+	//$news is an array of NewsEventCollections
+	//e.g. array( 'section-1-heading' => NewsEventCollection $collection)
+	//don't worry about including empty sections, we'll ignore them when we loop through later
+	
+	//to start lets add sections for recently edited news and future news
 	$news = array(
 		'recently-edited-news' => CommandRunner::run('get-recently-modified-news')->get('news'),
 		'future-news' => CommandRunner::run('get-future-news')->get('news'),
 	);
 
+	//add a section each for the past three months
 	$thisMonth = date('n');
 	$threeMonthsAgo = $thisMonth - 3;
 	$monthArray = $fh->getMonthArray();
@@ -38,6 +47,7 @@
 	}
 
 
+	//add a section for each of the last ten years
 	$thisYear = date('Y');
 	$tenYearsAgo = $thisYear - 10;
 
@@ -45,12 +55,6 @@
 		$news[$thisYear] = CommandRunner::run('get-news-for-year', array('year' => $thisYear) )->get('news');
 		$thisYear--;
 	}
-
-
-	/*
-        $page = $context->get('page');
-        $level2 = $page->getChildren();
-	*/
 
         //init fckeditor
         $editor = $fh->getEditor('content', 'Basic', null, null, $newsevent->getText());

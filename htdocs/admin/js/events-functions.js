@@ -168,7 +168,7 @@ function newsToggle() {
 function newsEventDeleteButton() {
 	var that = this;
 	var deleteid = this.id;
-	var confirmMessage = "Are you sure you want to delete this news story?\nBe careful, this can't be undone!";	
+	var confirmMessage = "Are you sure you want to delete this event?\nBe careful, this can't be undone!";	
 	var deletionConfirmed = confirm(confirmMessage);
 	if (deletionConfirmed) {
           $.post("../php/command/ajaxcommandrunner.php",
@@ -252,7 +252,7 @@ function newseventAddButton() {
 			obj: 'yes',
 			type: 'newsevent',
 			action: 'create-news-event',
-			title: 'New News Story',
+			title: 'New Event',
 			keywords: 'keyword1, keyword2',
 			description: 'description text',
 			text: 'news text',

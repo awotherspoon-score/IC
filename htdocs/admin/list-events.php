@@ -1,9 +1,16 @@
 <?php
+	// WATCH OUT!
+	// Apart from the runs to the database via commands, for the most part this is a copy-paste hack-job of list-pages.php
+	// You might find a few variables/functions that say 'news' when they mean 'event' here, but function/variable names are all the same to the user, and we have deadlines!
+
         include('../init.php');
+
+	//setup some helpers
         include('inc/fckeditor/fckeditor.php');
         $fh = RequestRegistry::getFormHelper();
 	
-		
+			
+	//if we're saving an event, send it to the database and set it as the event to show in the form
 	if (isset($_POST['save-button'])) {
 		$parameters = array('newsevent-id' => $_POST['id']);
 		$newsevent = CommandRunner::run('get-news-event', $parameters)->get('newsevent');
@@ -17,19 +24,38 @@
 		CommandRunner::run('update-news-event', array('newsevent' => $newsevent));
 	}
 
+	//if not then we'll take either the most forthcoming event (the one nearest in the future)
+	//or we'll take the most recent if we can't find one, remember this is deciding what to display initially in the form
 	if ( ! isset( $newsevent ) ) {
 		$newsevent = CommandRunner::run( 'get-soonest-event' )->get( 'newsevent' );	
+
+		if ( $newsevent == null ) {
+			$newsevent = CommandRunner::run( 'get-most-recent-event' )->get( 'newsevent' );
+		}
 	}
 
 
-        //get page from $_GET
+	//events is an array of NewsEventCollections
+	//e.g. array( 'section-1-heading' => NewsEventCollection $collection)
+	//don't worry about including empty sections, we'll ignore them when we loop through later
+	
+	//to start lets add a section for recently edited events and future events
 	$events = array(
 		'recently-edited-events' => CommandRunner::run( 'get-recently-modified-events' )->get( 'events' ),
-		//'upcoming-events' => CommandRunner::run( 'get-upcoming-events' )->get( 'events' )
-		//'future-news' => CommandRunner::run('get-future-news')->get('news'),
+		'future-events' => CommandRunner::run('get-future-events')->get('events'),
 	);
 
+	//add a section each for the past three months
+	$thisMonth = date('n');
+	$threeMonthsAgo = $thisMonth - 3;
+	$monthArray = $fh->getMonthArray();
+	while ( $thisMonth > $threeMonthsAgo ) {
+		$monthString = $monthArray[$thisMonth - 1]['name'];
+		$events[$monthString] = CommandRunner::run('get-events-for-month', array( 'month' => $thisMonth ) )->get('events');
+		$thisMonth--;
+	}
 
+	//add a section for each of the last ten years
 	$thisYear = date('Y');
 	$tenYearsAgo = $thisYear - 10;
 
@@ -38,13 +64,7 @@
 		$thisYear--;
 	}
 
-
-	/*
-        $page = $context->get('page');
-        $level2 = $page->getChildren();
-	*/
-
-        //init fckeditor
+        //initialize fckeditor
         $editor = $fh->getEditor('content', 'Basic', null, null, $newsevent->getText());
 	$dateInput = $fh->getDateInput( $newsevent->getDateDisplayed() );
 
@@ -76,15 +96,6 @@
 		$("a.delete-button").click(newsEventDeleteButton);
 		$("#meta-toggle-button").click(metaToggle); 
 		$("#meta-inputs").hide();
-		/*
-		$("#meta-inputs").hide();
-		$("a.add-grandchild-button").click(grandchildAddButton);
-		$("a.add-child-button").click(childAddButton);
-
-		$("#status-input").attr('disabled', 'disabled');	
-		$("#title").attr('disabled', 'disabled');	
-		*/
-
 	});
   </script>
  </head>
@@ -109,7 +120,7 @@
 
    <?php foreach($events as $section => $stories): 
 
-    if (count($stories) == 0) { continue; } ?>
+    if (count($stories) == 0) { continue; /* as promised, if the section is empty, we skip it*/ } ?>
     <li>
 
      <a class='news-section-button' ><?php echo ucwords(str_replace('-', ' ', $section)) ?></a>

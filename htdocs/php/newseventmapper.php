@@ -135,6 +135,10 @@
 			return $this->createCollection($this->queryToArray($this->selectAllFutureNewsQuery(), true));
 		}
 
+		public function findAllFutureEvents() {
+			return $this->createCollection($this->queryToArray($this->selectAllFutureEventsQuery(), true));
+		}
+
 		public function findAllNewsForYear($year) {
 			//echo $this->selectAllNewsForYearQuery($year) . "&nbsp; $year<br />";
 			return $this->createCollection($this->queryToArray($this->selectAllNewsForYearQuery($year), true));
@@ -142,6 +146,9 @@
 
 		public function findMostRecentNews() {
 			return $this->createObject( $this->queryToArray( $this->selectMostRecentNewsQuery() ) );
+		}
+		public function findMostRecentEvent() {
+			return $this->createObject( $this->queryToArray( $this->selectMostRecentEventQuery() ) );
 		}
 
 		public function findSoonestEvent() {
@@ -265,12 +272,23 @@
 			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " AND datedisplayed < $now ORDER BY datedisplayed DESC LIMIT 1";
 		}
 
+		protected function selectMostRecentEventQuery() {
+			$now = time();
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_EVENT . " AND datedisplayed < $now ORDER BY datedisplayed DESC LIMIT 1";
+		}
+
+
 		protected function selectAllRecentNewsQuery() {
 			$type = NewsEvent::TYPE_NEWS;
 			$order = $this->getOrderForType($type); 
 			$start = mktime(0,0,0,date('n') - 3, 1, date('Y'));
 			$end = time();
 			return $this->selectAllOfTypeBetweenQuery( $type, $start, $end, $order );
+		}
+
+		protected function selectAllFutureEventsQuery() {
+			$now = time();
+			return "SELECT * FROM newsevents WHERE type=". NewsEvent::TYPE_EVENT ." AND datedisplayed > $now ORDER BY datedisplayed DESC";
 		}
 
 		protected function selectAllFutureNewsQuery() {
