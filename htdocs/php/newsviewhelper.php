@@ -19,12 +19,13 @@
 		function sidebar() {
 			$story = $this->content;
 
-			$this_months_news = CommandRunner::run('get-live-news-for-month', array('month' => date('n')))->get('news');
+			//$this_months_news = CommandRunner::run('get-live-news-for-month', array('month' => date('n')))->get('news');
+			$this_months_news = RequestRegistry::getNewsEventMapper()->findNewsForIndex(); //change these out later if required
 			$this_month_list = '';
 
 			if ( count( $this_months_news ) > 0 ) {
 				$this_month_list = "<div class='sidebar-links-title'>\n"
-						  ."<p>" . date( 'F' )  . "</p>\n"
+						  ."<p>Recent News</p>\n"
 						  ."</div>\n"
 						  ."<ul class='sidebar-links-list'>\n";
 
