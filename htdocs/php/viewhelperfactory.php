@@ -31,16 +31,16 @@
 
 			if ( is_array( $content ) ) {
 				switch ( $content['type'] ) {
-					case 'news-index':
+					case 'news/index':
 						return new NewsIndexViewHelper( $content );
 						break;
-					case 'news-archive':
+					case 'news/archive':
 						return new NewsArchiveViewHelper( $content );
 						break;
-					case 'events-index':
+					case 'events/index':
 						return new EventsIndexViewHelper( $content );
 						break;
-					case 'events-archive':
+					case 'events/archive':
 						return new EventsArchiveViewHelper( $content );
 						break;
 				}

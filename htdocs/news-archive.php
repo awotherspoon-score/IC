@@ -1,9 +1,7 @@
-<?php include('init.php'); ?>
-
-<?php
-	$period = mysql_escape_string( $_GET['period'] );
-	$news = RequestRegistry::getNewsEventMapper()->findNewsForIndex();
-	$view = RequestRegistry::getViewHelper( array( 'type' => 'news-archive' ) );
+<?php 	include('init.php'); 
+	$period = $_GET['period'];
+	$news = CommandRunner::run('get-news-for-archive')->get('news');
+	$view = RequestRegistry::getViewHelper( array( 'type' => 'news/archive' ) );
 ?>
 
 <?php include('inc/doctype.php'); ?>
@@ -102,7 +100,7 @@
                 <div id='content'>
 			<?= $view->breadcrumbs(); ?>
 
-                        <h1>Immanuel College News</h1>
+			<h1>Immanuel College News Archive - <?= ucwords( $period ) ?></h1>
 			<?php foreach ( $news as $story ): ?>
 				<h2><a class='more-link' href='<?= $view->url( $story ) ?>'><?= $story->getTitle() ?></a></h2>
 				<p><?= date('l, jS F Y', $story->getDateDisplayed()) ?></p>

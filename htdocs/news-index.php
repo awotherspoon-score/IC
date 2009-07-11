@@ -2,7 +2,7 @@
 
 <?php
 	$news = RequestRegistry::getNewsEventMapper()->findNewsForIndex();
-	$view = RequestRegistry::getViewHelper( array( 'type' => 'news-index' ) );
+	$view = RequestRegistry::getViewHelper( array( 'type' => 'news/index' ) );
 ?>
 
 <?php include('inc/doctype.php'); ?>

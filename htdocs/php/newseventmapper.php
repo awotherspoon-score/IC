@@ -111,18 +111,33 @@
 		 * @return $news NewsEventCollection the news for the archive over period $period
 		 */
 		public function findAllNewsForArchive( $period ) {
+			return $this->createCollection($this->queryToArray($this->selectAllNewsForArchiveQuery( $period ), 'true'));
 		}
 
 		public function selectAllNewsForArchiveQuery( $period ) {
-			$date_helper = new DateHelper();
-			$month_array = $date_helper->month_array();
+
+			$boundary = $this->periodToStartEndValues( $period );
+
+			return "SELECT * FROM newsevents "
+				."WHERE type=" . NewsEvent::TYPE_NEWS 
+				." AND status=" . Content::STATUS_LIVE 
+				." AND datedisplayed BETWEEN {$boundary['start']} AND {$boundary['end']} "
+				."ORDER BY datedisplayed DESC";
+		}
+
+		private function periodToStartEndValues($period) {
+			$boundary['start'] = 0;
+			$boundary['end'] = 0;
 
 			$period = strtolower( $period ); //in case some genius sends us a capitalized month
 
-			if ( array_key_exists( $period, $month_array ) {
+			$date_helper = new DateHelper();
+			$month_array = $date_helper->month_array();
+
+			if ( array_key_exists( $period, $month_array ) ) {
 				//$period contains a month
 				$month = $month_array[$period];
-				$year  = ( $month > date( 'n' ) ) ? date( 'Y' ) - 1 : $date( 'Y' );
+				$year  = ( $month > date( 'n' ) ) ? date( 'Y' ) - 1 : date( 'Y' );
 				$start = mktime( 0, 0, 0, $month, 0, $year );
 				$end   = mktime( 0, 0, 0, $month + 1, 0, $year );
 
@@ -130,14 +145,20 @@
 				//$period contains a 4-digit year
 				$year = $period;
 				$start = mktime( 0, 0, 0, 1, 1, $year );
-				$end   = mktime( 0, 0, 0, 0, 0, $year - 1 );
+				$end   = mktime( 0, 0, 0, 0, 0, $year + 1 );
 			} else {
 				//bad $period value
-				throw new Exception($e);
+				throw new Exception('Bad $period Value passed: ' . $period);
 			}
 
+			$boundary['start'] = $start;
+			$boundary['end'] = $end;
+			return $boundary;
+		}
 
-			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " AND status=" . Content::STATUS_LIVE . " AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed DESC";
+		public function newsExistsForPeriod( $period ) {
+			$news = $this->findAllNewsForArchive( $period );
+			return ( count( $news ) > 0 );
 		}
 
 		/**

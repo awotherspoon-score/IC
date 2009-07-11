@@ -1,5 +1,4 @@
 <?php
-
         class CommandContext {
                 private $params = array();
                 private $error = "";

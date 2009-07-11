@@ -8,9 +8,9 @@
 			$month = date('F', $date);
 
 			$breadcrumb = "<div id='breadcrumb'> "
-				."<a href='#'>News</a> | "
-				."<a href='#'>{$year}</a> | "
-				."<a href='#'>{$month}</a> | "
+				."<a href='". $this->url( array( 'type' => 'news/index' ) )  ."'>News</a> | "
+				."<a href='". $this->url( array( 'type' => 'news/archive', 'period' => $year ) ) ."'>{$year}</a> | "
+				."<a href='". $this->url( array( 'type' => 'news/archive', 'period' => strtolower($month) ) )."'>{$month}</a> | "
 				."<a class='thispage' href='#'>{$story->getTitle()}</a>"
 				."</div>";
 			return $breadcrumb;
@@ -53,8 +53,10 @@
 					  ."<ul class='sidebar-links-list'>\n";
 			foreach ( array($this_month, $last_month, $two_months_ago, $this_year, $last_year, $two_years_ago) as $time ) {
 				$lower_time = strtolower( $time );
-				$content = array( 'type' => 'news-archive', 'period' => $lower_time );
-				$archive_list .= "<li><a href='{$this->url( $content )}'>{$time}</a></li>\n";
+				if ( RequestRegistry::getNewsEventMapper()->newsExistsForPeriod( $lower_time ) ) {
+					$content = array( 'type' => 'news/archive', 'period' => $lower_time );
+					$archive_list .= "<li><a href='{$this->url( $content )}'>{$time}</a></li>\n";
+				}
 			}
 
 			$archive_list .= "</ul>\n";	

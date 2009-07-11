@@ -22,7 +22,7 @@
 		}
 
 		public function month_array() {
-			if ( ! isset( $this->month_array ) {
+			if ( ! isset( $this->month_array ) ) {
 				$this->init_month_array();
 			}
 			return $this->month_array;

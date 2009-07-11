@@ -18,9 +18,15 @@
 				return "/img/photos/{$content->getFilename()}/";
 			}
 
+			if ( is_array( $content ) && array_key_exists( 'type', $content ) && $content['type'] == 'news/index' ) {
+				return '/news/';
+			}
+
 
 			if ( is_array( $content ) && array_key_exists( 'type', $content ) && array_key_exists( 'period', $content) ) {
 				return '/' . $content['type'] . '/' . $content['period'] . '/';
 			}
+
+
 		}
 	}
