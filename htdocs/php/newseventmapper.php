@@ -259,6 +259,16 @@
 			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_NEWS . ' AND status=' . Content::STATUS_LIVE . " AND datedisplayed < {$now} ORDER BY datedisplayed DESC LIMIT 3";
 		}
 		
+
+		public function findEventsForIndex() {
+			return $this->createCollection( $this->queryToArray( $this->selectEventsForIndexQuery(), true ) );
+		}
+
+		public function selectEventsForIndexQuery() {
+			$now = time();
+			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_EVENT . ' AND status=' . Content::STATUS_LIVE . " AND datedisplayed > {$now} ORDER BY datedisplayed ASC LIMIT 3";
+		}
+		
 		protected function selectAllLiveNewsForMonthQuery($month, $year = null) {
 			//expects 1-12 in $month
 			$year = ( $year === null ) ? date('Y') : $year;

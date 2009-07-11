@@ -22,6 +22,10 @@
 				return '/news/';
 			}
 
+			if ( is_array( $content ) && array_key_exists( 'type', $content ) && $content['type'] == 'events/index' ) {
+				return '/events/';
+			}
+
 
 			if ( is_array( $content ) && array_key_exists( 'type', $content ) && array_key_exists( 'period', $content) ) {
 				return '/' . $content['type'] . '/' . $content['period'] . '/';
