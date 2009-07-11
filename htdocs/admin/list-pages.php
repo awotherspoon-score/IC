@@ -92,13 +92,13 @@
                                                                 <tr>
                                                                   <td class = 'title-cell'>
                                                                     <a class='page-button' id='<?php echo $grandchild->getId(); ?>'>
-                                                                    <?php echo $grandchild->getTitle(); ?>
+                                                                    <?php echo stripslashes( htmlentities( $grandchild->getTitle(), ENT_QUOTES ) ); ?>
                                                                     </a>
                                                                   </td>
 
                                                                   <td class='delete-button-cell'>
                                                                         <a id='<?= $grandchild->getId() ?>' class='delete-button'>
-                                                                          <img src='img/buttons/delete-button.gif' class='delete-button' /></a>
+                                                                          <img src='img/buttons/delete-button.gif' /></a>
                                                                   </td>
 
                                                                   <td id='<?= $grandchild->getId() ?>' class='status'>

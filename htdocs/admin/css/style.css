@@ -38,7 +38,7 @@ a img {
 	padding:0;
 }
 
-img.plus-minus-icon, img.delete-button {
+img.plus-minus-icon, a.delete-button img {
 	width:13px;
 	height:13px;
 }
@@ -74,6 +74,11 @@ span.child-buttons span.status {
 
 span.child-buttons a.delete-button {
 	position:relative;
+}
+
+a.delete-button {
+	height:13px;
+	width:13px;
 }
 
 td.delete-button-cell {
