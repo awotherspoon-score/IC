@@ -26,8 +26,16 @@
 	$news = array(
 		'recently-edited-news' => CommandRunner::run('get-recently-modified-news')->get('news'),
 		'future-news' => CommandRunner::run('get-future-news')->get('news'),
-		'recent-news' => CommandRunner::run('get-recent-news')->get('news')
 	);
+
+	$thisMonth = date('n');
+	$threeMonthsAgo = $thisMonth - 3;
+	$monthArray = $fh->getMonthArray();
+	while ( $thisMonth > $threeMonthsAgo ) {
+		$monthString = $monthArray[$thisMonth - 1]['name'];
+		$news[$monthString] = CommandRunner::run('get-news-for-month', array( 'month' => $thisMonth ) )->get('news');
+		$thisMonth--;
+	}
 
 
 	$thisYear = date('Y');

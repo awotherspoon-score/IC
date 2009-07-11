@@ -80,6 +80,29 @@
 		protected function findUpcomingNews() {
 		}
 
+		public function findAllNewsForMonth( $month, $year = null ) {
+			return $this->createCollection( $this->queryToArray( $this->selectAllNewsForMonthQuery( $month, $year), true ) );
+		}
+
+		public function findAllEventsForMonth( $month, $year = null ) {
+			return $this->createCollection( $this->queryToArray( $this->selectAllEventsForMonthQuery( $month, $year), true ) );
+		}
+
+		public function selectAllNewsForMonthQuery( $month, $year = null ) {
+			$year = ($year === null ) ? date('Y') : $year;
+			$start = mktime( 0,0,0, $month, 1, $year );
+			$end = mktime( 0,0,0, $month + 1, 0, $year );
+
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS ." AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed DESC";
+		}
+
+		public function selectAllEventsForMonthQuery( $month, $year = null ) {
+			$year = ($year === null ) ? date('Y') : $year;
+			$start = mktime( 0,0,0, $month, 1, $year );
+			$end = mktime( 0,0,0, $month + 1, 0, $year );
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_EVENT ." AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed DESC";
+		}
+
 		public function findRecentlyModifiedNews( $count = 5 ) {
 			return $this->createCollection( $this->queryToArray( $this->selectRecentlyModifiedNewsQuery( $count ), true ) );
 		}
@@ -169,6 +192,7 @@
 				."ORDER BY datedisplayed DESC";
 		}
 
+
 		private function periodToStartEndValues($period) {
 			$boundary['start'] = 0;
 			$boundary['end'] = 0;
@@ -251,7 +275,7 @@
 
 		protected function selectAllFutureNewsQuery() {
 			$now = time();
-			return "SELECT * FROM newsevents WHERE datedisplayed > $now ORDER BY datedisplayed DESC";
+			return "SELECT * FROM newsevents WHERE type=". NewsEvent::TYPE_NEWS ." AND datedisplayed > $now ORDER BY datedisplayed DESC";
 		}
 
 		protected function selectDisplayEventsQuery() {
