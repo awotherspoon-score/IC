@@ -24,6 +24,7 @@
 
         //get page from $_GET
 	$news = array(
+		'recently-edited-news' => CommandRunner::run('get-recently-modified-news')->get('news'),
 		'future-news' => CommandRunner::run('get-future-news')->get('news'),
 		'recent-news' => CommandRunner::run('get-recent-news')->get('news')
 	);

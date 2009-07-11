@@ -77,6 +77,32 @@
 			return 'SELECT * FROM newsevents WHERE type=' . NewsEvent::TYPE_EVENT . ' ORDER BY datedisplayed ASC';
 		}
 
+		protected function findUpcomingNews() {
+		}
+
+		public function findRecentlyModifiedNews( $count = 5 ) {
+			return $this->createCollection( $this->queryToArray( $this->selectRecentlyModifiedNewsQuery( $count ), true ) );
+		}
+
+		public function findRecentlyModifiedEvents( $count = 5 ) {
+			return $this->createCollection( $this->queryToArray( $this->selectRecentlyModifiedEventsQuery( $count ), true ) );
+		}
+
+		protected function selectRecentlyModifiedNewsQuery( $count ) {
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " ORDER BY datemodified DESC LIMIT {$count}";
+		}
+
+		protected function selectRecentlyModifiedEventsQuery( $count ) {
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_EVENT . " ORDER BY datemodified DESC LIMIT {$count}";
+		}
+
+		//TODO Delete this method or do something with it
+		public function selectAllUpcomingEventsQuery() {
+			$start = time();
+			$end = mktime( 0, 0, 0, date('n') + 3, 0, date('Y') );
+			return "SELECT * FROM newsevents WHERE type=";
+		}
+
 		public function findAllRecentNews() {
 			//echo $this->selectAllRecentNewsQuery();
 			return $this->createCollection($this->queryToArray($this->selectAllRecentNewsQuery(), true));
@@ -93,6 +119,15 @@
 
 		public function findMostRecentNews() {
 			return $this->createObject($this->queryToArray($this->selectMostRecentNewsQuery()));
+		}
+
+		public function findSoonestEvent() {
+			return $this->createObject( $this->queryToArray( $this->selectMostSoonEventQuery() ) );
+		}
+
+		public function selectSoonestEventQuery() {
+			$now = time();
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_EVENT . " AND datedisplayed > $now ORDER BY datedisplayed ASC LIMIT 1";
 		}
 
 		public function findAllLiveNewsForMonth($month, $year = null) {
