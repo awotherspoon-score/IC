@@ -1,0 +1,96 @@
+Here's some stuff you should know about the site, any questions then mail me: ali.najaf@gmail.com
+
+***MOVING THE SITE***
+
+To move it from one server to another, technically all you should have to do is move the files over and edit config.ini in the root directory (not htdocs, the one above that).
+
+***HOW THE SITE WORKS***
+
+The site follows a fairly straightforward OO structure. You've got a couple of different levels in the site which interact with each other in various ways.
+
+1. Database
+
+You can find an sql dump file of the database schema and some initial test data in the root directory. Run this in any mysql client (extra points if its via the command line) to see how the database is structured. Only change the data if you really know what you're doing (as you'll have to make changes to the object level accordingly).
+
+2. Objects
+
+Within objects we've got content objects (e.g. Pages, Galleries, Images) and Mapper objects. Mapper objects are in charge of being the glue between the objects and the database. You can use mapper objects to:
+- save content objects to the database
+- get rows from the database represented as content objects
+- add new rows to the database using content objects
+- delete rows from the database
+
+Every table in the database has it's own mapper objects and content objects. Also, every table has something called a collection object too. The job of the collection object is to represent collections of content objects. I could have just used arrays here (and you can use collection objects in foreach() loops) but using a special class for collection allows you to make some really efficient performance-tweaks behind the scenes. As far as you're concerned though, you may as well treat them as arrays.
+
+For example, if you wanted to get the page with id = 1, you'd do this:
+
+$page_mapper = new PageMapper();
+$page = $page_mapper->find(1);
+
+Now $page contains a Page object, representing the row in the table with id 1. You can now do things like this:
+
+<html>
+<h1><?= $page->getTitle() ?></h1>
+<div id='content'><?= $page->getText() ?></div>
+</html>
+
+You could also do this:
+
+$all_pages = $page_mapper->findAll();
+foreach( $all_pages as $page ) {
+	echo "<h2>{$page->getTitle()}</h2>\n";
+	echo "<div id='content'>{$page->getText()}</div>\n";
+}
+
+
+All of this action lives in the htdocs/php directory. There are a lot more methods than just 'find' and 'findAll' in the Content Mapper classes. The work of actually generationg content objects is mostly taken care of in the abstract ContentMapper class, while the actual queries and methods are dealt with in the various subclasses like PageMapper, NewsEventMapper, etc.
+
+Mappers are quite hefty, memory intensive classes. That being the case, we don't want more than one instance of any sort of mapper existing in a particular request. To make sure we only have the one, we access mappers through something called a registry. The registry makes sure the whole website only has one instance of a mapper in memory at a time (within this request). All this means for you is that when you need a new mapper of some type, instead of doing this:
+
+$page_mapper = new PageMapper(); // WRONG!
+
+do this:
+
+$page_mapper = RequestRegistry::getPageMapper(); //thats more like it
+
+3. Commands
+
+Level 2 was all really complicated, and the rest of the site (i.e. the templates, javascript etc) shouldn't have to juggle around mappers, collections etc. Instead, commands act as a simplified way of calling methods on the system. To see the full list of commands see the htdocs/php/commands directory.
+
+There are various types of commands and they all have fairly sensible self-explanatory names like GetNewsForIndexCommand. All commands are sub-classes of the abstract Command class which specifies a single method, execute(). In English, all that means is that every single command class has to have a method called execute.
+
+execute() doesn't return any values. Instead, you pass a CommandContext object into execute. A CommandContext does exactly what it says, servers as a 'context' for the command. The templates/javascript/frontent can pass and recieve values to/from commands using the context. The CommandContext object you use is basically just a dressed up associated array, but by default contains all the values in $_REQUEST.
+
+Here's how to run the average command, don't worry, I'm going to simplify it a bit more in a second:
+
+$context = new CommandContext();
+$command = new GetPageCommand();
+
+$context->addParam( 'page-slug', 'the-page-im-looking-for' );
+
+$command->execute( $context ); 
+
+Inside that execute function, GetPageCommand uses the value of 'page-slug' in $context to find a Page object from the database with a matching slug. It adds it to the object as parameter 'page'. So after you run execute, you can get the page like this:
+
+$page = $context->get( 'page' );
+
+Now for something thats supposed to be simplifying the site the lower levels of the site, that seems like a lot of work. So I wrote a class CommandRunner that does the legwork if initializing commands and contexts for you. It works like this:
+
+$context = CommandRunner::run( 'get-page', array( 'param1' => 'value1', 'param2' => 'value2 ) );
+$page = $context->get( 'page' );
+
+I usually just shorten that down to:
+
+$page = CommandRunner::run( 'get-page', array( 'param1' => 'value1', 'param2' => 'value2 ) )->get( 'page' );
+
+The first argument to run tells the command runner which command to run. In this case, it will use a GetPageCommand command. If you were to pass in  'get-most-recent-news' it would run a GetMostRecentNewsCommand. The pattern there is fairly clear.
+
+The second argument to run is a list of parameters. Some commands require parameters, some don't so you'll have to consult the command class source to find out. This argument is optional, like I said earlier CommandContext has everything in request pulled in on instantiation so you don't need to specify the parameters here if $_REQUEST takes care of them.
+
+Not much else to say about commands. ajaxcommandrunner.php acts as an ajaz bridge to the commands and if required converts one object at a time to json for javascript to work with. It can also work the other way and convert objects back to php from json if it finds any.
+
+The commands all live in /htdocs/php/commands/
+
+4. Templates
+
+The templates are all straight HTML/CSS/JS with, getting all their content from the DB using the above commands. The only thing slightly strange thing here is that one of the css files is decided based on a session variable (stored in SessionRegistry). I also used a set of Helper classes (all in /htdocs/php/) to help with content-specific elements that appear cross site like breadcrumbs and sidebars. The OO structure with these helpers gets a little hairy (subclasses composing other same-level subclasses) but it works.
