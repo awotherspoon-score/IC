@@ -199,8 +199,23 @@
 				."ORDER BY datedisplayed DESC";
 		}
 
+		public function findAllEventsForArchive( $period ) {
+			return $this->createCollection($this->queryToArray($this->selectAllEventsForArchiveQuery( $period ), 'true'));
+		}
 
-		private function periodToStartEndValues($period) {
+		public function selectAllEventsForArchiveQuery( $period ) {
+
+			$boundary = $this->periodToStartEndValues( $period, 'events' );
+
+			return "SELECT * FROM newsevents "
+				."WHERE type=" . NewsEvent::TYPE_EVENT 
+				." AND status=" . Content::STATUS_LIVE 
+				." AND datedisplayed BETWEEN {$boundary['start']} AND {$boundary['end']} "
+				."ORDER BY datedisplayed ASC";
+		}
+
+
+		private function periodToStartEndValues($period, $mode = 'news') {
 			$boundary['start'] = 0;
 			$boundary['end'] = 0;
 
@@ -212,7 +227,14 @@
 			if ( array_key_exists( $period, $month_array ) ) {
 				//$period contains a month
 				$month = $month_array[$period];
-				$year  = ( $month > date( 'n' ) ) ? date( 'Y' ) - 1 : date( 'Y' );
+				switch ( $mode ) {
+					case 'news':
+						$year  = ( $month > date( 'n' ) ) ? date( 'Y' ) - 1 : date( 'Y' );
+						break;
+					case 'events':
+						$year = ( $month < date( 'n' ) ) ? date( 'Y' ) + 1 : date( 'Y' );
+						break;
+				}
 				$start = mktime( 0, 0, 0, $month, 0, $year );
 				$end   = mktime( 0, 0, 0, $month + 1, 0, $year );
 
