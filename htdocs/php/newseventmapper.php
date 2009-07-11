@@ -118,16 +118,25 @@
 		}
 
 		public function findMostRecentNews() {
-			return $this->createObject($this->queryToArray($this->selectMostRecentNewsQuery()));
+			return $this->createObject( $this->queryToArray( $this->selectMostRecentNewsQuery() ) );
 		}
 
 		public function findSoonestEvent() {
-			return $this->createObject( $this->queryToArray( $this->selectMostSoonEventQuery() ) );
+			return $this->createObject( $this->queryToArray( $this->selectSoonestEventQuery() ) );
 		}
 
 		public function selectSoonestEventQuery() {
 			$now = time();
 			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_EVENT . " AND datedisplayed > $now ORDER BY datedisplayed ASC LIMIT 1";
+		}
+
+		public function findEventsForYear( $year ) {
+			return $this->createCollection( $this->queryToArray( $this->selectEventsForYearQuery( $year ), true ) );
+		}
+		public function selectEventsForYearQuery( $year ) {
+			$start = mktime( 0, 0, 0, 1, 1, $year );
+			$end = mktime( 0, 0, 0, 1, 0, $year + 1);
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_EVENT . " AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed DESC";
 		}
 
 		public function findAllLiveNewsForMonth($month, $year = null) {

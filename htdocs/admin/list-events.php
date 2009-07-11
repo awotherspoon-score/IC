@@ -24,7 +24,8 @@
 
         //get page from $_GET
 	$events = array(
-		'upcoming-events' => CommandRunner::run( 'get-upcoming-events' )->get( 'events' )
+		'recently-edited-events' => CommandRunner::run( 'get-recently-modified-events' )->get( 'events' ),
+		//'upcoming-events' => CommandRunner::run( 'get-upcoming-events' )->get( 'events' )
 		//'future-news' => CommandRunner::run('get-future-news')->get('news'),
 	);
 
@@ -55,7 +56,7 @@
   <link rel='stylesheet' type='text/css' href='css/style.css' />
   <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
   <script type='text/javascript' src='js/generic-functions.js'></script>
-  <script type='text/javascript' src='js/news-functions.js'></script>
+  <script type='text/javascript' src='js/events-functions.js'></script>
   <script type='text/javascript' src='js/font/cufon-yui.js'></script>
   <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
   <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
