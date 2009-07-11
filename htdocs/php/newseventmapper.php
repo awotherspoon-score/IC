@@ -100,6 +100,47 @@
 		}
 
 		/**
+		 * Find All news for an archive pages, specified by $period
+		 *
+		 * Period can be a four digit year or a month name in lower case
+		 * The archive for a month returns those for that month from the past 12
+		 * e.g. In January 2009, sending this method 'december' in $period would get
+		 * the archive for December 2008
+		 *
+		 * @param $period mixed the time period, 4-digit year or lower case month
+		 * @return $news NewsEventCollection the news for the archive over period $period
+		 */
+		public function findAllNewsForArchive( $period ) {
+		}
+
+		public function selectAllNewsForArchiveQuery( $period ) {
+			$date_helper = new DateHelper();
+			$month_array = $date_helper->month_array();
+
+			$period = strtolower( $period ); //in case some genius sends us a capitalized month
+
+			if ( array_key_exists( $period, $month_array ) {
+				//$period contains a month
+				$month = $month_array[$period];
+				$year  = ( $month > date( 'n' ) ) ? date( 'Y' ) - 1 : $date( 'Y' );
+				$start = mktime( 0, 0, 0, $month, 0, $year );
+				$end   = mktime( 0, 0, 0, $month + 1, 0, $year );
+
+			} elseif ( preg_match( '/[0-9]{4}/', $period ) !== 0 ) {
+				//$period contains a 4-digit year
+				$year = $period;
+				$start = mktime( 0, 0, 0, 1, 1, $year );
+				$end   = mktime( 0, 0, 0, 0, 0, $year - 1 );
+			} else {
+				//bad $period value
+				throw new Exception($e);
+			}
+
+
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " AND status=" . Content::STATUS_LIVE . " AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed DESC";
+		}
+
+		/**
 		 * News Stories For News Index Page
 		 *
 		 * Returns NewsEventCollection containing news for news index page

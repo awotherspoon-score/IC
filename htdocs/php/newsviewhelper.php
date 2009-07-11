@@ -24,7 +24,7 @@
 
 			if ( count( $this_months_news ) > 0 ) {
 				$this_month_list = "<div class='sidebar-links-title'>\n"
-						  ."<p>" . date( 'F', $story->getDateDisplayed() )  . "</p>\n"
+						  ."<p>" . date( 'F' )  . "</p>\n"
 						  ."</div>\n"
 						  ."<ul class='sidebar-links-list'>\n";
 

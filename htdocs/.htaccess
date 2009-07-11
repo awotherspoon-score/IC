@@ -1,5 +1,6 @@
 RewriteEngine On
 RewriteRule ^\/?pages\/(.*)\/$ page.php?slug=$1
 #the news archive rewrite rules have to come before this
+RewriteRule ^\/?news-archive\/(.*)\/$ news-archive.php?period=$1
 RewriteRule ^\/?news\/$ news-index.php
 RewriteRule ^\/?news\/(.*)\/$ news-single.php?slug=$1
