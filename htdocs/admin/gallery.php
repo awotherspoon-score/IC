@@ -83,6 +83,7 @@
 
 					<fieldset>
 						<legend>Images</legend>
+						<a href='/admin/add-image.php?album-id=<?= $thisAlbum->getId() ?>'>+ Upload An Image</a><br />
 						<table id='images-table'>
 							<thead>
 								<th></th>

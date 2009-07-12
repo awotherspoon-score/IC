@@ -17,6 +17,7 @@
 					."(slug, title, datecreated, datemodified, albumid, filename, status, prospective, current, staff) "
 					."VALUES "
 					."('{$image->getSlug()}','{$image->getTitle()}','$now','$now','{$image->getAlbumId()}','{$image->getFileName()}','{$image->getStatus()}','{$image->getProspective()}','{$image->getCurrent()}','{$image->getStaff()}')";
+			//echo $query;
 			self::$mysqli->query($query);
 			$image->setId(self::$mysqli->insert_id);		
 		}
@@ -26,7 +27,6 @@
 			$query = "UPDATE images SET "
 					."slug='{$image->getSlug()}', "
 					."title='{$image->getTitle()}', "
-					."datecreated='{$image->getDateCreated()}', "
 					."datemodified='$now', "
 					."albumid='{$image->getAlbumId()}', "
 					."filename='{$image->getFileName()}', "
@@ -41,7 +41,8 @@
 
 		
 		public function delete(Content $image) {
-			$query = "DELECT FROM images WHERE id={$image->getId()} LIMIT 1";
+			$query = "DELETE FROM images WHERE id={$image->getId()} LIMIT 1";
+			//echo $query;
 			self::$mysqli->query($query);
 		}
 
@@ -58,7 +59,7 @@
 		}
 
 		public function selectByAlbumIdQuery($albumid) {
-			return "SELECT * FROM images WHERE albumid='$albumid'";
+			return "SELECT * FROM images WHERE albumid='$albumid' ORDER BY datecreated DESC";
 		}
 		
 		public function selectQuery( $id ) {
