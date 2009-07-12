@@ -391,7 +391,7 @@ form#gallery-form fieldset legend {
 
 form#gallery-form div.associated-inputs select,
 form#gallery-form div.associated-inputs input {
-	display:inline;
+	/*display:inline;*/
 }
 
 table#images-table thead {

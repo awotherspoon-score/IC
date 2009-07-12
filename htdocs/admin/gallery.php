@@ -38,7 +38,7 @@
                             <div id='col-1'>
 			    	<ul>
 					<?php foreach ( $albums as $album ): ?>
-						<li><?= $album->getTitle() ?></li>
+					<li><a href='/admin/gallery.php?album-id=<?= $album->getId()  ?>'><?= $album->getTitle() ?></a></li>
 					<?php endforeach ?>
 				</ul>
                             </div>
@@ -46,26 +46,27 @@
 			    	<form id='gallery-form'>
 					<fieldset>
 					<legend>Gallery Info</legend>
-						<label for='title'>Title:</label>
-						<input name='title' id='title' type='text' class='text-input' />
-						<label for='display-date'>Display Date:</label>
-						<?= $formHelper->getGenericDateInput() ?>
+					 <label for='title'>Title:</label>
+					 <input value='<?= $thisAlbum->getTitle() ?>' name='title' id='title' type='text' class='text-input' />
 					</fieldset>
 					 <fieldset>
 
-					 <legend>News/Event Associations</legend>
+					 <legend>Associated News/Events</legend>
 					 <div id='associated-news-inputs' class='associated-inputs'>
-					 <select name='news'>
-					 </select>
+					
+					 <span>Select Associated News (optional): </span><br />
+					<?= $formHelper->getNewsSelect() ?>
+					 <a href='#' id='edit-associated-news' href='#'>Edit Selected News</a>
+					<br /><span> Or:</span><br />
 					 <input type='submit' name='new-news' id='new-news' value='Create New News Story' />
-					 <a href='edit-associated-news' href='#'>Edit Associated News</a>
 					 </div>
 
+					 <span>Select Associated Event (optional): </span>
 					 <div id='associated-event-inputs' class='associated-inputs'>
-					 <select name='events'>
-					 </select>
-					 <input type='submit' name='new-event' id='new-event' value='Create New Event' />
+					 <?= $formHelper->getEventsSelect() ?>
 					 <a href='#' id='edit-associated-event'>Edit Associated Event</a>
+					<br /><span> Or:</span><br />
+					 <input type='submit' name='new-event' id='new-event' value='Create New Event' />
 					 </div>
 
 					</fieldset>
@@ -99,7 +100,7 @@
 									<input type='submit' class='edit-caption-button' value='Edit' /> </td> 
 
 								<td class='image-thumbnail-cell'>
-									<img height='100' src='<?= $image->getSource() ?>' /></td>
+								<img height='100' src='<?= $image->getSource() ?>' /></td>
 
 								<td class='image-pcs-checkbox-cell prospective-cell'>
 								<input class='prospective' type='checkbox'<?= $prospective_checked ?>></input></td>

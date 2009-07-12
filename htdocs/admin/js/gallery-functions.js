@@ -1,6 +1,69 @@
 $(document).ready(function() {
 	init_header();
 
+	/*** START EVENT BINDING FUNCTIONS ***
+	 * These functions bind interactive features to various DOM events
+	 */
+
+	/**
+	 * Album Title Field - Keypress
+	 *
+	 * Updates title value on 'enter' keypress
+	 * TODO Write updatealbum function
+	 */
+	 $("form#gallery-form input#title").keypress( function(e) {
+		 var code = e.keyCode || e.which;
+		 if (code == 13) {
+		 	alert($(this).val());
+			//update_album(album_id);
+			return false;
+		 }
+	 });
+
+	 /**
+	  * Album Title Field - Blur
+	  *
+	  * Updates album title field when it loses focus
+	  * TODO Write update_album function
+	  */
+	 $("form#gallery-form input#title").blur( function() {
+		//update_album(album_id);
+	 });
+
+	 /**
+	  * News Select Option Button - Click
+	  *
+	  * Updates the album news id field on click
+	  * TODO write update_album function
+	  */
+	 $("div#associated-news-inputs select option").click( function() {
+		var selected_newsevent_id = $(this).parent().val();
+		var edit_selected_newsevent_anchor = $(this).parent().parent().children("a");
+		if ( selected_newsevent_id == 0 ) {
+			edit_selected_newsevent_anchor.attr('href', '#');
+		} else {
+			edit_selected_newsevent_anchor.attr('href', "/admin/list-news.php?newsevent-id=" + selected_newsevent_id);
+		}
+		//update_album(album_id);
+	 });
+
+	 /**
+	  * Events Select Option Button - Click
+	  *
+	  * Updates the album events id field on click
+	  * TODO write update_album function
+	  */
+	 $("div#associated-event-inputs select option").click( function() {
+		var selected_newsevent_id = $(this).parent().val();
+		var edit_selected_newsevent_anchor = $(this).parent().parent().children("a");
+		if ( selected_newsevent_id == 0 ) {
+			edit_selected_newsevent_anchor.attr('href', '#');
+		} else {
+			edit_selected_newsevent_anchor.attr('href', "/admin/list-events.php?newsevent-id=" + selected_newsevent_id);
+		}
+		//update_album(album_id);
+	 });
+
 	/**
 	 * Click Edit Caption Button
 	 *
@@ -42,6 +105,16 @@ $(document).ready(function() {
 		 $("td.image-featured-select-radio-cell input").attr("checked", false);
 		 $(this).attr("checked", true);
 	 });
+
+
+	 /*** END EVENT BINDING FUNCTIONS ***/
+
+	
+	 /*** START UTILITY FUNCTIONS ***
+	  *
+	  * These functions do the actual work of updating the site
+	  * and manipulating the content
+	  */ 
 
 	 /**
 	  * Update Image

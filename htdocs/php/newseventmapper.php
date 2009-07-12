@@ -373,6 +373,22 @@
 			return $this->selectAllOfTypeBetweenQuery( $type, $start, $end, $order);
 		}
 
+		public function findAllEventsByModifyDate() {
+			return $this->createCollection( $this->queryToArray( $this->selectAllEventsByModifyDate(), true ) );
+		}
+
+		protected function selectAllEventsByModifyDate() {
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_EVENT . " ORDER BY datemodified DESC";
+		}
+
+		public function findAllNewsByModifyDate() {
+			return $this->createCollection( $this->queryToArray( $this->selectAllNewsByModifyDateQuery(), true ) );
+		}
+
+		protected function selectAllNewsByModifyDateQuery() {
+			return "SELECT * FROM newsevents WHERE type=" . NewsEvent::TYPE_NEWS . " ORDER BY datemodified DESC";
+		}
+
 		protected function selectAllOfTypeBetweenQuery( $type, $start, $end, $order) {
 			return "SELECT * FROM newsevents WHERE type=$type AND datedisplayed BETWEEN $start AND $end ORDER BY datedisplayed $order";	
 		}

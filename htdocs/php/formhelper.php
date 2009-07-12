@@ -11,6 +11,8 @@
 
          class FormHelper {
                private $monthArray;
+	       private $news_select;
+	       private $events_select;
 
                /**
                 * Creates and returns an FCKEditor instance
@@ -265,4 +267,40 @@
 
                       return $this->monthArray;
                }
+
+	       public function getNewsSelect($selectedId = null) {
+			if ( ! isset( $this->news_select ) ) {
+				$news = RequestRegistry::getNewsEventMapper()->findAllNewsByModifyDate();
+				$news_select = "<select id='news-select'>\n";
+				$news_select .= "<option value='0'>No News Story Selected</option>\n";
+				foreach ( $news as $story ) {
+					$selected = ( $selectedId !== null && $selectedId == $story->getId() ) ? ' selected' : '';
+					$news_select .= "<option value='{$story->getId()}'$selected>"
+						       . $story->getTitle()
+						       ."</option>";
+				}
+				$news_select .= "</select>\n";
+
+				$this->news_select = $news_select;
+			}
+			return $this->news_select;
+	       }
+
+	       public function getEventsSelect($selectedId = null) {
+			if ( ! isset( $this->events_select ) ) {
+				$news = RequestRegistry::getNewsEventMapper()->findAllEventsByModifyDate();
+				$news_select = "<select id='news-select'>\n";
+				$news_select .= "<option value='0'>No Event Selected</option>\n";
+				foreach ( $news as $story ) {
+					$selected = ( $selectedId !== null && $selectedId == $story->getId() ) ? ' selected' : '';
+					$news_select .= "<option value='{$story->getId()}'$selected>"
+						       . $story->getTitle()
+						       ."</option>";
+				}
+				$news_select .= "</select>\n";
+
+				$this->events_select = $news_select;
+			}
+			return $this->events_select;
+	       }
          }

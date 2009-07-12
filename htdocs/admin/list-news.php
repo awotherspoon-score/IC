@@ -4,6 +4,9 @@
 	//setup some helpers
         include('inc/fckeditor/fckeditor.php');
         $fh = RequestRegistry::getFormHelper();
+
+	//if we're getting a news id out of $_GET['newsevent-id'], set $newsevent to that
+	$newsevent = CommandRunner::run( 'get-news-event' )->get( 'newsevent' );
 	
 		
 	//if we're saving an event, send it to the database and set it as the event to show in the form
