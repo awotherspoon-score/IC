@@ -378,6 +378,24 @@ div#section-select a {
 }
 /*End Section Select*/
 
+/***** GALLERY CMS PAGE STYLING *****/
+form#gallery-form fieldset {
+/*	background-color:grey;*/
+	margin-bottom:25px;
+}
+form#gallery-form fieldset legend {
+	font-weight:bold;
+	font-size:1.4em;
+	margin-bottom:10px;
+}
+
+form#gallery-form div.associated-inputs select,
+form#gallery-form div.associated-inputs input {
+	display:inline;
+}
+
+/***** END GALLERY CMS PAGE STYLING *****/
+
 /* News CMS */
 body div#wrapper div#col-1 ul li a#add-news-story-button {
 	text-decoration:none;

@@ -1,5 +1,6 @@
 <?php
 	class Image extends Content {
+		const BASE = '/img/photos/';
 		private $albumId;
 		private $fileName;
 		private $prospective;
@@ -17,13 +18,17 @@
 
                 public function toArray() {
                         return array_merge(parent::toArray(), array(
-                                'albumId' = $this->albumId;
+                                'albumId' => $this->albumId,
                                 'filename' => $this->filename,
                                 'prospective' => $this->prospective,
                                 'current' => $this->current,
                                 'staff' => $this->staff 
                         ));
                 }
+
+		public function getSource() {
+			return Image::BASE . $this->getFilename();
+		}
 
 		//GETTERS + SETTERS
 		public function getAlbumId() {

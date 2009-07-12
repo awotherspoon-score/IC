@@ -49,25 +49,30 @@
 						<label for='title'>Title:</label>
 						<input name='title' id='title' type='text' class='text-input' />
 						<label for='display-date'>Display Date:</label>
-						<span>Insert Date Input Here</span>
+						<?= $formHelper->getGenericDateInput() ?>
 					</fieldset>
+					 <fieldset>
 
-					<fieldset>
-						<legend>News/Event Associations</legend>
-						<select name='news'>
-						</select>
+					 <legend>News/Event Associations</legend>
+					 <div id='associated-news-inputs' class='associated-inputs'>
+					 <select name='news'>
+					 </select>
+					 <input type='submit' name='new-news' id='new-news' value='Create New News Story' />
+					 <a href='edit-associated-news' href='#'>Edit Associated News</a>
+					 </div>
 
-						<select name='events'>
-						</select>
+					 <div id='associated-event-inputs' class='associated-inputs'>
+					 <select name='events'>
+					 </select>
+					 <input type='submit' name='new-event' id='new-event' value='Create New Event' />
+					 <a href='#' id='edit-associated-event'>Edit Associated Event</a>
+					 </div>
 
-						<input type='submit' name='new-news' id='new-news' value='Create New News Story' />
-						<input type='submit' name='new-event' id='new-event' value='Create New Event' />
-						<a href='#' id='edit-associated'>Edit Associated News/Events</a>
 					</fieldset>
 
 					<fieldset>
 						<legend>Images</legend>
-						<table>
+						<table id='images-table'>
 							<thead>
 								<th></th>
 								<th>Caption</th>
@@ -78,15 +83,24 @@
 								<th>FeatureImage</th>
 							</thead>
 							<tbody>
+								<?php foreach ( $images as $image ) : ?>
 								<tr>
-								<td><input type='checkbox'></input></td>
-								<td>Caption</td>
-								<td>Thumbnail Image</td>
-								<td><input type='checkbox'></input></td>
-								<td><input type='checkbox'></input></td>
-								<td><input type='checkbox'></input></td>
-								<td><input type='radio'></input></td>
+								<td class='image-select-checkbox-cell'>
+									<input type='checkbox'></input></td>
+								<td class='image-caption-cell'>Caption</td>
+
+								<td class='image-thumbnail-cell'>
+									<img height='100' src='<?= $image->getSource() ?>' /></td>
+								<td class='image-pcs-checkbox-cell'>
+									<input type='checkbox'></input></td>
+								<td class='image-pcs-checkbox-cell'>
+									<input type='checkbox'></input></td>
+								<td class='image-pcs-checkbox-cell'>
+									<input type='checkbox'></input></td>
+								<td class='image-featured-select-radio-cell'>
+									<input type='radio'></input></td>
 								</tr>
+								<?php endforeach ?>
 							</tbody>
 						</table>	
 					</fieldset>
