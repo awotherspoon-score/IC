@@ -3,7 +3,9 @@
 	$formHelper = RequestRegistry::getFormHelper();	
 	$albums = RequestRegistry::getAlbumMapper()->findAll();
 
-        $context = CommandRunner::run('get-album', array('album-id' => 1));
+	$_REQUEST['album-id'] = ( isset( $_GET['album-id'] ) ) ? $_GET['album-id'] : 1;
+
+        $context = CommandRunner::run('get-album' );
 	$thisAlbum = $context->get('album');
 	$images = $thisAlbum->getImages();
 
@@ -84,10 +86,14 @@
 							</thead>
 							<tbody>
 								<?php foreach ( $images as $image ) : ?>
-								<tr>
+								<tr id='<?= $image->getId() ?>'>
 								<td class='image-select-checkbox-cell'>
 									<input type='checkbox'></input></td>
-								<td class='image-caption-cell'>Caption</td>
+									<td class='image-caption-cell'>
+									<?= $image->getTitle() ?>
+									<br /><br />
+
+									<input type='submit' class='edit-caption-button' value='Edit' /> </td> 
 
 								<td class='image-thumbnail-cell'>
 									<img height='100' src='<?= $image->getSource() ?>' /></td>

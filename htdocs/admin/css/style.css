@@ -394,6 +394,26 @@ form#gallery-form div.associated-inputs input {
 	display:inline;
 }
 
+table#images-table thead {
+	background-color:#ccc;
+}
+
+table#images-table thead th  {
+	padding: 3px 3px;
+	font-weight:normal;
+	text-align:left;
+}
+table#images-table tbody td {
+	background-color:#ddd;
+}
+
+table#images-table tbody td {
+	text-align:center;
+}
+table#images-table tbody td input {
+	display:inline;
+}
+
 /***** END GALLERY CMS PAGE STYLING *****/
 
 /* News CMS */
