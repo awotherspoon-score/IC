@@ -50,6 +50,12 @@
 					<legend>Gallery Info</legend>
 					 <label for='title'>Title:</label>
 					 <input value='<?= $thisAlbum->getTitle() ?>' name='title' id='title' type='text' class='text-input' />
+
+					<label for='status'>Status:</label>
+					<select name='status' id='status'>
+					<option value='<?= Content::STATUS_LIVE ?>'<?= ($thisAlbum->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
+					<option value='<?= Content::STATUS_PENDING ?>'<?= ($thisAlbum->getStatus() == Content::STATUS_PENDING) ? ' selected' : ''?>>Pending</option>
+					</select>
 					</fieldset>
 					 <fieldset>
 

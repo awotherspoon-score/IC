@@ -31,6 +31,20 @@ $(document).ready(function() {
 	 });
 
 	 /**
+	  * Album Status Select Option - Click
+	  *
+	  * Updates album status field on click
+	  * TODO write update album 
+	  */
+	 $("form#gallery-form select#status option").click( function() {
+		album_status = $(this).parent().val();
+
+		alert(" " + album_status);
+	 });
+
+
+
+	 /**
 	  * News Select Option Button - Click
 	  *
 	  * Updates the album news id field on click
