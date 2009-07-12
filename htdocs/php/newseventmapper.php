@@ -207,15 +207,17 @@
 
 			$boundary = $this->periodToStartEndValues( $period, 'events' );
 
-			return "SELECT * FROM newsevents "
+			$query =  "SELECT * FROM newsevents "
 				."WHERE type=" . NewsEvent::TYPE_EVENT 
 				." AND status=" . Content::STATUS_LIVE 
 				." AND datedisplayed BETWEEN {$boundary['start']} AND {$boundary['end']} "
 				."ORDER BY datedisplayed ASC";
+			return $query;
 		}
 
+		
 
-		private function periodToStartEndValues($period, $mode = 'news') {
+		private function periodToStartEndValues( $period, $mode = 'news' ) {
 			$boundary['start'] = 0;
 			$boundary['end'] = 0;
 
@@ -256,6 +258,11 @@
 		public function newsExistsForPeriod( $period ) {
 			$news = $this->findAllNewsForArchive( $period );
 			return ( count( $news ) > 0 );
+		}
+
+		public function eventsExistForPeriod( $period ) {
+			$events = $this->findAllEventsForArchive( $period );
+			return ( count( $events ) > 0 );
 		}
 
 		/**

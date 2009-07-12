@@ -40,7 +40,7 @@
 					case 'events/index':
 						return new EventsIndexViewHelper( $content );
 						break;
-					case 'events/archive':
+					case 'events/calendar':
 						return new EventsArchiveViewHelper( $content );
 						break;
 				}

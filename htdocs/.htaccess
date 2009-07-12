@@ -1,6 +1,6 @@
 RewriteEngine On
 RewriteRule ^\/?pages\/(.*)\/$ page.php?slug=$1
 
-RewriteRule ^\/?(news|events)\/(archive|calender)\/(.*)\/$ $1-archive.php?period=$3
+RewriteRule ^\/?(news|events)\/(archive|calendar)\/(.*)\/$ $1-archive.php?period=$3
 RewriteRule ^\/?(news|events)\/$ $1-index.php
 RewriteRule ^\/?(news|events)\/(.*)\/$ $1-single.php?slug=$2

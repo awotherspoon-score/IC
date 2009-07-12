@@ -4,5 +4,7 @@
 			return '';
 		}
 		function sidebar() {
+			$helper = new EventViewHelper( $this->content );
+			return $helper->sidebar();
 		}
 	}

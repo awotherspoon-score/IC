@@ -40,7 +40,7 @@
 			}
 			$this_year 	= date('Y');
 			$next_year 	= $this_year + 1;
-			$two_years_later 	= $last_year + 1;
+			$two_years_later 	= $next_year + 1;
 
 			$this_month 	= date('F');
 			$next_month 	= date( 'F', mktime(0,0,0,date('n') + 1, date('j'), date('Y') ) );
@@ -53,6 +53,7 @@
 
 			foreach ( array( $this_month, $next_month, $two_months_later, $this_year, $next_year, $two_years_later ) as $time ) {
 				$lower_time = strtolower( $time );
+				//echo $lower_time;
 				if ( RequestRegistry::getNewsEventMapper()->eventsExistForPeriod( $lower_time ) ) {
 					$content = array( 'type' => 'events/calendar', 'period' => $lower_time );
 					$archive_list .= "<li><a href='{$this->url( $content )}'>{$time}</a></li>\n";
@@ -62,9 +63,8 @@
 			$archive_list .= "</ul>\n";	
 			//$archive_list .= "</div>\n";
 
-			 */
 			$sidebar =  "<div id='sidebar'>\n";
-			$sidebar .= $this_month_list /*. $archive_list*/;
+			$sidebar .= $this_month_list . $archive_list;
 			$sidebar .= "</div>";
 			return $sidebar;
 		}
