@@ -17,7 +17,6 @@
                 <link rel='stylesheet' type='text/css' href='css/style.css' />
                 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
                 <script type='text/javascript' src='js/generic-functions.js'></script>
-                <script type='text/javascript' src='js/gallery-functions.js'></script>
                 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
@@ -27,10 +26,9 @@
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
                       
-                        $(document).ready(function() {
-                                init_header();
-                        });
+			var album_id = <?= $thisAlbum->getId() ?>;
                 </script>
+                <script type='text/javascript' src='js/gallery-functions.js'></script>
         </head>
         <body>
                 <div id='wrapper'>
@@ -90,7 +88,7 @@
 								<td class='image-select-checkbox-cell'>
 									<input type='checkbox'></input></td>
 									<td class='image-caption-cell'>
-									<?= $image->getTitle() ?>
+									<span class='caption'><?= $image->getTitle() ?></span>
 									<br /><br />
 
 									<input type='submit' class='edit-caption-button' value='Edit' /> </td> 
@@ -98,11 +96,11 @@
 								<td class='image-thumbnail-cell'>
 									<img height='100' src='<?= $image->getSource() ?>' /></td>
 								<td class='image-pcs-checkbox-cell'>
-									<input type='checkbox'></input></td>
+									<input class='prospective' type='checkbox'></input></td>
 								<td class='image-pcs-checkbox-cell'>
-									<input type='checkbox'></input></td>
+									<input class='current' type='checkbox'></input></td>
 								<td class='image-pcs-checkbox-cell'>
-									<input type='checkbox'></input></td>
+									<input class='staff' type='checkbox'></input></td>
 								<td class='image-featured-select-radio-cell'>
 									<input type='radio'></input></td>
 								</tr>
