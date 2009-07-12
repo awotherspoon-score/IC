@@ -7,6 +7,8 @@
 
         $context = CommandRunner::run('get-album' );
 	$thisAlbum = $context->get('album');
+	$editNewsHref = ( $thisAlbum->getNewsId() == 0 ) ? '#' : "/admin/list-news.php?newsevent-id={$thisAlbum->getNewsId()}";
+	$editEventHref = ( $thisAlbum->getEventId() == 0 ) ? '#' : "/admin/list-events.php?newsevent-id={$thisAlbum->getEventId()}";
 	$images = $thisAlbum->getImages();
 
 ?>
@@ -55,16 +57,16 @@
 					 <div id='associated-news-inputs' class='associated-inputs'>
 					
 					 <span>Select Associated News (optional): </span><br />
-					<?= $formHelper->getNewsSelect() ?>
-					 <a href='#' id='edit-associated-news' href='#'>Edit Selected News</a>
+					<?= $formHelper->getNewsSelect( $thisAlbum->getNewsId() ) ?>
+					<a id='edit-associated-news' href='<?= $editNewsHref ?>'>Edit Selected News</a>
 					<br /><span> Or:</span><br />
 					 <input type='submit' name='new-news' id='new-news' value='Create New News Story' />
 					 </div>
 
 					 <span>Select Associated Event (optional): </span>
 					 <div id='associated-event-inputs' class='associated-inputs'>
-					 <?= $formHelper->getEventsSelect() ?>
-					 <a href='#' id='edit-associated-event'>Edit Associated Event</a>
+					 <?= $formHelper->getEventsSelect( $thisAlbum->getEventId() ) ?>
+					 <a href='<?= $editEventHref ?>' id='edit-associated-event'>Edit Selected Event</a>
 					<br /><span> Or:</span><br />
 					 <input type='submit' name='new-event' id='new-event' value='Create New Event' />
 					 </div>
