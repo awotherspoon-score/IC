@@ -69,6 +69,14 @@
 		public function selectAllQuery() {
 			return "SELECT * FROM images";
 		}
+
+		public function findFeaturedImageForAlbum( Album $album ) {
+			return $this->createObject( $this->queryToArray( $this->selectFeaturedImageForAlbumQuery( $album ) ) );
+		}
+
+		public function selectFeaturedImageForAlbumQuery( Album $album ) {
+			return "select images.* from images join albums on images.id=albums.featuredimageid where albums.id={$album->getId()} limit 1";
+		}
 		
 		protected function targetClass() {
 			return 'Image';

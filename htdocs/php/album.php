@@ -5,6 +5,7 @@
 		private $eventId;
 		private $featuredImageId;
 		private $images;
+		private $featured_image;
 		
 		public function loadFromArray(array $array) {
 			parent::loadFromArray($array);
@@ -31,7 +32,27 @@
 			}
 			return $this->images;
 		}
-		
+
+		public function getFeaturedImage() {
+			if ( ! isset( $this->featured_image ) ) {
+				$this->featured_image = RequestRegistry::getImageMapper()->findFeaturedImageForAlbum( $this );
+			}	
+
+			if ( $this->featured_image == null ) { 
+				return $this->getFirstImage();
+			}
+
+			return $this->featured_image;
+		}
+
+		public function getFirstImage() {
+			$images = $this->getImages();
+
+			foreach ($images as $image) {
+				return $image; //just return the top one
+			}
+		}
+
 		//GETTERS + SETTERS
 		public function getDateDisplayed() {
 			return $this->dateDisplayed;
