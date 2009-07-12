@@ -289,7 +289,7 @@
 	       public function getEventsSelect($selectedId = null) {
 			if ( ! isset( $this->events_select ) ) {
 				$news = RequestRegistry::getNewsEventMapper()->findAllEventsByModifyDate();
-				$news_select = "<select id='news-select'>\n";
+				$news_select = "<select id='event-select'>\n";
 				$news_select .= "<option value='0'>No Event Selected</option>\n";
 				foreach ( $news as $story ) {
 					$selected = ( $selectedId !== null && $selectedId == $story->getId() ) ? ' selected' : '';

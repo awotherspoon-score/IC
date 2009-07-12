@@ -12,6 +12,7 @@
 			if (array_key_exists('newsid', $array)) { $this->setNewsId($array['newsid']); }
 			if (array_key_exists('eventid', $array)) { $this->setEventId($array['eventid']); }
 			if (array_key_exists('featuredimageid', $array)) { $this->setFeaturedImageId($array['featuredimageid']); }
+			if (array_key_exists('datedisplayed', $array)) { $this->setDateDisplayed($array['datedisplayed']); }
 		}
 
                 public function toArray() {
@@ -41,7 +42,7 @@
 		public function getEventId() {
 			return $this->eventId;
 		}
-		public function getFreaturedImageId() {
+		public function getFeaturedImageId() {
 			return $this->featuredImageId;
 		}
 		public function setDateDisplayed($dateDisplayed) {

@@ -51,6 +51,8 @@
 					 <label for='title'>Title:</label>
 					 <input value='<?= $thisAlbum->getTitle() ?>' name='title' id='title' type='text' class='text-input' />
 
+					<label>Displayed Date</label>
+					<?= $formHelper->getDateInput($thisAlbum->getDateDisplayed()) ?>
 					<label for='status'>Status:</label>
 					<select name='status' id='status'>
 					<option value='<?= Content::STATUS_LIVE ?>'<?= ($thisAlbum->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
@@ -118,7 +120,9 @@
 									<input class='staff' type='checkbox'<?= $staff_checked ?>></input></td>
 
 								<td class='image-featured-select-radio-cell'>
-									<input type='radio'></input></td>
+								<input type='radio'<?= ( $thisAlbum->getFeaturedImageId() == $image->getId() ) ? ' checked' : '' ?>></input>
+								</td>
+								
 								</tr>
 								<?php endforeach ?>
 							</tbody>

@@ -57,6 +57,9 @@
 				case 'image' :
 					return self::getImageMapper();
 					break;
+				case 'album' :
+					return self::getAlbumMapper();
+					break;
 			}
 		}
 
