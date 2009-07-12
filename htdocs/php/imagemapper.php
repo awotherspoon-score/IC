@@ -30,7 +30,7 @@
 					."datemodified='$now', "
 					."albumid='{$image->getAlbumId()}', "
 					."filename='{$image->getFileName()}', "
-					."status='{$image->getStatus()}', "
+					."status='". Content::STATUS_LIVE ."', "
 					."prospective='{$image->getProspective()}', "
 					."current='{$image->getCurrent()}', "
 					."staff='{$image->getStaff()}' "

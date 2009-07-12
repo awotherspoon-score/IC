@@ -84,6 +84,11 @@
 							</thead>
 							<tbody>
 								<?php foreach ( $images as $image ) : ?>
+								<?php 
+									$prospective_checked = ($image->getProspective() == 1) ? ' checked' : '';
+									$current_checked = ($image->getCurrent() == 1) ? ' checked' : '';
+									$staff_checked = ($image->getStaff() == 1) ? ' checked' : '';
+								?>
 								<tr id='<?= $image->getId() ?>'>
 								<td class='image-select-checkbox-cell'>
 									<input type='checkbox'></input></td>
@@ -95,12 +100,14 @@
 
 								<td class='image-thumbnail-cell'>
 									<img height='100' src='<?= $image->getSource() ?>' /></td>
-								<td class='image-pcs-checkbox-cell'>
-									<input class='prospective' type='checkbox'></input></td>
-								<td class='image-pcs-checkbox-cell'>
-									<input class='current' type='checkbox'></input></td>
-								<td class='image-pcs-checkbox-cell'>
-									<input class='staff' type='checkbox'></input></td>
+
+								<td class='image-pcs-checkbox-cell prospective-cell'>
+								<input class='prospective' type='checkbox'<?= $prospective_checked ?>></input></td>
+								<td class='image-pcs-checkbox-cell current-cell'>
+									<input class='current' type='checkbox'<?= $current_checked ?>></input></td>
+								<td class='image-pcs-checkbox-cell staff-cell'>
+									<input class='staff' type='checkbox'<?= $staff_checked ?>></input></td>
+
 								<td class='image-featured-select-radio-cell'>
 									<input type='radio'></input></td>
 								</tr>

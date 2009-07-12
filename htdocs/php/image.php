@@ -37,13 +37,13 @@
 		public function getFileName() {
 			return $this->fileName;
 		}
-		public function isProspective() {
+		public function getProspective() {
 			return $this->prospective;
 		}
-		public function isCurrent() {
+		public function getCurrent() {
 			return $this->current;
 		}
-		public function isStaff() {
+		public function getStaff() {
 			return $this->staff;
 		}
 		public function setAlbumId($albumId) {

@@ -54,6 +54,9 @@
 				case 'newsevent' :
 					return self::getNewsEventMapper();
 					break;
+				case 'image' :
+					return self::getImageMapper();
+					break;
 			}
 		}
 
