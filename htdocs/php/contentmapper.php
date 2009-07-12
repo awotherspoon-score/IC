@@ -84,11 +84,11 @@
 		}
 
                 /**
-                 * Double checks a pages slug after a potential title change
+                 * Double checks a content slug after a potential title change
                  *
                  * If the title hasn't changed then return. Else generate a new slug
                  * This requires requires n runs to the database, where n is the number of duplicate slugs
-                 * TODO: Optimize this so we need at most one trip to the database
+                 * TODO: Optimize this so we need at most one trip to the database, hint: use LIKE '$newSlug%;
                  *
                  * @param $page Page the page object who's slug we need to update
                  */

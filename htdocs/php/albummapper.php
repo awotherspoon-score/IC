@@ -24,6 +24,7 @@
 		
 		public function update(Content $content) {
 			$now = time();
+			$this->updateSlug( $content );
 			$query = "UPDATE albums SET "
 					."slug='{$content->getSlug()}', "
 					."title='{$content->getTitle()}', "
