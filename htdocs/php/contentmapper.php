@@ -1,29 +1,65 @@
 <?php 
+	/**
+	 * Content Mapper Superclass
+	 *
+	 * Mappers are use to manage the relationship between content objects and the datbase
+	 * This class defines functionality common accross all content mapper classes
+	 */
 	abstract class ContentMapper {
+
+		/**
+		 * Instance of mysqli used for database manipulation
+		 */
 		protected static $mysqli;
 		
+		/**
+		 * Constructor
+		 *
+		 * Gets an instance of mysqli from the request registry
+		 */
 		function __construct() {
 			if (! isset(self::$mysqli)) {
 				self::$mysqli = RequestRegistry::getMySQLi();
 			}
 		}
 		
+		/**
+		 * Finds a content object based on its id
+		 *
+		 * Looks for it in the object watcher, if not found fetches it from the database
+		 */
 		function find( $id ) {
 			$old = $this->getFromMap($id);
 			if ($old != null) {return $old;}
 			return $this->createObject( $this->queryToArray($this->selectQuery($id)) );
 		}
 
+		/**
+		 * Finds a content object based on its slug
+		 *
+		 * Looks for it in the object watcher, if not found fetches it from the database
+		 */
                 function findBySlug( $slug ) {
 			$old = $this->getFromMap($slug);
 			if ($old != null) {return $old;}
                         return $this->createObject( $this->queryToArray($this->selectBySlugQuery($slug)));
                 }
 		
+		/**
+		 * Returns a collection of objects based on all rows of a table
+		 */
 		function findAll() {
 			return $this->createCollection( $this->queryToArray($this->selectAllQuery()));
 		}
 		
+		/**
+		 * Creates a content object based on an array, usually from the database
+		 *
+		 * Looks for it in the object watcher before it tries to create it
+		 * Delegates table-specific work to the mapper subclass via 'doCreateObject'
+		 *
+		 * @param $array assoc the array to get values from when creating the object
+		 */
 		function createObject( $array ) {
 			if ($array === null) { return null; }
 			$old = $this->getFromMap($array['id']);
@@ -32,6 +68,11 @@
 			return $object;
 		}
 		
+		/**
+		 * Creates a content collection based on a 2D array of table rows
+		 *
+		 * @param $array array the 2D array of table rows to build a collection from
+		 */
 		function createCollection( $array ) {
 			return ContentHelperFactory::getCollection($this->targetClass(), $array, $this);
 		}
@@ -70,14 +111,34 @@
 			return null;
 		}
 		
+		/**
+		 * Gets an object from the object watcher
+		 *
+		 * The object watcher serves as a per-request 'object cache'
+		 *
+		 * @param $id in the id of the object we're looking for
+		 */
 		private function getFromMap($id) {
 			return RequestRegistry::getContentWatcher()->exists($this->targetClass(), $id);
 		}
 		
+		/**
+		 * Adds an object to the object watcher
+		 *
+		 * @param $content Content the object to add to the cache
+		 */
 		private function addToMap(Content $content) {
 			RequestRegistry::getContentWatcher()->add($content);
 		}
 		
+		/**
+		 * Inserts a record into the database
+		 *
+		 * Adds the content object to the database as a new row, and then adds it to the object cache
+		 * Delegates actual work of inserting a row to the mapper subclasses via doInsert
+		 *
+		 * @param $insert Content the content object to insert
+		 */
 		function insert(Content $insert) {
 			$this->doInsert($insert);
 			$this->addToMap($insert);
@@ -121,11 +182,56 @@
 			return $slug;
 		}
 		
+		/**
+		 * Delegates updating to mapper subclasses
+		 *
+		 * @param $object Content the object representing the row to update in the database
+		 */
 		abstract function update( Content $object );
+
+		/**
+		 * Delegates Object Creation to mapper subclasses
+		 *
+		 * See ContentMapper::createObject()
+		 *
+		 * @param $array assoc the array containing data used to build the object
+		 */
 		protected abstract function doCreateObject( array $array );
+
+		/**
+		 * Delegates object insertion to mapper subclasses
+		 *
+		 * @param $object the object to insert
+		 */
 		protected abstract function doInsert( Content $object );
+
+		/**
+		 * Return SQL query for finding row with id=$id
+		 *
+		 * See ContentMapper::find()
+		 *
+		 * @param $id int the id of the row we're looking for
+		 */
 		protected abstract function selectQuery( $id );
+
+		/**
+		 * Return SQL query for finding a row with slug=$slug
+		 *
+		 * See ContentMapper::findBySlug()
+		 *
+		 * @param $slug string the slug of the row we're looking for
+		 */
                 protected abstract function selectBySlugQuery($slug);
+
+		/**
+		 * Return SQL query for returning all rows
+		 */
 		protected abstract function selectAllQuery();
+
+		/**
+		 * Returns name of content object class that this mapper works with
+		 *
+		 * e.g. PageMapper would return 'Page'
+		 */
 		protected abstract function targetClass();
 	}
