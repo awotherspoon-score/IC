@@ -38,12 +38,21 @@
 			return $this->fileName;
 		}
 		public function getProspective() {
+                        if ($this->prospective == '') {
+                                $this->prospective = "0";
+                        }
 			return $this->prospective;
 		}
 		public function getCurrent() {
+                        if ($this->current == '') {
+                                $this->current = "0";
+                        }
 			return $this->current;
 		}
 		public function getStaff() {
+                        if ($this->staff == '') {
+                                $this->staff = "0";
+                        }
 			return $this->staff;
 		}
 		public function setAlbumId($albumId) {

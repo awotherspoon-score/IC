@@ -288,9 +288,9 @@ $(document).ready(function() {
 		  var prospective = image_row.children(".prospective-cell").children(".prospective").attr("checked");
 		  var current = image_row.children(".current-cell").children(".current").attr("checked");
 		  var staff = image_row.children(".staff-cell").children(".staff").attr("checked");
-		  if (prospective) { prospective = 1; } else { prospective = 0; }
-		  if (current) { current = 1; } else { current = 0; }
-		  if (staff) { staff = 1; } else { staff = 0; }
+		  if (prospective) { prospective = '1'; } else { prospective = '0'; }
+		  if (current) { current = "1"; } else { current = "0"; }
+		  if (staff) { staff = "1"; } else { staff = "0"; }
 
 		  //adds a sane toString for debugging
 		  var image = {

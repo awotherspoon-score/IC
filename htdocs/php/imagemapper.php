@@ -35,6 +35,7 @@
 					."current='{$image->getCurrent()}', "
 					."staff='{$image->getStaff()}' "
 					."WHERE id={$image->getId()}";
+                                        echo $query;
 			self::$mysqli->query($query);
 		}
 
