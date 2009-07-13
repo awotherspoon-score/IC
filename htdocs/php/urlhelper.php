@@ -1,5 +1,21 @@
 <?php
+	/**
+	 * Generates URLS for content
+	 *
+	 * We keep all URL generation here so with a bit of .htaccess elbow grease,
+	 * we could in theory change the url structure later without much work
+	 */
 	class UrlHelper {
+		/**
+		 * Generates URL based on content type
+		 *
+		 * Big list of if/elses that generate URLs as per a specific type
+		 * The object oriented voices in my head tell me we could just delegate url construction to the view helpers
+		 *
+		 * BUT  then the other voices remind me that we need URL generation separate because within a given view helper, 
+		 * we might be generating URLs for various content types. 
+		 * For that reason, a view helper we can use to generate all URLs, where it is, is required
+		 */
 		function url( $content ) {
 			if ($content instanceof Page) {
 				return "/pages/{$content->getSlug()}/";

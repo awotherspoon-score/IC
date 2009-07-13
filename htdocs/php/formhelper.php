@@ -268,6 +268,14 @@
                       return $this->monthArray;
                }
 
+	       /**
+	        * Returns a string representing a html select for news
+		*
+		* Displays all news stories ordered by modify date
+		* Optionally, you can pass in an id to say which story is pre-selected
+		*
+		* @param $selectedId int (optional) the id of the preselected news story
+		*/
 	       public function getNewsSelect($selectedId = null) {
 			if ( ! isset( $this->news_select ) ) {
 				$news = RequestRegistry::getNewsEventMapper()->findAllNewsByModifyDate();
@@ -286,6 +294,14 @@
 			return $this->news_select;
 	       }
 
+	       /**
+	        * Returns a string representing a html select for events
+		*
+		* Displays all events ordered by modify date
+		* Optionally, you can pass in an id to say which event is pre-selected
+		*
+		* @param $selectedId int (optional) the id of the preselected event
+		*/
 	       public function getEventsSelect($selectedId = null) {
 			if ( ! isset( $this->events_select ) ) {
 				$news = RequestRegistry::getNewsEventMapper()->findAllEventsByModifyDate();

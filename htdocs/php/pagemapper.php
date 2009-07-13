@@ -4,9 +4,6 @@
          *
          * Responsible for creation, retrieval, update and destruction
          * of rows in page table
-         *
-         * @author Najaf Ali <nali@scorecomms.com>
-         * @copyright (c) 2009, Score Communications
          */
 	class PageMapper extends ContentMapper {
                 
