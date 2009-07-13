@@ -1,4 +1,9 @@
 <?php
+	/**
+	 * Helps the template pages display content
+	 *
+	 * Displays bits of content like sidebars, breadcrumbs and urls based on input content
+	 */
 	abstract class ViewHelper {
 		/**
 		 * The content that this helper will help display
@@ -39,8 +44,11 @@
 		}
 	
 		/**
-	 	 * Generate breadcrumb for our content object
+	 	 * Delegate breadcrumb generation for our content object
 	   	 */	 
 		abstract function breadcrumbs();
+		/**
+	 	 * Delegate sidebar generation for our content object
+		 */
 		abstract function sidebar();
 	}

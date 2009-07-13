@@ -15,7 +15,7 @@
 		/**
 		 * Constructor
 		 *
-		 * Gets an instance of mysqli from the request registry
+		 * Gets an instance of mysqli from the request registry and saves it to $this->mysqli
 		 */
 		function __construct() {
 			if (! isset(self::$mysqli)) {

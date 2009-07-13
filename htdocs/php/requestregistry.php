@@ -1,4 +1,7 @@
 <?php
+	/**
+	 * Request-wide registry for objects
+	 */
 	class RequestRegistry extends Registry {
 		private $values = array();
 		private static $instance;
@@ -23,6 +26,9 @@
 			$this->values[$key] = $val;
 		}
 		
+		/**
+		 * Returns a config instance
+		 */
 		static function getConfig() {
 			if (self::instance()->get('config') == null) {
 				self::instance()->set('config', new Config(CONFIG_FILENAME));

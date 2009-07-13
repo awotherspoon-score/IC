@@ -1,6 +1,15 @@
 <?php
+	/**
+	 * View Helper for Page Content
+	 */
 	class PageViewHelper extends ViewHelper {
 
+		/**
+		 * Generates breadcrumbs for a given page object
+		 *
+		 * Displays breadcrumbs as Home | Top Level Page Link | Second Level Page Link | Bottom Level Page Link
+		 * At the appropriate depth with current page link having a 'thispage' class
+		 */
 		public function breadcrumbs() {
 			$page = $this->content;
 			$ancestry = $page->getAncestry();
@@ -23,6 +32,13 @@
 			return $breadcrumb;
 		}
 
+		/**
+		 * Generates sidebar for a given page object
+		 *
+		 * Displays child level pages in a list, if there are any, else nothing
+		 * TODO Add Approrpiate Image as per funcspec
+		 * TODO Consider showing sibling pages instead of child
+		 */
 		public function sidebar() {
 			$children = $this->content->getLiveChildren();
 			$sidebar = 	"<div id='sidebar'>\n";
