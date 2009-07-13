@@ -20,10 +20,14 @@
 				}
 			}
 
+			if ( $content instanceof Album ) {
+				return new AlbumViewHelper( $content );
+			}
+
 			//or an array will do the job when returning a view helper for a page designed to display multiple content items
 			//in this case we need an array such that...
 			// $content = array(
-			// 			'type' => 'news-index' | 'news-archive' | 'events-index' | 'events-archive',
+			// 			'type' => 'news/index' | 'news/archive' | 'events/index' | 'events/calendar',
 			// 			'period' => '2009' | '2008' | 'january' | 'march' ...,
 			// );
 			// where only type is mandatory for all instances. Archives require a 'period', and there will probably be

@@ -312,14 +312,14 @@ table#gallery-grid tr td img {
         border:3px solid #00a8e1;
         width:216px;
 }
-table#gallery-grid tr td p.gallery-caption {
+table#gallery-grid tr td .gallery-caption {
         color:#002877;
         font-weight:bold;
         width:200px;
         margin:5px auto 0 auto;
 }
 
-table#gallery-grid tr td p.gallery-date {
+table#gallery-grid tr td .gallery-date {
         color:#666;
         width:200px;
         margin:2px auto 0 auto;
