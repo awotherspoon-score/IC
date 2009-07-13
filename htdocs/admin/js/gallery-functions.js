@@ -65,7 +65,7 @@ $(document).ready(function() {
 			edit_selected_newsevent_anchor.attr('href', "/admin/list-news.php?newsevent-id=" + selected_newsevent_id);
 		}
 		var album = album_data(album_id);
-		alert(album);
+		//alert(album);
 		update_album(album_id);
 	 });
 

@@ -9,9 +9,13 @@
 		$image_mapper->insert( $image );
 
 		$filename = $image->getId() . '.jpg';
-		$target_path = '../img/photos/' . $filename;
+		//$target_path = '../img/photos/' . $filename; //*nix Mode
 
-		$success = move_uploaded_file( $_FILES['uploaded-file']['tmp_name'], $target_path);
+		$target_path = "..\img\photos\\" . $filename;  //Windows Mode
+
+                //var_dump($_FILES);
+                //echo $target_path;
+		$success = move_uploaded_file( $_FILES['uploaded-file']['tmp_name'], $target_path );
 		if ( $success ) {
 			$image->setFileName( $filename );
 			$image_mapper->update( $image );

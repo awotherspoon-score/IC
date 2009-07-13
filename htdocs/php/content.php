@@ -47,6 +47,9 @@
 			return $this->dateModified;
 		}
 		public function getStatus() {
+                        if ( $this->status == "" ) {
+                                $this->status = "0";
+                        }
 			return $this->status;
 		}
 		public function setId($id) {

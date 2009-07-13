@@ -17,7 +17,7 @@
 					."(slug, title, datecreated, datemodified, albumid, filename, status, prospective, current, staff) "
 					."VALUES "
 					."('{$image->getSlug()}','{$image->getTitle()}','$now','$now','{$image->getAlbumId()}','{$image->getFileName()}','{$image->getStatus()}','{$image->getProspective()}','{$image->getCurrent()}','{$image->getStaff()}')";
-			//echo $query;
+			echo $query;
 			self::$mysqli->query($query);
 			$image->setId(self::$mysqli->insert_id);		
 		}
@@ -35,7 +35,6 @@
 					."current='{$image->getCurrent()}', "
 					."staff='{$image->getStaff()}' "
 					."WHERE id={$image->getId()}";
-                                        echo $query;
 			self::$mysqli->query($query);
 		}
 
