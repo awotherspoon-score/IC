@@ -1,4 +1,5 @@
 <?php include('inc/doctype.php'); ?>
+<?php include('init.php'); ?>
 
 <html>
 <head>
