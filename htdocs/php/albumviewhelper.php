@@ -16,7 +16,7 @@
 			foreach ( $images as $image ) {
 				$cell_counter++;
 
-				$grid .= "<td><img src='{$image->getSource()}' /><span class='gallery-caption'>{$image->getTitle()}</span></td>\n";
+				$grid .= "<td><a class='image-link' href='{$image->getSource()}'><img src='{$image->getSource()}' /></a><span class='gallery-caption'>{$image->getTitle()}</span></td>\n";
 
 				if ( ( $cell_counter % 3 ) == 0 ) {
 					$grid .= "\n</tr>\n<tr>\n";

@@ -43,7 +43,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `albums` WRITE;
 /*!40000 ALTER TABLE `albums` DISABLE KEYS */;
-INSERT INTO `albums` VALUES (1,'golden-pavillion','Golden Pavillion',1246875704,1246875704,31,0,1246875704,0,0),(2,'temple-of-water','Temple of Water',1246875704,1246875704,0,0,1246875704,0,1),(3,'gallery-three','Gallery three',1246875704,1246875704,0,0,1246875704,0,1);
+INSERT INTO `albums` VALUES (1,'golden-pavillion','Golden Pavillion',1246875704,1247441915,0,0,1199230715,1,0),(2,'temple-of-light','Temple of Light',1246875704,1247443335,0,0,1232150535,7,1),(3,'gallery-three','Gallery three',1246875704,1246875704,0,0,1246875704,0,1);
 /*!40000 ALTER TABLE `albums` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `images` (
   `current` int(1) NOT NULL,
   `staff` int(1) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -76,7 +76,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'image1','Rock Garden',1246889153,1247422770,1,'1.jpg',1,0,0,0),(2,'image2','Path Leading To The Main Gate',1246889153,1247424065,1,'2.jpg',1,0,0,0),(3,'image3','Old Monks Quarters',1246889153,1247423834,1,'3.jpg',1,0,0,0),(4,'image4','Big Green Pond',1246889153,1247423835,1,'4.jpg',1,0,0,0),(5,'image5','A Butterfly Behind The Golden Pavillion',1246889153,1247424025,1,'5.jpg',1,0,0,0),(6,'image6','Side View Of the Pavillion',1246889153,1247416583,1,'6.jpg',1,0,0,0),(7,'image7','Image 7',1246889153,1246889153,2,'7.jpg',1,0,0,1),(8,'image8','Image 8',1246889153,1246889153,2,'8.jpg',1,0,0,1),(9,'image9','Image 9',1246889153,1246889153,2,'9.jpg',1,0,0,1);
+INSERT INTO `images` VALUES (1,'image1','Rock Garden',1246889153,1247434170,1,'1.jpg',1,0,0,0),(2,'image2','Path Leading To The Main Gate',1246889153,1247424065,1,'2.jpg',1,0,0,0),(3,'image3','Old Monks Quarters',1246889153,1247432983,1,'3.jpg',1,0,0,0),(4,'image4','Big Green Pond',1246889153,1247432984,1,'4.jpg',1,0,0,0),(5,'image5','A Butterfly Behind The Golden Pavillion',1246889153,1247424025,1,'5.jpg',1,0,0,0),(6,'image6','Side View Of the Pavillion',1246889153,1247416583,1,'6.jpg',1,0,0,0),(7,'image7','Fountain',1246889153,1247445787,2,'7.jpg',1,0,0,0),(8,'image8','Path',1246889153,1247445794,2,'8.jpg',1,0,0,0),(9,'image9','Image 9',1246889153,1247435712,2,'9.jpg',1,0,0,0);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ CREATE TABLE `newsevents` (
   `type` int(5) NOT NULL,
   `status` int(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -155,4 +155,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2009-07-12 19:48:28
+-- Dump completed on 2009-07-13  0:45:47
