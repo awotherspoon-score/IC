@@ -33,6 +33,10 @@
 			return $this->images;
 		}
 
+		public function hasImages() {
+			return ( $this->getFirstImage() != null );
+		}
+
 		public function getFeaturedImage() {
 			if ( ! isset( $this->featured_image ) ) {
 				$this->featured_image = RequestRegistry::getImageMapper()->findFeaturedImageForAlbum( $this );
@@ -50,6 +54,7 @@
 
 			foreach ($images as $image) {
 				return $image; //just return the top one
+				break;
 			}
 		}
 

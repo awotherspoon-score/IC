@@ -34,6 +34,10 @@
 				return "/img/photos/{$content->getFilename()}/";
 			}
 
+			if ( $content instanceof Album ) {
+				return "/gallery/{$content->getSlug()}/";
+			}
+
 			if ( is_array( $content ) && array_key_exists( 'type', $content ) && $content['type'] == 'news/index' ) {
 				return '/news/';
 			}

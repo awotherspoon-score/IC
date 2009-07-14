@@ -10,7 +10,8 @@
 				$album = $albumMapper->findBySlug($context->get('album-slug'));
 			}
 			if ( $album === null ) {
-                                die("GetAlbumCommand: need either 'album-slug' or 'album-id' in the command context please!");
+				$error = "Album Not Found, Check that you've sent 'album-id' or 'album-slug' in the command context, and that it's a valid slug/id";
+				throw new Exception( $error );
 			}
 			$context->addParam('album', $album);
 			return;

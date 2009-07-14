@@ -1,14 +1,8 @@
-<?php 
-	include('init.php');
-	$slug = mysql_escape_string($_GET['slug']);
-	try {
-		$album = CommandRunner::run( 'get-album', array( 'album-slug' => $slug ) )->get( 'album' );
-	} catch ( Exception $e ) {
-		//if there's a problem finding the album based on slug, redirect to the gallery index
-		//comment this out to debug
-		header( 'Location: /gallery/' );
-	}
-	$view = RequestRegistry::getViewHelper($album);
+<?php include('init.php'); ?>
+
+<?php
+	//$albums = CommandRunner::run( 'get-albums-for-index' )->get( 'albums' );
+	$view = RequestRegistry::getViewHelper( array( 'type' => 'albums/index' ) );
 ?>
 
 <?php include('inc/doctype.php'); ?>
@@ -109,9 +103,8 @@
                 <div class='cleardiv'></div>
                 <div id='content'>
 			<?php /*$view->breadcrumbs();*/ ?>
-                        <h1><?= $album->getTitle() ?></h1>
+                        <h1>Immanuel College Gallery</h1>
 			<?= $view->gallery_grid() ?>
-			<p><?= date('l, jS F Y', $album->getDateDisplayed()) ?></p>
                 </div>
 
 		<?php /*$view->sidebar();*/ ?>

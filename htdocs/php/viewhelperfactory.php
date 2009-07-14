@@ -34,6 +34,7 @@
 			// more constraints to follow. Not very well designed but hey, deadlines! 
 
 			if ( is_array( $content ) ) {
+				/*
 				switch ( $content['type'] ) {
 					case 'news/index':
 						return new NewsIndexViewHelper( $content );
@@ -47,7 +48,23 @@
 					case 'events/calendar':
 						return new EventsArchiveViewHelper( $content );
 						break;
+					case 'gallery/index':
+						return new GalleryIndexViewHelper( $content );
+						break;
+					case 'gallery/archive':
+						return new GalleryArchiveViewHelper( $content );
+						break;
+					default:
+						$error = "Bad type value in content array for view helper factory";
+						throw new Exception( $error );
+						break;
+
 				}
+				*/
+
+				//this does the equivalent of the above, but in two lines and sans error checking
+				$class = str_replace( ' ', '',  ucwords( str_replace( '/', ' ', $content['type'] ) ) ) . 'ViewHelper';
+				return new $class( $content );
 			}
 		}
 	}

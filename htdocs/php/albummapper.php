@@ -1,4 +1,9 @@
 <?php
+	/**
+	 * Creates, Retrieves, Updates and Deletes from/to the album table
+	 *
+	 * Converts table rows to Album objects and Album objects to table rows
+	 */
 	class AlbumMapper extends ContentMapper {
 		function __construct() {
 			parent::__construct();
@@ -42,6 +47,14 @@
 		public function delete(Content $content) {
 			$query = "DELETE FROM albums WHERE id={$content->getId()} LIMIT 1";
 			self::$mysqli->query($query);
+		}
+
+		public function findAllAlbumsForIndex() {
+			return $this->createCollection( $this->queryToArray( $this->selectAllAlbumsForIndexQuery(), true ) );
+		}
+
+		public function selectAllAlbumsForIndexQuery() {
+			return "SELECT * FROM albums WHERE status=" . Content::STATUS_LIVE . " ORDER BY datedisplayed DESC LIMIT 6";
 		}
 
 		public function selectBySlugQuery($slug) {
