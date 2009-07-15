@@ -151,11 +151,11 @@
                  * This requires requires n runs to the database, where n is the number of duplicate slugs
                  * TODO: Optimize this so we need at most one trip to the database, hint: use LIKE '$newSlug%;
                  *
-                 * @param $page Page the page object who's slug we need to update
+                 * @param $content Content the content object who's slug we need to update
                  */
-		protected function updateSlug($page) {
-			$oldSlug = $page->getSlug();
-			$newSlug = $this->generateSlug($page->getTitle());
+		protected function updateSlug( Content $content ) {
+			$oldSlug = $content->getSlug();
+			$newSlug = $this->generateSlug($content->getTitle());
 			if ($oldSlug == $newSlug) { return; }
 
 			$suffix = '';
@@ -163,7 +163,7 @@
 				if ($suffix == '') { $suffix = 1; }
 				$suffix++;
 			}
-			$page->setSlug($newSlug . $suffix);
+			$content->setSlug($newSlug . $suffix);
 		}
 
                 /**

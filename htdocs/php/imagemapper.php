@@ -1,6 +1,7 @@
 <?php
 	class ImageMapper extends ContentMapper {
-	function __construct() {
+		const PHOTOS_DIRECTORY = '/img/photos/';
+		function __construct() {
 			parent::__construct();
 		}
 		protected function doCreateObject(array $array) {
@@ -41,8 +42,12 @@
 
 		
 		public function delete(Content $image) {
+			$filename = self::PHOTOS_DIRECTORY . $image->getFilename();
+			if ( file_exists( $filename ) ) {
+				unlink( $filename ); //delete the file
+			}
+
 			$query = "DELETE FROM images WHERE id={$image->getId()} LIMIT 1";
-			//echo $query;
 			self::$mysqli->query($query);
 		}
 
