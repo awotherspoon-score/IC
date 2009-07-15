@@ -1,6 +1,5 @@
 <?php
         include('../init.php');
-	include('pclzip.lib.php');
 
 	$album = CommandRunner::run('get-album')->get('album');
 
