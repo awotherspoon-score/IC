@@ -84,6 +84,7 @@
 					<fieldset>
 						<legend>Images</legend>
 						<a href='/admin/add-image.php?album-id=<?= $thisAlbum->getId() ?>'>+ Upload An Image</a><br />
+						<a href='/admin/bulk-add-image.php?album-id=<?= $thisAlbum->getId() ?>'>Bulk Upload Images (.zip file)</a><br />
 						<table id='images-table'>
 							<thead>
 								<th></th>
