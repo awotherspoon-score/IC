@@ -1,7 +1,7 @@
 <?php 	include('init.php'); 
 	$period = $_GET['period'];
 	$events = CommandRunner::run('get-events-for-archive')->get('events');
-	$view = RequestRegistry::getViewHelper( array( 'type' => 'events/calendar' ) );
+	$view = RequestRegistry::getViewHelper( array( 'type' => 'events/archive' ) );
 ?>
 
 <?php include('inc/doctype.php'); ?>
