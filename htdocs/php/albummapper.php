@@ -91,6 +91,47 @@
             ." ORDER BY datedisplayed DESC";
     }
 
+    /**
+     * Returns collection of all live albums for a given time period
+     *
+     * $period can be a 4-digit year or a lower case month name
+     *
+     * @param $period mixed the time period to return albums for
+     */
+    public function findAllLiveAlbumsForPeriod( $period ) {
+      return $this->createCollection( $this->queryToArray( $this->selectLiveAlbumsForPeriodQuery( $period ), true ) );
+    }
+
+    public function albumsExistForPeriod( $period ) {
+      $albums = $this->findAllLiveAlbumsForPeriod( $period );
+
+      return ( count( $albums ) > 0 );
+    }
+
+    public function selectLiveAlbumsForPeriodQuery( $period ) {
+      //echo $period;
+      $dh = new DateHelper();
+      $month_array = $dh->month_array();
+      if ( array_key_exists( $period, $month_array ) ) {
+        //period is a month e.g. 'january' | 'february' etc
+        $month = $month_array[$period];
+        $year = ( $month > date('n') ) ? date('Y') - 1 : date('Y');
+        
+        $start = mktime( 0, 0, 0, $month, 1, $year );
+        $end = mktime( 0, 0, 0, $month + 1, 0, $year );
+      } else {
+        //period is a year e.g. '2009' | '1964'
+        $start = mktime( 0, 0, 0, 1, 1, $period); 
+        $end = mktime( 0,0,0, 1, 0, $period + 1);
+      }
+
+
+      return "SELECT * FROM albums WHERE status="  . Content::STATUS_LIVE
+            ." AND datedisplayed BETWEEN {$start} AND {$end}"
+            ." ORDER BY datedisplayed DESC";
+
+    }
+
 
 		public function selectAllAlbumsForIndexQuery() {
 			return "SELECT * FROM albums WHERE status=" . Content::STATUS_LIVE . " ORDER BY datedisplayed DESC LIMIT 6";

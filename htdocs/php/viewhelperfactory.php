@@ -1,5 +1,22 @@
 <?php
+  /**
+   * In charge of creating view helpers
+   *
+   * Defines a single static method that returns
+   * A view helper object to display things like sidebars
+   * breadcrumbs, etc
+   */
 	class ViewHelperFactory {
+
+    /**
+     * Instantiates and returns view helper objects
+     * based on contents of paramter $content
+     *
+     * $content can be an instance of a subclass of Content
+     * or it can be an assoicative array as described in the srouce
+     *
+     * @param $content mixed determines what sort of view helper this method returns
+     */
 		static function createViewHelper( $content ) {
 
 

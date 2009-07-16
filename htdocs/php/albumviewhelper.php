@@ -44,6 +44,7 @@
 
       foreach ( $archive_array as $period ) {
         $lower_period = strtolower( $period );
+        if ( ! RequestRegistry::getAlbumMapper()->albumsExistForPeriod( $lower_period ) ) { continue; }
         $content = array( 
           'type' => 'gallery/archive', 
           'period' => $lower_period 
