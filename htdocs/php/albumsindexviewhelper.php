@@ -1,12 +1,25 @@
 <?php
+  /**
+   * View Helper For Albums Index Page
+   */
 	class AlbumsIndexViewHelper extends ViewHelper {
+    /**
+     * Generates breadcrumbs for the albums index page
+     *
+     * Dislpayed as Home | Gallery
+     */
+		public function breadcrumbs() {
+      $breadcrumbs = "<div id='breadcrumb'>\n";
+      $breadcrumbs .= "<a href='/'>Home</a> | \n";
+      $breadcrumbs .= "<a class='thispage' href='/gallery/'>Gallery</a>\n";
+      $breadcrumbs .= "</div>\n";
+      return $breadcrumbs;
+		}
+
 		public function sidebar() {
 			return '';
 		}
 
-		public function breadcrumbs() {
-			return '';
-		}
 
 		public function gallery_grid() {
 			$albums = CommandRunner::run( 'get-albums-for-index' )->get( 'albums' );

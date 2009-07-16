@@ -1,6 +1,18 @@
 <?php
+  /**
+   * View Helper For Individual Album View
+   *
+   * Displayed as Home | Gallery | {Gallery Title}
+   */
 	class AlbumViewHelper extends ViewHelper {
 		function breadcrumbs() {
+      $gallery = $this->content;
+      $breadcrumbs = "<div id='breadcrumb'>\n";
+      $breadcrumbs .= "<a href='/'>Home</a> | \n";
+      $breadcrumbs .= "<a href='/gallery/'>Gallery</a> | \n";
+      $breadcrumbs .= "<a class='thispage' href='{$this->url( $gallery )}'>{$gallery->getTitle()}</a>\n";
+      $breadcrumbs .= "</div>\n";
+      return $breadcrumbs;
 		}
 		function sidebar() {
 		}

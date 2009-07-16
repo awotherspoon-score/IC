@@ -108,7 +108,7 @@
 	<div id='main'>
                 <div class='cleardiv'></div>
                 <div id='content'>
-			<?php /*$view->breadcrumbs();*/ ?>
+			<?= $view->breadcrumbs(); ?>
                         <h1><?= $album->getTitle() ?></h1>
 			<?= $view->gallery_grid() ?>
 			<p><?= date('l, jS F Y', $album->getDateDisplayed()) ?></p>

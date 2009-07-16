@@ -102,7 +102,7 @@
 	<div id='main'>
                 <div class='cleardiv'></div>
                 <div id='content'>
-			<?php /*$view->breadcrumbs();*/ ?>
+			<?= $view->breadcrumbs(); ?>
                         <h1>Immanuel College Gallery</h1>
 			<?= $view->gallery_grid() ?>
                 </div>
