@@ -14,7 +14,7 @@
 		 *
 		 * BUT  then the other voices remind me that we need URL generation separate because within a given view helper, 
 		 * we might be generating URLs for various content types. 
-		 * For that reason, a view helper we can use to generate all URLs, where it is, is required
+     * A separate UrlHelper class will allow us to do just that
 		 */
 		function url( $content ) {
 			if ($content instanceof Page) {
@@ -46,6 +46,9 @@
 				return '/events/';
 			}
 
+			if ( is_array( $content ) && array_key_exists( 'type', $content ) && $content['type'] == 'gallery/index' ) {
+				return '/gallery/';
+			}
 
 			if ( is_array( $content ) && array_key_exists( 'type', $content ) && array_key_exists( 'period', $content) ) {
 				return '/' . $content['type'] . '/' . $content['period'] . '/';

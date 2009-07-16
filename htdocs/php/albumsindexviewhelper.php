@@ -17,7 +17,8 @@
 		}
 
 		public function sidebar() {
-			return '';
+      $vh = new AlbumViewHelper();
+      return $vh->sidebar();
 		}
 
 

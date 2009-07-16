@@ -1,6 +1,13 @@
 <?php
+  /**
+   * View Helper For Individual News Story View
+   */
 	class NewsViewHelper extends ViewHelper {
-		//TODO Complete this function (URLS)
+    /**
+     * Generates Breadcrumbs
+     *
+     * Displays as News | {Year} | {Month} | {Title}
+     */
 		function breadcrumbs() {
 			$story = $this->content;
 			$date = $story->getDateDisplayed();

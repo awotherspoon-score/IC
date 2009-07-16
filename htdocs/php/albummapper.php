@@ -55,7 +55,30 @@
 
     public function findAllLiveAlbumsForMonth( $month, $year = null ) {
       return $this->createCollection( $this->queryToArray( $this->selectAllLiveAlbumsForMonthQuery( $month, $year ), true ) );
+    }
 
+
+
+    public function findAllLiveAlbumsForYear( $year = null ) {
+      return $this->createCollection( $this->queryToArray( $this->selectAllLiveAlbumsForYearQuery( $year ), true ) );
+    }
+
+    public function findFiveMostRecentLiveAlbums() {
+      return $this->createCollection( $this->queryToArray( $this->selectFiveMostRecentLiveAlbumsQuery(), true ) );
+    }
+
+    public function selectFiveMostRecentLiveAlbumsQuery() {
+      return "SELECT * FROM albums WHERE status=" . Content::STATUS_LIVE . " ORDER BY datedisplayed DESC LIMIT 5";
+    }
+
+    public function selectAllLiveAlbumsForYearQuery( $year = null ) {
+      $year = ( $year === null ) ? date( 'Y' ) : $year;
+      $start = mktime( 0, 0, 0, 1, 1, $year );
+      $end = mktime( 0, 0, 0, 1, 0, $year + 1 );
+
+      return "SELECT * FROM albums WHERE status=". Content::STATUS_LIVE
+            ." AND datedisplayed BETWEEN $start AND $end"
+            ." ORDER BY datedisplayed DESC";
     }
 
     public function selectAllLiveAlbumsForMonthQuery( $month, $year = null ) {

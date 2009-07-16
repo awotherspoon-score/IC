@@ -114,7 +114,7 @@
 			<p><?= date('l, jS F Y', $album->getDateDisplayed()) ?></p>
                 </div>
 
-		<?php /*$view->sidebar();*/ ?>
+		<?= $view->sidebar(); ?>
 		
 	</div><!-- /main -->
 	<div class='cleardiv'></div>
