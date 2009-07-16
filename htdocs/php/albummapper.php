@@ -53,6 +53,22 @@
 			return $this->createCollection( $this->queryToArray( $this->selectAllAlbumsForIndexQuery(), true ) );
 		}
 
+    public function findAllLiveAlbumsForMonth( $month, $year = null ) {
+      return $this->createCollection( $this->queryToArray( $this->selectAllLiveAlbumsForMonthQuery( $month, $year ), true ) );
+
+    }
+
+    public function selectAllLiveAlbumsForMonthQuery( $month, $year = null ) {
+			$year = ($year === null ) ? date('Y') : $year;
+			$start = mktime( 0,0,0, $month, 1, $year );
+			$end = mktime( 0,0,0, $month + 1, 0, $year );
+
+      return "SELECT * FROM albums WHERE status=". Content::STATUS_LIVE
+            ." AND datedisplayed BETWEEN $start AND $end"
+            ." ORDER BY datedisplayed DESC";
+    }
+
+
 		public function selectAllAlbumsForIndexQuery() {
 			return "SELECT * FROM albums WHERE status=" . Content::STATUS_LIVE . " ORDER BY datedisplayed DESC LIMIT 6";
 		}

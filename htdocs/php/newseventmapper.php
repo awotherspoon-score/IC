@@ -1,4 +1,9 @@
 <?php
+  /**
+   * Creates, Retrieves, UPdates and Deletes from/to the newsevents table
+   *
+   * Converts table rows to NewsEvent objects and NewsEvent objects to table rows
+   */
 	class NewsEventMapper extends ContentMapper {
 		function __construct() {
 			parent::__construct();
