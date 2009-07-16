@@ -1,7 +1,4 @@
-<?php include('init.php'); ?>
-
-<?php
-	//$albums = CommandRunner::run( 'get-albums-for-index' )->get( 'albums' );
+<?php include('init.php');
 	$view = RequestRegistry::getViewHelper( array( 'type' => 'albums/archive', 'period' => $_GET['period'] ) );
 ?>
 

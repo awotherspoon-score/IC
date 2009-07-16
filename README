@@ -4,6 +4,8 @@ Here's some stuff you should know about the site, any questions then mail me: al
 
 To move it from one server to another, technically all you should have to do is move the files over and edit config.ini in the root directory (not htdocs, the one above that).
 
+You'll need to make sure that the web server points to /htdocs as the sites root directory. The site requires that config.ini be in the directory above that. The immanuel.sql is just the most recent dump of the database structure so that you can restore the database if something catastrophic happens. It is NOT a backup of the content.
+
 ***HOW THE SITE WORKS***
 
 The site follows a fairly straightforward OO structure. You've got a couple of different levels in the site which interact with each other in various ways.
