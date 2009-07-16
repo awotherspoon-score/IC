@@ -1,7 +1,7 @@
 <?php
   class AlbumsArchiveViewHelper extends ViewHelper {
     function sidebar(){
-      $vh = new AlbumViewHelper();
+      $vh = new AlbumViewHelper( $this->content );
       return $vh->sidebar();
     }
 
