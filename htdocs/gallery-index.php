@@ -1,6 +1,5 @@
-<?php include('init.php'); ?>
+<?php include('init.php');
 
-<?php
 	//$albums = CommandRunner::run( 'get-albums-for-index' )->get( 'albums' );
 	$view = RequestRegistry::getViewHelper( array( 'type' => 'albums/index' ) );
 ?>
@@ -11,7 +10,7 @@
 <link rel='stylesheet' type='text/css' href='/css/shared.css' />
 <link rel='stylesheet' type='text/css' href='/css/jquery.lightbox-0.5.css' />
 <link rel='stylesheet' type='text/css' href='/css/pcs-default.css' />
-<link rel='stylesheet' type='text/css' href='/css/current.css' />
+<?= $view->pcs_stylesheet() ?>
 <script type='text/javascript' src='/js/jquery-1.3.2.min.js'></script>
 <script type='text/javascript' src='/js/jquery.dimensions.js'></script>
 <script type='text/javascript' src='/js/jquery.tooltip.min.js'></script>
