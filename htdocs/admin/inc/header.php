@@ -16,19 +16,19 @@
                                 <div id='section-select'>
                                         <ul>
                                                 <li id='prospective-link' class=''>
-                                                        <a href='#'>
+                                                        <a href='edit-pcs.php?code=prospective'>
                                                                 <img title='Prospective Students' 
                                                                 src='img/buttons/prospective-button.gif' />
                                                         </a>
                                                 </li>
                                                 <li id='current-link' class=''>
-                                                        <a href='#'>
+                                                        <a href='edit-pcs.php?code=current'>
                                                                 <img title='Current Students' 
                                                                 src='img/buttons/current-button.gif' />
                                                         </a>
                                                 </li>
                                                 <li id='staff-link'>
-                                                        <a href='#'>
+                                                        <a href='edit-pcs.php?code=staff'>
                                                                 <img title='Staff' 
                                                                 src='img/buttons/staff-button.gif' />
                                                         </a>
