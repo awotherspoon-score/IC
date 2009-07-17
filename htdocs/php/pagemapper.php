@@ -138,6 +138,36 @@
 		public function targetClass() {
 			return 'Page';
 		}
+
+		//Convenience Methods For Getting Prospective, Current, Staff Pages
+		public function findProspectivePage() {
+			return $this->find( 27 );
+		}
+
+		public function findCurrentPage() {
+			return $this->find( 28 );
+		}
+
+		public function findStaffPage() {
+			return $this->find( 29 );
+		}
+
+		public function findPcsPage( $code ) {
+			switch ( $code ) {
+				case 'prospective' :
+					return $this->findProspectivePage();
+					break;
+				case 'current':
+					return $this->findCurrentPage();
+					break;
+				case 'staff':
+					return $this->findStaffPage();
+					break;
+				default:
+					throw new Exception("Bad Pcs Code: $code");
+					break;
+			}
+		}
 		
 	}
 	

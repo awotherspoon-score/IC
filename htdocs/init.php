@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Main Autoload Function
  *
@@ -22,7 +21,6 @@ function __autoload($class) {
 	}
 	return;
 }
-
 /**
  * Tells RequestRegistry where to look for the websites config file
  */

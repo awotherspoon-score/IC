@@ -24,9 +24,9 @@
 		
 		<img id='header-image' alt='Immanuel College Banner Image' src='img/header.jpg' />
 		<ul id='pcs-nav'>
-				<li class='has-margin'><a href='#'><img src='img/buttons/home-prospective.jpg' /></a></li>
-				<li class='has-margin'><a href='#'><img src='img/buttons/home-current.jpg' /></a></li>
-				<li><a href='#'><img src='img/buttons/home-staff.jpg' /></a></li>
+				<li class='has-margin'><a href='/prospective/'><img src='img/buttons/home-prospective.jpg' /></a></li>
+				<li class='has-margin'><a href='/current/'><img src='img/buttons/home-current.jpg' /></a></li>
+				<li><a href='/staff/'><img src='img/buttons/home-staff.jpg' /></a></li>
 		</ul>
 		
 		<div id='search-box'>

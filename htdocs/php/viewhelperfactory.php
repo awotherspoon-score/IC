@@ -23,16 +23,20 @@
 			//takes a content object for single page displays
 
 			if ( $content instanceof Page ) {
-				return new PageViewHelper($content);
+				if ( in_array( $content->getId(), array(27, 28, 29) ) )  {
+					//is one of prospective | current | staff
+					return new PcsViewHelper( $content );
+				}
+				return new PageViewHelper( $content );
 			}
 
 			if ( $content instanceof NewsEvent ) {
 				switch ( $content->getContentType() ) {
 					case NewsEvent::TYPE_NEWS :
-						return new NewsViewHelper($content);
+						return new NewsViewHelper( $content );
 						break;
 					case NewsEvent::TYPE_EVENT :
-						return new EventViewHelper($content);
+						return new EventViewHelper( $content );
 						break;
 				}
 			}

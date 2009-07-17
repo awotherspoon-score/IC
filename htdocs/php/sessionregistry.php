@@ -1,25 +1,34 @@
 <?php
 	class SessionRegistry extends Registry {
+		private static $instance;
 		private function __construct() {
 			session_start();
 		}
 
-		protected static function get( $key ) {
+		public static function instance() {
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
+			}
+
+			return self::$instance;
+		}
+
+		protected function get( $key ) {
 			if ( isset( $_SESSION[__CLASS__][$key] ) ) {
 				return $_SESSION[__CLASS__][$key];
 			}
 			return null;
 		}
 
-		protected static function set( $key, $value ) {
+		protected function set( $key, $value ) {
 			$_SESSION[__CLASS__][$key] = $value;
 		}
 
-		public static function setStyleCode($code) {
+		public function setStyleCode($code) {
 			self::set('stylecode', $code);
 		}
 
-		public static function getStyleCode() {
+		public function getStyleCode() {
 			return self::get('stylecode');
 		}
 	}
