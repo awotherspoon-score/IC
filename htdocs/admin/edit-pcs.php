@@ -2,13 +2,7 @@
         include('../init.php');
         include('inc/fckeditor/fckeditor.php');
 
-        //get page from $_GET
-        //$context = CommandRunner::run('get-page', array('page-id' => $_GET['id']));
-        //$page = $context->get('page');
-        //$level2 = $page->getChildren();
-
 	$page = RequestRegistry::getPageMapper()->findPcsPage( $_REQUEST['code'] );
-
 
 	if ( isset ( $_POST['save-button'] ) ) {
 		$page->setTitle( $_POST['title'] );
@@ -19,7 +13,6 @@
 		$page->setIntroduction( $_POST['introduction'] );
 		RequestRegistry::getPageMapper()->update( $page );
 	}
-
 
         //init fckeditor
         $fh = RequestRegistry::getFormHelper();
@@ -67,35 +60,35 @@
                             <div id='col-1'>
                             </div>
                             <div id='col-2'>
-                                <form id='page-form' method='POST' action= >
+                                <form id='page-form' method='POST' action='<?=
+				$_SERVER['PHP_SELF'] ?>' >
 				
                                   <label for='title'>Title: </label>
                                   <input class='text-input' type='text' id='title'
-				  name='title' value='<?= stripslashes( $page->getTitle() ) ?>' />
+				  name='title' value='<?= htmlentities( stripslashes(
+					  $page->getTitle() ), ENT_QUOTES) ?>' />
 
 				  <label for='status'>Status: </label>
 				  <select name='status' id='status-input'>
 				  	<option value='<?= Content::STATUS_PENDING ?>'<?= ($page->getStatus() == Content::STATUS_PENDING) ? ' selected' : '' ?>>Pending</option>
 				  	<option value='<?= Content::STATUS_LIVE ?>'<?= ($page->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
 				  </select>
-				
 
 				  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
 
 				  <div id='meta-inputs'>
 					  <label for='meta-keywords'>Keywords:</label>
-					  <input value='<?= stripslashes( $page->getKeywords()
-					  ) ?>' class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
+					  <input value='<?= htmlentities( stripslashes( $page->getKeywords()
+					  ), ENT_QUOTES ) ?>' class='text-input' type='text' id='meta-keywords' name='meta-keywords' />
 
 					  <label for='meta-description'>Description:</label>
-					  <input value='<?= stripslashes(
-						  $page->getDescription() ) ?>' class='text-input' type='text' id='meta-description' name='meta-description' />
+					  <input value='<?= htmlentities( stripslashes(
+						  $page->getDescription() ) ) ?>' class='text-input' type='text' id='meta-description' name='meta-description' />
 				 </div><!-- /#meta-inputs -->
 
                                   <label for='introduction'>Introduction:</label>
 				  <?php $introEditor->Create(); ?>
                                   <!-- <input class='text-input' type='text' id='introduction' name='introduction' /> -->
-
                                   <label for='content'>Content:</label>
                                   <?php $editor->Create(); ?><br />
 				  
