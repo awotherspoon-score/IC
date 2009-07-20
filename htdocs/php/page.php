@@ -21,6 +21,12 @@
 		 * $ancestry Array contains ancestry of this page, e.g. element 0 is top level parent, 1 is parent, 0 is self
 		 */
 		private $ancestry;
+
+		/**
+		 * $suggested_links Array contains suggested links for this page (if it's
+		 * prospective/current/staff)
+		 */
+		private $suggested_links;
 		
 		
 		public function loadFromArray($array) {

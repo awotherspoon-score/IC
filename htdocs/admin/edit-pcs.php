@@ -58,6 +58,7 @@
                         <?php include('inc/header.php'); ?>
                     <div id='main'>
                             <div id='col-1'>
+			    	
                             </div>
                             <div id='col-2'>
                                 <form id='page-form' method='POST' action='<?=

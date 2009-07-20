@@ -152,6 +152,18 @@
 			return $this->find( 29 );
 		}
 
+		public function findSuggestLinksForPage( $id ) {
+			if ( array_key_exists( $id, $this->id_pcs_lookup() ) ) {
+				return $this->queryToArray( $this->selectSuggestedLinkQueryByPageIdQuery( $id ), true );
+			} else {
+				throw new Exception("Page:#$id is not Prospective/Current/Staff");
+			}
+		}
+
+		pubilc function selectSuggestedLinkQueryByPageIdQuery( $id ) {
+			return "SELECT * FROM suggested_links WHERE page_id=$id ORDER BY id DESC";
+		}
+
 		public function findPcsPage( $code ) {
 			switch ( $code ) {
 				case 'prospective' :
@@ -167,6 +179,18 @@
 					throw new Exception("Bad Pcs Code: $code");
 					break;
 			}
+		}
+
+		private function pcs_id_lookup() {
+			return array(
+				'prospective' 	=> 27,
+				'current' 	=> 28,
+				'staff'  	=> 29
+			);
+		}
+
+		private function id_pcs_lookup() {
+			return array_flip( $this->pcs_id_lookup() );
 		}
 		
 	}
