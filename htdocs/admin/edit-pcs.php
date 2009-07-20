@@ -2,7 +2,8 @@
         include('../init.php');
         include('inc/fckeditor/fckeditor.php');
 
-	$page = RequestRegistry::getPageMapper()->findPcsPage( $_REQUEST['code'] );
+    $page_mapper = RequestRegistry::getPageMapper();
+	$page = $page_mapper->findPcsPage( $_REQUEST['code'] );
 
 	if ( isset ( $_POST['save-button'] ) ) {
 		$page->setTitle( $_POST['title'] );
@@ -20,6 +21,8 @@
 		$page->getText() ));
 	$introEditor = $fh->getEditor('introduction', 'Basic', '100', null, stripslashes(
 		$page->getIntroduction() ));
+
+        $suggested_links = $page_mapper->findSuggestedLinksForPage( $page->getId() );
 ?>
 <?php include('../inc/doctype.php'); ?>
 <html>
@@ -28,7 +31,7 @@
                 <link rel='stylesheet' type='text/css' href='css/style.css' />
                 <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
                 <script type='text/javascript' src='js/generic-functions.js'></script>
-                <!-- <script type='text/javascript' src='js/page-functions.js'></script> -->
+                <script type='text/javascript' src='js/pcs-functions.js'></script>
                 <script type='text/javascript' src='js/font/cufon-yui.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Black_500.font.js'></script>
                 <script type='text/javascript' src='js/font/Sanuk-Regular_500.font.js'></script>
@@ -37,15 +40,13 @@
                         Cufon.replace('li.page-nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('li.nav-link>a', { fontFamily: 'Sanuk-Black'});
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
-			var page = new Object();
-			page.id = <?= $page->getId() ?>;
+                        var page = new Object();
+                        page.id = <?= $page->getId() ?>;
                         $(document).ready(function() {
                                 init_header();
                                 page.id = <?php echo $page->getId() ?>;
-                                fetchPage(page.id);
-				$("#meta-inputs").hide();
-				$("#save-button").click(updatePage);
-				$("#meta-toggle-button").click(metaToggle); 
+                                $("#meta-inputs").hide();
+                                $("#meta-toggle-button").click(metaToggle); 
                         });
 
                 </script>
@@ -58,11 +59,25 @@
                         <?php include('inc/header.php'); ?>
                     <div id='main'>
                             <div id='col-1'>
+                               <h2>Suggested Links</h2>
+                               <ul>
+                                    <?php foreach( $suggested_links as $link ): ?>
+                                        <li><?= $link['anchor_text'] ?></li>
+                                    <?php endforeach ?>
+                               </ul>
+                                
+                              <label for='href'>URL:</label>
+                              <input type='text' name='href' id='href' />
+                              <label for='anchor-text'>Anchor Text:</label>
+                              <input type='text' name='anchor-text' id='anchor-text' />
+                              <br />
+                              
+                              <a id='add-suggested-link-button'>Add Selected Link</a>
+                                
 			    	
                             </div>
                             <div id='col-2'>
-                                <form id='page-form' method='POST' action='<?=
-				$_SERVER['PHP_SELF'] ?>' >
+                                <form id='page-form' method='POST' action='<?= $_SERVER['PHP_SELF'] ?>' >
 				
                                   <label for='title'>Title: </label>
                                   <input class='text-input' type='text' id='title'

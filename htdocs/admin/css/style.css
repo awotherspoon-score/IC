@@ -417,7 +417,9 @@ table#images-table tbody td input {
 /***** END GALLERY CMS PAGE STYLING *****/
 
 /* News CMS */
-body div#wrapper div#col-1 ul li a#add-news-story-button {
+body div#wrapper div#col-1 ul li a#add-news-story-button,
+body div#wrapper div#col-1 a#add-suggested-link-button
+{
 	text-decoration:none;
 	color:#999;
 	border:solid 1px #19b1e2;
@@ -439,7 +441,9 @@ body div#wrapper div#col-1 ul li a#add-news-story-button {
 .news-section-button,
 .news-section-toggle-button,
 #add-news-story-button,
-#save-button {
+#save-button,
+#add-suggested-link-button
+{
         cursor:pointer;
 }
 /*End UI Polish*/

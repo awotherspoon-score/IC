@@ -68,6 +68,17 @@
 					."WHERE id={$object->getId()} LIMIT 1";
 			self::$mysqli->query($query);
 		}
+
+        function insertSelectedLink( $page_id, $href, $anchor_text ) {
+            $query = "insert into suggested_links (page_id, href, anchor_text) "
+                    ."values ( {$page_id}, {$href}, {$anchor_text} )";
+            self::$mysqli->query( $query );
+        }
+
+        function deleteSuggestedLink( $id ) {
+            $query = "delete from suggested_links where id={$id} limit 1";
+            self::$mysqli->query( $query );
+        }
 	
                 /**
                  * Deletes a row in the 'pages' table
@@ -152,15 +163,16 @@
 			return $this->find( 29 );
 		}
 
-		public function findSuggestLinksForPage( $id ) {
+		public function findSuggestedLinksForPage( $id ) {
 			if ( array_key_exists( $id, $this->id_pcs_lookup() ) ) {
-				return $this->queryToArray( $this->selectSuggestedLinkQueryByPageIdQuery( $id ), true );
+				$array =  $this->queryToArray( $this->selectSuggestedLinkQueryByPageIdQuery( $id ), true );
+        return ( $array == null ) ? array() : $array; //if no matches found, return an empty array rather than null
 			} else {
 				throw new Exception("Page:#$id is not Prospective/Current/Staff");
 			}
 		}
 
-		pubilc function selectSuggestedLinkQueryByPageIdQuery( $id ) {
+		public function selectSuggestedLinkQueryByPageIdQuery( $id ) {
 			return "SELECT * FROM suggested_links WHERE page_id=$id ORDER BY id DESC";
 		}
 

@@ -319,4 +319,6 @@
 			}
 			return $this->events_select;
 	       }
-         }
+
+
+       }
