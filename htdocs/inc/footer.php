@@ -54,10 +54,10 @@
 		
 		<div class='footer-column' id='footer-col-4'>
                         <ul>
-                                <li><a href='#'>News</a></li>
-                                <li><a href='#'>Events</a></li>
-                                <li><a href='#'>Gallery</a></li>
-                                <li><a href='#'>Contact Us</a></li>
+                                <li><a href='/news/'>News</a></li>
+                                <li><a href='/events/'>Events</a></li>
+                                <li><a href='/gallery/'>Gallery</a></li>
+                                <li><a href='/contact/'>Contact Us</a></li>
                         </ul>
 		</div><!-- /footer-col-4 -->
 	</div><!-- /footer -->

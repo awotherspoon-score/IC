@@ -106,7 +106,7 @@ include('init.php');
                         <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
 			<?= $page->getText() ?>
                 </div>
-		<?= $view->sidbar() ?>	
+		<?= $view->sidebar() ?>	
 	</div><!-- /main -->
 	<div class='cleardiv'></div>
                 <?php include('inc/footer.php'); ?>
