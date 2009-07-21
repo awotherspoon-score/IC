@@ -75,9 +75,8 @@
 	<div id='header'>
 		<div id='header-top'>	
 		</div>
-		
-		<img id='header-image' alt='We nourish our pupils with an engaging focus on Jewish Tradition' src='/img/header-prospective.jpg' />
-                <img alt='Testimonial' src='/img/testimonial-prospective.jpg' class='testimonial-image' id='prospective-testimonial-image' />
+		<?= $view->header_image() ?>	
+		<?= $view->testimonial_image() ?>	
 		
 		<div id='search-box'>
 			<form action='search.php' method='get'>
@@ -112,7 +111,7 @@
                 </div>
 
 		<?= $view->sidebar(); ?>
-		
+
 	</div><!-- /main -->
 	<div class='cleardiv'></div>
                 <?php include('inc/footer.php'); ?>

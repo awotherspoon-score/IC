@@ -21,6 +21,7 @@
 		 * We keep this in a property so that we can get it and start the session on
 		 * instatntiation
 		 */
+		protected $pcs_stylesheet;
 		 
 
 		/**
@@ -60,6 +61,33 @@
 			$content = ($content == null ) ? $this->content : $content;
 			return $this->urlHelper->url($content);
 		}
+
+		/**
+		 * Get a header image
+		 *
+		 * Gets a header image based on the current stylecode
+		 * and/or whatever random image rules we might define later
+		 * TODO: Finish this method based on multiple images
+		 */
+		public function header_image() {
+			return "<img id='header-image' alt='We nourish our pupils with an
+			engaging focus on Jewish Tradition' src='/img/header-prospective.jpg'
+			/>";
+		}
+
+		/**
+		 * Gets a testimonial image
+		 *
+		 * Gets a testimonial image based on current stylecode
+		 * and/or whatever random image rules we might define later
+		 * TODO: Finish this method based on multiple images
+		 */
+		public function testimonial_image() {
+			return "<img alt='Testimonial' src='/img/testimonial-prospective.jpg'
+			class='testimonial-image' id='prospective-testimonial-image' />";
+		}
+
+
 
 		/**
 		 * Sets which stylesheet we use to decide colour scheme
