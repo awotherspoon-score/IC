@@ -42,12 +42,6 @@
                         Cufon.replace('div#home-show-links a', { fontFamily: 'Sanuk-Black'});
                         var page = new Object();
                         page.id = <?= $page->getId() ?>;
-                        $(document).ready(function() {
-                                init_header();
-                                page.id = <?php echo $page->getId() ?>;
-                                $("#meta-inputs").hide();
-                                $("#meta-toggle-button").click(metaToggle); 
-                        });
 
                 </script>
 
@@ -59,10 +53,14 @@
                         <?php include('inc/header.php'); ?>
                     <div id='main'>
                             <div id='col-1'>
-                               <h2>Suggested Links</h2>
-                               <ul>
+                               <h2 id='suggested-link-header'>Suggested Links</h2>
+                               <ul id='suggested-links-list'>
                                     <?php foreach( $suggested_links as $link ): ?>
-                                        <li><?= $link['anchor_text'] ?></li>
+                                        <li><?= $link['anchor_text'] ?><br />
+					<span class='suggested-link-href'>
+					<?= $link['href'] ?>
+					</span>
+					</li>
                                     <?php endforeach ?>
                                </ul>
                                 

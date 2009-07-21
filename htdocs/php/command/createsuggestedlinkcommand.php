@@ -1,10 +1,10 @@
 <?php
-    class CreateSuggestedLink extends Command {
+    class CreateSuggestedLinkCommand extends Command {
         function execute( CommandContext $context ) {
             RequestRegistry::getPageMapper()->insertSuggestedLink(
-                $context->get( 'page-id' ),
+                $context->get( 'pageid' ),
                 $context->get( 'href' ),
-                $context->get( 'anchor-text' )
+                $context->get( 'anchortext' )
             );
         }
     }

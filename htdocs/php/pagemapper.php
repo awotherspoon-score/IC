@@ -69,9 +69,10 @@
 			self::$mysqli->query($query);
 		}
 
-        function insertSelectedLink( $page_id, $href, $anchor_text ) {
+        function insertSuggestedLink( $page_id, $href, $anchor_text ) {
             $query = "insert into suggested_links (page_id, href, anchor_text) "
-                    ."values ( {$page_id}, {$href}, {$anchor_text} )";
+                    ."values ( {$page_id}, '{$href}', '{$anchor_text}' )";
+	    echo $query;
             self::$mysqli->query( $query );
         }
 
@@ -173,7 +174,7 @@
 		}
 
 		public function selectSuggestedLinkQueryByPageIdQuery( $id ) {
-			return "SELECT * FROM suggested_links WHERE page_id=$id ORDER BY id DESC";
+			return "SELECT * FROM suggested_links WHERE page_id=$id ORDER BY id ASC";
 		}
 
 		public function findPcsPage( $code ) {

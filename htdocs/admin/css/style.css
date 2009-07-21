@@ -416,6 +416,20 @@ table#images-table tbody td input {
 
 /***** END GALLERY CMS PAGE STYLING *****/
 
+/* PCS CMS Styling */
+h2#suggested-link-header {
+}
+
+ul#suggested-links-list  {
+	margin-top:20px;
+}
+span.suggested-link-href {
+	color:#999;
+	font-weight:normal;
+	font-size:0.8em;
+}
+/* End PCS CMS Styling */
+
 /* News CMS */
 body div#wrapper div#col-1 ul li a#add-news-story-button,
 body div#wrapper div#col-1 a#add-suggested-link-button
