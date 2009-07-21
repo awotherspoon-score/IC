@@ -18,9 +18,9 @@
         //init fckeditor
         $fh = RequestRegistry::getFormHelper();
         $editor = $fh->getEditor('content', 'Basic', null, null, stripslashes(
-		$page->getText() ));
+	$page->getText() ));
 	$introEditor = $fh->getEditor('introduction', 'Basic', '100', null, stripslashes(
-		$page->getIntroduction() ));
+	$page->getIntroduction() ));
 
         $suggested_links = $page_mapper->findSuggestedLinksForPage( $page->getId() );
 ?>
@@ -53,7 +53,7 @@
                         <?php include('inc/header.php'); ?>
                     <div id='main'>
                             <div id='col-1'>
-                               <h2 id='suggested-link-header'>Suggested Links</h2>
+                               <h3 id='suggested-link-header'>Suggested Links</h3>
                                <ul id='suggested-links-list'>
                                     <?php foreach( $suggested_links as $link ): ?>
                                         <li><?= $link['anchor_text'] ?><br />
@@ -70,7 +70,7 @@
                               <input type='text' name='anchor-text' id='anchor-text' />
                               <br />
                               
-                              <a id='add-suggested-link-button'>Add Selected Link</a>
+                              <a id='add-suggested-link-button'>Add Suggested Link</a>
                                 
 			    	
                             </div>

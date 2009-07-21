@@ -24,15 +24,16 @@ $(function() {
 	$('#add-suggested-link-button').click( function() {
 		var href = $("#href").val();
 		var anchor_text = $("#anchor-text").val();
-		
-		$.post('../php/command/ajaxcommandrunner.php', {
-			action: 'create-suggested-link',
+		var last_link = $(this).parent().children("ul").children("li:last");
+
+		$.post("../php/command/ajaxcommandrunner.php", {
 			pageid: page.id,
 			href: href,
 			anchortext: anchor_text
-		}, function( data ) {
-			alert(data);
-		}, 'json');
+		}, function() {
+			alert("hello");
+		}, 
+		"json");
 	});
 
 });
