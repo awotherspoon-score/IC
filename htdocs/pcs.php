@@ -100,7 +100,7 @@ include('init.php');
 	<div id='main'>
                 <div class='cleardiv'></div>
                 <div id='content'>
-			<?= $view->sidebar() ?>
+			<?= $view->breadcrumbs() ?>
                         <h1><?= $page->getTitle() ?></h1>
                         <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
 			<?= $page->getText() ?>
