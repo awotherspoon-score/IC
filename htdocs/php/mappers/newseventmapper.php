@@ -271,6 +271,26 @@
 		}
 
 		/**
+		 * News Stories For Homepage
+		 *
+		 * Shows news-for-index for the time being
+		 * wrapped it in a function so that switching it out later would be easier
+		 */
+		public function findNewsForHomepage() {
+			return $this->findNewsForIndex();
+		}
+
+		/**
+		 * Events for Homepage
+		 *
+		 * Shows events-for-index for the time being
+		 * wrapped it in a function so that switching it out later would be easier
+		 */
+		public function findEventsForHomepage() {
+			return $this->findEventsForIndex();
+		}
+
+		/**
 		 * News Stories For News Index Page
 		 *
 		 * Returns NewsEventCollection containing news for news index page

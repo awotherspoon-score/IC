@@ -1,6 +1,8 @@
-<?php include('inc/doctype.php'); ?>
-
-<?php include( 'init.php' ); ?>
+<?php 
+include( 'init.php' );
+$view = RequestRegistry::getViewHelper( array('type' => 'home' ) );
+include('inc/doctype.php');
+?>
 
 <html>
 <head>
@@ -76,30 +78,12 @@
 			</div><!-- /col-12 -->
 			
 			<div class='column' id='col-3'>
-				<div id='news-column'>
-						<h3 class='cufoned-headers'>News</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet arcu dui. <a href='#' class='morelink'>more</a></p>
-						<p>Lorem ipsum dolor sit amet. Cras sit amet arcu dui. <a href='#' class='morelink'>more</a></p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet arcu dui. <a href='#' class='morelink'>more</a></p>
-						<div class='rss-box'>
-							<a href=''><img src='img/icons/big-rss-icon.jpg' /></a>
-							<p class='rss-box-text'><a href=''>Subscribe</a> to receive updates<br /><a href=''>What is RSS?</a></p>
-						</div>
-				</div><!-- /news-column -->
+				<?= $view->news_column() ?>
 			</div><!-- /col-3 -->
 			
 		</div><!-- /col-123 -->
 		<div class='column' id='col-4'>
-			<div id='events-column'>
-				<h3 class='cufoned-headers'>Calendar</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href='#' class='morelink'>more</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet arcu dui. <a href='#' class='morelink'>more</a></p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet arcu dui. <a href='#' class='morelink'>more</a></p>
-					<div class='rss-box'>
-							<a href=''><img src='img/icons/big-rss-icon.jpg' /></a>
-							<p class='rss-box-text'><a href=''>Subscribe</a> to receive updates<br /><a href=''>What is RSS?</a></p>
-					</div>
-			</div>
+			<?= $view->calendar_column() ?>
 		</div><!-- /col-4 -->
 		
 	</div><!-- /main -->
