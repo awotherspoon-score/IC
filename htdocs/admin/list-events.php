@@ -47,17 +47,17 @@
 	//to start lets add a section for recently edited events and future events
 	$events = array(
 		'recently-edited-events' => CommandRunner::run( 'get-recently-modified-events' )->get( 'events' ),
-		'future-events' => CommandRunner::run('get-future-events')->get('events'),
+		//'future-events' => CommandRunner::run('get-future-events')->get('events'),
 	);
 
 	//add a section each for the past three months
 	$thisMonth = date('n');
-	$threeMonthsAgo = $thisMonth - 3;
+	$threeMonthsFromNow = $thisMonth + 3;
 	$monthArray = $fh->getMonthArray();
-	while ( $thisMonth > $threeMonthsAgo ) {
+	while ( $thisMonth < $threeMonthsFromNow ) {
 		$monthString = $monthArray[$thisMonth - 1]['name'];
 		$events[$monthString] = CommandRunner::run('get-events-for-month', array( 'month' => $thisMonth ) )->get('events');
-		$thisMonth--;
+		$thisMonth++;
 	}
 
 	//add a section for each of the last ten years
@@ -101,6 +101,9 @@
 		$("a.delete-button").click(newsEventDeleteButton);
 		$("#meta-toggle-button").click(metaToggle); 
 		$("#meta-inputs").hide();
+
+		//close off all year buttons initially
+		$('.section-closed-initially').click();
 	});
   </script>
  </head>
@@ -125,10 +128,14 @@
 
    <?php foreach($events as $section => $stories): 
 
-    if (count($stories) == 0) { continue; /* as promised, if the section is empty, we skip it*/ } ?>
+    if (count($stories) == 0) { continue; /* as promised, if the section is empty, we skip it*/ } 
+    $closed_initially = ( preg_match('/[0-9]{4}/', $section) == 1); //all year menus are closed initially
+    $closed_section_button_class = $closed_initially ? ' section-closed-initially' : '' ;
+    ?>
+
     <li>
 
-     <a class='news-section-button' ><?php echo ucwords(str_replace('-', ' ', $section)) ?></a>
+     <a class='news-section-button<?= $closed_section_button_class ?>' ><?php echo ucwords(str_replace('-', ' ', $section)) ?></a>
      <a class='news-section-toggle-button'><img class='plus-minus-icon' src='img/icons/minus.gif'></a>
 
      <table>
