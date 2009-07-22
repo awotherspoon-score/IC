@@ -1,10 +1,6 @@
 <?php
 /**
  * Main Autoload Function
- *
- * Loads in all classes files as  php/classnameinlowercase.php
- * If the class has the word 'command' in the name, loads it from php/command/classnameinlower case.php
- * Using an autoload function ensures we only include exactly the files we need at runtime
  */
 function __autoload($class) {
         $docroot = $_SERVER['DOCUMENT_ROOT'] . '/';
@@ -16,7 +12,11 @@ function __autoload($class) {
         } elseif (strpos($class, 'Helper') !== false) {
 		  //get helpers from the 'helpers/' directory
 		  $filename .= 'helpers/' . strtolower($class) . '.php';
+	} elseif (strpos($class, 'Collection') !== false) {
+		  //get collections from the 'collections/' directory
+		  $filename .= 'collections/' . strtolower($class) . '.php';
 	} elseif (strpos($class, 'Mapper') !== false){
+		  //get mappers from the 'mappers/' direcotry
 		  $filename .= 'mappers/' . strtolower($class) . '.php';
 	}else {
 		  $filename .= strtolower($class) . '.php';
