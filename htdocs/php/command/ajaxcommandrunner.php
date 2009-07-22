@@ -1,4 +1,15 @@
 <?php
+	/**
+	 * An accesss point for AJAX Calls To The Backend
+	 *
+	 * This file acts as the bridge between ajax and our command classes
+	 * Unfortunately this was my first time putting together an ajax heavy
+	 * admin panel, so this interface isn't partcularly clean.
+	 *
+	 * The code here simply accepts AJAX calls via POST, translates the values
+	 * into objects if required, runs a command based on whats specified in $_POST['action']
+	 * and then sends an object back in JSON if it's relevant to the command (rare).
+	 */
         include '../../init.php';
 	
 	//convert json objects to php objects, currently only supports one object
