@@ -16,7 +16,9 @@ function __autoload($class) {
         } elseif (strpos($class, 'Helper') !== false) {
 		  //get helpers from the 'helpers/' directory
 		  $filename .= 'helpers/' . strtolower($class) . '.php';
-	} else {
+	} elseif (strpos($class, 'Mapper') !== false){
+		  $filename .= 'mappers/' . strtolower($class) . '.php';
+	}else {
 		  $filename .= strtolower($class) . '.php';
 	}
 
