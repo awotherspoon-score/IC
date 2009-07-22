@@ -72,7 +72,7 @@
         function insertSuggestedLink( $page_id, $href, $anchor_text ) {
             $query = "insert into suggested_links (page_id, href, anchor_text) "
                     ."values ( {$page_id}, '{$href}', '{$anchor_text}' )";
-	    echo $query;
+	    //echo $query;
             self::$mysqli->query( $query );
         }
 

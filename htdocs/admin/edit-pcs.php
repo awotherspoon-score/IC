@@ -54,23 +54,28 @@
                     <div id='main'>
                             <div id='col-1'>
                                <h3 id='suggested-link-header'>Suggested Links</h3>
+                              <label for='anchor-text'>Anchor Text:</label>
+                              <input type='text' name='anchor-text' id='anchor-text' />
+                              <label for='href'>URL:</label>
+                              <input type='text' name='href' id='href' />
+                              <br />
+                              
+                              <a id='add-suggested-link-button'>Add Suggested Link</a>
                                <ul id='suggested-links-list'>
                                     <?php foreach( $suggested_links as $link ): ?>
                                         <li><?= $link['anchor_text'] ?><br />
 					<span class='suggested-link-href'>
 					<?= $link['href'] ?>
 					</span>
+
+					<a id='<?= $link['id'] ?>' class='delete-suggested-link-button delete-button'>
+					<img src='img/buttons/delete-button.gif' class='delete-button' />
+					</a>
+					
 					</li>
                                     <?php endforeach ?>
                                </ul>
                                 
-                              <label for='href'>URL:</label>
-                              <input type='text' name='href' id='href' />
-                              <label for='anchor-text'>Anchor Text:</label>
-                              <input type='text' name='anchor-text' id='anchor-text' />
-                              <br />
-                              
-                              <a id='add-suggested-link-button'>Add Suggested Link</a>
                                 
 			    	
                             </div>
