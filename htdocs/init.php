@@ -8,12 +8,20 @@
  */
 function __autoload($class) {
         $docroot = $_SERVER['DOCUMENT_ROOT'] . '/';
+	$filename = $docroot . 'php/';
+
         if (strpos($class, 'Command') !== false) {
-		  $filename = $docroot . 'php/command/' . strtolower($class) . '.php';
-        } else {
-		  $filename = $docroot . 'php/' . strtolower($class) . '.php';
+		  //get commands from the 'commands/' directory
+		  $filename .= 'command/' . strtolower($class) . '.php';
+        } elseif (strpos($class, 'Helper') !== false) {
+		  //get helpers from the 'helpers/' directory
+		  $filename .= 'helpers/' . strtolower($class) . '.php';
+	} else {
+		  $filename .= strtolower($class) . '.php';
 	}
 
+
+	//try to load the file
 	if ( file_exists( $filename ) ) {
 		include $filename;
 	} else {
