@@ -10,7 +10,9 @@
         $fh = RequestRegistry::getFormHelper();
 
 	//if we're getting an event id out of $_GET['newsevent-id'], set $newsevent to that
-	$newsevent = CommandRunner::run( 'get-news-event' )->get( 'newsevent' );
+	if ( isset( $_GET['newsevent-id'] ) ) {
+		$newsevent = CommandRunner::run( 'get-news-event' )->get( 'newsevent' );
+	}
 	
 			
 	//if we're saving an event, send it to the database and set it as the event to show in the form
