@@ -2,7 +2,7 @@
 	/**
 	 * Content Superclass
 	 *
-	 * Superclass for all content classes
+	 * Superclass for all content classes (TextContent, Page, NewsEvent, Image, Album)
 	 */
 	abstract class Content {
                 

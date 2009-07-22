@@ -23,7 +23,7 @@
 					              ."{$ancestor->getTitle()}"
 						      ."</a>\n";
 				} else {
-					$breadcrumb .= "<a href='{$this->url()}'>{$ancestor->getTitle()}</a> | ";
+					$breadcrumb .= "<a href='{$this->url($ancestor)}'>{$ancestor->getTitle()}</a> | ";
 				}
 			}
 

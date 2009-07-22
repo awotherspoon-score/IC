@@ -3,6 +3,9 @@
          * An iteratable, countable collection superclass
          *
          * Subclasses will be used to group and iterate over domain objects
+	 *
+	 * By implementing the Standard PHP Library (SPL) interfaces Iterator and Countable
+	 * We can do things like foreach($content_collection as $content) and count( $content_collection )
          */
 	abstract class ContentCollection implements Iterator, Countable {
 		protected $mapper;
