@@ -1,17 +1,14 @@
 <?php include('init.php');
-
-	$slug = mysql_escape_string($_GET['slug']);
-	$page = RequestRegistry::getPageMapper()->findBySlug($slug);
-	$view = RequestRegistry::getViewHelper($page);
-	$children = $page->getChildren();
+	$query = mysql_escape_string($_REQUEST['query']);
+	$view = RequestRegistry::getViewHelper( array('type' => 'search') );
 ?>
+
 <?php include('inc/doctype.php'); ?>
 <html>
 <head>
 <link rel='stylesheet' type='text/css' href='/css/shared.css' />
 <link rel='stylesheet' type='text/css' href='/css/pcs-default.css' />
-<!-- <link rel='stylesheet' type='text/css' href='/css/current.css' /> -->
-<?= $view->pcs_stylesheet() ?>
+<?= $view->pcs_stylesheet(); ?>
 <script type='text/javascript' src='/js/jquery-1.3.2.min.js'></script>
 <script type='text/javascript' src='/js/jquery.dimensions.js'></script>
 <script type='text/javascript' src='/js/jquery.tooltip.min.js'></script>
@@ -80,8 +77,8 @@
 		
 		<?= $view->header_image() ?>
 		<?= $view->testimonial_image() ?>
-		<?= $view->search_box() ?>	
-		<?= $view->quick_links() ?>	
+		<?= $view->search_box() ?>
+		<?= $view->quick_links() ?>
 		
                 <?php include('inc/nav.php'); ?>
 		<?php include('inc/pcs-buttons.php'); ?>
@@ -91,9 +88,7 @@
                 <div class='cleardiv'></div>
                 <div id='content'>
 			<?= $view->breadcrumbs(); ?>
-                        <h1><?= $page->getTitle() ?></h1>
-                        <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
-			<?= $page->getText() ?>
+                        <h1>Search Results For <?= $query ?></h1>
                 </div>
 
 		<?= $view->sidebar(); ?>

@@ -30,20 +30,10 @@ include('inc/doctype.php');
 				<li class='has-margin'><a href='/current/'><img src='img/buttons/home-current.jpg' /></a></li>
 				<li><a href='/staff/'><img src='img/buttons/home-staff.jpg' /></a></li>
 		</ul>
-		
-		<div id='search-box'>
-			<form action='search.php' method='get'>
-				<input type='text' name='search-key' id='search-key' value='Search' />
-				<input type='submit' name='search' value='' id='search-button' />
-			</form>
-		</div>
-		
-		<div id='quick-links'>
-			<select name='quick-links'>
-				<option>Quick Links</option>
-			</select>
-		</div>
 
+		<?= $view->search_box() ?>
+		<?= $view->quick_links() ?>
+		
 	</div> <!-- /header -->
 	
 	<div id='main'>

@@ -1,4 +1,5 @@
 RewriteEngine On
+RewriteRule ^\/?search\/((.*)\/)?$ search.php?query=$2
 RewriteRule ^\/?pages\/(.*)\/$ page.php?slug=$1
 RewriteRule ^\/?(prospective|current|staff)\/$ pcs.php?code=$1
 RewriteRule ^\/?(news|events|gallery)\/(archive|calendar)\/(.*)\/$ $1-archive.php?period=$3

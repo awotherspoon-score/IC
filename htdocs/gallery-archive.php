@@ -79,19 +79,8 @@
 		
 		<?= $view->header_image() ?>
 		<?= $view->testimonial_image() ?>
-		
-		<div id='search-box'>
-			<form action='search.php' method='get'>
-				<input type='text' name='search-key' id='search-key' value='Search' />
-				<input type='submit' name='search' value='' id='search-button' />
-			</form>
-		</div>
-		
-		<div id='quick-links'>
-			<select name='quick-links'>
-				<option>Quick Links</option>
-			</select>
-		</div>
+		<?= $view->search_box() ?>	
+		<?= $view->quick_links() ?>	
                 <?php include('inc/nav.php'); ?>
 		<?php include('inc/pcs-buttons.php'); ?>
 	</div> <!-- /header -->

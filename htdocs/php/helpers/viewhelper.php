@@ -35,6 +35,25 @@
 			$this->init_pcs_stylesheet();
 		}
 
+		public function search_box() {
+			return "
+			<div id='search-box'>
+				<form action='/search/' method='post'>
+					<input type='text' name='query' id='search-key' value='Search' />
+					<input type='submit' name='search' value='' id='search-button' />
+				</form>
+			</div>";
+		}
+
+		public function quick_links() {
+			return "
+			<div id='quick-links'>
+				<select name='quick-links'>
+					<option>Quick Links</option>
+				</select>
+			</div>";
+		}
+
 		/**
 		 * content getter/setter method
 		 *
