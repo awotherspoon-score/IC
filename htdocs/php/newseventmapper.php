@@ -332,12 +332,12 @@
 
 		protected function selectAllFutureEventsQuery() {
 			$now = time();
-			return "SELECT * FROM newsevents WHERE type=". NewsEvent::TYPE_EVENT ." AND datedisplayed > $now ORDER BY datedisplayed DESC";
+			return "SELECT * FROM newsevents WHERE type=". NewsEvent::TYPE_EVENT ." AND datedisplayed > $now ORDER BY datedisplayed ASC";
 		}
 
 		protected function selectAllFutureNewsQuery() {
 			$now = time();
-			return "SELECT * FROM newsevents WHERE type=". NewsEvent::TYPE_NEWS ." AND datedisplayed > $now ORDER BY datedisplayed DESC";
+			return "SELECT * FROM newsevents WHERE type=". NewsEvent::TYPE_NEWS ." AND datedisplayed > $now ORDER BY datedisplayed ASC";
 		}
 
 		protected function selectDisplayEventsQuery() {
