@@ -92,7 +92,9 @@
                 <div id='content'>
 			<?= $view->breadcrumbs(); ?>
                         <h1><?= $page->getTitle() ?></h1>
-                        <p id='first-paragraph'><?= $page->getIntroduction() ?></p>
+                        <p id='first-paragraph'>
+				<?= $page->getIntroduction() ?>	
+			</p>
 			<?= $page->getText() ?>
                 </div>
 

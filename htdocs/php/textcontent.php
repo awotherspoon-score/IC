@@ -33,7 +33,7 @@
 			return $this->keywords;
 		}
 		public function getIntroduction() {
-			return $this->introduction;
+			return strip_tags($this->introduction);
 		}
 		public function setText($text) {
 			$this->text = $text;
