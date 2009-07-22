@@ -9,7 +9,10 @@ function __autoload($class) {
         if (strpos($class, 'Command') !== false) {
 		  //get commands from the 'commands/' directory
 		  $filename .= 'command/' . strtolower($class) . '.php';
-        } elseif (strpos($class, 'Helper') !== false) {
+        } elseif (strpos($class, 'Registry') !== false) {
+		  //gets registries from the 'registries/' directory
+		  $filename .= 'registries/' . strtolower($class) . '.php';
+	} elseif (strpos($class, 'Helper') !== false) {
 		  //get helpers from the 'helpers/' directory
 		  $filename .= 'helpers/' . strtolower($class) . '.php';
 	} elseif (strpos($class, 'Collection') !== false) {
