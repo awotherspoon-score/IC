@@ -38,9 +38,9 @@
 			$now = time();
                         $this->updateSlug($object); 
 			$query = "INSERT INTO pages "
-					."(slug, title, introduction, datecreated, datemodified, status, text, description, keywords, parentid) "
+					."(slug, title, introduction, datecreated, datemodified, status, text, description, keywords, parentid, imageid) "
 					."VALUES "
-					."('{$object->getSlug()}', '{$object->getTitle()}', '{$object->getIntroduction()}', '$now', '$now', '{$object->getStatus()}', '{$object->getText()}', '{$object->getDescription()}', '{$object->getKeywords()}', '{$object->getParentId()}')";
+					."('{$object->getSlug()}', '{$object->getTitle()}', '{$object->getIntroduction()}', '$now', '$now', '{$object->getStatus()}', '{$object->getText()}', '{$object->getDescription()}', '{$object->getKeywords()}', '{$object->getParentId()}', '{$object->getImageId()}')";
 			self::$mysqli->query($query);
 			$object->setId(self::$mysqli->insert_id);	 
 		}
@@ -64,7 +64,8 @@
 					."text='{$object->getText()}', "
 					."description='{$object->getDescription()}', "
 					."keywords='{$object->getKeywords()}', "
-					."parentid='{$object->getParentId()}' "
+					."parentid='{$object->getParentId()}', "
+					."imageid='{$object->getImageId()}' "
 					."WHERE id={$object->getId()} LIMIT 1";
 			self::$mysqli->query($query);
 		}

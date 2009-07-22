@@ -1,6 +1,7 @@
 <?php
 	class Page extends TextContent {
 		private $parentId;
+		private $imageId;
 
 		/**
 		 * $chilren PageCollection Collection of Child Pages
@@ -32,11 +33,13 @@
 		public function loadFromArray($array) {
 			parent::loadFromArray($array);
 			if (array_key_exists('parentid', $array)) { $this->setParentId($array['parentid']); }
+			if (array_key_exists('imageid', $array)) { $this->setImageId($array['imageid']); }
 		}
 
                 public function toArray() {
                         return array_merge(parent::toArray(), array(
                                 'parentId' => $this->parentId,
+				'imageId' => $this->imageId,
                                 'children' => $this->getChildren()->toArray()
                         ));
                 }
@@ -47,6 +50,17 @@
 		}
 		public function setParentId( $parentId ) {
 			$this->parentId = $parentId;
+		}
+
+		public function getImageId() {
+			if ($this->imageId == '') {
+				return 0;
+			}
+			return $this->imageId;
+		}
+
+		public function setImageId( $imageId ) {
+			$this->imageId = $imageId;
 		}
 		//END GETTERS + SETTERS
 
