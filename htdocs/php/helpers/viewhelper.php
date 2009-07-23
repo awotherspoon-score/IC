@@ -106,6 +106,34 @@
 			class='testimonial-image' id='prospective-testimonial-image' />";
 		}
 
+		public function pcs_selct() {
+			$code = $this->get_pcs_stylecode();
+			$p_class = ($code == 'prospective') ? " class='selected'" : '';
+			$c_class = ($code == 'current') ? " class='selected'" : '';
+			$s_class = ($code == 'staff') ? " class='selected'" : '';
+			return "
+			<div id='section-select'>
+				<ul>
+					<li id='prospective-link'{$p_class}>
+						<a href='/prospective/'>
+							<img title='Prospective Students' src='/img/buttons/prospective-button.gif' />
+						</a>
+					</li>
+					<li id='current-link'{$c_class}>
+						<a href='/current/'>
+							<img title='Current Students' src='/img/buttons/current-button.gif' />
+						</a>
+					</li>
+					<li id='staff-link'{$s_class}>
+						<a href='/staff/'>
+							 <img title='Staff' src='/img/buttons/staff-button.gif' />
+						</a>
+					</li>
+				</ul>
+			</div>
+			";
+		}
+
 
 
 		/**
@@ -117,13 +145,18 @@
 		 */
 		public function set_pcs_stylecode( $code ) {
 		  if ( ! in_array( $code, array( 'prospective', 'current', 'staff', 'default' ) ) ) {
-				set_pcs_stylecode( 'default' );
+				$this->set_pcs_stylecode( 'default' );
 				return;
 			} 
 		
 			SessionRegistry::instance()->setStyleCode( $code );
 			$this->init_pcs_stylesheet();
 		}
+
+		public function get_pcs_stylecode() {
+			SessionRegistry::instance()->getStyleCode();
+		}
+
 
 		public function pcs_stylesheet() {
 			return $this->pcs_stylesheet;
