@@ -1,0 +1,9 @@
+This directory contains classes that help the page templates display the website. 
+
+Most of the helper code is defined in the ViewHelper class. ViewHelper is abstract so you can't create and use a ViewHelper directly, instead an xViewHelper is in place for all the various sections of the site. That way we can give all the view helpers some common functionality through the superclass ViewHelper and allow the individual xViewHelpers (e.g. HomeViewHelpler or NewsArchiveViewHelper etc) to do stuff specific to that template.
+
+From the templates, we get view helpers by calling ViewHelperFactory::createViewHelper( $content ) where content is either an instance of a Content subclass, or an array with a value for key 'type'. In this case the ViewHelper returned will be an instance of TypeViewHelper, and classes are named accordingly. This is not a particularly clean interface, but didn't have time to refactor before I left.
+
+Archive view helpers also need a value for key 'period' which can be 'january', 'february' etc or '2008', '2009' etc.
+
+There are also other helper classes that take care of functionality like generating forms and urls. They all have fairly sensible names (like UrlHelper and FormHelper) and should be pretty easy to figure out. To refactor you might want to pull on-demand references to these into the ViewHelper superclass (thereby giving you a cleaner interface to the templates) and I've already done this to an extent with the UrlHelper.
