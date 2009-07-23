@@ -9,7 +9,7 @@
 
 		function slugKey(Content $object) {
 			$slug_key = get_class($object) . "." . $object->getSlug();
-			return $key;
+			return $slug_key;
 		}
 		
 		function add( Content $object ) {
@@ -24,7 +24,7 @@
 		 * @param $id string id or slug of the object we're looking for
 		 */
 		function exists($classname, $id) {
-			$key = "$classname.$id";
+			$key = $classname.$id;
 			if (isset($this->all[$key])) {
 				return $this->all[$key];
 			}

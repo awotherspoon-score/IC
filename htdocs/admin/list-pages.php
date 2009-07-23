@@ -149,6 +149,18 @@
 				  	<option value='<?= Content::STATUS_LIVE ?>'<?= ($page->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
 				  </select>
 
+				  <label for='image'>Image: </label>
+				  <div id='image-display'> 
+				  	<?php if ( $page->getImage() == null ): ?>	
+						<span>Random Image</span>		
+					<?php else: ?>
+						<img width='300' src='<?= $page->getImage()->getSource() ?>' />
+					<?php endif ?>
+				  </div> 
+				  <a href='' id='change-image'>Change Image</a> | <a href='' id='clear-image'>Clear Image</a>
+
+				  
+
 				  
 				
 

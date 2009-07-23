@@ -20,6 +20,13 @@ function refreshPage(page) {
 	setfckval("content", page['text']);	
 	setfckval("introduction", page['introduction']);
 
+	if ( page['imageId'] == null ) {
+		$('#image-display').html('<span>Random Image</span>');
+	} else {
+		$('#image-display').html('<img width=\'300\' src=\'/img/photos/' + page['imageId'] + '.jpg\' />');
+	}
+
+
 	//show the new values in the left column
 	//title
 	$("a#" + page.id + ".page-button").text(page['title']);
