@@ -106,7 +106,7 @@
 			class='testimonial-image' id='prospective-testimonial-image' />";
 		}
 
-		public function pcs_selct() {
+		public function pcs_select() {
 			$code = $this->get_pcs_stylecode();
 			$p_class = ($code == 'prospective') ? " class='selected'" : '';
 			$c_class = ($code == 'current') ? " class='selected'" : '';
@@ -154,7 +154,7 @@
 		}
 
 		public function get_pcs_stylecode() {
-			SessionRegistry::instance()->getStyleCode();
+			return SessionRegistry::instance()->getStyleCode();
 		}
 
 

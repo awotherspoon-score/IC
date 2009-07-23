@@ -84,7 +84,7 @@ include('init.php');
 		<?= $view->quick_links() ?>	
 		
                 <?php include('inc/nav.php'); ?>
-		<?php include('inc/pcs-buttons.php'); ?>
+		<?= $view->pcs_select() ?>
 	</div> <!-- /header -->
 	
 	<div id='main'>
