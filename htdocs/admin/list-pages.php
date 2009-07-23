@@ -145,11 +145,12 @@
 
 				  <label for='status'>Status: </label>
 				  <select name='status' id='status-input'>
-				  	<option value='<?= Content::STATUS_PENDING ?>'<?= ($page->getStatus() == Content::STATUS_PENDING) ? ' selected' : '' ?>>Pending</option>
+					<option value='<?= Content::STATUS_PENDING ?>'<?= ($page->getStatus() == Content::STATUS_PENDING) ? ' selected' : '' ?>>Pending</option>
 				  	<option value='<?= Content::STATUS_LIVE ?>'<?= ($page->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
 				  </select>
 
 				  <label for='image'>Image: </label>
+
 				  <div id='image-display'> 
 				  	<?php if ( $page->getImage() == null ): ?>	
 						<span>Random Image</span>		
@@ -157,12 +158,8 @@
 						<img width='300' src='<?= $page->getImage()->getSource() ?>' />
 					<?php endif ?>
 				  </div> 
+
 				  <a href='' id='change-image'>Change Image</a> | <a href='' id='clear-image'>Clear Image</a>
-
-				  
-
-				  
-				
 
 				  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
 
@@ -177,7 +174,6 @@
                                   <label for='introduction'>Introduction:</label>
 				  <?php $introEditor->Create(); ?>
                                   <!-- <input class='text-input' type='text' id='introduction' name='introduction' /> -->
-
                                   <label for='content'>Content:</label>
                                   <?php $editor->Create(); ?><br />
 				  

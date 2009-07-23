@@ -26,7 +26,6 @@ function refreshPage(page) {
 		$('#image-display').html('<img width=\'300\' src=\'/img/photos/' + page['imageId'] + '.jpg\' />');
 	}
 
-
 	//show the new values in the left column
 	//title
 	$("a#" + page.id + ".page-button").text(page['title']);
