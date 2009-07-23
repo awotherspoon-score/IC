@@ -148,6 +148,8 @@
 				  	<option value='<?= Content::STATUS_PENDING ?>'<?= ($page->getStatus() == Content::STATUS_PENDING) ? ' selected' : '' ?>>Pending</option>
 				  	<option value='<?= Content::STATUS_LIVE ?>'<?= ($page->getStatus() == Content::STATUS_LIVE) ? ' selected' : '' ?>>Live</option>
 				  </select>
+
+				  
 				
 
 				  <a id='meta-toggle-button'>Meta Data <img src='img/icons/plus.gif' class='plus-minus-icon'/></a>
@@ -174,6 +176,7 @@
 				  </p>
 			          <input type='submit' value='Save' name='save-button' id='save-button' />
                                 </form>
+			
                             </div>
                     </div><!-- /#min -->
 

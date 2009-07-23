@@ -41,6 +41,14 @@
 		 */
 		public function sidebar() {
 			$children = $this->content->getLiveChildren();
+
+			if ( ($image = $this->content->getImage()) == null ) {
+				$image_mapper = RequestRegistry::getImageMapper();
+				$pcs_code = SessionRegistry::getStyleCode();
+				$image = $image_mapper->findRandomLiveImageForPcs( $pcs_code );
+			}
+
+
 			$sidebar = 	"<div id='sidebar'>\n";
 			if ( count( $children ) > 0 ) {
 				$sidebar	.="<div class='sidebar-links-title'>\n"
@@ -54,8 +62,10 @@
 
 				$sidebar	.="</ul>\n";
 			}
-			$sidebar 	.="<img src='/img/post-image.jpg' id='post-image' />\n"
-				  	."</div>\n";
+			if ($image != null) {
+				$sidebar 	.="<img src='{$image->getSource()}' id='post-image' />\n";
+			}
+			$sidebar 	.="</div>\n";
 			return $sidebar;
 		}
 	}

@@ -24,6 +24,11 @@
 		private $ancestry;
 
 		/**
+		 * $image Image contains reference to image for this page OR random based on session pcs settings if imageid is 0
+		 */
+		private $image;
+
+		/**
 		 * $suggested_links Array contains suggested links for this page (if it's
 		 * prospective/current/staff)
 		 */
@@ -43,6 +48,15 @@
                                 'children' => $this->getChildren()->toArray()
                         ));
                 }
+
+		public function getImage() {
+
+			if ( ! isset( $this->image ) ) {
+				$image_mapper = RequestRegistry::getImageMapper();
+				$this->image = ( $this->getImageId() != 0 ) ? $image_mapper->findImageForPage( $this ) : null;
+			}	
+			return $this->image;
+		}
 
 		//GETTERS + SETTERS
 		public function getParentId() {

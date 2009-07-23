@@ -59,6 +59,19 @@
 			return $this->createCollection($this->queryToArray($this->selectByAlbumIdQuery($albumid), true));
 		}
 
+		public function findImageForPage( Page $page ) {
+			return $this->find( $page->getImageId() );
+		}
+
+		public function findRandomLiveImageForPcs( $pcs_code ) {
+			return $this->createObject( $this->queryToArray( $this->selectRandomLiveImageForPcsQuery( $pcs_code ) ) );
+		}
+
+		public function selectRandomLiveImageForPcsQuery( $pcs_code ) {
+			//we don't use images.status, so need to join on albums to tell if an image should be displayed or not via albums.status
+			return "select images.* from albums join images on albums.id=images.albumid where albums.status=1 and {$pcs_code}=1 order by rand() limit 1";
+		}
+
 		public function selectBySlugQuery( $slug ) {
 			return "SELECT * FROM images WHERE slug='{$slug}' LIMIT 1";
 		}
